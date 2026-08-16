@@ -1078,7 +1078,7 @@ public class C15580b {
     }
 
     public final boolean c0() {
-        return this.f118633b && this.f118645n == 1;
+        return this.f118633b && this.f118645n != 0;
     }
 
     public boolean d0() {

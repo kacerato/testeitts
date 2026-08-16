@@ -337,24 +337,7 @@
 
     :cond_3
     :goto_1
-    if-eqz p1, :cond_5
-
-    invoke-static {v1}, Lw3/a$b;->c(Lw3/a$b;)Z
-
-    move-result p1
-
-    if-eqz p1, :cond_4
-
     goto :goto_2
-
-    :cond_4
-    new-instance p0, Ljava/io/IOException;
-
-    const-string p1, "Unable to patch application label on protobuf AndroidManifest.xml"
-
-    invoke-direct {p0, p1}, Ljava/io/IOException;-><init>(Ljava/lang/String;)V
-
-    throw p0
 
     :cond_5
     :goto_2

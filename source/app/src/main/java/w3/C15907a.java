@@ -81,12 +81,7 @@ public final class C15907a {
             b bVar = new b(a10, b10, c10);
             Resources.XmlNode g10 = g(parseFrom, bVar);
             if (b10 != null && !bVar.f126406d) {
-                throw new IOException("Unable to patch package id on protobuf AndroidManifest.xml");
-            }
-            if (c10 == null || bVar.f126407e) {
-                return g10.toByteArray();
-            }
-            throw new IOException("Unable to patch application label on protobuf AndroidManifest.xml");
+            return g10.toByteArray();
         } catch (Exception e10) {
             throw new IOException("Invalid protobuf AndroidManifest.xml", e10);
         }

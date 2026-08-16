@@ -1474,7 +1474,7 @@
 .end method
 
 .method public final c0()Z
-    .locals 2
+    .locals 1
 
     iget-boolean v0, p0, Lu8/b;->b:Z
 
@@ -1482,17 +1482,16 @@
 
     iget v0, p0, Lu8/b;->n:I
 
-    const/4 v1, 0x1
+    if-eqz v0, :cond_0
 
-    if-ne v0, v1, :cond_0
+    const/4 v0, 0x1
 
-    goto :goto_0
+    return v0
 
     :cond_0
-    const/4 v1, 0x0
+    const/4 v0, 0x0
 
-    :goto_0
-    return v1
+    return v0
 .end method
 
 .method public d0()Z

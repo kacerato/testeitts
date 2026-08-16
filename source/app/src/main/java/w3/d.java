@@ -157,38 +157,7 @@ public class d {
 
     @RequiresApi(api = 26)
     public static void D(File rootDir, File file, ZipOutputStream zos) throws IOException {
-        if (file.isDirectory()) {
-            File[] listFiles = file.listFiles();
-            if (listFiles != null) {
-                Arrays.sort(listFiles, Comparator.comparing(new C15908b()));
-                for (File file2 : listFiles) {
-                    D(rootDir, file2, zos);
-                }
-                return;
-            }
-            return;
-        }
-        zos.putNextEntry(new ZipEntry(rootDir.toPath().relativize(file.toPath()).toString().replace(C16181m.f130232i, "/")));
-        FileInputStream fileInputStream = new FileInputStream(file);
-        try {
-            byte[] bArr = new byte[4096];
-            while (true) {
-                int read = fileInputStream.read(bArr);
-                if (read == -1) {
-                    fileInputStream.close();
-                    zos.closeEntry();
-                    return;
-                }
-                zos.write(bArr, 0, read);
-            }
-        } catch (Throwable th2) {
-            try {
-                fileInputStream.close();
-            } catch (Throwable th3) {
-                th2.addSuppressed(th3);
-            }
-            throw th2;
-        }
+        AabZipHelper.writeDirToZip(rootDir, file, zos);
     }
 
     public static c b(List<b> entries) throws Exception {
@@ -308,7 +277,7 @@ public class d {
             throw new IOException("Unable to create AAB signing directory");
         }
         KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(KeyProperties.KEY_ALGORITHM_RSA);
-        keyPairGenerator.initialize(3072, new SecureRandom());
+        keyPairGenerator.initialize(2048, new SecureRandom());
         KeyPair generateKeyPair = keyPairGenerator.generateKeyPair();
         Date date = new Date(System.currentTimeMillis() - 86400000);
         Calendar calendar = Calendar.getInstance();
