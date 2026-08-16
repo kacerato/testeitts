@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/background_blured_v2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="32.0dip" android:layout_marginEnd="32.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+            <com.itsmagic.engine.Activities.Editor.Utils.MaskView.MaskableFrameLayout android:background="@color/editor3d_v2_panel_semi_transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="32.0dip" android:paddingEnd="32.0dip" app:anti_aliasing="false" app:mask="@drawable/editor3d_v2_projects_panel_project_mask" app:porterduffxfermode="DST_IN">
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="26.0dip" />
+                    <TextView android:textSize="18.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/tittle" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="Targeted advertising is provided by third parties" android:layout_weight="1.0" android:fontFamily="@font/musticapro_semibold" android:textAlignment="textStart" />
+                    <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="16.0dip" />
+                    <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center" android:id="@id/text" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="We rely on third-party services to customize in-game ads. If you disagree, third-party ads will still be displayed, but they may be less recommended for you.\n\nWe also use services such as AppLovin and Admob, which may sell your data to third parties for the purpose of improving ad targeting for you." android:layout_weight="1.0" android:fontFamily="@font/progfont" android:textAlignment="textStart" />
+                    <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                        <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                        <CheckBox android:textStyle="bold" android:textColor="@color/theme_mid_text_color" android:id="@id/dontSell" android:layout_width="wrap_content" android:layout_height="wrap_content" android:checked="true" android:text="Allow AppLovin/Admob to sell my data." android:fontFamily="@font/progfont" android:buttonTint="@color/init_screens_primary" />
+                        <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                    </LinearLayout>
+                    <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="16.0dip" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                        <Button android:textColor="@color/init_screens_primary" android:id="@id/disagree" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="I disagree" android:layout_weight="1.0" android:backgroundTint="@color/white" />
+                        <Button android:textColor="@color/white" android:id="@id/agree" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="I agree" android:layout_weight="1.0" android:backgroundTint="@color/init_screens_primary" />
+                    </LinearLayout>
+                    <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="32.0dip" />
+                </LinearLayout>
+            </com.itsmagic.engine.Activities.Editor.Utils.MaskView.MaskableFrameLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

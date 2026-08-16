@@ -1,0 +1,223 @@
+package java.time;
+
+import java.io.Serializable;
+import java.time.temporal.Temporal;
+import java.time.temporal.TemporalAmount;
+import java.time.temporal.TemporalUnit;
+import java.util.List;
+
+/* JADX WARN: Classes with same name are omitted:
+  base.apk:assets/Editor/javaLibs.zip:JAVARuntime/d8lib/android.jar:java/time/Duration.class
+ */
+public final class Duration implements TemporalAmount, Comparable<Duration>, Serializable {
+    public static final Duration ZERO = null;
+
+    Duration() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static Duration ofDays(long days) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static Duration ofHours(long hours) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static Duration ofMinutes(long minutes) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static Duration ofSeconds(long seconds) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static Duration ofSeconds(long seconds, long nanoAdjustment) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static Duration ofMillis(long millis) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static Duration ofNanos(long nanos) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static Duration of(long amount, TemporalUnit unit) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static Duration from(TemporalAmount amount) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static Duration parse(CharSequence text) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static Duration between(Temporal startInclusive, Temporal endExclusive) {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public long get(TemporalUnit unit) {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public List<TemporalUnit> getUnits() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public boolean isZero() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public boolean isNegative() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public long getSeconds() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public int getNano() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration withSeconds(long seconds) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration withNanos(int nanoOfSecond) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration plus(Duration duration) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration plus(long amountToAdd, TemporalUnit unit) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration plusDays(long daysToAdd) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration plusHours(long hoursToAdd) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration plusMinutes(long minutesToAdd) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration plusSeconds(long secondsToAdd) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration plusMillis(long millisToAdd) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration plusNanos(long nanosToAdd) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration minus(Duration duration) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration minus(long amountToSubtract, TemporalUnit unit) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration minusDays(long daysToSubtract) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration minusHours(long hoursToSubtract) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration minusMinutes(long minutesToSubtract) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration minusSeconds(long secondsToSubtract) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration minusMillis(long millisToSubtract) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration minusNanos(long nanosToSubtract) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration multipliedBy(long multiplicand) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration dividedBy(long divisor) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration negated() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public Duration abs() {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public Temporal addTo(Temporal temporal) {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public Temporal subtractFrom(Temporal temporal) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public long toDays() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public long toHours() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public long toMinutes() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public long toMillis() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public long toNanos() {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public int compareTo(Duration otherDuration) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public boolean equals(Object otherDuration) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public int hashCode() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public String toString() {
+        throw new RuntimeException("Stub!");
+    }
+}

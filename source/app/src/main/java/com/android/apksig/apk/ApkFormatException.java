@@ -1,0 +1,13 @@
+package com.android.apksig.apk;
+
+public class ApkFormatException extends Exception {
+    private static final long serialVersionUID = 1;
+
+    public ApkFormatException(String str) {
+        super(str);
+    }
+
+    public ApkFormatException(String str, Throwable th2) {
+        super(str, th2);
+    }
+}

@@ -1,0 +1,10 @@
+package java.lang.annotation;
+
+/* JADX WARN: Classes with same name are omitted:
+  base.apk:assets/Editor/javaLibs.zip:JAVARuntime/d8lib/android.jar:java/lang/annotation/Native.class
+ */
+@Target({ElementType.FIELD})
+@Documented
+@Retention(RetentionPolicy.SOURCE)
+public @interface Native {
+}

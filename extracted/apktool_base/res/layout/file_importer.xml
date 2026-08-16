@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/errorViews" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/errorText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="TextView" android:textAllCaps="false" android:fontFamily="@font/base_medium" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/requestViews" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <TextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_horizontal" android:id="@id/t1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="32.0dip" android:text="TextView" android:textAllCaps="false" android:fontFamily="@font/base_medium" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+            <Button android:id="@id/b1" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="16.0dip" android:text="Button" app:layout_constraintEnd_toEndOf="@id/t1" app:layout_constraintStart_toStartOf="@id/t1" app:layout_constraintTop_toBottomOf="@id/t1" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+    <FrameLayout android:id="@id/inflateRoot" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:background="@color/theme_panel_topbar" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+            <LinearLayout android:orientation="horizontal" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                    <LinearLayout android:orientation="horizontal" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:paddingStart="8.0dip">
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+                            <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:gravity="bottom" android:id="@id/tittle" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="File Importer" android:layout_weight="1.0" android:fontFamily="@font/base_bold" android:textAlignment="viewStart" />
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <HorizontalScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                            <androidx.recyclerview.widget.RecyclerView android:id="@id/recyclerView" android:layout_width="10000.0dip" android:layout_height="fill_parent" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="6.0dip" android:layout_height="fill_parent" />
+                <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="2.0">
+                    <LinearLayout android:orientation="horizontal" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:paddingStart="8.0dip">
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+                            <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:gravity="bottom" android:id="@id/previewTittle" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="File Importer" android:layout_weight="1.0" android:fontFamily="@font/base_bold" android:textAlignment="viewStart" />
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+                        </LinearLayout>
+                    </LinearLayout>
+                    <HorizontalScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                            <androidx.recyclerview.widget.RecyclerView android:id="@id/previewRecyclerView" android:layout_width="10000.0dip" android:layout_height="fill_parent" />
+                        </LinearLayout>
+                    </HorizontalScrollView>
+                    <LinearLayout android:orientation="horizontal" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <androidx.legacy.widget.Space android:id="@id/space17" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                        <Button android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/white" android:id="@id/cancel" android:layout_width="wrap_content" android:layout_height="36.0dip" android:text="Cancel " android:fontFamily="@font/base_bold" android:backgroundTint="@color/mp_item_cancel1" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                        <androidx.legacy.widget.Space android:id="@id/space6" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                        <Button android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/white" android:id="@id/done" android:layout_width="wrap_content" android:layout_height="36.0dip" android:text="Import" android:fontFamily="@font/base_bold" android:backgroundTint="@color/theme_primary" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                        <androidx.legacy.widget.Space android:id="@id/space20" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

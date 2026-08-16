@@ -1,0 +1,66 @@
+package java.time.temporal;
+
+import java.io.Serializable;
+import java.time.DayOfWeek;
+import java.util.Locale;
+
+/* JADX WARN: Classes with same name are omitted:
+  base.apk:assets/Editor/javaLibs.zip:JAVARuntime/d8lib/android.jar:java/time/temporal/WeekFields.class
+ */
+public final class WeekFields implements Serializable {
+    public static final WeekFields ISO = null;
+    public static final WeekFields SUNDAY_START = null;
+    public static final TemporalUnit WEEK_BASED_YEARS = null;
+
+    WeekFields() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static WeekFields of(Locale locale) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public static WeekFields of(DayOfWeek firstDayOfWeek, int minimalDaysInFirstWeek) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public DayOfWeek getFirstDayOfWeek() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public int getMinimalDaysInFirstWeek() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public TemporalField dayOfWeek() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public TemporalField weekOfMonth() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public TemporalField weekOfYear() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public TemporalField weekOfWeekBasedYear() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public TemporalField weekBasedYear() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public boolean equals(Object object) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public int hashCode() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public String toString() {
+        throw new RuntimeException("Stub!");
+    }
+}

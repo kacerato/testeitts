@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView android:id="@id/imagePreview" android:background="@color/theme_card" android:layout_width="72.0dip" android:layout_height="72.0dip" android:scaleType="centerCrop" />
+    <TextView android:textColor="@color/theme_high_text_color" android:id="@id/imageIndex" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:fontFamily="@font/base_bold" android:layout_marginStart="8.0dip" />
+    <Button android:textColor="@color/white" android:id="@id/deleteButton" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="wrap_content" android:layout_height="40.0dip" android:fontFamily="@font/base_bold" android:backgroundTint="@color/mp_item_cancel1" />
+</LinearLayout>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/toucharea" android:background="@drawable/editor3d_v2_top_bar_element_background_disconnected" android:layout_width="wrap_content" android:layout_height="@dimen/editor3d_v2_topbar_height"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <View android:id="@id/progressFill" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginLeft="2.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" />
+    <TextView android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/textView" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="Progress" android:fontFamily="@font/base_regular" />
+</FrameLayout>

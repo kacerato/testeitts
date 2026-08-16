@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:background="@color/theme_tree_list_row_2" android:layout_width="fill_parent" android:layout_height="48.0dip">
+        <ImageView android:id="@id/avatar" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="64.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/useraccount_rp" app:tint="@color/theme_high_icon_tint" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/username" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="User name" android:layout_weight="1.0" android:fontFamily="@font/musticapro_semibold" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginBottom="4.0dip">
+        <TextView android:textSize="10.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/email_text" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fontFamily="@font/base_regular" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:id="@id/vip_member" android:background="@drawable/empty_image" android:layout_width="fill_parent" android:layout_height="32.0dip" android:backgroundTint="@color/vip">
+                    <Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                        <ImageView android:id="@id/imageView9" android:padding="2.0dip" android:layout_width="42.0dip" android:layout_height="fill_parent" android:src="@drawable/premium" app:tint="@color/theme_high_icon_tint" />
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <TextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/plusButtonTittle" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="2.0dip" android:layout_marginRight="16.0dip" android:text="VIP MEMBER" android:layout_weight="1.0" android:fontFamily="@font/base_extrabold" android:textAlignment="viewStart" />
+                    </LinearLayout>
+                    <Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:orientation="horizontal" android:id="@id/remove_ads_active" android:background="@drawable/rounded_container_box_white_rounded_bottom" android:layout_width="fill_parent" android:layout_height="32.0dip" android:backgroundTint="@color/mp_magiccoins">
+                    <Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                        <ImageView android:id="@id/imageView9" android:padding="6.0dip" android:layout_width="42.0dip" android:layout_height="fill_parent" android:src="@drawable/ad_block" app:tint="@color/theme_high_icon_tint" />
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <TextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginTop="2.0dip" android:layout_marginRight="16.0dip" android:text="ADS REMOVER" android:layout_weight="1.0" android:fontFamily="@font/base_extrabold" android:textAlignment="viewStart" />
+                    </LinearLayout>
+                    <Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:paddingLeft="8.0dip" android:paddingTop="8.0dip" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <LinearLayout android:orientation="horizontal" android:id="@id/add_plus" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="fill_parent" android:layout_height="32.0dip" android:backgroundTint="@color/theme_panel_topbar">
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <ImageView android:id="@id/imageView9" android:padding="0.0dip" android:layout_width="42.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/premium" />
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/plusButtonTittle" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="BECOME VIP" android:layout_weight="1.0" android:fontFamily="@font/musticapro_semibold" />
+                    </LinearLayout>
+                    <Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                    <LinearLayout android:orientation="horizontal" android:id="@id/add_funds" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="fill_parent" android:layout_height="32.0dip" android:backgroundTint="@color/theme_panel_topbar">
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <ImageView android:id="@id/imageView9" android:padding="6.0dip" android:layout_width="42.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/coin" />
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/textView37" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="ADD FUNDS" android:layout_weight="1.0" android:fontFamily="@font/musticapro_semibold" />
+                    </LinearLayout>
+                    <Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                    <LinearLayout android:orientation="horizontal" android:id="@id/add_coins" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="fill_parent" android:layout_height="32.0dip" android:backgroundTint="@color/theme_panel_topbar">
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <ImageView android:id="@id/imageView9" android:padding="4.0dip" android:layout_width="42.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/dollar" />
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/textView37" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="ADD COINS" android:layout_weight="1.0" android:fontFamily="@font/musticapro_semibold" />
+                    </LinearLayout>
+                    <Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                    <LinearLayout android:orientation="horizontal" android:id="@id/stop_ads" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="fill_parent" android:layout_height="32.0dip" android:backgroundTint="@color/theme_panel_topbar">
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <ImageView android:id="@id/imageView9" android:padding="4.0dip" android:layout_width="42.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/ad_block" />
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/textView37" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="STOP ADS" android:layout_weight="1.0" android:fontFamily="@font/musticapro_semibold" />
+                    </LinearLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:paddingLeft="8.0dip" android:paddingTop="8.0dip" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <LinearLayout android:orientation="horizontal" android:id="@id/seller_profile" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginBottom="8.0dip" android:backgroundTint="@color/theme_panel_topbar">
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <ImageView android:id="@id/imageView9" android:padding="6.0dip" android:layout_width="42.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/store" app:tint="@color/theme_high_icon_tint" />
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/seller_profile_text" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="SELLER PROFILE" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/musticapro_semibold" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal" android:id="@id/account_settings" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="fill_parent" android:layout_height="32.0dip" android:layout_marginBottom="8.0dip" android:backgroundTint="@color/theme_panel_topbar">
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <ImageView android:id="@id/imageView9" android:padding="6.0dip" android:layout_width="42.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/generic_settings" app:tint="@color/theme_high_icon_tint" />
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/account_settings_text" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="ACCOUNT SETTINGS" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/musticapro_semibold" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="horizontal" android:id="@id/logoff" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="fill_parent" android:layout_height="32.0dip" android:backgroundTint="@color/theme_panel_topbar">
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <ImageView android:id="@id/imageView9" android:padding="6.0dip" android:layout_width="42.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/turn_off" app:tint="@color/theme_high_icon_tint" />
+                        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/textView37" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="LOG OFF" android:layout_weight="1.0" android:fontFamily="@font/musticapro_semibold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </ScrollView>
+    </FrameLayout>
+</LinearLayout>

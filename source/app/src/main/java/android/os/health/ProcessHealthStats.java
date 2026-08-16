@@ -1,0 +1,17 @@
+package android.os.health;
+
+/* JADX WARN: Classes with same name are omitted:
+  base.apk:assets/Editor/javaLibs.zip:JAVARuntime/android/os/health/ProcessHealthStats.class
+ */
+public final class ProcessHealthStats {
+    public static final int MEASUREMENT_ANR_COUNT = 30005;
+    public static final int MEASUREMENT_CRASHES_COUNT = 30004;
+    public static final int MEASUREMENT_FOREGROUND_MS = 30006;
+    public static final int MEASUREMENT_STARTS_COUNT = 30003;
+    public static final int MEASUREMENT_SYSTEM_TIME_MS = 30002;
+    public static final int MEASUREMENT_USER_TIME_MS = 30001;
+
+    ProcessHealthStats() {
+        throw new RuntimeException("Stub!");
+    }
+}

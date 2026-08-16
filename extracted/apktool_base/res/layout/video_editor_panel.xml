@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:background="@color/theme_semi_card" android:layout_width="140.0dip" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/original" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="top" android:id="@id/resolution" android:padding="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Woord.jpg" />
+                <ImageView android:id="@id/img" android:background="@color/theme_panel" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="140.0dip" android:scaleType="fitCenter" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <ScrollView android:id="@id/scrollView" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:id="@id/scrollContent" android:paddingRight="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </ScrollView>
+        <LinearLayout android:orientation="horizontal" android:background="@color/theme_panel_topbar" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="top" android:id="@id/textureName" android:padding="4.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="Woord.jpg" android:singleLine="true" android:layout_weight="1.0" />
+            <Button android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/white" android:id="@id/done" android:layout_width="wrap_content" android:layout_height="36.0dip" android:text="Apply" android:fontFamily="@font/base_bold" android:backgroundTint="@color/theme_accent_green" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+            <androidx.legacy.widget.Space android:id="@id/space20" android:layout_width="8.0dip" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

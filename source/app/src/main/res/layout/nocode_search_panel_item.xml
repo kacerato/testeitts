@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/searchItemRoot" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:paddingLeft="12.0dip" android:paddingTop="8.0dip" android:paddingRight="12.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="12.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="center_vertical" android:id="@id/searchGroup" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="Group" android:singleLine="true" android:layout_weight="0.38" android:fontFamily="@font/base_regular" android:paddingEnd="8.0dip" />
+    <TextView android:textSize="13.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/searchTitle" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="Title" android:singleLine="true" android:layout_weight="0.62" android:fontFamily="@font/base_regular" />
+</LinearLayout>

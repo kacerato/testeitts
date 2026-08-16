@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/editor3d_v2_panel_tittle_drop" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:paddingTop="4.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/icon" android:layout_width="@dimen/editor3d_v2_panel_tittle" android:layout_height="@dimen/editor3d_v2_panel_tittle" app:srcCompat="@drawable/embed_mp" app:tint="@color/theme_high_icon_tint" />
+        <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/tittle" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="TextView" android:fontFamily="@font/linkednow_extrabold_italic" android:paddingStart="4.0dip" android:paddingEnd="8.0dip" />
+    </LinearLayout>
+</LinearLayout>

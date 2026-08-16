@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="right" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:id="@id/exit" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_margin="8.0dip" app:srcCompat="@drawable/close_x" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:layout_gravity="center" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:layout_width="90.0dip" android:layout_height="90.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="16.0dip" android:layout_marginBottom="16.0dip" app:srcCompat="@drawable/no_wifi" />
+            <TextView android:textSize="20.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:layout_gravity="center" android:id="@id/not_connected_tittle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sem conexao com a internet!" android:fontFamily="@font/base_bold" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="18.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:layout_gravity="center" android:id="@id/not_connected_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Conecte_se para fazer uso melhor do app" android:fontFamily="@font/base_medium" app:lineHeight="25.0dip" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="16.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

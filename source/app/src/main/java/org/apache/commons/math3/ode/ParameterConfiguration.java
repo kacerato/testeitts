@@ -1,0 +1,26 @@
+package org.apache.commons.math3.ode;
+
+import java.io.Serializable;
+
+public class ParameterConfiguration implements Serializable {
+    private static final long serialVersionUID = 2247518849090889379L;
+    private double hP;
+    private String parameterName;
+
+    public ParameterConfiguration(String str, double d10) {
+        this.parameterName = str;
+        this.hP = d10;
+    }
+
+    public double getHP() {
+        return this.hP;
+    }
+
+    public String getParameterName() {
+        return this.parameterName;
+    }
+
+    public void setHP(double d10) {
+        this.hP = d10;
+    }
+}

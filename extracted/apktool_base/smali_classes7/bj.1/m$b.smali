@@ -1,0 +1,182 @@
+.class public final Lbj/m$b;
+.super Ljava/io/ByteArrayOutputStream;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lbj/m;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x19
+    name = "b"
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0}, Ljava/io/ByteArrayOutputStream;-><init>()V
+
+    return-void
+.end method
+
+.method public synthetic constructor <init>(Lbj/m$a;)V
+    .locals 0
+
+    .line 2
+    invoke-direct {p0}, Lbj/m$b;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public declared-synchronized a(LXi/S;[B)[B
+    .locals 9
+
+    monitor-enter p0
+
+    const/16 v0, 0x72
+
+    :try_start_0
+    new-array v0, v0, [B
+
+    iget-object v4, p0, Ljava/io/ByteArrayOutputStream;->buf:[B
+
+    iget v6, p0, Ljava/io/ByteArrayOutputStream;->count:I
+
+    const/4 v8, 0x0
+
+    const/4 v2, 0x0
+
+    const/4 v5, 0x0
+
+    move-object v1, p1
+
+    move-object v3, p2
+
+    move-object v7, v0
+
+    invoke-virtual/range {v1 .. v8}, LXi/S;->g(I[B[BII[BI)V
+
+    invoke-virtual {p0}, Lbj/m$b;->reset()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit p0
+
+    return-object v0
+
+    :catchall_0
+    move-exception p1
+
+    :try_start_1
+    monitor-exit p0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    throw p1
+.end method
+
+.method public declared-synchronized b(LXi/T;[B[B)Z
+    .locals 8
+
+    monitor-enter p0
+
+    :try_start_0
+    array-length v0, p3
+
+    const/16 v1, 0x72
+
+    if-eq v1, v0, :cond_0
+
+    invoke-virtual {p0}, Lbj/m$b;->reset()V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit p0
+
+    const/4 p1, 0x0
+
+    return p1
+
+    :catchall_0
+    move-exception p1
+
+    goto :goto_0
+
+    :cond_0
+    :try_start_1
+    iget-object v3, p0, Ljava/io/ByteArrayOutputStream;->buf:[B
+
+    iget v5, p0, Ljava/io/ByteArrayOutputStream;->count:I
+
+    const/4 v7, 0x0
+
+    const/4 v1, 0x0
+
+    const/4 v4, 0x0
+
+    move-object v0, p1
+
+    move-object v2, p2
+
+    move-object v6, p3
+
+    invoke-virtual/range {v0 .. v7}, LXi/T;->g(I[B[BII[BI)Z
+
+    move-result p1
+
+    invoke-virtual {p0}, Lbj/m$b;->reset()V
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    monitor-exit p0
+
+    return p1
+
+    :goto_0
+    :try_start_2
+    monitor-exit p0
+    :try_end_2
+    .catchall {:try_start_2 .. :try_end_2} :catchall_0
+
+    throw p1
+.end method
+
+.method public declared-synchronized reset()V
+    .locals 3
+
+    monitor-enter p0
+
+    :try_start_0
+    iget-object v0, p0, Ljava/io/ByteArrayOutputStream;->buf:[B
+
+    iget v1, p0, Ljava/io/ByteArrayOutputStream;->count:I
+
+    const/4 v2, 0x0
+
+    invoke-static {v0, v2, v1, v2}, Lorg/bouncycastle/util/a;->f0([BIIB)V
+
+    iput v2, p0, Ljava/io/ByteArrayOutputStream;->count:I
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    monitor-exit p0
+
+    return-void
+
+    :catchall_0
+    move-exception v0
+
+    :try_start_1
+    monitor-exit p0
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    throw v0
+.end method

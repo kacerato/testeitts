@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.itsmagic.engine.Activities.Editor.Utils.ExceptionSafeRecyclerView android:id="@id/listView" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingEnd="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

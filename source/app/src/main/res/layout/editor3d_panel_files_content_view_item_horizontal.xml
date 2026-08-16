@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/toucharea" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginHorizontal="4.0dip" android:layout_marginVertical="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:id="@id/frameLayout" android:background="@drawable/rounded_container_box_white_rounded_left" android:layout_width="@dimen/file_explorer_content_view_item_horizontal_icon_height" android:layout_height="@dimen/file_explorer_content_view_item_horizontal_icon_height" android:backgroundTint="@color/theme_tree_list_row_2">
+        <com.itsmagic.engine.Activities.Editor.Utils.ExceptionSafeImageView android:id="@id/icon" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" app:srcCompat="@drawable/meta_folder" />
+        <com.itsmagic.engine.Activities.Editor.Utils.ExceptionSafeImageView android:layout_gravity="center|right|top" android:id="@id/subIcon" android:padding="2.0dip" android:layout_width="20.0dip" android:layout_height="20.0dip" android:scaleType="fitCenter" app:srcCompat="@drawable/empty_image" />
+    </FrameLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/tittleBackground" android:background="@drawable/rounded_container_box_white_rounded_right" android:layout_width="fill_parent" android:layout_height="fill_parent" android:backgroundTint="@color/theme_card">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textSize="11.0sp" android:textColor="@color/theme_high_text_color" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/name" android:paddingLeft="4.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="name" android:maxLines="1" android:layout_weight="1.0" android:fontFamily="@font/base_medium" />
+            <TextView android:textSize="10.0sp" android:textColor="@color/theme_mid_text_color" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/description" android:paddingLeft="4.0dip" android:paddingRight="2.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="desc" android:maxLines="1" android:layout_weight="1.0" android:fontFamily="@font/base_regular" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/dotsBackground" android:background="@drawable/rounded_container_box_white_rounded_right" android:layout_width="wrap_content" android:layout_height="fill_parent" android:backgroundTint="@color/theme_tree_list_row_2">
+            <ImageView android:layout_gravity="center|right|top" android:id="@id/dots" android:padding="4.0dip" android:layout_width="20.0dip" android:layout_height="fill_parent" android:layout_marginTop="0.0dip" app:srcCompat="@drawable/dots" app:tint="@color/theme_high_icon_tint" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

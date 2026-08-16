@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/top_bar" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:background="@color/theme_panel_topbar" android:paddingTop="4.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:paddingStart="16.0dip">
+                <LinearLayout android:orientation="horizontal" android:id="@id/exit" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginRight="4.0dip">
+                    <ImageView android:padding="10.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/close_x" app:tint="@color/theme_high_icon_tint" />
+                </LinearLayout>
+                <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                <LinearLayout android:orientation="vertical" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="bottom" android:id="@id/tittle" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="Escolha um template" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/base_regular" android:textAlignment="viewStart" />
+                    <TextView android:textSize="10.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="top" android:id="@id/subtittle" android:paddingTop="0.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Packages are stored on Github." android:fontFamily="@font/base_regular" android:textAlignment="viewStart" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/top_bar" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center_vertical" android:background="@drawable/editorv2_projects_panel_left_top_bar" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:paddingStart="16.0dip" android:backgroundTint="@color/theme_panel_topbar">
+                <com.itsmagic.engine.Activities.Editor.Utils.GenericSearchView android:id="@id/projectSearchView" android:layout_width="wrap_content" android:layout_height="32.0dip" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:background="@drawable/editorv2_projects_panel_mid_top_bar" android:paddingLeft="8.0dip" android:paddingTop="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="48.0dip">
+                <LinearLayout android:orientation="horizontal" android:id="@id/new_empty_project" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                    <TextView android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/new_empty_project_text" android:paddingLeft="16.0dip" android:paddingRight="4.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="Novo projeto vazio" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/linkednow_extrabold" />
+                    <ImageView android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/backup_icon" app:tint="@color/theme_high_icon_tint" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical" android:background="@drawable/editorv2_projects_panel_right_top_bar" android:layout_width="@dimen/editor3d_v2_projects_panel_rounded_border" android:layout_height="fill_parent" android:paddingStart="8.0dip" android:backgroundTint="@color/theme_panel_topbar" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="10.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="center_vertical" android:id="@id/repositoryText" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="Repository:" android:layout_weight="1.0" android:fontFamily="@font/musticapro_semibold" android:textAlignment="viewStart" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,30 @@
+package org.xml.sax;
+
+/* JADX WARN: Classes with same name are omitted:
+  base.apk:assets/Editor/javaLibs.zip:JAVARuntime/d8lib/android.jar:org/xml/sax/Attributes.class
+ */
+public interface Attributes {
+    int getLength();
+
+    String getURI(int i10);
+
+    String getLocalName(int i10);
+
+    String getQName(int i10);
+
+    String getType(int i10);
+
+    String getValue(int i10);
+
+    int getIndex(String str, String str2);
+
+    int getIndex(String str);
+
+    String getType(String str, String str2);
+
+    String getType(String str);
+
+    String getValue(String str, String str2);
+
+    String getValue(String str);
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="32.0dip" android:paddingStart="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <include android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" layout="@layout/editorv2_inspector_text_match_end" />
+    <belka.us.androidtoggleswitch.widgets.ToggleSwitch android:textSize="10.0sp" android:id="@id/toggleswitch" android:layout_width="wrap_content" android:layout_height="wrap_content" app:activeBgColor="@color/theme_high_text_color" app:activeTextColor="@color/theme_background" app:cornerRadius="4.0dip" app:inactiveBgColor="@color/theme_background" app:inactiveTextColor="@color/theme_high_text_color" app:textToggleLeft="2D" app:textToggleRight="3D" />
+</LinearLayout>

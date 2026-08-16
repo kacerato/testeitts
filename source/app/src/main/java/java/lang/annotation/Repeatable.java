@@ -1,0 +1,11 @@
+package java.lang.annotation;
+
+/* JADX WARN: Classes with same name are omitted:
+  base.apk:assets/Editor/javaLibs.zip:JAVARuntime/d8lib/android.jar:java/lang/annotation/Repeatable.class
+ */
+@Target({ElementType.ANNOTATION_TYPE})
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+public @interface Repeatable {
+    Class<? extends Annotation> value();
+}

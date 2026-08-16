@@ -1,0 +1,81 @@
+package org.bouncycastle.pkix.jcajce;
+
+import Hj.p;
+import java.security.cert.CertStore;
+import java.security.cert.CertStoreException;
+import java.security.cert.PKIXParameters;
+import java.security.cert.X509CRL;
+import java.security.cert.X509Certificate;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Set;
+import org.bouncycastle.util.StoreException;
+import org.bouncycastle.util.t;
+
+public abstract class e {
+    public static Set a(p pVar, PKIXParameters pKIXParameters) throws AnnotatedException {
+        HashSet hashSet = new HashSet();
+        try {
+            d(hashSet, pVar, pKIXParameters.getCertStores());
+            return hashSet;
+        } catch (AnnotatedException e10) {
+            throw new AnnotatedException("Exception obtaining complete CRLs.", e10);
+        }
+    }
+
+    public static Set b(p pVar, Date date, List list, List list2) throws AnnotatedException {
+        HashSet hashSet = new HashSet();
+        try {
+            d(hashSet, pVar, list2);
+            d(hashSet, pVar, list);
+            HashSet hashSet2 = new HashSet();
+            Iterator it = hashSet.iterator();
+            while (it.hasNext()) {
+                X509CRL x509crl = (X509CRL) it.next();
+                Date nextUpdate = x509crl.getNextUpdate();
+                if (nextUpdate == null || nextUpdate.after(date)) {
+                    X509Certificate c10 = pVar.c();
+                    if (c10 == null || x509crl.getThisUpdate().before(c10.getNotAfter())) {
+                        hashSet2.add(x509crl);
+                    }
+                }
+            }
+            return hashSet2;
+        } catch (AnnotatedException e10) {
+            throw new AnnotatedException("Exception obtaining complete CRLs.", e10);
+        }
+    }
+
+    public static Set c(k kVar, PKIXParameters pKIXParameters) throws AnnotatedException {
+        return a(new p.b(kVar).g(), pKIXParameters);
+    }
+
+    public static void d(HashSet hashSet, p pVar, List list) throws AnnotatedException {
+        AnnotatedException annotatedException;
+        AnnotatedException annotatedException2 = null;
+        boolean z10 = false;
+        for (Object obj : list) {
+            if (obj instanceof t) {
+                try {
+                    hashSet.addAll(((t) obj).a(pVar));
+                } catch (StoreException e10) {
+                    annotatedException = new AnnotatedException("Exception searching in X.509 CRL store.", e10);
+                    annotatedException2 = annotatedException;
+                }
+            } else {
+                try {
+                    hashSet.addAll(p.b(pVar, (CertStore) obj));
+                } catch (CertStoreException e11) {
+                    annotatedException = new AnnotatedException("Exception searching in X.509 CRL store.", e11);
+                    annotatedException2 = annotatedException;
+                }
+            }
+            z10 = true;
+        }
+        if (!z10 && annotatedException2 != null) {
+            throw annotatedException2;
+        }
+    }
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:gravity="center|right" android:orientation="horizontal" android:id="@id/edit_confirm_layout" android:background="@color/theme_panel_topbar" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="@color/white" android:id="@id/tittle_package_editor" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:text="Text editor" android:textAllCaps="false" android:fontFamily="@font/base_bold" />
+        <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <Button android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="end" android:id="@id/cancel" android:layout_width="wrap_content" android:layout_height="34.0dip" android:layout_marginRight="8.0dip" android:text="cancel" android:fontFamily="@font/base_heavy" android:backgroundTint="@color/colorAccent" />
+        <Button android:textSize="12.0sp" android:textColor="@color/white" android:layout_gravity="end" android:id="@id/confirm" android:layout_width="wrap_content" android:layout_height="34.0dip" android:layout_marginRight="8.0dip" android:text="Confirm" android:fontFamily="@font/base_heavy" android:backgroundTint="@color/theme_primary" />
+    </LinearLayout>
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <androidx.legacy.widget.Space android:layout_width="wrap_content" android:layout_height="8.0dip" />
+            <TextView android:textColor="@color/theme_high_text_color" android:id="@id/text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:text="TEXT" android:fontFamily="@font/base_medium" />
+            <EditText android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_mid_text_color" android:gravity="start|center|top" android:id="@id/edit_text" android:layout_width="fill_parent" android:layout_height="0.0dip" android:hint="edit text" android:ems="10" android:singleLine="false" android:selectAllOnFocus="false" android:layout_weight="1.0" android:inputType="textMultiLine" android:imeOptions="flagNoExtractUi" android:fontFamily="@font/base_regular" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

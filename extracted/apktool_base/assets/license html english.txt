@@ -1,0 +1,1257 @@
+<p><span style="font-size:14px"><strong>ITsMagic Engine - ITsMagic Software</strong></span></p>
+
+<p>Check the <strong>official documentation at (https://itsmagic.com.br)</strong></p>
+<p>Special thanks to <strong>DanielOschepkov - SpeakerFish (www.youtube.com/c/SpeakerFishDeveloper)</strong> for helping and providing code in order to integrate Lua and JavaScript with ITsMagic</p>
+
+<p>ITsMagic is a tool aiming to provide the ability to anyone to develop 3D or 2D games.<br />
+ITsMagic is developed in Java, C++ and OpenGL, by an independent person.<br />
+In this text you will find the copyright of several libraries and frameworks used in the development of ITsMagic.</p>
+
+<p><strong>TERMS OF USE</strong><br />
+Attention and disclaimer!<br />
+ITsMagic does not license projects made with it. It is the sole responsibility of the game developer and ITsMagic user to license their software.</p>
+
+<p>All text below must be INCLUDED in the LICENSE of any game or project made using the ITsMagic Engine.</p>
+
+<p>Other clauses can be found in special features like ITsMagic&#39;s Marketplace, Community and Cloud Services with different terms and conditions.</p>
+
+<p><strong>PRIVACY POLICY</strong><br />
+We collect information and usage statistics from each user through frameworks such as Google Analytics, Firebase and Facebook. However we are not limited only to these frameworks, we collect usage data through our servers in order to resolve crashes/crash bugs and usability issues. In addition, we use data from surveys carried out by users on the platform to segment content in the marketplace, community and advertisements.</p>
+
+<p>The only data that are stored on our servers are:<br />
+Username, password (encrypted), email, contact number, coins, google photo address (we don&#39;t save your photo, google sends us a url link that redirects to your photo, we&#39;ll use it to display in the community) and your name .</p>
+
+<p>Your projects are not stored on our servers, they are offline on your cell phone, if you uninstall itsmagic, delete the data or lose your device, without backup you will lose your projects. We have no way to access your projects!</p>
+
+<p>When you compile an APK or export your game in any format, a copy of your project and keystore data are sent to our servers so that they can build your game in an exportable format. right after the build completes or fails, we delete all files in your project including your keystore, keystore password, keystore alias and all necessary data for the build. We are storing ONLY the .apk or .aab generated as a result of your project&#39;s build, this file only stays on our servers for a period of 24 hours for you to download, then the file is deleted.</p>
+
+<p>Read itsmagic community, marketplace and Cloud Services privacy policy, as other clauses apply.</p>
+
+<p><strong>START OF LEGAL INFORMATION</strong></p>
+
+<p>ITsMagic Engine uses icons made by the following creators:</p>
+
+<pre>
+freepik, pongsakornred, mashicons, pixel-perfect, good-ware, pixel-buddha, alfredo-hernandez, xnimrodx, kmg design, smashingstocks, AB Design, Those Icons, Smashicons, Stockes Design, nawicon, DinosoftLabs, Yogi Aprelliyanto, inkubators, Pixel perfect, Vector Clans, bharat-icons, Uniconlabs, Chanut, Becris, zero_wing, Aldo Cervantes, iconixar, Smashicons, shohanur.rahman13, Rosa Suave, riajulislam, Hight Quality Icons, arnikahossain, mealcon, uicon
+</pre>
+
+<a href="https://www.freepik.com/free-vector/dark-cave-mountain-with-hot-lava-vector-cartoon-illustration_19454333.htm#query=fire%20cave%20background&position=0&from_view=search&track=ais">Image by upklyak</a> on Freepik
+
+<p>all from&nbsp;<a href="https://www.flaticon.com/">https://www.flaticon.com/</a></p>
+
+<p>ITsMagic Engine uses the following open source software from the Android Open-Surce Project - licensed under the Apache Software License 2.0:</p>
+
+<ul>
+	<li>dx tool</li>
+	<li>android.jar</li>
+</ul>
+
+<p>ITsMagic Engine uses the following open source software from the Ardor3D project:</p>
+
+<ul>
+	<li>ardor3d collada 0.7.jar</li>
+	<li>ardor3d core 0.7.jar</li>
+</ul>
+
+<p>ITsMagic Engine uses the following softwares from JPCT project:</p>
+
+<ul>
+	<li>jpct ae.jar</li>
+	<li>JPCT AE (alhowiriny).jar</li>
+</ul>
+
+<p>ITsMagic Engine uses the following softwares&nbsp;licensed under the Apache Software License 2.0:</p>
+
+<ul>
+	<li>
+	<pre>
+com.ogaclejapan.smarttablayout</pre>
+	</li>
+	<li>
+	<pre>
+com.github.bmelnychuk:atv</pre>
+	</li>
+	<li>
+	<pre>
+com.github.mokiat:java-data-front</pre>
+	</li>
+	<li>
+	<pre>
+com.karumi:dexter</pre>
+	</li>
+	<li>
+	<pre>
+com.github.abumoallim:Android-Multi-Select-Dialog</pre>
+	</li>
+	<li>
+	<pre>
+com.google.code.gson:gson</pre>
+	</li>
+	<li>
+	<pre>
+net.lingala.zip4j:zip4j</pre>
+	</li>
+	<li>
+	<pre>
+com.jaredrummler:colorpicker</pre>
+	</li>
+	<li>
+	<pre>
+com.bozapro.circular-slider-range:library</pre>
+	</li>
+	<li>
+	<pre>
+com.github.skydoves:powerspinner</pre>
+	</li>
+	<li>
+	<pre>
+com.jsibbold:zoomage</pre>
+	</li>
+	<li>
+	<pre>
+com.wang.avi:library</pre>
+	</li>
+	<li>
+	<pre>
+com.github.florent37:expansionpane</pre>
+	</li>
+	<li>
+	<pre>
+com.makeramen:roundedimageview</pre>
+	</li>
+	<li>
+	<pre>
+androidx.tonyodev.fetch2:xfetch2</pre>
+	</li>
+	<li>
+	<pre>
+androidx.tonyodev.fetch2okhttp:xfetch2okhttp</pre>
+	</li>
+</ul>
+
+<p>ITsMagic Engine uses the following softwares&nbsp;licensed under the Eclipse License - v 1.0</p>
+
+<ul>
+	<li>j2v8-4.8.5.aar</li>
+	<li>
+	<pre>
+com.eclipsesource.j2v8:j2v8_android</pre>
+	</li>
+</ul>
+
+<p>ITsMagic Engine uses the following softwares&nbsp;licensed under the MIT License (MIT)</p>
+
+<ul>
+	<li>
+	<pre>
+rongi.rotate-layout:rotate-layout</pre>
+	</li>
+	<li>
+	<pre>
+com.github.f0ris.sweetalert:library</pre>
+	</li>
+	<li>
+	<pre>
+com.github.AmrDeveloper:CodeView</pre>
+	</li>
+	<li>
+	<pre>
+us.belka:androidtoggleswitch</pre>
+	</li>
+	<li>
+	<pre>
+com.kazakago.cryptore:cryptore</pre>
+	</li>
+	<li>
+	<pre>
+org.luaj</pre>
+	</li>
+	<li>
+	<pre>
+luaj-jse</pre>
+	</li>
+	<li>
+	<pre>
+com.github.beyka:androidtiffbitmapfactory</pre>
+	</li>
+	<li>
+	<pre>
+com.pierfrancescosoffritti.androidyoutubeplayer</pre>
+	</li>
+	<li>
+	<pre>
+de.alsclo:voronoi-java</pre>
+	</li>
+	<li>SRombauts/SimplexNoise</li>
+</ul>
+
+<p>ITsMagic Engine uses the following softwares&nbsp;licensed under the&nbsp;Android Software Development Kit License Agreement</p>
+
+<ul>
+	<li>
+	<pre>
+com.kishan.askpermission:askpermission</pre>
+	</li>
+</ul>
+
+<p>ITsMagic Engine uses the following softwares licensed under&nbsp;&nbsp;Simplified BSD License and Apache Software License 2.0:</p>
+
+<ul>
+	<li>
+	<pre>
+com.github.bumptech.glide:glide</pre>
+	</li>
+</ul>
+
+<p>ITsMagic Engine uses the following softwares licensed under&nbsp;&nbsp;The 3-Clause BSD License</p>
+
+<ul>
+	<li>
+	<pre>
+org.jmonkeyengine:jme3-android</pre>
+	</li>
+</ul>
+
+<p>ITsMagic Engine uses the following open source softwares&nbsp;licensed under the The zlib/libpng License</p>
+
+<ul>
+	<li>
+	<pre>
+cz.advel.jbullet:jbullet</pre>
+	</li>
+</ul>
+
+<p>ITsMagic Engine uses the following open source softwares&nbsp;licensed under special licenses (License can be read at the end of the text.)</p>
+
+<ul>
+	<li>
+	<pre>
+de.javagl:obj</pre>
+	</li>
+</ul>
+
+<p>ITsMagic Engine contains the JKS keystore implementation from Casey Marshall - license below.</p>
+
+<p>_______________________________________________________________</p>
+
+<p>The MIT License (MIT)</p>
+
+<ul>
+	<li>Copyright (c) 2015 rongi</li>
+	<li>Copyright (c) 2014 Pedant(http://pedant.cn)</li>
+	<li>Copyright (c) 2020 Amr Hesham</li>
+	<li>Copyright (c) 2016 Belka s.r.l.</li>
+	<li>Copyright (c) 2017 KazaKago</li>
+	<li>Copyright (c) 2007-2013 LuaJ. All rights reserved.</li>
+	<li>Copyright (c) 2018 Pierfrancesco Soffritti</li>
+	<li>Copyright (c) 2017 Alex Schlosser</li>
+	<li>Copyright (c) 2012-2018 Sebastien Rombauts (sebastien.rombauts@gmail.com)</li>
+</ul>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the &quot;Software&quot;), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</p>
+
+<p>_______________________________________________________________</p>
+
+<h1>Eclipse Distribution License - v 1.0</h1>
+
+<p><a href="https://www.eclipse.org/org/documents/edl-v10.php">https://www.eclipse.org/org/documents/edl-v10.php</a></p>
+
+<p>Copyright (c) 2007, Eclipse Foundation, Inc. and its licensors.</p>
+
+<p>All rights reserved.</p>
+
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+
+<ul>
+	<li>Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</li>
+	<li>Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</li>
+	<li>Neither the name of the Eclipse Foundation, Inc. nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</li>
+</ul>
+
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+
+<p>&nbsp;</p>
+
+<p>_______________________________________________________________</p>
+
+<h2>Eclipse Public License - v 1.0</h2>
+
+<p>THE ACCOMPANYING PROGRAM IS PROVIDED UNDER THE TERMS OF THIS ECLIPSE PUBLIC LICENSE (&quot;AGREEMENT&quot;). ANY USE, REPRODUCTION OR DISTRIBUTION OF THE PROGRAM CONSTITUTES RECIPIENT&#39;S ACCEPTANCE OF THIS AGREEMENT.</p>
+
+<p><strong>1. DEFINITIONS</strong></p>
+
+<p>&quot;Contribution&quot; means:</p>
+
+<p>a) in the case of the initial Contributor, the initial code and documentation distributed under this Agreement, and</p>
+
+<p>b) in the case of each subsequent Contributor:</p>
+
+<p>i) changes to the Program, and</p>
+
+<p>ii) additions to the Program;</p>
+
+<p>where such changes and/or additions to the Program originate from and are distributed by that particular Contributor. A Contribution &#39;originates&#39; from a Contributor if it was added to the Program by such Contributor itself or anyone acting on such Contributor&#39;s behalf. Contributions do not include additions to the Program which: (i) are separate modules of software distributed in conjunction with the Program under their own license agreement, and (ii) are not derivative works of the Program.</p>
+
+<p>&quot;Contributor&quot; means any person or entity that distributes the Program.</p>
+
+<p>&quot;Licensed Patents&quot; mean patent claims licensable by a Contributor which are necessarily infringed by the use or sale of its Contribution alone or when combined with the Program.</p>
+
+<p>&quot;Program&quot; means the Contributions distributed in accordance with this Agreement.</p>
+
+<p>&quot;Recipient&quot; means anyone who receives the Program under this Agreement, including all Contributors.</p>
+
+<p><strong>2. GRANT OF RIGHTS</strong></p>
+
+<p>a) Subject to the terms of this Agreement, each Contributor hereby grants Recipient a non-exclusive, worldwide, royalty-free copyright license to reproduce, prepare derivative works of, publicly display, publicly perform, distribute and sublicense the Contribution of such Contributor, if any, and such derivative works, in source code and object code form.</p>
+
+<p>b) Subject to the terms of this Agreement, each Contributor hereby grants Recipient a non-exclusive, worldwide, royalty-free patent license under Licensed Patents to make, use, sell, offer to sell, import and otherwise transfer the Contribution of such Contributor, if any, in source code and object code form. This patent license shall apply to the combination of the Contribution and the Program if, at the time the Contribution is added by the Contributor, such addition of the Contribution causes such combination to be covered by the Licensed Patents. The patent license shall not apply to any other combinations which include the Contribution. No hardware per se is licensed hereunder.</p>
+
+<p>c) Recipient understands that although each Contributor grants the licenses to its Contributions set forth herein, no assurances are provided by any Contributor that the Program does not infringe the patent or other intellectual property rights of any other entity. Each Contributor disclaims any liability to Recipient for claims brought by any other entity based on infringement of intellectual property rights or otherwise. As a condition to exercising the rights and licenses granted hereunder, each Recipient hereby assumes sole responsibility to secure any other intellectual property rights needed, if any. For example, if a third party patent license is required to allow Recipient to distribute the Program, it is Recipient&#39;s responsibility to acquire that license before distributing the Program.</p>
+
+<p>d) Each Contributor represents that to its knowledge it has sufficient copyright rights in its Contribution, if any, to grant the copyright license set forth in this Agreement.</p>
+
+<p><strong>3. REQUIREMENTS</strong></p>
+
+<p>A Contributor may choose to distribute the Program in object code form under its own license agreement, provided that:</p>
+
+<p>a) it complies with the terms and conditions of this Agreement; and</p>
+
+<p>b) its license agreement:</p>
+
+<p>i) effectively disclaims on behalf of all Contributors all warranties and conditions, express and implied, including warranties or conditions of title and non-infringement, and implied warranties or conditions of merchantability and fitness for a particular purpose;</p>
+
+<p>ii) effectively excludes on behalf of all Contributors all liability for damages, including direct, indirect, special, incidental and consequential damages, such as lost profits;</p>
+
+<p>iii) states that any provisions which differ from this Agreement are offered by that Contributor alone and not by any other party; and</p>
+
+<p>iv) states that source code for the Program is available from such Contributor, and informs licensees how to obtain it in a reasonable manner on or through a medium customarily used for software exchange.</p>
+
+<p>When the Program is made available in source code form:</p>
+
+<p>a) it must be made available under this Agreement; and</p>
+
+<p>b) a copy of this Agreement must be included with each copy of the Program.</p>
+
+<p>Contributors may not remove or alter any copyright notices contained within the Program.</p>
+
+<p>Each Contributor must identify itself as the originator of its Contribution, if any, in a manner that reasonably allows subsequent Recipients to identify the originator of the Contribution.</p>
+
+<p><strong>4. COMMERCIAL DISTRIBUTION</strong></p>
+
+<p>Commercial distributors of software may accept certain responsibilities with respect to end users, business partners and the like. While this license is intended to facilitate the commercial use of the Program, the Contributor who includes the Program in a commercial product offering should do so in a manner which does not create potential liability for other Contributors. Therefore, if a Contributor includes the Program in a commercial product offering, such Contributor (&quot;Commercial Contributor&quot;) hereby agrees to defend and indemnify every other Contributor (&quot;Indemnified Contributor&quot;) against any losses, damages and costs (collectively &quot;Losses&quot;) arising from claims, lawsuits and other legal actions brought by a third party against the Indemnified Contributor to the extent caused by the acts or omissions of such Commercial Contributor in connection with its distribution of the Program in a commercial product offering. The obligations in this section do not apply to any claims or Losses relating to any actual or alleged intellectual property infringement. In order to qualify, an Indemnified Contributor must: a) promptly notify the Commercial Contributor in writing of such claim, and b) allow the Commercial Contributor to control, and cooperate with the Commercial Contributor in, the defense and any related settlement negotiations. The Indemnified Contributor may participate in any such claim at its own expense.</p>
+
+<p>For example, a Contributor might include the Program in a commercial product offering, Product X. That Contributor is then a Commercial Contributor. If that Commercial Contributor then makes performance claims, or offers warranties related to Product X, those performance claims and warranties are such Commercial Contributor&#39;s responsibility alone. Under this section, the Commercial Contributor would have to defend claims against the other Contributors related to those performance claims and warranties, and if a court requires any other Contributor to pay any damages as a result, the Commercial Contributor must pay those damages.</p>
+
+<p><strong>5. NO WARRANTY</strong></p>
+
+<p>EXCEPT AS EXPRESSLY SET FORTH IN THIS AGREEMENT, THE PROGRAM IS PROVIDED ON AN &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, EITHER EXPRESS OR IMPLIED INCLUDING, WITHOUT LIMITATION, ANY WARRANTIES OR CONDITIONS OF TITLE, NON-INFRINGEMENT, MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE. Each Recipient is solely responsible for determining the appropriateness of using and distributing the Program and assumes all risks associated with its exercise of rights under this Agreement , including but not limited to the risks and costs of program errors, compliance with applicable laws, damage to or loss of data, programs or equipment, and unavailability or interruption of operations.</p>
+
+<p><strong>6. DISCLAIMER OF LIABILITY</strong></p>
+
+<p>EXCEPT AS EXPRESSLY SET FORTH IN THIS AGREEMENT, NEITHER RECIPIENT NOR ANY CONTRIBUTORS SHALL HAVE ANY LIABILITY FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING WITHOUT LIMITATION LOST PROFITS), HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OR DISTRIBUTION OF THE PROGRAM OR THE EXERCISE OF ANY RIGHTS GRANTED HEREUNDER, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGES.</p>
+
+<p><strong>7. GENERAL</strong></p>
+
+<p>If any provision of this Agreement is invalid or unenforceable under applicable law, it shall not affect the validity or enforceability of the remainder of the terms of this Agreement, and without further action by the parties hereto, such provision shall be reformed to the minimum extent necessary to make such provision valid and enforceable.</p>
+
+<p>If Recipient institutes patent litigation against any entity (including a cross-claim or counterclaim in a lawsuit) alleging that the Program itself (excluding combinations of the Program with other software or hardware) infringes such Recipient&#39;s patent(s), then such Recipient&#39;s rights granted under Section 2(b) shall terminate as of the date such litigation is filed.</p>
+
+<p>All Recipient&#39;s rights under this Agreement shall terminate if it fails to comply with any of the material terms or conditions of this Agreement and does not cure such failure in a reasonable period of time after becoming aware of such noncompliance. If all Recipient&#39;s rights under this Agreement terminate, Recipient agrees to cease use and distribution of the Program as soon as reasonably practicable. However, Recipient&#39;s obligations under this Agreement and any licenses granted by Recipient relating to the Program shall continue and survive.</p>
+
+<p>Everyone is permitted to copy and distribute copies of this Agreement, but in order to avoid inconsistency the Agreement is copyrighted and may only be modified in the following manner. The Agreement Steward reserves the right to publish new versions (including revisions) of this Agreement from time to time. No one other than the Agreement Steward has the right to modify this Agreement. The Eclipse Foundation is the initial Agreement Steward. The Eclipse Foundation may assign the responsibility to serve as the Agreement Steward to a suitable separate entity. Each new version of the Agreement will be given a distinguishing version number. The Program (including Contributions) may always be distributed subject to the version of the Agreement under which it was received. In addition, after a new version of the Agreement is published, Contributor may elect to distribute the Program (including its Contributions) under the new version. Except as expressly stated in Sections 2(a) and 2(b) above, Recipient receives no rights or licenses to the intellectual property of any Contributor under this Agreement, whether expressly, by implication, estoppel or otherwise. All rights in the Program not expressly granted under this Agreement are reserved.</p>
+
+<p>This Agreement is governed by the laws of the State of New York and the intellectual property laws of the United States of America. No party to this Agreement will bring a legal action under this Agreement more than one year after the cause of action arose. Each party waives its rights to a jury trial in any resulting litigation.</p>
+
+<p>&nbsp;</p>
+
+<p>_______________________________________________________________</p>
+
+<p><strong>Apache License<br />
+Version 2.0, January 2004</strong><br />
+<strong><a href="http://www.apache.org/licenses/">http://www.apache.org/licenses/</a></strong></p>
+
+<p>TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION</p>
+
+<p><strong>1. Definitions</strong>.</p>
+
+<p>&quot;<strong>License</strong>&quot; shall mean the terms and conditions for use, reproduction, and distribution as defined by Sections 1 through 9 of this document.</p>
+
+<p>&quot;<strong>Licensor</strong>&quot; shall mean the copyright owner or entity authorized by the copyright owner that is granting the License.</p>
+
+<p>&quot;<strong>Legal Entity</strong>&quot; shall mean the union of the acting entity and all other entities that control, are controlled by, or are under common control with that entity. For the purposes of this definition, &quot;<strong>control</strong>&quot; means (i) the power, direct or indirect, to cause the direction or management of such entity, whether by contract or otherwise, or (ii) ownership of fifty percent (50%) or more of the outstanding shares, or (iii) beneficial ownership of such entity.</p>
+
+<p>&quot;<strong>You</strong>&quot; (or &quot;<strong>Your</strong>&quot;) shall mean an individual or Legal Entity exercising permissions granted by this License.</p>
+
+<p>&quot;<strong>Source</strong>&quot; form shall mean the preferred form for making modifications, including but not limited to software source code, documentation source, and configuration files.</p>
+
+<p>&quot;<strong>Object</strong>&quot; form shall mean any form resulting from mechanical transformation or translation of a Source form, including but not limited to compiled object code, generated documentation, and conversions to other media types.</p>
+
+<p>&quot;<strong>Work</strong>&quot; shall mean the work of authorship, whether in Source or Object form, made available under the License, as indicated by a copyright notice that is included in or attached to the work (an example is provided in the Appendix below).</p>
+
+<p>&quot;<strong>Derivative Works</strong>&quot; shall mean any work, whether in Source or Object form, that is based on (or derived from) the Work and for which the editorial revisions, annotations, elaborations, or other modifications represent, as a whole, an original work of authorship. For the purposes of this License, Derivative Works shall not include works that remain separable from, or merely link (or bind by name) to the interfaces of, the Work and Derivative Works thereof.</p>
+
+<p>&quot;<strong>Contribution</strong>&quot; shall mean any work of authorship, including the original version of the Work and any modifications or additions to that Work or Derivative Works thereof, that is intentionally submitted to Licensor for inclusion in the Work by the copyright owner or by an individual or Legal Entity authorized to submit on behalf of the copyright owner. For the purposes of this definition, &quot;<strong>submitted</strong>&quot; means any form of electronic, verbal, or written communication sent to the Licensor or its representatives, including but not limited to communication on electronic mailing lists, source code control systems, and issue tracking systems that are managed by, or on behalf of, the Licensor for the purpose of discussing and improving the Work, but excluding communication that is conspicuously marked or otherwise designated in writing by the copyright owner as &quot;<strong>Not a Contribution.</strong>&quot;</p>
+
+<p>&quot;<strong>Contributor</strong>&quot; shall mean Licensor and any individual or Legal Entity on behalf of whom a Contribution has been received by Licensor and subsequently incorporated within the Work.</p>
+
+<p><strong>2. Grant of Copyright License</strong>. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable copyright license to reproduce, prepare Derivative Works of, publicly display, publicly perform, sublicense, and distribute the Work and such Derivative Works in Source or Object form.</p>
+
+<p><strong>3. Grant of Patent License</strong>. Subject to the terms and conditions of this License, each Contributor hereby grants to You a perpetual, worldwide, non-exclusive, no-charge, royalty-free, irrevocable (except as stated in this section) patent license to make, have made, use, offer to sell, sell, import, and otherwise transfer the Work, where such license applies only to those patent claims licensable by such Contributor that are necessarily infringed by their Contribution(s) alone or by combination of their Contribution(s) with the Work to which such Contribution(s) was submitted. If You institute patent litigation against any entity (including a cross-claim or counterclaim in a lawsuit) alleging that the Work or a Contribution incorporated within the Work constitutes direct or contributory patent infringement, then any patent licenses granted to You under this License for that Work shall terminate as of the date such litigation is filed.</p>
+
+<p><strong>4. Redistribution</strong>. You may reproduce and distribute copies of the Work or Derivative Works thereof in any medium, with or without modifications, and in Source or Object form, provided that You meet the following conditions:</p>
+
+<ol>
+	<li>You must give any other recipients of the Work or Derivative Works a copy of this License; and</li>
+	<li>You must cause any modified files to carry prominent notices stating that You changed the files; and</li>
+	<li>You must retain, in the Source form of any Derivative Works that You distribute, all copyright, patent, trademark, and attribution notices from the Source form of the Work, excluding those notices that do not pertain to any part of the Derivative Works; and</li>
+	<li>If the Work includes a &quot;<strong>NOTICE</strong>&quot; text file as part of its distribution, then any Derivative Works that You distribute must include a readable copy of the attribution notices contained within such NOTICE file, excluding those notices that do not pertain to any part of the Derivative Works, in at least one of the following places: within a NOTICE text file distributed as part of the Derivative Works; within the Source form or documentation, if provided along with the Derivative Works; or, within a display generated by the Derivative Works, if and wherever such third-party notices normally appear. The contents of the NOTICE file are for informational purposes only and do not modify the License. You may add Your own attribution notices within Derivative Works that You distribute, alongside or as an addendum to the NOTICE text from the Work, provided that such additional attribution notices cannot be construed as modifying the License.<br />
+	<br />
+	You may add Your own copyright statement to Your modifications and may provide additional or different license terms and conditions for use, reproduction, or distribution of Your modifications, or for any such Derivative Works as a whole, provided Your use, reproduction, and distribution of the Work otherwise complies with the conditions stated in this License.</li>
+</ol>
+
+<p><strong>5. Submission of Contributions</strong>. Unless You explicitly state otherwise, any Contribution intentionally submitted for inclusion in the Work by You to the Licensor shall be under the terms and conditions of this License, without any additional terms or conditions. Notwithstanding the above, nothing herein shall supersede or modify the terms of any separate license agreement you may have executed with Licensor regarding such Contributions.</p>
+
+<p><strong>6. Trademarks</strong>. This License does not grant permission to use the trade names, trademarks, service marks, or product names of the Licensor, except as required for reasonable and customary use in describing the origin of the Work and reproducing the content of the NOTICE file.</p>
+
+<p><strong>7. Disclaimer of Warranty</strong>. Unless required by applicable law or agreed to in writing, Licensor provides the Work (and each Contributor provides its Contributions) on an &quot;AS IS&quot; BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE. You are solely responsible for determining the appropriateness of using or redistributing the Work and assume any risks associated with Your exercise of permissions under this License.</p>
+
+<p><strong>8. Limitation of Liability</strong>. In no event and under no legal theory, whether in tort (including negligence), contract, or otherwise, unless required by applicable law (such as deliberate and grossly negligent acts) or agreed to in writing, shall any Contributor be liable to You for damages, including any direct, indirect, special, incidental, or consequential damages of any character arising as a result of this License or out of the use or inability to use the Work (including but not limited to damages for loss of goodwill, work stoppage, computer failure or malfunction, or any and all other commercial damages or losses), even if such Contributor has been advised of the possibility of such damages.</p>
+
+<p><strong>9. Accepting Warranty or Additional Liability</strong>. While redistributing the Work or Derivative Works thereof, You may choose to offer, and charge a fee for, acceptance of support, warranty, indemnity, or other liability obligations and/or rights consistent with this License. However, in accepting such obligations, You may act only on Your own behalf and on Your sole responsibility, not on behalf of any other Contributor, and only if You agree to indemnify, defend, and hold each Contributor harmless for any liability incurred by, or claims asserted against, such Contributor by reason of your accepting any such warranty or additional liability.</p>
+
+<p>END OF TERMS AND CONDITIONS</p>
+
+<p>&nbsp;</p>
+
+<p>_______________________________________________________________</p>
+
+<p>Ardor3D is licensed as follows:<br />
+&nbsp;* Copyright (c) 2008-2020 Bird Dog Games, Inc.<br />
+&nbsp;*<br />
+&nbsp;* This software is provided &#39;as-is&#39;, without any express or implied<br />
+&nbsp;* warranty. In no event will the authors be held liable for any damages<br />
+&nbsp;* arising from the use of this software.<br />
+&nbsp;*<br />
+&nbsp;* Permission is granted to anyone to use this software for any purpose,<br />
+&nbsp;* including commercial applications, and to alter it and redistribute it<br />
+&nbsp;* freely, subject to the following restrictions:<br />
+&nbsp;*<br />
+&nbsp;* &nbsp; &nbsp; 1. The origin of this software must not be misrepresented; you must not<br />
+&nbsp;* &nbsp; &nbsp; claim that you wrote the original software. If you use this software<br />
+&nbsp;* &nbsp; &nbsp; in a product, an acknowledgment in the product documentation would be<br />
+&nbsp;* &nbsp; &nbsp; appreciated but is not required.<br />
+&nbsp;*<br />
+&nbsp;* &nbsp; &nbsp; 2. Altered source versions must be plainly marked as such, and must not be<br />
+&nbsp;* &nbsp; &nbsp; misrepresented as being the original software.<br />
+&nbsp;*<br />
+&nbsp;* &nbsp; &nbsp; 3. This notice may not be removed or altered from any source<br />
+&nbsp;* &nbsp; &nbsp; distribution.<br />
+&nbsp;</p>
+
+<p>_______________________________________________________________</p>
+
+<pre>
+The following is the license that applies to the jPCT API.
+
+ * Copyright (c) 2002
+ * Helge Foerster.  All rights reserved.
+ *
+ * The use of jPCT is free of charge for personal and commercial use.
+ * Redistribution in binary form is permitted provided that the
+ * following conditions are met:
+ *
+ * 1. The class structure and the classes themselves as they are included
+ *    in the JAR file that comes with this distribution of jPCT must stay intact.
+ *    It is not allowed to decompile the class-files and/or replace the orginal
+ *    files with modified versions until this permission is explicitly granted
+ *    by the author.
+ * 2. The JAR-file may be decompressed and the class-files may be stored in other
+ *    formats/JAR-files as long as 1.) is fulfilled. If jPCT is distributed as part
+ *    of another project, it is allowed to obfuscate the class-files together with
+ *    the rest of the project-files if you feel that this is required to protect
+ *    your intellectual property.
+ * 3. It is not required to mention the use of jPCT in your project, albeit it would
+ *    be nice doing so. If you do, it is required to mention the jPCT webpage
+ *    at https://www.jpct.net
+ *
+ * THIS SOFTWARE IS PROVIDED &#39;AS IS&#39; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING,
+ * BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ * PARTICULAR PURPOSE, OR NON-INFRINGEMENT, ARE DISCLAIMED.
+ * IN NO EVENT SHALL THE AUTHOR  BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+ * SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO,
+ * PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+ * THE POSSIBILITY OF SUCH DAMAGE.
+</pre>
+
+<p>_______________________________________________________________</p>
+
+<h1>Terms and conditions&nbsp;Android Software Development Kit License Agreement</h1>
+
+<p>This is the Android Software Development Kit License Agreement</p>
+
+<h3>1. Introduction</h3>
+
+<p>1.1 The Android Software Development Kit (referred to in the License Agreement as the &quot;SDK&quot; and specifically including the Android system files, packaged APIs, and Google APIs add-ons) is licensed to you subject to the terms of the License Agreement. The License Agreement forms a legally binding contract between you and Google in relation to your use of the SDK. 1.2 &quot;Android&quot; means the Android software stack for devices, as made available under the Android Open Source Project, which is located at the following URL: https://source.android.com/, as updated from time to time. 1.3 A &quot;compatible implementation&quot; means any Android device that (i) complies with the Android Compatibility Definition document, which can be found at the Android compatibility website (https://source.android.com/compatibility) and which may be updated from time to time; and (ii) successfully passes the Android Compatibility Test Suite (CTS). 1.4 &quot;Google&quot; means Google LLC, organized under the laws of the State of Delaware, USA, and operating under the laws of the USA with principal place of business at 1600 Amphitheatre Parkway, Mountain View, CA 94043, USA.</p>
+
+<h3>2. Accepting this License Agreement</h3>
+
+<p>2.1 In order to use the SDK, you must first agree to the License Agreement. You may not use the SDK if you do not accept the License Agreement. 2.2 By clicking to accept and/or using this SDK, you hereby agree to the terms of the License Agreement. 2.3 You may not use the SDK and may not accept the License Agreement if you are a person barred from receiving the SDK under the laws of the United States or other countries, including the country in which you are resident or from which you use the SDK. 2.4 If you are agreeing to be bound by the License Agreement on behalf of your employer or other entity, you represent and warrant that you have full legal authority to bind your employer or such entity to the License Agreement. If you do not have the requisite authority, you may not accept the License Agreement or use the SDK on behalf of your employer or other entity.</p>
+
+<h3>3. SDK License from Google</h3>
+
+<p>3.1 Subject to the terms of the License Agreement, Google grants you a limited, worldwide, royalty-free, non-assignable, non-exclusive, and non-sublicensable license to use the SDK solely to develop applications for compatible implementations of Android. 3.2 You may not use this SDK to develop applications for other platforms (including non-compatible implementations of Android) or to develop another SDK. You are of course free to develop applications for other platforms, including non-compatible implementations of Android, provided that this SDK is not used for that purpose. 3.3 You agree that Google or third parties own all legal right, title and interest in and to the SDK, including any Intellectual Property Rights that subsist in the SDK. &quot;Intellectual Property Rights&quot; means any and all rights under patent law, copyright law, trade secret law, trademark law, and any and all other proprietary rights. Google reserves all rights not expressly granted to you. 3.4 You may not use the SDK for any purpose not expressly permitted by the License Agreement. Except to the extent required by applicable third party licenses, you may not copy (except for backup purposes), modify, adapt, redistribute, decompile, reverse engineer, disassemble, or create derivative works of the SDK or any part of the SDK. 3.5 Use, reproduction and distribution of components of the SDK licensed under an open source software license are governed solely by the terms of that open source software license and not the License Agreement. 3.6 You agree that the form and nature of the SDK that Google provides may change without prior notice to you and that future versions of the SDK may be incompatible with applications developed on previous versions of the SDK. You agree that Google may stop (permanently or temporarily) providing the SDK (or any features within the SDK) to you or to users generally at Google&#39;s sole discretion, without prior notice to you. 3.7 Nothing in the License Agreement gives you a right to use any of Google&#39;s trade names, trademarks, service marks, logos, domain names, or other distinctive brand features. 3.8 You agree that you will not remove, obscure, or alter any proprietary rights notices (including copyright and trademark notices) that may be affixed to or contained within the SDK.</p>
+
+<h3>4. Use of the SDK by You</h3>
+
+<p>4.1 Google agrees that it obtains no right, title or interest from you (or your licensors) under the License Agreement in or to any software applications that you develop using the SDK, including any intellectual property rights that subsist in those applications. 4.2 You agree to use the SDK and write applications only for purposes that are permitted by (a) the License Agreement and (b) any applicable law, regulation or generally accepted practices or guidelines in the relevant jurisdictions (including any laws regarding the export of data or software to and from the United States or other relevant countries). 4.3 You agree that if you use the SDK to develop applications for general public users, you will protect the privacy and legal rights of those users. If the users provide you with user names, passwords, or other login information or personal information, you must make the users aware that the information will be available to your application, and you must provide legally adequate privacy notice and protection for those users. If your application stores personal or sensitive information provided by users, it must do so securely. If the user provides your application with Google Account information, your application may only use that information to access the user&#39;s Google Account when, and for the limited purposes for which, the user has given you permission to do so. 4.4 You agree that you will not engage in any activity with the SDK, including the development or distribution of an application, that interferes with, disrupts, damages, or accesses in an unauthorized manner the servers, networks, or other properties or services of any third party including, but not limited to, Google or any mobile communications carrier. 4.5 You agree that you are solely responsible for (and that Google has no responsibility to you or to any third party for) any data, content, or resources that you create, transmit or display through Android and/or applications for Android, and for the consequences of your actions (including any loss or damage which Google may suffer) by doing so. 4.6 You agree that you are solely responsible for (and that Google has no responsibility to you or to any third party for) any breach of your obligations under the License Agreement, any applicable third party contract or Terms of Service, or any applicable law or regulation, and for the consequences (including any loss or damage which Google or any third party may suffer) of any such breach.</p>
+
+<h3>5. Your Developer Credentials</h3>
+
+<p>5.1 You agree that you are responsible for maintaining the confidentiality of any developer credentials that may be issued to you by Google or which you may choose yourself and that you will be solely responsible for all applications that are developed under your developer credentials.</p>
+
+<h3>6. Privacy and Information</h3>
+
+<p>6.1 In order to continually innovate and improve the SDK, Google may collect certain usage statistics from the software including but not limited to a unique identifier, associated IP address, version number of the software, and information on which tools and/or services in the SDK are being used and how they are being used. Before any of this information is collected, the SDK will notify you and seek your consent. If you withhold consent, the information will not be collected. 6.2 The data collected is examined in the aggregate to improve the SDK and is maintained in accordance with Google&#39;s Privacy Policy, which is located at the following URL: https://policies.google.com/privacy 6.3 Anonymized and aggregated sets of the data may be shared with Google partners to improve the SDK.</p>
+
+<h3>7. Third Party Applications</h3>
+
+<p>7.1 If you use the SDK to run applications developed by a third party or that access data, content or resources provided by a third party, you agree that Google is not responsible for those applications, data, content, or resources. You understand that all data, content or resources which you may access through such third party applications are the sole responsibility of the person from which they originated and that Google is not liable for any loss or damage that you may experience as a result of the use or access of any of those third party applications, data, content, or resources. 7.2 You should be aware the data, content, and resources presented to you through such a third party application may be protected by intellectual property rights which are owned by the providers (or by other persons or companies on their behalf). You may not modify, rent, lease, loan, sell, distribute or create derivative works based on these data, content, or resources (either in whole or in part) unless you have been specifically given permission to do so by the relevant owners. 7.3 You acknowledge that your use of such third party applications, data, content, or resources may be subject to separate terms between you and the relevant third party. In that case, the License Agreement does not affect your legal relationship with these third parties.</p>
+
+<h3>8. Using Android APIs</h3>
+
+<p>8.1 Google Data APIs 8.1.1 If you use any API to retrieve data from Google, you acknowledge that the data may be protected by intellectual property rights which are owned by Google or those parties that provide the data (or by other persons or companies on their behalf). Your use of any such API may be subject to additional Terms of Service. You may not modify, rent, lease, loan, sell, distribute or create derivative works based on this data (either in whole or in part) unless allowed by the relevant Terms of Service. 8.1.2 If you use any API to retrieve a user&#39;s data from Google, you acknowledge and agree that you shall retrieve data only with the user&#39;s explicit consent and only when, and for the limited purposes for which, the user has given you permission to do so. If you use the Android Recognition Service API, documented at the following URL:&nbsp;<a href="https://developer.android.com/reference/android/speech/RecognitionService">https://developer.android.com/reference/android/speech/RecognitionService</a>, as updated from time to time, you acknowledge that the use of the API is subject to the Data Processing Addendum for Products where Google is a Data Processor, which is located at the following URL:&nbsp;<a href="https://privacy.google.com/businesses/gdprprocessorterms/">https://privacy.google.com/businesses/gdprprocessorterms/</a>, as updated from time to time. By clicking to accept, you hereby agree to the terms of the Data Processing Addendum for Products where Google is a Data Processor.</p>
+
+<h3>9. Terminating this License Agreement</h3>
+
+<p>9.1 The License Agreement will continue to apply until terminated by either you or Google as set out below. 9.2 If you want to terminate the License Agreement, you may do so by ceasing your use of the SDK and any relevant developer credentials. 9.3 Google may at any time, terminate the License Agreement with you if: (A) you have breached any provision of the License Agreement; or (B) Google is required to do so by law; or (C) the partner with whom Google offered certain parts of SDK (such as APIs) to you has terminated its relationship with Google or ceased to offer certain parts of the SDK to you; or (D) Google decides to no longer provide the SDK or certain parts of the SDK to users in the country in which you are resident or from which you use the service, or the provision of the SDK or certain SDK services to you by Google is, in Google&#39;s sole discretion, no longer commercially viable. 9.4 When the License Agreement comes to an end, all of the legal rights, obligations and liabilities that you and Google have benefited from, been subject to (or which have accrued over time whilst the License Agreement has been in force) or which are expressed to continue indefinitely, shall be unaffected by this cessation, and the provisions of paragraph 14.7 shall continue to apply to such rights, obligations and liabilities indefinitely.</p>
+
+<h3>10. DISCLAIMER OF WARRANTIES</h3>
+
+<p>10.1 YOU EXPRESSLY UNDERSTAND AND AGREE THAT YOUR USE OF THE SDK IS AT YOUR SOLE RISK AND THAT THE SDK IS PROVIDED &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; WITHOUT WARRANTY OF ANY KIND FROM GOOGLE. 10.2 YOUR USE OF THE SDK AND ANY MATERIAL DOWNLOADED OR OTHERWISE OBTAINED THROUGH THE USE OF THE SDK IS AT YOUR OWN DISCRETION AND RISK AND YOU ARE SOLELY RESPONSIBLE FOR ANY DAMAGE TO YOUR COMPUTER SYSTEM OR OTHER DEVICE OR LOSS OF DATA THAT RESULTS FROM SUCH USE. 10.3 GOOGLE FURTHER EXPRESSLY DISCLAIMS ALL WARRANTIES AND CONDITIONS OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING, BUT NOT LIMITED TO THE IMPLIED WARRANTIES AND CONDITIONS OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NON-INFRINGEMENT.</p>
+
+<h3>11. LIMITATION OF LIABILITY</h3>
+
+<p>11.1 YOU EXPRESSLY UNDERSTAND AND AGREE THAT GOOGLE, ITS SUBSIDIARIES AND AFFILIATES, AND ITS LICENSORS SHALL NOT BE LIABLE TO YOU UNDER ANY THEORY OF LIABILITY FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL OR EXEMPLARY DAMAGES THAT MAY BE INCURRED BY YOU, INCLUDING ANY LOSS OF DATA, WHETHER OR NOT GOOGLE OR ITS REPRESENTATIVES HAVE BEEN ADVISED OF OR SHOULD HAVE BEEN AWARE OF THE POSSIBILITY OF ANY SUCH LOSSES ARISING.</p>
+
+<h3>12. Indemnification</h3>
+
+<p>12.1 To the maximum extent permitted by law, you agree to defend, indemnify and hold harmless Google, its affiliates and their respective directors, officers, employees and agents from and against any and all claims, actions, suits or proceedings, as well as any and all losses, liabilities, damages, costs and expenses (including reasonable attorneys fees) arising out of or accruing from (a) your use of the SDK, (b) any application you develop on the SDK that infringes any copyright, trademark, trade secret, trade dress, patent or other intellectual property right of any person or defames any person or violates their rights of publicity or privacy, and (c) any non-compliance by you with the License Agreement.</p>
+
+<h3>13. Changes to the License Agreement</h3>
+
+<p>13.1 Google may make changes to the License Agreement as it distributes new versions of the SDK. When these changes are made, Google will make a new version of the License Agreement available on the website where the SDK is made available.</p>
+
+<h3>14. General Legal Terms</h3>
+
+<p>14.1 The License Agreement constitutes the whole legal agreement between you and Google and governs your use of the SDK (excluding any services which Google may provide to you under a separate written agreement), and completely replaces any prior agreements between you and Google in relation to the SDK. 14.2 You agree that if Google does not exercise or enforce any legal right or remedy which is contained in the License Agreement (or which Google has the benefit of under any applicable law), this will not be taken to be a formal waiver of Google&#39;s rights and that those rights or remedies will still be available to Google. 14.3 If any court of law, having the jurisdiction to decide on this matter, rules that any provision of the License Agreement is invalid, then that provision will be removed from the License Agreement without affecting the rest of the License Agreement. The remaining provisions of the License Agreement will continue to be valid and enforceable. 14.4 You acknowledge and agree that each member of the group of companies of which Google is the parent shall be third party beneficiaries to the License Agreement and that such other companies shall be entitled to directly enforce, and rely upon, any provision of the License Agreement that confers a benefit on (or rights in favor of) them. Other than this, no other person or company shall be third party beneficiaries to the License Agreement. 14.5 EXPORT RESTRICTIONS. THE SDK IS SUBJECT TO UNITED STATES EXPORT LAWS AND REGULATIONS. YOU MUST COMPLY WITH ALL DOMESTIC AND INTERNATIONAL EXPORT LAWS AND REGULATIONS THAT APPLY TO THE SDK. THESE LAWS INCLUDE RESTRICTIONS ON DESTINATIONS, END USERS AND END USE. 14.6 The rights granted in the License Agreement may not be assigned or transferred by either you or Google without the prior written approval of the other party. Neither you nor Google shall be permitted to delegate their responsibilities or obligations under the License Agreement without the prior written approval of the other party. 14.7 The License Agreement, and your relationship with Google under the License Agreement, shall be governed by the laws of the State of California without regard to its conflict of laws provisions. You and Google agree to submit to the exclusive jurisdiction of the courts located within the county of Santa Clara, California to resolve any legal matter arising from the License Agreement. Notwithstanding this, you agree that Google shall still be allowed to apply for injunctive remedies (or an equivalent type of urgent legal relief) in any jurisdiction.&nbsp;<em>July 27, 2021</em></p>
+
+<p>_______________________________________________________________</p>
+
+<p>License for everything not in third_party and not otherwise marked:</p>
+
+<p>Copyright 2014 Google, Inc. All rights reserved.</p>
+
+<p>Redistribution and use in source and binary forms, with or without modification, are<br />
+permitted provided that the following conditions are met:</p>
+
+<p>&nbsp; &nbsp;1. Redistributions of source code must retain the above copyright notice, this list of<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;conditions and the following disclaimer.</p>
+
+<p>&nbsp; &nbsp;2. Redistributions in binary form must reproduce the above copyright notice, this list<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;of conditions and the following disclaimer in the documentation and/or other materials<br />
+&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;provided with the distribution.</p>
+
+<p>THIS SOFTWARE IS PROVIDED BY GOOGLE, INC. ``AS IS&#39;&#39; AND ANY EXPRESS OR IMPLIED<br />
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND<br />
+FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL GOOGLE, INC. OR<br />
+CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR<br />
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR<br />
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON<br />
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING<br />
+NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF<br />
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+
+<p>The views and conclusions contained in the software and documentation are those of the<br />
+authors and should not be interpreted as representing official policies, either expressed<br />
+or implied, of Google, Inc.<br />
+---------------------------------------------------------------------------------------------<br />
+License for third_party/disklrucache:</p>
+
+<p>Copyright 2012 Jake Wharton<br />
+Copyright 2011 The Android Open Source Project</p>
+
+<p>Licensed under the Apache License, Version 2.0 (the &quot;License&quot;);<br />
+you may not use this file except in compliance with the License.<br />
+You may obtain a copy of the License at</p>
+
+<p>&nbsp; &nbsp;http://www.apache.org/licenses/LICENSE-2.0</p>
+
+<p>Unless required by applicable law or agreed to in writing, software<br />
+distributed under the License is distributed on an &quot;AS IS&quot; BASIS,<br />
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.<br />
+See the License for the specific language governing permissions and<br />
+limitations under the License.<br />
+---------------------------------------------------------------------------------------------<br />
+License for third_party/gif_decoder:</p>
+
+<p>Copyright (c) 2013 Xcellent Creations, Inc.</p>
+
+<p>Permission is hereby granted, free of charge, to any person obtaining<br />
+a copy of this software and associated documentation files (the<br />
+&quot;Software&quot;), to deal in the Software without restriction, including<br />
+without limitation the rights to use, copy, modify, merge, publish,<br />
+distribute, sublicense, and/or sell copies of the Software, and to<br />
+permit persons to whom the Software is furnished to do so, subject to<br />
+the following conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be<br />
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,<br />
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF<br />
+MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND<br />
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE<br />
+LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION<br />
+OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION<br />
+WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.<br />
+---------------------------------------------------------------------------------------------<br />
+License for third_party/gif_encoder/AnimatedGifEncoder.java and<br />
+third_party/gif_encoder/LZWEncoder.java:</p>
+
+<p>No copyright asserted on the source code of this class. May be used for any<br />
+purpose, however, refer to the Unisys LZW patent for restrictions on use of<br />
+the associated LZWEncoder class. Please forward any corrections to<br />
+kweiner@fmsware.com.</p>
+
+<p>-----------------------------------------------------------------------------<br />
+License for third_party/gif_encoder/NeuQuant.java</p>
+
+<p>Copyright (c) 1994 Anthony Dekker</p>
+
+<p>NEUQUANT Neural-Net quantization algorithm by Anthony Dekker, 1994. See<br />
+&quot;Kohonen neural networks for optimal colour quantization&quot; in &quot;Network:<br />
+Computation in Neural Systems&quot; Vol. 5 (1994) pp 351-367. for a discussion of<br />
+the algorithm.</p>
+
+<p>Any party obtaining a copy of these files from the author, directly or<br />
+indirectly, is granted, free of charge, a full and unrestricted irrevocable,<br />
+world-wide, paid up, royalty-free, nonexclusive right and license to deal in<br />
+this software and documentation files (the &quot;Software&quot;), including without<br />
+limitation the rights to use, copy, modify, merge, publish, distribute,<br />
+sublicense, and/or sell copies of the Software, and to permit persons who<br />
+receive copies from any such party to do so, with the only requirement being<br />
+that this copyright notice remain intact.</p>
+
+<p>_______________________________________________________________</p>
+
+<h1>The zlib/libpng License (Zlib)</h1>
+
+<pre>
+ * Java port of Bullet (c) 2008 Martin Dvorak &lt;jezek2@advel.cz&gt;
+ *
+ * Bullet Continuous Collision Detection and Physics Library
+ * Copyright (c) 2003-2008 Erwin Coumans  http://www.bulletphysics.com/</pre>
+
+<p>This software is provided &#39;as-is&#39;, without any express or implied warranty. In no event will the authors be held liable for any damages arising from the use of this software.</p>
+
+<p>Permission is granted to anyone to use this software for any purpose, including commercial applications, and to alter it and redistribute it freely, subject to the following restrictions:</p>
+
+<p>1. The origin of this software must not be misrepresented; you must not claim that you wrote the original software. If you use this software in a product, an acknowledgment in the product documentation would be appreciated but is not required.</p>
+
+<p>2. Altered source versions must be plainly marked as such, and must not be misrepresented as being the original software.</p>
+
+<p>3. This notice may not be removed or altered from any source distribution.</p>
+
+<p>_______________________________________________________________</p>
+
+<p>www.javagl.de - Obj</p>
+
+<p>Copyright (c) 2008-2015 Marco Hutter - http://www.javagl.de</p>
+
+<p>Permission is hereby granted, free of charge, to any person<br />
+obtaining a copy of this software and associated documentation<br />
+files (the &quot;Software&quot;), to deal in the Software without<br />
+restriction, including without limitation the rights to use,<br />
+copy, modify, merge, publish, distribute, sublicense, and/or sell<br />
+copies of the Software, and to permit persons to whom the<br />
+Software is furnished to do so, subject to the following<br />
+conditions:</p>
+
+<p>The above copyright notice and this permission notice shall be<br />
+included in all copies or substantial portions of the Software.</p>
+
+<p>THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND,<br />
+EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES<br />
+OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND<br />
+NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT<br />
+HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,<br />
+WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING<br />
+FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR<br />
+OTHER DEALINGS IN THE SOFTWARE.</p>
+
+<p>_______________________________________________________________</p>
+
+<p>The 3-Clause BSD License</p>
+
+<p>SPDX short identifier: BSD-3-Clause</p>
+
+<p>Further resources on the 3-clause BSD license<br />
+&nbsp;</p>
+
+<p>OSI Approved License Logo</p>
+
+<p>Note: This license has also been called the &quot;New BSD License&quot; or &quot;Modified BSD License&quot;. See also the 2-clause BSD License.</p>
+
+<ul>
+	<li><strong>Copyright (c) 2009-2020 jMonkeyEngine</strong><br />
+	All rights reserved.</li>
+</ul>
+
+<p>Redistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:</p>
+
+<p>1. Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer.</p>
+
+<p>2. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and/or other materials provided with the distribution.</p>
+
+<p>3. Neither the name of the copyright holder nor the names of its contributors may be used to endorse or promote products derived from this software without specific prior written permission.</p>
+
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>
+
+<p>_______________________________________________________________</p>
+
+<pre>
+JKS Keystore from Cassey Marshall</pre>
+
+<p>http://metastatic.org/source/JKS.java</p>
+
+<pre>
+JKS.java -- implementation of the &quot;JKS&quot; key store.
+   Copyright (C) 2003  Casey Marshall &lt;rsdio@metastatic.org&gt;
+
+Permission to use, copy, modify, distribute, and sell this software and
+its documentation for any purpose is hereby granted without fee,
+provided that the above copyright notice appear in all copies and that
+both that copyright notice and this permission notice appear in
+supporting documentation.  No representations are made about the
+suitability of this software for any purpose.  It is provided &quot;as is&quot;
+without express or implied warranty.
+
+This program was derived by reverse-engineering Sun&#39;s own
+implementation, using only the public API that is available in the 1.4.1
+JDK.  Hence nothing in this program is, or is derived from, anything
+copyrighted by Sun Microsystems.  While the &quot;Binary Evaluation License
+Agreement&quot; that the JDK is licensed under contains blanket statements
+that forbid reverse-engineering (among other things), it is my position
+that US copyright law does not and cannot forbid reverse-engineering of
+software to produce a compatible implementation.  There are, in fact,
+numerous clauses in copyright law that specifically allow
+reverse-engineering, and therefore I believe it is outside of Sun&#39;s
+power to enforce restrictions on reverse-engineering of their software,
+and it is irresponsible for them to claim they can.  */
+
+
+package org.metastatic.crypto;
+
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.IOException;
+import java.io.OutputStream;
+
+import java.security.DigestInputStream;
+import java.security.DigestOutputStream;
+import java.security.Key;
+import java.security.KeyFactory;
+import java.security.KeyStoreException;
+import java.security.KeyStoreSpi;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.security.SecureRandom;
+import java.security.UnrecoverableKeyException;
+
+import java.security.cert.Certificate;
+import java.security.cert.CertificateException;
+import java.security.cert.CertificateFactory;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+
+import java.util.Date;
+import java.util.Enumeration;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Vector;
+
+import javax.crypto.EncryptedPrivateKeyInfo;
+import javax.crypto.spec.SecretKeySpec;
+
+ * This is an implementation of Sun&#39;s proprietary key store
+ * algorithm, called &quot;JKS&quot; for &quot;Java Key Store&quot;. This implementation was
+ * created entirely through reverse-engineering.
+ *
+ * &lt;p&gt;The format of JKS files is, from the start of the file:
+ *
+ * &lt;ol&gt;
+ * &lt;li&gt;Magic bytes. This is a four-byte integer, in big-endian byte
+ * order, equal to &lt;code&gt;0xFEEDFEED&lt;/code&gt;.&lt;/li&gt;
+ * &lt;li&gt;The version number (probably), as a four-byte integer (all
+ * multibyte integral types are in big-endian byte order). The current
+ * version number (in modern distributions of the JDK) is 2.&lt;/li&gt;
+ * &lt;li&gt;The number of entrires in this keystore, as a four-byte
+ * integer. Call this value &lt;i&gt;n&lt;/i&gt;&lt;/li&gt;
+ * &lt;li&gt;Then, &lt;i&gt;n&lt;/i&gt; times:
+ *  &lt;ol&gt;
+ *  &lt;li&gt;The entry type, a four-byte int. The value 1 denotes a private
+ *  key entry, and 2 denotes a trusted certificate.&lt;/li&gt;
+ *  &lt;li&gt;The entry&#39;s alias, formatted as strings such as those written
+ *  by &lt;a
+ *  href=&quot;http://java.sun.com/j2se/1.4.1/docs/api/java/io/DataOutput.html#writeUTF(java.lang.String)&quot;&gt;DataOutput.writeUTF(String)&lt;/a&gt;.&lt;/li&gt;
+ *  &lt;li&gt;An eight-byte integer, representing the entry&#39;s creation date,
+ *  in milliseconds since the epoch.
+ *
+ *  &lt;p&gt;Then, if the entry is a private key entry:
+ *   &lt;ol&gt;
+ *   &lt;li&gt;The size of the encoded key as a four-byte int, then that
+ *   number of bytes. The encoded key is the DER encoded bytes of the
+ *   &lt;a
+ *   href=&quot;http://java.sun.com/j2se/1.4.1/docs/api/javax/crypto/EncryptedPrivateKeyInfo.html&quot;&gt;EncryptedPrivateKeyInfo&lt;/a&gt; structure (the
+ *   encryption algorithm is discussed later).&lt;/li&gt;
+ *   &lt;li&gt;A four-byte integer, followed by that many encoded
+ *   certificates, encoded as described in the trusted certificates
+ *   section.&lt;/li&gt;
+ *   &lt;/ol&gt;
+ *
+ *  &lt;p&gt;Otherwise, the entry is a trusted certificate, which is encoded
+ *  as the name of the encoding algorithm (e.g. X.509), encoded the same
+ *  way as alias names. Then, a four-byte integer representing the size
+ *  of the encoded certificate, then that many bytes representing the
+ *  encoded certificate (e.g. the DER bytes in the case of X.509).
+ *  &lt;/li&gt;
+ *  &lt;/ol&gt;
+ * &lt;/li&gt;
+ * &lt;li&gt;Then, the signature.&lt;/li&gt;
+ * &lt;/ol&gt;
+ * &lt;/ol&gt;
+ * &lt;/li&gt;
+ * &lt;/ol&gt;
+ *
+ * &lt;p&gt;(See &lt;a href=&quot;genkey.java&quot;&gt;this file&lt;/a&gt; for some idea of how I
+ * was able to figure out these algorithms)&lt;/p&gt;
+ *
+ * &lt;p&gt;Decrypting the key works as follows:
+ *
+ * &lt;ol&gt;
+ * &lt;li&gt;The key length is the length of the ciphertext minus 40. The
+ * encrypted key, &lt;code&gt;ekey&lt;/code&gt;, is the middle bytes of the
+ * ciphertext.&lt;/li&gt;
+ * &lt;li&gt;Take the first 20 bytes of the encrypted key as a seed value,
+ * &lt;code&gt;K[0]&lt;/code&gt;.&lt;/li&gt;
+ * &lt;li&gt;Compute &lt;code&gt;K[1] ... K[n]&lt;/code&gt;, where
+ * &lt;code&gt;|K[i]| = 20&lt;/code&gt;, &lt;code&gt;n = ceil(|ekey| / 20)&lt;/code&gt;, and
+ * &lt;code&gt;K[i] = SHA-1(UTF-16BE(password) + K[i-1])&lt;/code&gt;.&lt;/li&gt;
+ * &lt;li&gt;&lt;code&gt;key = ekey ^ (K[1] + ... + K[n])&lt;/code&gt;.&lt;/li&gt;
+ * &lt;li&gt;The last 20 bytes are the checksum, computed as &lt;code&gt;H =
+ * SHA-1(UTF-16BE(password) + key)&lt;/code&gt;. If this value does not match
+ * the last 20 bytes of the ciphertext, output &lt;code&gt;FAIL&lt;/code&gt;. Otherwise,
+ * output &lt;code&gt;key&lt;/code&gt;.&lt;/li&gt;
+ * &lt;/ol&gt;
+ *
+ * &lt;p&gt;The signature is defined as &lt;code&gt;SHA-1(UTF-16BE(password) +
+ * US_ASCII(&quot;Mighty Aphrodite&quot;) + encoded_keystore)&lt;/code&gt; (yup, Sun
+ * engineers are just that clever).
+ *
+ * &lt;p&gt;(Above, SHA-1 denotes the secure hash algorithm, UTF-16BE the
+ * big-endian byte representation of a UTF-16 string, and US_ASCII the
+ * ASCII byte representation of the string.)
+ *
+ * &lt;p&gt;The source code of this class should be available in the file &lt;a
+ * href=&quot;http://metastatic.org/source/JKS.java&quot;&gt;JKS.java&lt;/a&gt;.
+ *
+ * @author Casey Marshall (rsdio@metastatic.org)
+public class JKS extends KeyStoreSpi
+{
+
+  // Constants and fields.
+  // ------------------------------------------------------------------------
+
+  /** Ah, Sun. So goddamned clever with those magic bytes. */
+  private static final int MAGIC = 0xFEEDFEED;
+
+  private static final int PRIVATE_KEY  = 1;
+  private static final int TRUSTED_CERT = 2;
+
+  private final Vector aliases;
+  private final HashMap trustedCerts;
+  private final HashMap privateKeys;
+  private final HashMap certChains;
+  private final HashMap dates;
+
+  // Constructor.
+  // ------------------------------------------------------------------------
+
+  public JKS()
+  {
+    super();
+    aliases = new Vector();
+    trustedCerts = new HashMap();
+    privateKeys = new HashMap();
+    certChains = new HashMap();
+    dates = new HashMap();
+  }
+
+  // Instance methods.
+  // ------------------------------------------------------------------------
+
+  public Key engineGetKey(String alias, char[] password)
+    throws NoSuchAlgorithmException, UnrecoverableKeyException
+  {
+    if (!privateKeys.containsKey(alias))
+      return null;
+    byte[] key = decryptKey((byte[]) privateKeys.get(alias),
+                            charsToBytes(password));
+    Certificate[] chain = engineGetCertificateChain(alias);
+    if (chain.length &gt; 0)
+      {
+        try
+          {
+            // Private and public keys MUST have the same algorithm.
+            KeyFactory fact = KeyFactory.getInstance(
+              chain[0].getPublicKey().getAlgorithm());
+            return fact.generatePrivate(new PKCS8EncodedKeySpec(key));
+          }
+        catch (InvalidKeySpecException x)
+          {
+            throw new UnrecoverableKeyException(x.getMessage());
+          }
+      }
+    else
+      return new SecretKeySpec(key, alias);
+  }
+
+  public Certificate[] engineGetCertificateChain(String alias)
+  {
+    return (Certificate[]) certChains.get(alias);
+  }
+
+  public Certificate engineGetCertificate(String alias)
+  {
+    return (Certificate) trustedCerts.get(alias);
+  }
+
+  public Date engineGetCreationDate(String alias)
+  {
+    return (Date) dates.get(alias);
+  }
+
+  // XXX implement writing methods.
+
+  public void engineSetKeyEntry(String alias, Key key, char[] passwd, Certificate[] certChain)
+    throws KeyStoreException
+  {
+    if (trustedCerts.containsKey(alias))
+      throw new KeyStoreException(&quot;\&quot;&quot; + alias + &quot; is a trusted certificate entry&quot;);
+    privateKeys.put(alias, encryptKey(key, charsToBytes(passwd)));
+    if (certChain != null)
+      certChains.put(alias, certChain);
+    else
+      certChains.put(alias, new Certificate[0]);
+    if (!aliases.contains(alias))
+      {
+        dates.put(alias, new Date());
+        aliases.add(alias);
+      }
+  }
+
+  public void engineSetKeyEntry(String alias, byte[] encodedKey, Certificate[] certChain)
+    throws KeyStoreException
+  {
+    if (trustedCerts.containsKey(alias))
+      throw new KeyStoreException(&quot;\&quot;&quot; + alias + &quot;\&quot; is a trusted certificate entry&quot;);
+    try
+      {
+        new EncryptedPrivateKeyInfo(encodedKey);
+      }
+    catch (IOException ioe)
+      {
+        throw new KeyStoreException(&quot;encoded key is not an EncryptedPrivateKeyInfo&quot;);
+      }
+    privateKeys.put(alias, encodedKey);
+    if (certChain != null)
+      certChains.put(alias, certChain);
+    else
+      certChains.put(alias, new Certificate[0]);
+    if (!aliases.contains(alias))
+      {
+        dates.put(alias, new Date());
+        aliases.add(alias);
+      }
+  }
+
+  public void engineSetCertificateEntry(String alias, Certificate cert)
+    throws KeyStoreException
+  {
+    if (privateKeys.containsKey(alias))
+      throw new KeyStoreException(&quot;\&quot;&quot; + alias + &quot;\&quot; is a private key entry&quot;);
+    if (cert == null)
+      throw new NullPointerException();
+    trustedCerts.put(alias, cert);
+    if (!aliases.contains(alias))
+      {
+        dates.put(alias, new Date());
+        aliases.add(alias);
+      }
+  }
+
+  public void engineDeleteEntry(String alias) throws KeyStoreException
+  {
+    aliases.remove(alias);
+  }
+
+  public Enumeration engineAliases()
+  {
+    return aliases.elements();
+  }
+
+  public boolean engineContainsAlias(String alias)
+  {
+    return aliases.contains(alias);
+  }
+
+  public int engineSize()
+  {
+    return aliases.size();
+  }
+
+  public boolean engineIsKeyEntry(String alias)
+  {
+    return privateKeys.containsKey(alias);
+  }
+
+  public boolean engineIsCertificateEntry(String alias)
+  {
+    return trustedCerts.containsKey(alias);
+  }
+
+  public String engineGetCertificateAlias(Certificate cert)
+  {
+    for (Iterator keys = trustedCerts.keySet().iterator(); keys.hasNext(); )
+      {
+        String alias = (String) keys.next();
+        if (cert.equals(trustedCerts.get(alias)))
+          return alias;
+      }
+    return null;
+  }
+
+  public void engineStore(OutputStream out, char[] passwd)
+    throws IOException, NoSuchAlgorithmException, CertificateException
+  {
+    MessageDigest md = MessageDigest.getInstance(&quot;SHA1&quot;);
+    md.update(charsToBytes(passwd));
+    md.update(&quot;Mighty Aphrodite&quot;.getBytes(&quot;UTF-8&quot;));
+    DataOutputStream dout = new DataOutputStream(new DigestOutputStream(out, md));
+    dout.writeInt(MAGIC);
+    dout.writeInt(2);
+    dout.writeInt(aliases.size());
+    for (Enumeration e = aliases.elements(); e.hasMoreElements(); )
+      {
+        String alias = (String) e.nextElement();
+        if (trustedCerts.containsKey(alias))
+          {
+            dout.writeInt(TRUSTED_CERT);
+            dout.writeUTF(alias);
+            dout.writeLong(((Date) dates.get(alias)).getTime());
+            writeCert(dout, (Certificate) trustedCerts.get(alias));
+          }
+        else
+          {
+            dout.writeInt(PRIVATE_KEY);
+            dout.writeUTF(alias);
+            dout.writeLong(((Date) dates.get(alias)).getTime());
+            byte[] key = (byte[]) privateKeys.get(alias);
+            dout.writeInt(key.length);
+            dout.write(key);
+            Certificate[] chain = (Certificate[]) certChains.get(alias);
+            dout.writeInt(chain.length);
+            for (int i = 0; i &lt; chain.length; i++)
+              writeCert(dout, chain[i]);
+          }
+      }
+    byte[] digest = md.digest();
+    dout.write(digest);
+  }
+
+  public void engineLoad(InputStream in, char[] passwd)
+    throws IOException, NoSuchAlgorithmException, CertificateException
+  {
+    MessageDigest md = MessageDigest.getInstance(&quot;SHA&quot;);
+    md.update(charsToBytes(passwd));
+    md.update(&quot;Mighty Aphrodite&quot;.getBytes(&quot;UTF-8&quot;)); // HAR HAR
+    aliases.clear();
+    trustedCerts.clear();
+    privateKeys.clear();
+    certChains.clear();
+    dates.clear();
+    DataInputStream din = new DataInputStream(new DigestInputStream(in, md));
+    if (din.readInt() != MAGIC)
+      throw new IOException(&quot;not a JavaKeyStore&quot;);
+    din.readInt();  // version no.
+    final int n = din.readInt();
+    aliases.ensureCapacity(n);
+    if (n &lt; 0)
+      throw new IOException(&quot;negative entry count&quot;);
+    for (int i = 0; i &lt; n; i++)
+      {
+        int type = din.readInt();
+        String alias = din.readUTF();
+        aliases.add(alias);
+        dates.put(alias, new Date(din.readLong()));
+        switch (type)
+          {
+            case PRIVATE_KEY:
+              int len = din.readInt();
+              byte[] encoded = new byte[len];
+              din.read(encoded);
+              privateKeys.put(alias, encoded);
+              int count = din.readInt();
+              Certificate[] chain = new Certificate[count];
+              for (int j = 0; j &lt; count; j++)
+                chain[j] = readCert(din);
+              certChains.put(alias, chain);
+              break;
+
+            case TRUSTED_CERT:
+              trustedCerts.put(alias, readCert(din));
+              break;
+
+            default:
+              throw new IOException(&quot;malformed key store&quot;);
+          }
+      }
+
+    byte[] hash = new byte[20];
+    din.read(hash);
+    if (MessageDigest.isEqual(hash, md.digest()))
+      throw new IOException(&quot;signature not verified&quot;);
+  }
+
+  // Own methods.
+  // ------------------------------------------------------------------------
+
+  private static Certificate readCert(DataInputStream in)
+    throws IOException, CertificateException, NoSuchAlgorithmException
+  {
+    String type = in.readUTF();
+    int len = in.readInt();
+    byte[] encoded = new byte[len];
+    in.read(encoded);
+    CertificateFactory factory = CertificateFactory.getInstance(type);
+    return factory.generateCertificate(new ByteArrayInputStream(encoded));
+  }
+
+  private static void writeCert(DataOutputStream dout, Certificate cert)
+    throws IOException, CertificateException
+  {
+    dout.writeUTF(cert.getType());
+    byte[] b = cert.getEncoded();
+    dout.writeInt(b.length);
+    dout.write(b);
+  }
+
+  private static byte[] decryptKey(byte[] encryptedPKI, byte[] passwd)
+    throws UnrecoverableKeyException
+  {
+    try
+      {
+        EncryptedPrivateKeyInfo epki =
+          new EncryptedPrivateKeyInfo(encryptedPKI);
+        byte[] encr = epki.getEncryptedData();
+        byte[] keystream = new byte[20];
+        System.arraycopy(encr, 0, keystream, 0, 20);
+        byte[] check = new byte[20];
+        System.arraycopy(encr, encr.length-20, check, 0, 20);
+        byte[] key = new byte[encr.length - 40];
+        MessageDigest sha = MessageDigest.getInstance(&quot;SHA1&quot;);
+        int count = 0;
+        while (count &lt; key.length)
+          {
+            sha.reset();
+            sha.update(passwd);
+            sha.update(keystream);
+            sha.digest(keystream, 0, keystream.length);
+            for (int i = 0; i &lt; keystream.length &amp;&amp; count &lt; key.length; i++)
+              {
+                key[count] = (byte) (keystream[i] ^ encr[count+20]);
+                count++;
+              }
+          }
+        sha.reset();
+        sha.update(passwd);
+        sha.update(key);
+        if (!MessageDigest.isEqual(check, sha.digest()))
+          throw new UnrecoverableKeyException(&quot;checksum mismatch&quot;);
+        return key;
+      }
+    catch (Exception x)
+      {
+        throw new UnrecoverableKeyException(x.getMessage());
+      }
+  }
+
+  private static byte[] encryptKey(Key key, byte[] passwd)
+    throws KeyStoreException
+  {
+    try
+      {
+        MessageDigest sha = MessageDigest.getInstance(&quot;SHA1&quot;);
+        SecureRandom rand = SecureRandom.getInstance(&quot;SHA1PRNG&quot;);
+        byte[] k = key.getEncoded();
+        byte[] encrypted = new byte[k.length + 40];
+        byte[] keystream = rand.getSeed(20);
+        System.arraycopy(keystream, 0, encrypted, 0, 20);
+        int count = 0;
+        while (count &lt; k.length)
+          {
+            sha.reset();
+            sha.update(passwd);
+            sha.update(keystream);
+            sha.digest(keystream, 0, keystream.length);
+            for (int i = 0; i &lt; keystream.length &amp;&amp; count &lt; k.length; i++)
+              {
+                encrypted[count+20] = (byte) (keystream[i] ^ k[count]);
+                count++;
+              }
+          }
+        sha.reset();
+        sha.update(passwd);
+        sha.update(k);
+        sha.digest(encrypted, encrypted.length - 20, 20);
+        // 1.3.6.1.4.1.42.2.17.1.1 is Sun&#39;s private OID for this
+        // encryption algorithm.
+        return new EncryptedPrivateKeyInfo(&quot;1.3.6.1.4.1.42.2.17.1.1&quot;,
+                                           encrypted).getEncoded();
+      }
+    catch (Exception x)
+      {
+        throw new KeyStoreException(x.getMessage());
+      }
+  }
+
+  private static byte[] charsToBytes(char[] passwd)
+  {
+    byte[] buf = new byte[passwd.length * 2];
+    for (int i = 0, j = 0; i &lt; passwd.length; i++)
+      {
+        buf[j++] = (byte) (passwd[i] &gt;&gt;&gt; 8);
+        buf[j++] = (byte)  passwd[i];
+      }
+    return buf;
+  }
+}</pre>

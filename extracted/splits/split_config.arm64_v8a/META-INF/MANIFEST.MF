@@ -1,0 +1,197 @@
+Manifest-Version: 1.0
+
+Name: AndroidManifest.xml
+SHA1-Digest: 6qhW1deg+5xgY713BBw+fM/w/qM=
+
+Name: lib/arm64-v8a/libLiteRt.so
+SHA1-Digest: LmkyzrUHdHfDsP7a4uyTWDA+cb8=
+
+Name: lib/arm64-v8a/libLiteRtClGlAccelerator.so
+SHA1-Digest: t3kI9kw0K5nC64iQ6eEQngP+T7M=
+
+Name: lib/arm64-v8a/libMeshSerializer.so
+SHA1-Digest: ccv7RggyVcdFBdThd+ntE5MGTiM=
+
+Name: lib/arm64-v8a/libassimp.so
+SHA1-Digest: XMYyNMagOe3ncJOWAyR8mVNn6as=
+
+Name: lib/arm64-v8a/libaudio-utils.so
+SHA1-Digest: Bw/Ei5SQU03fX7nrgfrLGM9QknY=
+
+Name: lib/arm64-v8a/libbatcher.so
+SHA1-Digest: qfpZjWaJe60EWEiiwW1ajI1w9A4=
+
+Name: lib/arm64-v8a/libbulletjme.so
+SHA1-Digest: nhpsi73fxaPaBxhub5AXFoM5KfM=
+
+Name: lib/arm64-v8a/libdemo.so
+SHA1-Digest: w38SPKxEY1ISwjYt2cb/t5pJw8I=
+
+Name: lib/arm64-v8a/libfilamat-jni.so
+SHA1-Digest: 0yTXA09osy8Qm3ip/vUsJnzi1EQ=
+
+Name: lib/arm64-v8a/libfilament-jni.so
+SHA1-Digest: 8/uVkvIdBuOH15Jw3hwwnFbQQ6o=
+
+Name: lib/arm64-v8a/libfilament-utils-jni.so
+SHA1-Digest: BSXyZEbmZCnnPgVe4fgu3n6dPI8=
+
+Name: lib/arm64-v8a/libimgui-adapter.so
+SHA1-Digest: 4QxjZPdLMV4LQb1cqzZxKTV4Q7o=
+
+Name: lib/arm64-v8a/libimported-audio-format.so
+SHA1-Digest: KwC4csXx0l/W4ksXrxNO2XTly7k=
+
+Name: lib/arm64-v8a/liblitertlm_jni.so
+SHA1-Digest: vjB1kfngY9LXCdWbM5rj2p0ucEE=
+
+Name: lib/arm64-v8a/libnative-affinity.so
+SHA1-Digest: mHEZcKp92mtuFHfP0EMD4rzgAs8=
+
+Name: lib/arm64-v8a/libnative-array-texture-rgba8.so
+SHA1-Digest: pSAXtQwTQOORhsIrDiryu9JdEyM=
+
+Name: lib/arm64-v8a/libnative-astar.so
+SHA1-Digest: qCLCyPu3hWd/qkEWtU38JzD6xiE=
+
+Name: lib/arm64-v8a/libnative-astc-loader.so
+SHA1-Digest: 7Y5rePpvlI5oNKWZUPFJtAn+Vw0=
+
+Name: lib/arm64-v8a/libnative-astcenc.so
+SHA1-Digest: 6ZfIJEfPnj1Z+aMxOjh8G3nUgWQ=
+
+Name: lib/arm64-v8a/libnative-auto-slicer.so
+SHA1-Digest: O3L5tlUXXHTRMVm3CtQctziOd+8=
+
+Name: lib/arm64-v8a/libnative-bounding-terrain-level.so
+SHA1-Digest: RPBfRMBC0FP75sXDITpO9H4k49U=
+
+Name: lib/arm64-v8a/libnative-box-terrain-level.so
+SHA1-Digest: nkecCvn41I3P6sIgY/2zCG4ksvM=
+
+Name: lib/arm64-v8a/libnative-brush-surface.so
+SHA1-Digest: wpQyVOW6s3L8oHQcXc96cDiyaJ8=
+
+Name: lib/arm64-v8a/libnative-byte-buffer.so
+SHA1-Digest: Li878lc4zf6Frwoh7/Q+McdF9VA=
+
+Name: lib/arm64-v8a/libnative-char-buffer.so
+SHA1-Digest: SiMk2EmYHaJOgE1nEmwiLjSzHJ8=
+
+Name: lib/arm64-v8a/libnative-chunk-collision-surface.so
+SHA1-Digest: kU4rHOiVCj1+qWftlvmOf8Lgpqc=
+
+Name: lib/arm64-v8a/libnative-chunk-renderable-layer.so
+SHA1-Digest: 4ZUdHNtZXUQAocBcO7oBSOiELVw=
+
+Name: lib/arm64-v8a/libnative-chunk-surface.so
+SHA1-Digest: LHsQW0n3QKCj++VV2eZCS1fCEp8=
+
+Name: lib/arm64-v8a/libnative-convex-hull.so
+SHA1-Digest: vLen/IzuoU8w2FCoraXwUOzZGxs=
+
+Name: lib/arm64-v8a/libnative-file-cubemap.so
+SHA1-Digest: 0UVHVy2cHypomMpxcVtIIWzdUxE=
+
+Name: lib/arm64-v8a/libnative-float-buffer.so
+SHA1-Digest: a0Rqq29cAasrRlMqL4NTQVUBlu8=
+
+Name: lib/arm64-v8a/libnative-indexed-mesh.so
+SHA1-Digest: IsVNYfHY8dZ6IIx57p8y8OyjJRU=
+
+Name: lib/arm64-v8a/libnative-int-buffer.so
+SHA1-Digest: izNPVWWqtLqrf2Y/rqwkR9kl6J0=
+
+Name: lib/arm64-v8a/libnative-model-importer.so
+SHA1-Digest: z4wlBMJ0QSlWogr6WD2+VhyJbe0=
+
+Name: lib/arm64-v8a/libnative-model-terrain-level.so
+SHA1-Digest: yAdKQOJW/kwnhefaPW4RQZAV16s=
+
+Name: lib/arm64-v8a/libnative-particles.so
+SHA1-Digest: 0uCyz4AJMGgqfE9Vup1tn+S5DSQ=
+
+Name: lib/arm64-v8a/libnative-short-buffer.so
+SHA1-Digest: qPAUWeNwUhqD+BmILTGl6p0tFBM=
+
+Name: lib/arm64-v8a/libnative-skinning.so
+SHA1-Digest: Ejhoh9QIpY9zuMx5qo/uejZim54=
+
+Name: lib/arm64-v8a/libnative-sound-emitter.so
+SHA1-Digest: XvtRlBdCuA0y4H8HFTKnaZnqHXM=
+
+Name: lib/arm64-v8a/libnative-table.so
+SHA1-Digest: T7uwUpk+OrQZIgyJPf/mZII3QC8=
+
+Name: lib/arm64-v8a/libnative-terrain-data.so
+SHA1-Digest: UWyw73Mw4NbrJ8p50bfw5yaUwzI=
+
+Name: lib/arm64-v8a/libnative-terrain-procedural-brushes.so
+SHA1-Digest: rftkk7KwcPOajPIzBTc2jS2cDyc=
+
+Name: lib/arm64-v8a/libnative-terrain-procedural-paints.so
+SHA1-Digest: nGKWBex6P2zaEoVa3x0rBRuIjRQ=
+
+Name: lib/arm64-v8a/libnative-terrain-raycaster.so
+SHA1-Digest: EJe8xX97pWZIeDZQ4chHZdCeXbc=
+
+Name: lib/arm64-v8a/libnative-terrain.so
+SHA1-Digest: gwpYBSCdpJ6+VdwlWW50c6FuMcI=
+
+Name: lib/arm64-v8a/libnative-texture-importer.so
+SHA1-Digest: 2kMRBPiQubFt/AgykwEp9+fnc20=
+
+Name: lib/arm64-v8a/libnative-texture-r32f.so
+SHA1-Digest: gd86B9ErT4hYtt7uTTBPFerAgKo=
+
+Name: lib/arm64-v8a/libnative-texture-r8.so
+SHA1-Digest: Nmy+FXZZuMD1d6KZdTO+mvYIJmA=
+
+Name: lib/arm64-v8a/libnative-texture-rgb8.so
+SHA1-Digest: nwyFVLsTkQkdKOyo9EfmE3hkN1E=
+
+Name: lib/arm64-v8a/libnative-texture-rgba8.so
+SHA1-Digest: WWtZ+cDOQ9pCI+Hvw3xh+Oqd+LU=
+
+Name: lib/arm64-v8a/libnative-transform-core.so
+SHA1-Digest: vWljOfTrL7nVr+8YMT1qdUlsmq0=
+
+Name: lib/arm64-v8a/libnative-transform.so
+SHA1-Digest: 3qNJFnF0WkInNPJRZzctvr/S/JU=
+
+Name: lib/arm64-v8a/libnative-vertex-deduplicator.so
+SHA1-Digest: 2DSiQu9CGZCrNnHPTw1e1u0ZwHM=
+
+Name: lib/arm64-v8a/libnative-video-frame-pull-decoder.so
+SHA1-Digest: CYcGNQha0ADTZJwKVwhS9VIcByg=
+
+Name: lib/arm64-v8a/libnative-voxel-chunk.so
+SHA1-Digest: YmJxxxmZ1wwXgQG8xnmzI8gmJG0=
+
+Name: lib/arm64-v8a/libnative-webview-to-opengl.so
+SHA1-Digest: b6cU9Z7rTWochaO4Vya2YQ0qUc4=
+
+Name: lib/arm64-v8a/libtiff.so
+SHA1-Digest: Fno3fONXBV6Udh1RF+Ras1XbY14=
+
+Name: lib/arm64-v8a/libtiffconverter.so
+SHA1-Digest: PRQnMz7AFEUQQi+IrXMbasVdrPM=
+
+Name: lib/arm64-v8a/libtifffactory.so
+SHA1-Digest: lBL0I96qMXSiv82L5rCY9hYPt1c=
+
+Name: lib/arm64-v8a/libtiffsaver.so
+SHA1-Digest: L+rBxeYzjHY19CZ7L/L7+2BdCEc=
+
+Name: lib/arm64-v8a/libui-style.so
+SHA1-Digest: nioz7gYj0BLvBY4SVauhhYbd8pw=
+
+Name: lib/arm64-v8a/libvertex.so
+SHA1-Digest: 3s6ejLIlEmzFW7p2keIj5ACVcOc=
+
+Name: lib/arm64-v8a/libxatlas.so
+SHA1-Digest: K/ZNbCV5xLAxVT/CSxTqsp4/bS8=
+
+Name: stamp-cert-sha256
+SHA1-Digest: 5vTkm69vqAbusD/fho7oWwc7j+I=
+

@@ -1,0 +1,23 @@
+# Large APK and bundle binary files
+*.apk
+*.apk+
+*.idsig
+extracted/bundle/
+
+# Third-party tools binaries > 100MB
+tools/jadx.zip
+tools/jadx/
+
+# Temporary build artifacts
+work/build_terrain/
+work/compiled_classes/
+work/dummy*
+*.args
+*.log
+
+# Gradle caches
+.gradle/
+build/
+app/build/
+.idea/
+*.iml

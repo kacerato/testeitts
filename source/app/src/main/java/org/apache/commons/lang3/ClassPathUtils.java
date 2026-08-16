@@ -1,0 +1,27 @@
+package org.apache.commons.lang3;
+
+public class ClassPathUtils {
+    public static String toFullyQualifiedName(Class<?> cls, String str) {
+        Validate.notNull(cls, "Parameter '%s' must not be null!", "context");
+        Validate.notNull(str, "Parameter '%s' must not be null!", "resourceName");
+        return toFullyQualifiedName(cls.getPackage(), str);
+    }
+
+    public static String toFullyQualifiedPath(Class<?> cls, String str) {
+        Validate.notNull(cls, "Parameter '%s' must not be null!", "context");
+        Validate.notNull(str, "Parameter '%s' must not be null!", "resourceName");
+        return toFullyQualifiedPath(cls.getPackage(), str);
+    }
+
+    public static String toFullyQualifiedName(Package r22, String str) {
+        Validate.notNull(r22, "Parameter '%s' must not be null!", "context");
+        Validate.notNull(str, "Parameter '%s' must not be null!", "resourceName");
+        return r22.getName() + "." + str;
+    }
+
+    public static String toFullyQualifiedPath(Package r32, String str) {
+        Validate.notNull(r32, "Parameter '%s' must not be null!", "context");
+        Validate.notNull(str, "Parameter '%s' must not be null!", "resourceName");
+        return r32.getName().replace('.', '/') + "/" + str;
+    }
+}

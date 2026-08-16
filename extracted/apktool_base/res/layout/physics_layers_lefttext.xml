@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:layout_width="fill_parent" android:layout_height="26.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="11.0sp" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center|right" android:id="@id/textView" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="TEXT" android:singleLine="true" android:textAllCaps="true" android:fontFamily="@font/base_regular" android:textAlignment="textEnd" />
+</FrameLayout>

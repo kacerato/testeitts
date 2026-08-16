@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:background="@drawable/editor3d_v2_input_text_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.google.android.material.textfield.TextInputLayout android:textColorHint="@color/theme_mid_text_color" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <com.google.android.material.textfield.TextInputEditText android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/textInputEditText" android:layout_width="fill_parent" android:layout_height="wrap_content" android:hint="text" android:inputType="textMultiLine" android:windowSoftInputMode="stateHidden" android:imeOptions="actionSend|flagNoExtractUi" android:fontFamily="@font/base_medium" />
+    </com.google.android.material.textfield.TextInputLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

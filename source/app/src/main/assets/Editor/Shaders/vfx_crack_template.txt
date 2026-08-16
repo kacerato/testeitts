@@ -1,0 +1,286 @@
+-MANIFEST-
+{
+  "max_simultaneous_emitters": 6,
+  "params": {
+    "radius": "float",
+    "progression": "float01",
+    "intensity": "float01",
+    "cellSize": "float",
+    "thickness": "float"
+  },
+  "defaults": {
+    "radius": "8",
+    "progression": "1",
+    "intensity": "1",
+    "cellSize": "1",
+    "thickness": "1"
+  },
+  "precision": {
+    "radius": "high",
+    "progression": "high",
+    "intensity": "high",
+    "cellSize": "high",
+    "thickness": "high"
+  }
+}
+-MANIFEST-
+
+-FRAGMENT SHADER-
+highp float vfx_fn_hash12(highp float2 p) {
+    return fract(sin(dot(p, float2(127.1, 311.7))) * 43758.5453123);
+}
+
+highp float2 vfx_fn_hash22(highp float2 p) {
+    highp float x = dot(p, float2(127.1, 311.7));
+    highp float y = dot(p, float2(269.5, 183.3));
+    return fract(sin(float2(x, y)) * 18.5453);
+}
+
+highp float vfx_fn_noise21(highp float2 p) {
+    highp float2 cell = floor(p);
+    highp float2 local = fract(p);
+    local = local * local * (3.0 - 2.0 * local);
+
+    highp float a = vfx_fn_hash12(cell);
+    highp float b = vfx_fn_hash12(cell + float2(1.0, 0.0));
+    highp float c = vfx_fn_hash12(cell + float2(0.0, 1.0));
+    highp float d = vfx_fn_hash12(cell + float2(1.0, 1.0));
+
+    return mix(mix(a, b, local.x), mix(c, d, local.x), local.y);
+}
+
+highp float2 vfx_fn_rotate(highp float2 p, highp float angle) {
+    highp float s = sin(angle);
+    highp float c = cos(angle);
+    return float2(p.x * c - p.y * s, p.x * s + p.y * c);
+}
+
+highp float2 vfx_fn_noise22(highp float2 p) {
+    return float2(vfx_fn_noise21(p), vfx_fn_noise21(p + 17.7));
+}
+
+highp float2 vfx_fn_fbm22(highp float2 p) {
+    highp float2 value = float2(0.0);
+    highp float amplitude = 0.5;
+
+    for(int i = 0; i < 4; i++) {
+        p = vfx_fn_rotate(p, 0.37);
+        value += amplitude * vfx_fn_noise22(p);
+        p *= 2.0;
+        amplitude *= 0.5;
+    }
+
+    return value;
+}
+
+highp float2 vfx_fn_surfaceUv(highp float3 worldPosition) {
+    highp float3 normal = normalize(getWorldGeometricNormalVector());
+    highp float3 axis = abs(normal.y) < 0.82 ? float3(0.0, 1.0, 0.0) : float3(1.0, 0.0, 0.0);
+    highp float3 tangentRaw = cross(axis, normal);
+    highp float tangentInvLength = inversesqrt(max(dot(tangentRaw, tangentRaw), 0.00001));
+    highp float3 tangent = tangentRaw * tangentInvLength;
+    highp float3 bitangentRaw = cross(normal, tangent);
+    highp float bitangentInvLength = inversesqrt(max(dot(bitangentRaw, bitangentRaw), 0.00001));
+    highp float3 bitangent = bitangentRaw * bitangentInvLength;
+
+    return float2(dot(worldPosition, tangent), dot(worldPosition, bitangent));
+}
+
+highp float2 vfx_fn_voronoiPoint(highp float2 p) {
+    highp float ofs = 0.5;
+    return -ofs + (1.0 + 2.0 * ofs) * vfx_fn_hash22(p);
+}
+
+highp float3 vfx_fn_voronoiBorder(highp float2 p) {
+    highp float2 baseCell = floor(p);
+    highp float minDistance = 100000.0;
+    highp float2 closestCellOffset = float2(0.0);
+    highp float2 closestDelta = float2(0.0);
+    highp float closestId = 0.0;
+
+    for(int k = 0; k < 25; k++) {
+        int x = k - (k / 5) * 5 - 2;
+        int y = k / 5 - 2;
+        {
+            highp float2 offset = float2(float(x), float(y));
+            highp float2 candidateCell = baseCell + offset;
+            highp float2 delta = candidateCell - p + vfx_fn_voronoiPoint(candidateCell);
+            highp float distanceToPoint = dot(delta, delta);
+
+            if(distanceToPoint < minDistance) {
+                minDistance = distanceToPoint;
+                closestCellOffset = offset;
+                closestDelta = delta;
+                closestId = vfx_fn_hash12(candidateCell + 21.37);
+            }
+        }
+    }
+
+    highp float borderDistance = 100000.0;
+    highp float borderId = closestId;
+
+    for(int k = 0; k < 25; k++) {
+        int x = k - (k / 5) * 5 - 2;
+        int y = k / 5 - 2;
+        {
+            highp float2 offset = closestCellOffset + float2(float(x), float(y));
+            highp float2 candidateCell = baseCell + offset;
+            highp float2 delta = candidateCell - p + vfx_fn_voronoiPoint(candidateCell);
+            highp float2 direction = delta - closestDelta;
+            highp float directionDistance = dot(direction, direction);
+
+            if(directionDistance > 0.00001) {
+                highp float directionInvLength = inversesqrt(directionDistance);
+                highp float distanceToEdge = 0.5 * dot(closestDelta + delta, direction * directionInvLength);
+                if(distanceToEdge < borderDistance) {
+                    borderDistance = distanceToEdge;
+                    borderId = vfx_fn_hash12(candidateCell + 21.37);
+                }
+            }
+        }
+    }
+
+    return float3(borderDistance, closestId, borderId);
+}
+
+highp float3 vfx_fn_vorocracks(highp float2 uv, highp float cellSize, highp float thickness) {
+    highp float scale = 4.0 / max(max(cellSize, 0.05), 0.0001);
+    highp float2 p = uv * scale;
+    p = vfx_fn_rotate(p, 0.23);
+    highp float2 baseDisplacement = 0.67 * vfx_fn_fbm22(p);
+
+    highp float crack = 0.0;
+    highp float cellId = 0.0;
+    highp float amp = 1.0;
+
+    for(int i = 0; i < 3; i++) {
+        highp float3 border = vfx_fn_voronoiBorder(p + baseDisplacement);
+        highp float worldBorderDistance = max(0.0, border.x) / scale;
+        highp float d = min(1.0, (200.0 / thickness) * worldBorderDistance);
+        highp float edge = 1.0 - d;
+        highp float edgeVariation = mix(0.30, 1.0, vfx_fn_hash12(float2(border.y, border.z) + float(i) * 13.7));
+
+        crack += edge * amp * edgeVariation;
+        cellId = mix(cellId, border.z, amp);
+        p = vfx_fn_rotate(p * 1.5, 0.37);
+        amp *= 0.5;
+    }
+
+    crack = clamp(crack, 0.0, 1.0);
+    return float3(crack, smoothstep(0.62, 1.0, crack), cellId);
+}
+
+highp float3 vfx_fn_surfaceCrack(highp float3 worldPosition, highp float cellSize, highp float thickness) {
+    highp float2 uv = vfx_fn_surfaceUv(worldPosition);
+    highp float3 cracks = vfx_fn_vorocracks(uv, cellSize, thickness);
+    highp float glow = cracks.x;
+    highp float core = cracks.y;
+    highp float cellShade = vfx_fn_hash12(float2(cracks.z * 37.0, cracks.z * 91.0));
+
+    return float3(glow, core, cellShade);
+}
+
+void vfx_fn_fragment(inout VFXMaterialInputs material, VFXEmitter emitter) {
+    highp float radius = max(vfxParams.radius, 0.0001);
+    highp float progression = clamp(vfxParams.progression, 0.0, 1.0);
+    highp float intensity = clamp(vfxParams.intensity, 0.0, 1.0);
+    highp float cellSize = max(vfxParams.cellSize, 0.05);
+    highp float thickness = max(vfxParams.thickness, 0.05);
+
+    highp float3 worldPosition = getUserWorldPosition().xyz;
+    highp float distanceToEmitter = distance(worldPosition, emitter.position);
+    highp float normalizedDistance = clamp(distanceToEmitter / radius, 0.0, 1.0);
+    highp float radiusFade = 1.0 - smoothstep(0.0, 1.0, normalizedDistance);
+    radiusFade = mix(radiusFade, pow(radiusFade, 0.45), 0.65);
+
+    highp float brokenRadius = radius * progression;
+    highp float progressionSoftness = max(radius * 0.22, 0.015);
+    highp float progressionMask = 1.0 - smoothstep(
+            max(0.0, brokenRadius - progressionSoftness),
+            brokenRadius + progressionSoftness,
+            distanceToEmitter
+    );
+
+    highp float3 crack = vfx_fn_surfaceCrack(worldPosition, cellSize, thickness);
+    highp float effect = crack.x * radiusFade * progressionMask * intensity;
+    highp float coreEffect = crack.y * radiusFade * progressionMask * intensity;
+    highp float cellDarkening = mix(0.03, 0.16, crack.z) * radiusFade * progressionMask * intensity;
+
+    material.baseColor.rgb *= 1.0 - cellDarkening;
+    material.baseColor.rgb = mix(material.baseColor.rgb, float3(0.0), effect * 0.72);
+    material.baseColor.rgb = mix(material.baseColor.rgb, float3(0.0), coreEffect * 0.95);
+    material.ambientOcclusion *= 1.0 - (effect * 0.72);
+    material.reflectance *= 1.0 - (effect * 0.68);
+}
+-FRAGMENT SHADER-
+
+-SUB MATERIAL SHADER-
+void vfx_fn_subMaterial(inout SubMaterialData smData, VFXEmitter emitter) {
+    // passthrough
+}
+-SUB MATERIAL SHADER-
+
+-VERTEX SHADER-
+void vfx_fn_vertex(inout MaterialVertexInputs v, VFXEmitter emitter) {
+    // no vertex deformation
+}
+-VERTEX SHADER-
+
+/* DOCUMENTATION
+Shader rendering engine is Google filament, search about Google filament shader attributes and uniforms
+
+This is an example of a VFX Shader that creates a Voronoi cell fracture crack effect on scene surfaces around the emitter.
+
+The progression parameter controls how far the broken area expands from the emitter center to the edge of radius.
+The intensity parameter multiplies the crack visibility.
+
+The dynamic time value is available as vfxParams.time and is not shown in the inspector.
+
+Functions must begin with the prefix "vfx_fn_"
+Structs must begin with the prefix "VFX_STRUCT_"
+
+How to access parameters:
+-Use vfxParams instead of materialParams.
+-And it can only be accessed in the main function (vfx_fn_fragment or vfx_fn_vertex). If you need to access parameters in external functions, pass them as arguments.
+
+It is possible to sample decal textures using:
+float4 decal(int layer, float2 uv);
+float4 decalPixel(int layer, float2 uv);
+
+Properties inspector params:
+Param types:
+    rgba -> color converts to float4
+    rgb -> color converts to float3 (no alpha)
+    float -> float
+    float2 -> vector2 converts to float2
+    float3 -> vector3 converts to float3
+    float4 -> vector4 converts to float4
+    float01 -> shows a 0..1 slider
+    bool -> shows a toggle mapped to a float in shader (1.0 == true)
+    int -> integer
+
+Precisions:
+    low, medium & high
+
+Struct DOC:
+struct VFXMaterialInputs:
+    float4 baseColor;
+    float4 emissive;
+    float4 postLightingColor;
+    float  roughness;
+    float  metallic;
+    float  reflectance;
+    float  ambientOcclusion;
+    float3 normal;
+    float transmission;
+    float3 absorption;
+    float ior;
+    float microThickness;
+    int model;
+struct VFXEmitter:
+    float3 position;
+    int index;
+struct SubMaterialData:
+    float2 parallaxDelta;
+    float3 normalDisturb;
+*/

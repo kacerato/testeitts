@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/theme_high_text_color" android:id="@id/thumbnailLabel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:fontFamily="@font/base_bold" />
+    <Button android:textColor="@color/white" android:id="@id/selectThumbnailButton" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="8.0dip" android:fontFamily="@font/base_bold" android:backgroundTint="@color/theme_primary" />
+    <ImageView android:id="@id/thumbnailPreview" android:background="@color/theme_card" android:layout_width="72.0dip" android:layout_height="72.0dip" android:layout_marginTop="8.0dip" android:scaleType="centerCrop" />
+    <TextView android:textColor="@color/theme_high_text_color" android:id="@id/thumbnailHint" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+    <TextView android:textColor="@color/theme_high_text_color" android:id="@id/imagesLabel" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:fontFamily="@font/base_bold" />
+    <Button android:textColor="@color/white" android:id="@id/addImageButton" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_marginTop="8.0dip" android:fontFamily="@font/base_bold" android:backgroundTint="@color/theme_primary" />
+    <TextView android:textColor="@color/theme_high_text_color" android:id="@id/imagesHint" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+    <TextView android:textColor="@color/theme_high_text_color" android:id="@id/imagesEmpty" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+    <LinearLayout android:orientation="vertical" android:id="@id/imagesContainer" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" />
+</LinearLayout>

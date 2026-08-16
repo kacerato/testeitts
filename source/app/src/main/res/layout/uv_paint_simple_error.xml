@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginStart="8.0dip" android:layout_marginEnd="8.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+        <Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+        <TextView android:textColor="@color/theme_high_text_color" android:id="@id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Text." android:fontFamily="@font/base_regular" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <Space android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <Button android:textColor="@color/white" android:id="@id/auto_close" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="Ok" android:fontFamily="@font/linkednow_extrabold" android:backgroundTint="@color/theme_primary" />
+        </LinearLayout>
+        <Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

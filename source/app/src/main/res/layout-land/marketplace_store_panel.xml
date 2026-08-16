@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:background="@color/theme_panel" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/title" android:paddingLeft="4.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="STORE" android:singleLine="true" android:textAllCaps="true" android:fontFamily="@font/base_bold" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/storeTabs" android:layout_width="wrap_content" android:layout_height="26.0dip" android:layout_marginTop="6.0dip" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/searchLayout" android:background="@drawable/editor3d_v2_rounded_button" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:backgroundTint="@color/theme_panel">
+            <EditText android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_mid_text_color" android:id="@id/searchET" android:layout_width="0.0dip" android:layout_height="wrap_content" android:hint="Search" android:ems="30" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionDone|flagNoExtractUi" android:backgroundTint="@color/theme_high_icon_tint" />
+        </LinearLayout>
+        <androidx.legacy.widget.Space android:layout_width="4.0dip" android:layout_height="fill_parent" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/onlyFreeFilter" android:background="@drawable/editor3d_v2_rounded_button_checkbox_checked" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:backgroundTint="@color/theme_high_icon_tint">
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginBottom="2.0dip" android:text="Free" android:textAllCaps="true" android:fontFamily="@font/musticapro_semibold" />
+        </LinearLayout>
+        <androidx.legacy.widget.Space android:visibility="gone" android:layout_width="4.0dip" android:layout_height="fill_parent" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/onlyPaidFilter" android:background="@drawable/editor3d_v2_rounded_button_checkbox_unchecked" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:backgroundTint="@color/theme_mid_icon_tint">
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="center" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginBottom="2.0dip" android:text="Paid" android:textAllCaps="true" android:fontFamily="@font/musticapro_semibold" />
+        </LinearLayout>
+        <androidx.legacy.widget.Space android:layout_width="4.0dip" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/close" android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/close_x" app:tint="@color/theme_high_icon_tint" />
+        <androidx.legacy.widget.Space android:layout_width="4.0dip" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/contentSearch" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/recycler" android:paddingLeft="4.0dip" android:paddingRight="4.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="10.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="center_vertical" android:id="@id/repositoryText" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="Repository:" android:layout_weight="1.0" android:fontFamily="@font/musticapro_semibold" android:textAlignment="viewStart" />
+    </LinearLayout>
+</LinearLayout>

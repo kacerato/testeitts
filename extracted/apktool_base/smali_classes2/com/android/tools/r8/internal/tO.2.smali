@@ -1,0 +1,80 @@
+.class public final Lcom/android/tools/r8/internal/tO;
+.super Lcom/android/tools/r8/internal/HO;
+.source "SourceFile"
+
+
+# static fields
+.field public static final synthetic i:Z = true
+
+
+# instance fields
+.field public g:Lcom/android/tools/r8/internal/LX;
+
+.field public h:Lcom/android/tools/r8/internal/LX;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 0
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 1
+
+    invoke-direct {p0}, Lcom/android/tools/r8/internal/HO;-><init>()V
+
+    sget-object v0, Lcom/android/tools/r8/internal/LX;->a:Lcom/android/tools/r8/internal/IX;
+
+    iput-object v0, p0, Lcom/android/tools/r8/internal/tO;->g:Lcom/android/tools/r8/internal/LX;
+
+    iput-object v0, p0, Lcom/android/tools/r8/internal/tO;->h:Lcom/android/tools/r8/internal/LX;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final b()Lcom/android/tools/r8/internal/HO;
+    .locals 0
+
+    return-object p0
+.end method
+
+.method public final c()Lcom/android/tools/r8/internal/uO;
+    .locals 8
+
+    new-instance v7, Lcom/android/tools/r8/internal/uO;
+
+    invoke-virtual {p0}, Lcom/android/tools/r8/internal/HO;->a()Ljava/util/Set;
+
+    move-result-object v1
+
+    iget-object v2, p0, Lcom/android/tools/r8/internal/HO;->c:Lcom/android/tools/r8/internal/LX;
+
+    iget-object v3, p0, Lcom/android/tools/r8/internal/HO;->d:Lcom/android/tools/r8/internal/LX;
+
+    iget-object v4, p0, Lcom/android/tools/r8/internal/tO;->g:Lcom/android/tools/r8/internal/LX;
+
+    iget-object v5, p0, Lcom/android/tools/r8/internal/tO;->h:Lcom/android/tools/r8/internal/LX;
+
+    iget-object v6, p0, Lcom/android/tools/r8/internal/HO;->e:Lcom/android/tools/r8/internal/LX;
+
+    move-object v0, v7
+
+    invoke-direct/range {v0 .. v6}, Lcom/android/tools/r8/internal/uO;-><init>(Ljava/util/Set;Lcom/android/tools/r8/internal/LX;Lcom/android/tools/r8/internal/LX;Lcom/android/tools/r8/internal/LX;Lcom/android/tools/r8/internal/LX;Lcom/android/tools/r8/internal/LX;)V
+
+    invoke-virtual {v7}, Lcom/android/tools/r8/internal/uO;->a()Z
+
+    move-result v0
+
+    if-eqz v0, :cond_0
+
+    sget-object v0, Lcom/android/tools/r8/internal/uO;->h:Lcom/android/tools/r8/internal/uO;
+
+    return-object v0
+
+    :cond_0
+    return-object v7
+.end method

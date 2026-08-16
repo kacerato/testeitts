@@ -1,0 +1,27 @@
+.class public abstract Lcom/android/tools/r8/internal/ve0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public abstract a(Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
+.end method
+
+.method public abstract a(Ljava/lang/Class;Ljava/lang/reflect/Field;)Ljava/lang/reflect/Method;
+.end method
+
+.method public abstract b(Ljava/lang/Class;)[Ljava/lang/String;
+.end method
+
+.method public abstract c(Ljava/lang/Class;)Z
+.end method

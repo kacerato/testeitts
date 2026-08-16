@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/tittle_bar" android:background="@color/theme_semi_card" android:padding="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="right" android:id="@id/closeX" android:padding="2.0dip" android:layout_width="32.0dip" android:layout_height="26.0dip" app:srcCompat="@drawable/back_button" app:tint="@color/theme_high_icon_tint" />
+        <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/tittle" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_marginRight="32.0dip" android:text="PANEL TITLE" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/base_bold" />
+        <com.itsmagic.engine.Activities.Editor.Utils.DragPanelView android:id="@id/dragPanel" android:padding="6.0dip" android:layout_width="32.0dip" android:layout_height="26.0dip" app:srcCompat="@drawable/slide" app:tint="@color/theme_high_icon_tint" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/recyclerView" android:paddingLeft="8.0dip" android:paddingTop="4.0dip" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</LinearLayout>

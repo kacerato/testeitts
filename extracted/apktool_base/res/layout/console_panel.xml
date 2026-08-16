@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/theme_terminal_background" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.itsmagic.engine.Activities.Editor.Utils.ExceptionSafeRecyclerView android:id="@id/recyclerView" android:background="@color/theme_terminal_background" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginBottom="2.0dip" android:layout_weight="1.0" app:layout_constraintBottom_toTopOf="@id/typeActions" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/smallActions" android:background="@color/theme_panel" android:layout_width="wrap_content" android:layout_height="28.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent">
+        <ImageView android:id="@id/down" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="36.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/scroll_down" />
+        <View android:id="@id/view" android:background="@color/theme_background" android:layout_width="2.0dip" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/clear" android:paddingTop="7.0dip" android:paddingBottom="7.0dip" android:layout_width="36.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/bin_nopadding_v2" />
+        <View android:id="@id/view" android:background="@color/theme_background" android:layout_width="2.0dip" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/colapse" android:layout_width="36.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/expand_h_colapsed" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/typeActions" android:background="@color/theme_card" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+        <EditText android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_mid_text_color" android:id="@id/textInputEditText" android:paddingLeft="8.0dip" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:layout_width="0.0dip" android:layout_height="28.0dip" android:hint="Type a command" android:layout_weight="1.0" android:imeOptions="actionDone|flagNoExtractUi" android:fontFamily="@font/progfont" android:backgroundTint="@android:color/transparent" />
+        <ImageView android:id="@id/send" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="36.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/send" />
+        <View android:id="@id/view" android:background="@color/theme_background" android:layout_width="2.0dip" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/down" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="36.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/scroll_down" />
+        <View android:id="@id/view" android:background="@color/theme_background" android:layout_width="2.0dip" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/clear" android:paddingTop="7.0dip" android:paddingBottom="7.0dip" android:layout_width="36.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/bin_nopadding_v2" />
+        <View android:id="@id/view" android:background="@color/theme_background" android:layout_width="2.0dip" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/colapse" android:layout_width="36.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/expand_h_colapsed" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

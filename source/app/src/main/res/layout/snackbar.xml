@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/white" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/icon" android:layout_width="32.0dip" android:layout_height="fill_parent" android:scaleType="centerInside" app:srcCompat="@drawable/pack1" />
+        <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/tittle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Downloading package..." android:fontFamily="sans-serif-medium" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+            <TextView android:textSize="10.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/message" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="MarketPlace -  Dont close the app" android:fontFamily="@font/base_medium" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+        </LinearLayout>
+        <androidx.legacy.widget.Space android:layout_width="4.0dip" android:layout_height="fill_parent" />
+    </LinearLayout>
+</LinearLayout>

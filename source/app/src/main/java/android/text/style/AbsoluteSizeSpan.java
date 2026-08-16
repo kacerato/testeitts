@@ -1,0 +1,55 @@
+package android.text.style;
+
+import android.os.Parcel;
+import android.text.ParcelableSpan;
+import android.text.TextPaint;
+
+/* JADX WARN: Classes with same name are omitted:
+  base.apk:assets/Editor/javaLibs.zip:JAVARuntime/android/text/style/AbsoluteSizeSpan.class
+ */
+public class AbsoluteSizeSpan extends MetricAffectingSpan implements ParcelableSpan {
+    public AbsoluteSizeSpan(int size) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public AbsoluteSizeSpan(int size, boolean dip) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public AbsoluteSizeSpan(Parcel src) {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public int getSpanTypeId() {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public int describeContents() {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public int getSize() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public boolean getDip() {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public void updateDrawState(TextPaint ds) {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public void updateMeasureState(TextPaint ds) {
+        throw new RuntimeException("Stub!");
+    }
+}

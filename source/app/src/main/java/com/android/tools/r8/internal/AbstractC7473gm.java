@@ -1,0 +1,78 @@
+package com.android.tools.r8.internal;
+
+import com.android.tools.r8.graph.C4724u1;
+import com.android.tools.r8.internal.C8106kb;
+import java.lang.constant.ConstantDescs;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import org.eclipse.jdt.internal.compiler.util.SuffixConstants;
+
+public abstract class AbstractC7473gm {
+    public static com.android.tools.r8.graph.G a(C4724u1 c4724u1, com.android.tools.r8.graph.A2 a22) {
+        C8103ka c8103ka = new C8103ka();
+        C8103ka c8103ka2 = new C8103ka();
+        C8103ka c8103ka3 = new C8103ka();
+        C8103ka c8103ka4 = new C8103ka();
+        C8103ka c8103ka5 = new C8103ka();
+        C8103ka c8103ka6 = new C8103ka();
+        C8103ka c8103ka7 = new C8103ka();
+        C8103ka c8103ka8 = new C8103ka();
+        C8103ka c8103ka9 = new C8103ka();
+        com.android.tools.r8.graph.M2 m22 = a22.f38297f;
+        EnumC5477Kw0 enumC5477Kw0 = EnumC5477Kw0.f41824b;
+        C8938pa c8938pa = new C8938pa(enumC5477Kw0, 1);
+        NB nb2 = NB.f42527b;
+        O9 o92 = new O9(nb2, enumC5477Kw0, c8103ka2);
+        C8938pa c8938pa2 = new C8938pa(enumC5477Kw0, 1);
+        A9 a92 = new A9(c4724u1.b(SuffixConstants.EXTENSION_java));
+        com.android.tools.r8.graph.M2 m23 = c4724u1.f38052g2;
+        C7437ga c7437ga = new C7437ga(182, c4724u1.a(m23, c4724u1.a(c4724u1.f37849E1, m23), c4724u1.b("startsWith")), false);
+        NB nb3 = NB.f42532g;
+        EnumC5477Kw0 enumC5477Kw02 = EnumC5477Kw0.f41825c;
+        O9 o93 = new O9(nb3, enumC5477Kw02, c8103ka3);
+        G9 g92 = new G9(new C10564zF(new int[]{0, 1, 2}, new InterfaceC8008jy[]{InterfaceC8008jy.b(c4724u1.d("Landroidx/navigation/NavType$Companion;")), InterfaceC8008jy.b(c4724u1.f38052g2), InterfaceC8008jy.b(c4724u1.f38052g2)}));
+        C8938pa c8938pa3 = new C8938pa(enumC5477Kw0, 0);
+        C8938pa c8938pa4 = new C8938pa(enumC5477Kw0, 1);
+        C8938pa c8938pa5 = new C8938pa(enumC5477Kw0, 2);
+        com.android.tools.r8.graph.M2 d10 = c4724u1.d("Landroidx/navigation/NavType$Companion;");
+        com.android.tools.r8.graph.M2 d11 = c4724u1.d("Landroidx/navigation/NavType;");
+        com.android.tools.r8.graph.M2 m24 = c4724u1.f38052g2;
+        C7437ga c7437ga2 = new C7437ga(182, c4724u1.a(d10, c4724u1.a(d11, m24, m24), c4724u1.b("fromArgType")), false);
+        C6440ab c6440ab = new C6440ab(enumC5477Kw0);
+        G9 g93 = new G9(new C10564zF(new int[]{0, 1, 2}, new InterfaceC8008jy[]{InterfaceC8008jy.b(c4724u1.d("Landroidx/navigation/NavType$Companion;")), InterfaceC8008jy.b(c4724u1.f38052g2), InterfaceC8008jy.b(c4724u1.f38052g2)}));
+        C8938pa c8938pa6 = new C8938pa(enumC5477Kw0, 0);
+        C10106wa c10106wa = new C10106wa(c4724u1.f37857F2);
+        C8106kb c8106kb = new C8106kb(C8106kb.a.Dup);
+        C7437ga c7437ga3 = new C7437ga(183, c4724u1.a(c4724u1.f37857F2, c4724u1.a(c4724u1.f37905M1, new com.android.tools.r8.graph.M2[0]), c4724u1.b(ConstantDescs.INIT_NAME)), false);
+        A9 a93 = new A9(c4724u1.b("j$"));
+        com.android.tools.r8.graph.M2 m25 = c4724u1.f37857F2;
+        C7437ga c7437ga4 = new C7437ga(182, c4724u1.a(m25, c4724u1.a(m25, c4724u1.f38052g2), c4724u1.b("append")), false);
+        C8938pa c8938pa7 = new C8938pa(enumC5477Kw0, 1);
+        A9 a94 = new A9(c4724u1.b(SuffixConstants.EXTENSION_java));
+        C7437ga c7437ga5 = new C7437ga(182, c4724u1.a(c4724u1.f38052g2, c4724u1.a(c4724u1.f37884J1, new com.android.tools.r8.graph.M2[0]), c4724u1.b("length")), false);
+        com.android.tools.r8.graph.M2 m26 = c4724u1.f38052g2;
+        C7437ga c7437ga6 = new C7437ga(182, c4724u1.a(m26, c4724u1.a(m26, c4724u1.f37884J1), c4724u1.b("substring")), false);
+        com.android.tools.r8.graph.M2 m27 = c4724u1.f37857F2;
+        C7437ga c7437ga7 = new C7437ga(182, c4724u1.a(m27, c4724u1.a(m27, c4724u1.f38052g2), c4724u1.b("append")), false);
+        C7437ga c7437ga8 = new C7437ga(182, c4724u1.a(c4724u1.f37857F2, c4724u1.a(c4724u1.f38052g2, new com.android.tools.r8.graph.M2[0]), c4724u1.b("toString")), false);
+        C8938pa c8938pa8 = new C8938pa(enumC5477Kw0, 2);
+        com.android.tools.r8.graph.M2 d12 = c4724u1.d("Landroidx/navigation/NavType$Companion;");
+        com.android.tools.r8.graph.M2 d13 = c4724u1.d("Landroidx/navigation/NavType;");
+        com.android.tools.r8.graph.M2 m28 = c4724u1.f38052g2;
+        C7437ga c7437ga9 = new C7437ga(182, c4724u1.a(d12, c4724u1.a(d13, m28, m28), c4724u1.b("fromArgType")), false);
+        C6440ab c6440ab2 = new C6440ab(enumC5477Kw0);
+        G9 g94 = new G9(new C10564zF(new int[]{0, 1, 2}, new InterfaceC8008jy[]{InterfaceC8008jy.b(c4724u1.d("Landroidx/navigation/NavType$Companion;")), InterfaceC8008jy.b(c4724u1.f38052g2), InterfaceC8008jy.b(c4724u1.f38052g2)}), new ArrayDeque(Arrays.asList(InterfaceC8008jy.b(c4724u1.d("Ljava/lang/RuntimeException;")))));
+        C10443yb c10443yb = new C10443yb(enumC5477Kw0, 3);
+        C8938pa c8938pa9 = new C8938pa(enumC5477Kw0, 3);
+        C7437ga c7437ga10 = new C7437ga(182, c4724u1.a(c4724u1.d("Ljava/lang/RuntimeException;"), c4724u1.a(c4724u1.f38173v3, new com.android.tools.r8.graph.M2[0]), c4724u1.b("getCause")), false);
+        V9 v92 = new V9(c4724u1.d("Ljava/lang/ClassNotFoundException;"));
+        O9 o94 = new O9(nb2, enumC5477Kw02, c8103ka8);
+        C8938pa c8938pa10 = new C8938pa(enumC5477Kw0, 0);
+        C8938pa c8938pa11 = new C8938pa(enumC5477Kw0, 1);
+        C8938pa c8938pa12 = new C8938pa(enumC5477Kw0, 2);
+        com.android.tools.r8.graph.M2 d14 = c4724u1.d("Landroidx/navigation/NavType$Companion;");
+        com.android.tools.r8.graph.M2 d15 = c4724u1.d("Landroidx/navigation/NavType;");
+        com.android.tools.r8.graph.M2 m29 = c4724u1.f38052g2;
+        return new com.android.tools.r8.graph.G(m22, 4, 4, AbstractC7552hC.a(c8103ka, c8938pa, o92, c8938pa2, a92, c7437ga, o93, c8103ka2, g92, c8938pa3, c8938pa4, c8938pa5, c7437ga2, c6440ab, c8103ka3, g93, c8938pa6, c10106wa, c8106kb, c7437ga3, a93, c7437ga4, c8938pa7, a94, c7437ga5, c7437ga6, c7437ga7, c7437ga8, c8938pa8, c7437ga9, c8103ka4, c6440ab2, c8103ka5, g94, c10443yb, c8103ka6, c8938pa9, c7437ga10, v92, o94, c8103ka7, c8938pa10, c8938pa11, c8938pa12, new C7437ga(182, c4724u1.a(d14, c4724u1.a(d15, m29, m29), c4724u1.b("fromArgType")), false), new C6440ab(enumC5477Kw0), c8103ka8, new G9(new C10564zF(new int[]{0, 1, 2, 3}, new InterfaceC8008jy[]{InterfaceC8008jy.b(c4724u1.d("Landroidx/navigation/NavType$Companion;")), InterfaceC8008jy.b(c4724u1.f38052g2), InterfaceC8008jy.b(c4724u1.f38052g2), InterfaceC8008jy.b(c4724u1.d("Ljava/lang/RuntimeException;"))})), new C8938pa(enumC5477Kw0, 3), new C4965Cb(), c8103ka9), new C5920Sm0(new C5023Db(c8103ka3, c8103ka4, new C5920Sm0(c4724u1.d("Ljava/lang/RuntimeException;")), new C5920Sm0(c8103ka5))), C6190Xe0.f45779e);
+    }
+}

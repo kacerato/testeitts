@@ -1,0 +1,42 @@
+.class public final synthetic Lcom/android/tools/r8/internal/GV0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/android/tools/r8/internal/P8;
+
+
+# instance fields
+.field public final synthetic a:Lcom/android/tools/r8/internal/DX;
+
+.field public final synthetic b:I
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/android/tools/r8/internal/DX;I)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/android/tools/r8/internal/GV0;->a:Lcom/android/tools/r8/internal/DX;
+
+    iput p2, p0, Lcom/android/tools/r8/internal/GV0;->b:I
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final a(Ljava/lang/String;Z)Lcom/android/tools/r8/internal/Q2;
+    .locals 2
+
+    iget-object v0, p0, Lcom/android/tools/r8/internal/GV0;->a:Lcom/android/tools/r8/internal/DX;
+
+    iget v1, p0, Lcom/android/tools/r8/internal/GV0;->b:I
+
+    invoke-static {v0, v1, p1, p2}, Lcom/android/tools/r8/internal/S8;->a(Lcom/android/tools/r8/internal/DX;ILjava/lang/String;Z)Lcom/android/tools/r8/internal/Q2;
+
+    move-result-object p1
+
+    return-object p1
+.end method

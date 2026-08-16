@@ -1,0 +1,132 @@
+.class public Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$b;
+.super LF5/c$n0;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate;->getInspectorEntries(Landroid/content/Context;)Ljava/util/List;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "LF5/c$n0<",
+        "Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$j;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field public final synthetic a:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate;
+
+
+# direct methods
+.method public constructor <init>(Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x8010
+        }
+        names = {
+            "this$0"
+        }
+    .end annotation
+
+    iput-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$b;->a:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate;
+
+    invoke-direct {p0}, LF5/c$n0;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public a()V
+    .locals 1
+
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$b;->a:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate;
+
+    invoke-virtual {v0}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Components/Component;->reloadInspector()V
+
+    return-void
+.end method
+
+.method public bridge synthetic c(Ljava/lang/Object;)Ljava/lang/String;
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x1000
+        }
+        names = {
+            "enumObject"
+        }
+    .end annotation
+
+    check-cast p1, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$j;
+
+    invoke-virtual {p0, p1}, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$b;->e(Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$j;)Ljava/lang/String;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public d(Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$j;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0
+        }
+        names = {
+            "value"
+        }
+    .end annotation
+
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$b;->a:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate;
+
+    invoke-static {v0, p1}, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate;->access$002(Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate;Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$j;)Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$j;
+
+    return-void
+.end method
+
+.method public e(Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$j;)Ljava/lang/String;
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0
+        }
+        names = {
+            "enumObject"
+        }
+    .end annotation
+
+    invoke-virtual {p1}, Ljava/lang/Object;->toString()Ljava/lang/String;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public bridge synthetic set(Ljava/lang/Object;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x1000
+        }
+        names = {
+            "value"
+        }
+    .end annotation
+
+    check-cast p1, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$j;
+
+    invoke-virtual {p0, p1}, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$b;->d(Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Prototyping/SlideRotate$j;)V
+
+    return-void
+.end method

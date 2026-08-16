@@ -1,0 +1,93 @@
+package java.util.zip;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.Charset;
+
+/* JADX WARN: Classes with same name are omitted:
+  base.apk:assets/Editor/javaLibs.zip:JAVARuntime/d8lib/android.jar:java/util/zip/ZipInputStream.class
+ */
+public class ZipInputStream extends InflaterInputStream {
+    public static final int CENATT = 36;
+    public static final int CENATX = 38;
+    public static final int CENCOM = 32;
+    public static final int CENCRC = 16;
+    public static final int CENDSK = 34;
+    public static final int CENEXT = 30;
+    public static final int CENFLG = 8;
+    public static final int CENHDR = 46;
+    public static final int CENHOW = 10;
+    public static final int CENLEN = 24;
+    public static final int CENNAM = 28;
+    public static final int CENOFF = 42;
+    public static final long CENSIG = 33639248;
+    public static final int CENSIZ = 20;
+    public static final int CENTIM = 12;
+    public static final int CENVEM = 4;
+    public static final int CENVER = 6;
+    public static final int ENDCOM = 20;
+    public static final int ENDHDR = 22;
+    public static final int ENDOFF = 16;
+    public static final long ENDSIG = 101010256;
+    public static final int ENDSIZ = 12;
+    public static final int ENDSUB = 8;
+    public static final int ENDTOT = 10;
+    public static final int EXTCRC = 4;
+    public static final int EXTHDR = 16;
+    public static final int EXTLEN = 12;
+    public static final long EXTSIG = 134695760;
+    public static final int EXTSIZ = 8;
+    public static final int LOCCRC = 14;
+    public static final int LOCEXT = 28;
+    public static final int LOCFLG = 6;
+    public static final int LOCHDR = 30;
+    public static final int LOCHOW = 8;
+    public static final int LOCLEN = 22;
+    public static final int LOCNAM = 26;
+    public static final long LOCSIG = 67324752;
+    public static final int LOCSIZ = 18;
+    public static final int LOCTIM = 10;
+    public static final int LOCVER = 4;
+
+    public ZipInputStream(InputStream in2) {
+        super((InputStream) null);
+        throw new RuntimeException("Stub!");
+    }
+
+    public ZipInputStream(InputStream in2, Charset charset) {
+        super((InputStream) null);
+        throw new RuntimeException("Stub!");
+    }
+
+    public ZipEntry getNextEntry() throws IOException {
+        throw new RuntimeException("Stub!");
+    }
+
+    public void closeEntry() throws IOException {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public int available() throws IOException {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public int read(byte[] b10, int off, int len) throws IOException {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public long skip(long n10) throws IOException {
+        throw new RuntimeException("Stub!");
+    }
+
+    @Override
+    public void close() throws IOException {
+        throw new RuntimeException("Stub!");
+    }
+
+    protected ZipEntry createZipEntry(String name) {
+        throw new RuntimeException("Stub!");
+    }
+}

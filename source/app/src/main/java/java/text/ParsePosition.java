@@ -1,0 +1,38 @@
+package java.text;
+
+/* JADX WARN: Classes with same name are omitted:
+  base.apk:assets/Editor/javaLibs.zip:JAVARuntime/d8lib/android.jar:java/text/ParsePosition.class
+ */
+public class ParsePosition {
+    public ParsePosition(int index) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public int getIndex() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public void setIndex(int index) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public void setErrorIndex(int ei2) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public int getErrorIndex() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public boolean equals(Object obj) {
+        throw new RuntimeException("Stub!");
+    }
+
+    public int hashCode() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public String toString() {
+        throw new RuntimeException("Stub!");
+    }
+}

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:background="@drawable/editorv2_projects_panel_left_top_bar" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" android:paddingStart="8.0dip" android:backgroundTint="@color/theme_card">
+            <TextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/tittle" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="Backups" android:fontFamily="@font/musticapro_semibold" android:textAlignment="viewStart" />
+            <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+            <ImageView android:id="@id/game_jam" android:background="@drawable/editorv2_projects_panel_new_project_button" android:padding="4.0dip" android:visibility="gone" android:layout_width="160.0dip" android:layout_height="fill_parent" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:backgroundTint="@color/theme_panel" app:srcCompat="@drawable/game_jam" />
+            <androidx.legacy.widget.Space android:layout_width="12.0dip" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:background="@drawable/editorv2_projects_panel_mid_top_bar" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="wrap_content" android:layout_height="48.0dip">
+            <Button android:textSize="12.0sp" android:textColor="@color/white" android:id="@id/importFromAndroid" android:background="@drawable/editorv2_projects_panel_new_project_button" android:padding="6.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="4.0dip" android:text="Import from android" android:fontFamily="@font/musticapro_semibold" android:backgroundTint="@color/theme_accent_green" android:backgroundTintMode="multiply" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:background="@drawable/editorv2_projects_panel_right_top_bar" android:layout_width="@dimen/editor3d_v2_projects_panel_rounded_border" android:layout_height="fill_parent" android:paddingStart="8.0dip" android:backgroundTint="@color/theme_card" />
+    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView android:id="@id/recyclerView" android:paddingLeft="4.0dip" android:paddingTop="2.0dip" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+</LinearLayout>

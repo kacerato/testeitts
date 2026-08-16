@@ -1,0 +1,35 @@
+package com.google.android.gms.internal.measurement;
+
+import android.os.RemoteException;
+import java.util.Objects;
+
+public final class P0 extends AbstractRunnableC12212w1 {
+
+    public final String f62080f;
+
+    public final String f62081g;
+
+    public final BinderC12184t0 f62082h;
+
+    public final I1 f62083i;
+
+    /* JADX WARN: 'super' call moved to the top of the method (can break code semantics) */
+    public P0(I1 i12, String str, String str2, BinderC12184t0 binderC12184t0) {
+        super(i12, true);
+        this.f62080f = str;
+        this.f62081g = str2;
+        this.f62082h = binderC12184t0;
+        Objects.requireNonNull(i12);
+        this.f62083i = i12;
+    }
+
+    @Override
+    public final void a() throws RemoteException {
+        ((InterfaceC12211w0) G0.A.r(this.f62083i.q())).getConditionalUserProperties(this.f62080f, this.f62081g, this.f62082h);
+    }
+
+    @Override
+    public final void b() {
+        this.f62082h.l(null);
+    }
+}

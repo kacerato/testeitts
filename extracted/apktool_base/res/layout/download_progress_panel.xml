@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_tree_list_row_2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/action_progress" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.daimajia.numberprogressbar.NumberProgressBar android:id="@id/progressBar" android:layout_width="fill_parent" android:layout_height="wrap_content" app:progress_current="0" app:progress_reached_bar_height="4.0dip" app:progress_reached_color="@color/theme_primary" app:progress_text_color="@color/theme_primary" app:progress_text_offset="2.0dip" app:progress_text_size="12.0sp" app:progress_unreached_bar_height="2.0dip" app:progress_unreached_color="@color/theme_high_text_color" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/progress_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="importing: 100%" android:fontFamily="@font/base_bold" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

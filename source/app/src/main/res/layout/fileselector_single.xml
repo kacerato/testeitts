@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/toucharea" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/linearTopbar" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+        <FrameLayout android:padding="8.0dip" android:layout_width="72.0dip" android:layout_height="72.0dip">
+            <ImageView android:id="@id/iconAlpha" android:background="@drawable/alpha_small_v2" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+            <ImageView android:id="@id/icon" android:layout_width="fill_parent" android:layout_height="fill_parent" app:srcCompat="@drawable/wo_obj" />
+        </FrameLayout>
+        <Space android:layout_width="16.0dip" android:layout_height="fill_parent" />
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+            <TextView android:textSize="18.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/name" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="Name" android:layout_weight="1.0" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <FrameLayout android:paddingTop="8.0dip" android:paddingRight="8.0dip" android:paddingBottom="8.0dip" android:layout_width="26.0dip" android:layout_height="fill_parent">
+                    <ImageView android:id="@id/imageView57" android:background="@drawable/folder_blue" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+                </FrameLayout>
+                <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/path" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="Files/textures/" android:layout_weight="1.0" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

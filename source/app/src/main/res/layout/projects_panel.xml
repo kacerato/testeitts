@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/topbarView" android:background="@drawable/round_4_bottom" android:layout_width="fill_parent" android:layout_height="wrap_content" android:backgroundTint="@color/theme_panel_topbar">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/topbarView" android:layout_width="fill_parent" android:layout_height="48.0dip">
+            <androidx.legacy.widget.Space android:layout_width="16.0dip" android:layout_height="fill_parent" />
+            <ImageView android:paddingLeft="0.0dip" android:paddingRight="8.0dip" android:layout_width="34.0dip" android:layout_height="fill_parent" android:tint="@color/theme_high_text_color" app:srcCompat="@drawable/fire" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/tittle" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="ITSMAGIC" android:maxEms="12" android:fontFamily="@font/linkednow_extrabold" android:textAlignment="viewStart" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/newProjectBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <TextView android:textColor="@color/theme_high_text_color" android:gravity="center" android:paddingLeft="16.0dip" android:paddingRight="4.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="New" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/linkednow_extrabold" />
+                <ImageView android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/pack_shadow" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="16.0dip" android:layout_height="fill_parent" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/closeBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginRight="16.0dip">
+                <ImageView android:padding="10.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/close_x" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/topbarView" android:layout_width="fill_parent" android:layout_height="48.0dip">
+            <androidx.legacy.widget.Space android:layout_width="16.0dip" android:layout_height="fill_parent" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/whatsappBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <ImageView android:padding="7.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/whatsapp" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/discordBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <ImageView android:padding="6.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/discord_v2" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/youtubeBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <ImageView android:padding="6.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@null" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/accountBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <TextView android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/accountName" android:paddingLeft="16.0dip" android:paddingRight="4.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="ITsMagic" android:maxEms="12" android:singleLine="true" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/linkednow_extrabold" />
+                <ImageView android:padding="7.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/useraccount_rp" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:visibility="gone" android:layout_width="8.0dip" android:layout_height="fill_parent" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/cloudBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                    <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="top" android:id="@id/cloudProgressBarText" android:paddingLeft="12.0dip" android:paddingTop="2.0dip" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="0.0dip" android:text="1.5 / 2 GB" android:singleLine="true" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/linkednow_extrabold" />
+                    <FrameLayout android:gravity="bottom" android:id="@id/cloudProgressBarParent" android:paddingLeft="8.0dip" android:paddingRight="0.0dip" android:paddingBottom="4.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <ImageView android:background="@drawable/rounded_mp_button" android:layout_width="fill_parent" android:layout_height="6.0dip" android:backgroundTint="@color/editor3d_v2_button_semi_transparent" />
+                        <ImageView android:id="@id/cloudProgressBar" android:background="@drawable/rounded_mp_button" android:layout_width="48.0dip" android:layout_height="6.0dip" android:backgroundTint="@color/theme_primary_dark" />
+                    </FrameLayout>
+                </LinearLayout>
+                <ImageView android:padding="7.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/cloud_storage" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <ImageView android:id="@id/game_jam" android:background="@drawable/editorv2_projects_panel_new_project_button" android:padding="4.0dip" android:visibility="gone" android:layout_width="160.0dip" android:layout_height="64.0dip" android:layout_marginTop="4.0dip" android:layout_marginBottom="4.0dip" android:backgroundTint="@color/theme_panel" app:srcCompat="@drawable/game_jam" />
+            <com.itsmagic.engine.Activities.Editor.Utils.GenericSearchView android:id="@id/projectSearchView" android:layout_width="wrap_content" android:layout_height="32.0dip" />
+            <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/backupsBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <TextView android:textColor="@color/theme_high_text_color" android:gravity="center" android:paddingLeft="16.0dip" android:paddingRight="4.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="Backups" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/linkednow_extrabold" />
+                <ImageView android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/backup" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="16.0dip" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:id="@id/recyclerView" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:id="@id/bottombarView" android:background="@drawable/round_4_top" android:layout_width="fill_parent" android:layout_height="wrap_content" android:backgroundTint="@color/theme_panel_topbar" android:paddingVertical="2.0dip">
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip">
+            <androidx.legacy.widget.Space android:layout_width="16.0dip" android:layout_height="fill_parent" />
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="start|bottom|center" android:id="@id/projectTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Game name" android:fontFamily="@font/musticapro_semibold" />
+                <TextView android:textSize="10.0sp" android:textColor="@color/theme_high_text_color" android:gravity="start|center|top" android:id="@id/projectDescription" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Description" android:fontFamily="@font/musticapro_semibold" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/uploadingBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                    <TextView android:textSize="9.0sp" android:textColor="@color/theme_high_text_color" android:paddingLeft="12.0dip" android:paddingTop="3.0dip" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="12.0dip" android:text="Synchronizing" android:singleLine="true" android:includeFontPadding="false" android:lineSpacingExtra="-5.0dip" android:textAllCaps="true" android:fontFamily="@font/linkednow_extrabold" />
+                    <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                    <FrameLayout android:gravity="center" android:id="@id/uploadingProgressBarParent" android:paddingLeft="8.0dip" android:paddingRight="0.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <ImageView android:background="@drawable/rounded_mp_button" android:layout_width="fill_parent" android:layout_height="6.0dip" android:backgroundTint="@color/editor3d_v2_button_semi_transparent" />
+                        <ImageView android:id="@id/uploadingProgressBar" android:background="@drawable/rounded_mp_button" android:layout_width="48.0dip" android:layout_height="6.0dip" android:backgroundTint="@color/theme_primary_dark" />
+                    </FrameLayout>
+                    <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                    <TextView android:textSize="9.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/uploadingProgressBarText" android:paddingLeft="12.0dip" android:paddingTop="1.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="12.0dip" android:text="154 / 487" android:singleLine="true" android:includeFontPadding="false" android:lineSpacingExtra="-5.0dip" android:textAllCaps="true" android:fontFamily="@font/linkednow_extrabold" />
+                </LinearLayout>
+                <ImageView android:padding="6.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/cloud_v2" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/projectOptionsBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="32.0dip" android:layout_marginLeft="8.0dip">
+                <TextView android:textColor="@color/theme_high_text_color" android:gravity="center" android:paddingLeft="16.0dip" android:paddingRight="4.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="Options" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/linkednow_extrabold" />
+                <ImageView android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/menu" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="16.0dip" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="48.0dip">
+            <androidx.legacy.widget.Space android:layout_width="16.0dip" android:layout_height="fill_parent" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/deleteBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <ImageView android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/bin_nopadding_v2" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/saveBackupBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <ImageView android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/backup" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/shareBackupBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <ImageView android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/menu" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/openProjectBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <TextView android:textColor="@color/theme_high_text_color" android:gravity="center" android:paddingLeft="16.0dip" android:paddingRight="4.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="Open" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/linkednow_extrabold" />
+                <ImageView android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/left_arrow" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:id="@id/cloningBtn" android:tag="theme:projects_panel_button" android:background="@drawable/projects_panel_button_background" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="32.0dip">
+                    <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="top" android:id="@id/cloningProgressBarText" android:paddingLeft="12.0dip" android:paddingTop="2.0dip" android:paddingRight="0.0dip" android:layout_width="wrap_content" android:layout_height="0.0dip" android:text="154 / 487" android:singleLine="true" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/linkednow_extrabold" />
+                    <FrameLayout android:gravity="bottom" android:id="@id/cloningProgressBarParent" android:paddingLeft="8.0dip" android:paddingRight="0.0dip" android:paddingBottom="4.0dip" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                        <ImageView android:background="@drawable/rounded_mp_button" android:layout_width="fill_parent" android:layout_height="6.0dip" android:backgroundTint="@color/editor3d_v2_button_semi_transparent" />
+                        <ImageView android:id="@id/cloningProgressBar" android:background="@drawable/rounded_mp_button" android:layout_width="48.0dip" android:layout_height="6.0dip" android:backgroundTint="@color/theme_primary_dark" />
+                    </FrameLayout>
+                </LinearLayout>
+                <ImageView android:padding="6.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/download" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <androidx.legacy.widget.Space android:layout_width="16.0dip" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

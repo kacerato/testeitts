@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/background_blured_v2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginStart="32.0dip" android:layout_marginEnd="32.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+            <com.itsmagic.engine.Activities.Editor.Utils.MaskView.MaskableFrameLayout android:background="@color/editor3d_v2_panel_semi_transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="32.0dip" android:paddingEnd="32.0dip" app:anti_aliasing="false" app:mask="@drawable/editor3d_v2_projects_panel_project_mask" app:porterduffxfermode="DST_IN">
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                    <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="16.0dip" />
+                    <LinearLayout android:layout_gravity="center_horizontal" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                        <LinearLayout android:layout_gravity="center_horizontal" android:orientation="vertical" android:id="@id/contentArea" android:background="@color/theme_card" android:padding="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+                        <androidx.legacy.widget.Space android:layout_width="64.0dip" android:layout_height="fill_parent" />
+                        <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <TextView android:textSize="14.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/tittle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Configure the size of the buttons" android:singleLine="false" android:fontFamily="@font/musticapro_semibold" />
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center" android:id="@id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="You can change this later through the editor settings." android:singleLine="false" android:fontFamily="@font/progfont" />
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="16.0dip" />
+                            <TextView android:textSize="16.0sp" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/textView19" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="Scale" android:textAllCaps="true" android:fontFamily="@font/base_regular" />
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+                            <LinearLayout android:layout_gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                                <ImageView android:id="@id/minus" android:padding="4.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" android:tint="@color/theme_high_icon_tint" app:srcCompat="@drawable/minus" />
+                                <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                                <LinearLayout android:orientation="vertical" android:background="@drawable/editor3d_v2_input_text_background" android:paddingLeft="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingEnd="2.0dip">
+                                    <com.google.android.material.textfield.TextInputEditText android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/textInputEditText" android:background="@null" android:layout_width="76.0dip" android:layout_height="30.0dip" android:text="1.0" android:singleLine="true" android:selectAllOnFocus="true" android:inputType="numberDecimal|numberSigned" android:windowSoftInputMode="stateHidden" android:imeOptions="actionDone|flagNoExtractUi" android:fontFamily="@font/base_medium" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                                </LinearLayout>
+                                <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                                <ImageView android:id="@id/add" android:padding="4.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" android:tint="@color/theme_high_icon_tint" app:srcCompat="@drawable/plus_2" />
+                            </LinearLayout>
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="16.0dip" />
+                            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                                <Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                                <Button android:textColor="@color/white" android:id="@id/agree" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="Confirm" android:backgroundTint="@color/init_screens_primary" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                    <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="16.0dip" />
+                </LinearLayout>
+            </com.itsmagic.engine.Activities.Editor.Utils.MaskView.MaskableFrameLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

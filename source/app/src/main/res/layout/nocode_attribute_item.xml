@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/attributeItemRoot" android:background="@drawable/round_4" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:paddingStart="8.0dip" android:paddingEnd="4.0dip" android:backgroundTint="@color/theme_card"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+        <Space android:layout_width="fill_parent" android:layout_height="6.0dip" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:padding="0.0dip" android:layout_width="14.0dip" android:layout_height="fill_parent" android:layout_marginRight="4.0dip" android:src="@drawable/edit_attribute" android:layout_marginStart="4.0dip" app:tint="@color/theme_high_icon_tint" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/attributeTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Attribute" android:fontFamily="@font/base_medium" />
+        </LinearLayout>
+        <Space android:layout_width="fill_parent" android:layout_height="6.0dip" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ImageView android:padding="0.0dip" android:layout_width="14.0dip" android:layout_height="fill_parent" android:layout_marginRight="4.0dip" android:src="@drawable/edit_attribute" android:layout_marginStart="4.0dip" app:tint="@color/theme_high_icon_tint" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_mid_text_color" android:id="@id/attributeSubtitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="NUMBER" android:fontFamily="@font/base_regular" />
+        </LinearLayout>
+        <Space android:layout_width="fill_parent" android:layout_height="6.0dip" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/attributeAddNodeBtn" android:background="@drawable/action_button_background" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="8.0dip" android:paddingVertical="6.0dip">
+                <TextView android:textColor="@color/white" android:id="@id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Get node" android:textAllCaps="true" android:fontFamily="@font/base_bold" />
+            </LinearLayout>
+            <Space android:layout_width="8.0dip" android:layout_height="wrap_content" />
+            <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/attributeSetNodeBtn" android:background="@drawable/action_button_background" android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingHorizontal="8.0dip" android:paddingVertical="6.0dip">
+                <TextView android:textColor="@color/white" android:id="@id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Set node" android:textAllCaps="true" android:fontFamily="@font/base_bold" />
+            </LinearLayout>
+            <Space android:layout_width="8.0dip" android:layout_height="wrap_content" />
+        </LinearLayout>
+        <Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+    </LinearLayout>
+    <LinearLayout android:gravity="right" android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <ImageView android:id="@id/attributeDeleteBtn" android:padding="10.0dip" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/bin_nopadding_v2" android:layout_marginStart="4.0dip" app:tint="@color/theme_high_icon_tint" />
+        </LinearLayout>
+        <Space android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:id="@id/attributeVisibleContainer" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <CheckBox android:textSize="11.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/attributeVisibleToggle" android:padding="0.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:minWidth="0.0dip" android:minHeight="0.0dip" android:text="visible" android:buttonTint="@color/theme_high_icon_tint" />
+            <Space android:layout_width="4.0dip" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+    </LinearLayout>
+</LinearLayout>

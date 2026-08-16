@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_tree_list_row_1" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="8.0dip">
+        <TextView android:textSize="18.0sp" android:textColor="@color/orange_box_orange2" android:gravity="center" android:id="@id/tittle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Infelizmente essa versâo do aplicativo nâo funciona mais" android:fontFamily="@font/base_bold" />
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="16.0dip" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="center" android:id="@id/desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Você pode atualizar pela Google Play para poder utilizar o aplicativo normalmente" android:fontFamily="@font/base_bold" />
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="16.0dip" />
+        <Button android:textColor="@color/white" android:id="@id/update" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="wrap_content" android:layout_height="wrap_content" android:minHeight="40.0dip" android:text="atualizar" android:fontFamily="@font/base_bold" android:backgroundTint="@color/theme_primary" />
+        <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/ad_layout" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:anti_aliasing="false" app:porterduffxfermode="DST_IN">
+            <ImageView android:id="@id/imageView10" android:background="@drawable/rounded_foreground_tl" android:layout_width="8.0dip" android:layout_height="8.0dip" android:backgroundTint="@color/theme_panel" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+            <ImageView android:id="@id/imageView11" android:background="@drawable/rounded_foreground_tr" android:layout_width="8.0dip" android:layout_height="8.0dip" android:backgroundTint="@color/theme_panel" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>

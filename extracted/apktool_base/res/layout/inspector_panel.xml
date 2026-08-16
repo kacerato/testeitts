@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:id="@id/scrollView" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/scrollContent" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </ScrollView>
+    <LinearLayout android:orientation="vertical" android:id="@id/topContent" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:background="@color/theme_background" android:layout_width="fill_parent" android:layout_height="2.0dip" />
+    <com.itsmagic.engine.Activities.Editor.Utils.ExceptionSafeRecyclerView android:id="@id/listView" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" android:paddingEnd="0.0dip" />
+</LinearLayout>

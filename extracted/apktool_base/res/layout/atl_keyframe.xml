@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:id="@id/keyframe" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <LinearLayout android:orientation="horizontal" android:id="@id/linearLayout7" android:layout_width="fill_parent" android:layout_height="fill_parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+                <Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <ImageView android:id="@id/bar" android:layout_width="3.0dip" android:layout_height="fill_parent" android:scaleType="fitXY" app:srcCompat="@drawable/atl_keyframe_line" app:tint="@color/theme_primary_dark" />
+                <Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            </LinearLayout>
+            <ImageView android:id="@id/key" android:layout_width="fill_parent" android:layout_height="16.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintTop_toTopOf="parent" app:srcCompat="@drawable/atl_key" app:tint="@color/theme_atl_key" />
+            <LinearLayout android:orientation="vertical" android:background="@drawable/round_4_top" android:layout_width="fill_parent" android:layout_height="wrap_content" android:backgroundTint="@color/theme_primary_dark" android:paddingHorizontal="2.0dip" android:paddingVertical="0.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+                <TextView android:textSize="10.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/time" android:layout_width="fill_parent" android:layout_height="16.0dip" android:text="0:25" android:fontFamily="@font/musticapro_semibold" />
+            </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
+</LinearLayout>

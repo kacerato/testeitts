@@ -1,0 +1,69 @@
+-MANIFEST-
+{
+  "params": {
+    "topColor": "rgb",
+    "horizonColor": "rgb",
+    "groundColor": "rgb",
+    "horizonFade": "float01"
+  },
+  "defaults": {
+    "topColor": "[25, 80, 160]",
+    "horizonColor": "[180, 200, 220]",
+    "groundColor": "[30, 25, 20]",
+    "horizonFade": "0.08"
+  },
+  "precision": {
+    "topColor": "low",
+    "horizonColor": "low",
+    "groundColor": "low"
+  }
+}
+-MANIFEST-
+
+/* SHADER CODE */
+float saturatef1(float v) {
+    return clamp(v, 0.0, 1.0);
+}
+
+void material(inout MaterialInputs m) {
+    prepareMaterial(m);
+
+    float3 dir = normalize(getWorldPosition().xyz);
+    float t = saturatef1(dir.y * 0.5 + 0.5);
+    float h = smoothstep(-materialParams.horizonFade, materialParams.horizonFade, dir.y);
+
+    float3 sky = mix(materialParams.horizonColor, materialParams.topColor, t);
+    float3 ground = mix(materialParams.groundColor, materialParams.horizonColor, t);
+    float3 col = mix(ground, sky, h);
+
+    m.baseColor = float4(col, 1.0);
+}
+
+/* DOCUMENTATION
+Custom skybox shader template.
+Use getWorldPosition().xyz as the direction vector for sky coloring.
+materialParams.sunDir is provided automatically as the active SunLight direction in world space.
+When no SunLight is found, it falls back to (0, 1, 0).
+
+Param types:
+    rgba -> color converts to float4
+    rgb -> color converts to float3 (no alpha)
+    float -> float
+    float2 -> vector2 converts to float2
+    float3 -> vector3 converts to float3
+    float4 -> vector4 converts to float4
+    float01 -> shows a 0..1 slider
+    bool -> shows a toggle mapped to a float in shader (1.0 == true)
+
+Sampler types:
+    sampler2D -> texture
+    samplerCube -> cubemap
+
+Precisions:
+    low, medium & high
+
+Default sampler values:
+    filled -> all pixels 255,255,255,255
+    empty -> all pixels 0,0,0,0
+    black -> all pixels 0,0,0,255
+*/

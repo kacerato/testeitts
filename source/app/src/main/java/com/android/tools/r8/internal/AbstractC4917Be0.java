@@ -1,0 +1,7 @@
+package com.android.tools.r8.internal;
+
+public abstract class AbstractC4917Be0 {
+    public static String a(String str, String str2, String str3) {
+        return str + str2 + str3;
+    }
+}

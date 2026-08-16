@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/attributesRoot" android:background="@drawable/round_6" android:paddingLeft="2.0dip" android:paddingRight="4.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:backgroundTint="@color/theme_panel_topbar"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:background="@drawable/round_6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:backgroundTint="@color/theme_panel"
+      xmlns:android="http://schemas.android.com/apk/res/android">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/attributesTopbar" android:background="@drawable/round_6_top" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:backgroundTint="@color/theme_panel_topbar">
+                <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/attributesSubtitle" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="" android:layout_weight="1.0" android:fontFamily="@font/base_medium" android:paddingVertical="6.0dip" />
+                <ImageView android:id="@id/attributesAddBtn" android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="fill_parent" android:src="@drawable/plus" app:tint="@color/theme_high_icon_tint" />
+                <com.itsmagic.engine.Activities.Editor.Utils.DragPanelView android:id="@id/attributesMoveBtn" android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="fill_parent" android:src="@drawable/slide" android:layout_marginStart="2.0dip" app:tint="@color/theme_high_icon_tint" />
+                <ImageView android:id="@id/attributesCloseBtn" android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="fill_parent" android:src="@drawable/close_x" android:layout_marginStart="2.0dip" app:tint="@color/theme_high_icon_tint" />
+            </LinearLayout>
+            <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="vertical" android:id="@id/attributesListContainer" android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            </ScrollView>
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

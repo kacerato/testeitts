@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/topbar" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="28.0dip">
+        <ImageView android:id="@id/goBack" android:padding="6.0dip" android:layout_width="32.0dip" android:layout_height="fill_parent" android:src="@drawable/back_button" app:tint="@color/theme_high_icon_tint" />
+        <EditText android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_mid_text_color" android:id="@id/searchEdit" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="" android:hint="Search..." android:layout_weight="1.0" android:backgroundTint="@color/theme_high_icon_tint" android:paddingVertical="1.0dip" />
+        <HorizontalScrollView android:id="@id/topbarTittleScrollView" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/topbarTittle" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="...DIR..." android:singleLine="true" android:fontFamily="@font/base_regular" />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <Space android:layout_width="4.0dip" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/stopSearching" android:padding="8.0dip" android:layout_width="28.0dip" android:layout_height="fill_parent" android:src="@drawable/close_x" app:tint="@color/theme_high_icon_tint" />
+        <ImageView android:id="@id/searchBtn" android:padding="7.0dip" android:layout_width="28.0dip" android:layout_height="fill_parent" android:src="@drawable/search_store_icon_v2" app:tint="@color/theme_high_icon_tint" />
+        <ImageView android:id="@id/gridBtn" android:padding="7.0dip" android:layout_width="28.0dip" android:layout_height="fill_parent" android:src="@drawable/view_list" app:tint="@color/theme_high_icon_tint" />
+        <ImageView android:id="@id/menuBtn" android:padding="7.0dip" android:layout_width="28.0dip" android:layout_height="fill_parent" android:src="@drawable/menu" app:tint="@color/theme_high_icon_tint" />
+    </LinearLayout>
+    <FrameLayout android:id="@id/inflateViewContent" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+</LinearLayout>

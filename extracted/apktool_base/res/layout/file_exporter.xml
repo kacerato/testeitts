@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:paddingTop="8.0dip" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="8.0dip" android:paddingEnd="8.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="0.0dip" android:layout_marginRight="0.0dip" android:layout_marginBottom="0.0dip" android:minWidth="250.0dip">
+        <LinearLayout android:orientation="vertical" android:background="@color/file_picker_v2_top_panel" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/tittle" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="File Picker" android:fontFamily="@font/base_semibold" android:paddingStart="16.0dip" android:paddingEnd="8.0dip" />
+                <FrameLayout android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                    <LinearLayout android:background="@color/interface_panel" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="8.0dip" android:layout_marginBottom="8.0dip" android:layout_marginEnd="4.0dip" />
+                    <com.google.android.material.textfield.TextInputLayout android:textColorHint="@color/theme_high_text_color" android:id="@id/foldertil" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginBottom="8.0dip" android:hint="Destination" android:layout_marginEnd="4.0dip">
+                        <com.google.android.material.textfield.TextInputEditText android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/folder" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:inputType="textNoSuggestions|textShortMessage" android:imeOptions="actionDone|flagNoExtractUi" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </FrameLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/filesexplorer" android:background="@color/mp_back" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="vertical" android:background="@color/file_explorer_v2_bottom_panel" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingStart="8.0dip">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                    <Button android:textColor="@color/theme_high_text_color" android:id="@id/cancel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Cancel" android:fontFamily="@font/base_semibold" android:backgroundTint="@color/file_explorer_v2_button" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0">
+                    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.5">
+                        <LinearLayout android:background="@color/interface_panel" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="6.0dip" android:layout_marginBottom="8.0dip" android:layout_marginStart="4.0dip" android:layout_marginEnd="8.0dip" />
+                        <com.google.android.material.textfield.TextInputLayout android:textColorHint="@color/theme_high_text_color" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="8.0dip" android:hint="File name" android:layout_weight="3.0" android:layout_marginStart="4.0dip" android:layout_marginEnd="8.0dip" app:counterMaxLength="200">
+                            <com.google.android.material.textfield.TextInputEditText android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/filename" android:layout_width="fill_parent" android:layout_height="wrap_content" android:singleLine="true" android:inputType="textNoSuggestions|textShortMessage" android:imeOptions="actionDone|flagNoExtractUi" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </FrameLayout>
+                </LinearLayout>
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                    <Button android:textColor="@color/theme_high_text_color" android:id="@id/done" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Done" android:fontFamily="@font/base_semibold" android:backgroundTint="@color/file_explorer_v2_button" />
+                    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:background="@color/theme_semi_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:layout_gravity="center" android:background="@color/theme_tree_list_row_1" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.jsibbold.zoomage.ZoomageView android:id="@id/myZoomageView" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:zoomage_animateOnReset="true" app:zoomage_autoCenter="true" app:zoomage_autoResetMode="UNDER" app:zoomage_maxScale="16.0" app:zoomage_minScale="0.6" app:zoomage_restrictBounds="false" app:zoomage_translatable="true" app:zoomage_zoomable="true" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/closeButton" android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/bordered_close_x" />
+</FrameLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/round_2" android:padding="3.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:backgroundTint="@color/theme_panel"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="52.0dip">
+        <com.itsmagic.engine.Activities.Editor.Panels.Profiler.CPUProfiler.CPUCoreGraphView android:id="@id/cpuCoreGraph" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <TextView android:textSize="8.0sp" android:textColor="@color/theme_mid_text_color" android:layout_gravity="start|center|top" android:id="@id/cpuCoreTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="4.0dip" android:text="CPU 0" android:fontFamily="@font/base_regular" />
+        <TextView android:textSize="8.0sp" android:textColor="@color/theme_high_text_color" android:layout_gravity="end|center|top" android:id="@id/cpuCoreUsage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginRight="5.0dip" android:text="0%" android:fontFamily="@font/base_regular" />
+        <TextView android:textSize="7.0sp" android:textColor="@color/theme_high_text_color" android:layout_gravity="end|bottom|center" android:id="@id/cpuCoreCurrentFreq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="5.0dip" android:layout_marginBottom="3.0dip" android:fontFamily="@font/base_regular" />
+        <TextView android:textSize="6.0sp" android:textColor="@color/theme_mid_text_color" android:layout_gravity="start|bottom|center" android:id="@id/cpuCoreMaxFreq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginBottom="3.0dip" android:fontFamily="@font/base_regular" />
+    </FrameLayout>
+</LinearLayout>

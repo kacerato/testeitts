@@ -1,0 +1,126 @@
+-MANIFEST-
+{
+  "max_simultaneous_emitters": 6,
+  "params": {
+    "lifeTime": "float",
+    "waveWidth": "float",
+    "speed": "float"
+  },
+  "defaults": {
+    "lifeTime": "5",
+    "waveWidth": "1.5",
+    "speed": "8"
+  },
+  "precision": {
+    "lifeTime": "medium",
+    "waveWidth": "medium",
+    "speed": "medium"
+  }
+}
+-MANIFEST-
+
+-FRAGMENT SHADER-
+void vfx_fn_fragment(inout VFXMaterialInputs material, VFXEmitter emitter) {
+    float lifeTime = max(vfxParams.lifeTime, 0.0001);
+    float waveWidth = max(vfxParams.waveWidth, 0.0001);
+    float speed = max(vfxParams.speed, 0.0001);
+
+    float age = mod(vfxParams.time, lifeTime);
+    float fade = 1.0 - clamp(age / lifeTime, 0.0, 1.0);
+    float waveRadius = age * speed;
+    float distanceToEmitter = distance(getUserWorldPosition().xyz, emitter.position);
+    float wave = 1.0 - smoothstep(0.0, waveWidth, abs(distanceToEmitter - waveRadius));
+    float intensity = wave * fade;
+
+    float4 emissiveColor = float4(0.35 * intensity, 0.60 * intensity, 1.00 * intensity, 1.0);
+    float emissiveNits = 10.0;
+    float4 emissiveRadiance = toEmissiveRadiance(emissiveColor, emissiveNits);
+    material.emissive = sumEmissiveRadiance(material.emissive, emissiveRadiance, emissiveNits);
+
+    material.baseColor.rgb += float3(0.35, 0.60, 1.00) * intensity;
+    material.ambientOcclusion = mix(material.ambientOcclusion, 1.0, intensity * 0.5);
+}
+-FRAGMENT SHADER-
+
+-SUB MATERIAL SHADER-
+void vfx_fn_subMaterial(inout SubMaterialData smData, VFXEmitter emitter) {
+    // passthrough
+}
+-SUB MATERIAL SHADER-
+
+-VERTEX SHADER-
+void vfx_fn_vertex(inout MaterialVertexInputs v, VFXEmitter emitter) {
+    float lifeTime = max(vfxParams.lifeTime, 0.0001);
+    float waveWidth = max(vfxParams.waveWidth, 0.0001);
+    float speed = max(vfxParams.speed, 0.0001);
+
+    float age = mod(vfxParams.time, lifeTime);
+    float fade = 1.0 - clamp(age / lifeTime, 0.0, 1.0);
+    float waveRadius = age * speed;
+
+    float3 sourceWorldPosition = getUserWorldPosition();
+    float3 toEmitter = emitter.position - sourceWorldPosition;
+    float distanceToEmitter = length(toEmitter);
+    float3 directionToEmitter = toEmitter / max(distanceToEmitter, 0.0001);
+    float wave = 1.0 - smoothstep(0.0, waveWidth, abs(distanceToEmitter - waveRadius));
+    float pullStrength = wave * fade * waveWidth;
+
+    v.worldPosition.xyz += directionToEmitter * pullStrength;
+}
+-VERTEX SHADER-
+
+/* DOCUMENTATION
+Shader rendering engine is Google filament, search about Google filament shader attributes and uniforms
+
+This is an example of a VFX Shader that simulates a wave expands from the emitter using vfxParams.time, resets every lifeTime seconds, pulls vertices toward the emitter, and fades out near the end of its life.
+
+The dynamic time value is available as vfxParams.time and is not shown in the inspector.
+
+Functions must begin with the prefix "vfx_fn_"
+Structs must begin with the prefix "VFX_STRUCT_"
+
+How to access parameters:
+-Use vfxParams instead of materialParams.
+-And it can only be accessed in the main function (vfx_fn_fragment or vfx_fn_vertex). If you need to access parameters in external functions, pass them as arguments.
+
+It is possible to sample decal textures using:
+float4 decal(int layer, float2 uv);
+float4 decalPixel(int layer, float2 uv);
+
+Properties inspector params:
+Param types:
+    rgba -> color converts to float4
+    rgb -> color converts to float3 (no alpha)
+    float -> float
+    float2 -> vector2 converts to float2
+    float3 -> vector3 converts to float3
+    float4 -> vector4 converts to float4
+    float01 -> shows a 0..1 slider
+    bool -> shows a toggle mapped to a float in shader (1.0 == true)
+    int -> integer
+
+Precisions:
+    low, medium & high
+
+Struct DOC:
+struct VFXMaterialInputs:
+    float4 baseColor;
+    float4 emissive;
+    float4 postLightingColor;
+    float  roughness;
+    float  metallic;
+    float  reflectance;
+    float  ambientOcclusion;
+    float3 normal;
+    float transmission;
+    float3 absorption;
+    float ior;
+    float microThickness;
+    int model;
+struct VFXEmitter:
+    float3 position;
+    int index;
+struct SubMaterialData:
+    float2 parallaxDelta;
+    float3 normalDisturb;
+*/

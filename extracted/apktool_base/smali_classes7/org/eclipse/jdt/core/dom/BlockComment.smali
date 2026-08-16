@@ -1,0 +1,127 @@
+.class public final Lorg/eclipse/jdt/core/dom/BlockComment;
+.super Lorg/eclipse/jdt/core/dom/Comment;
+.source "SourceFile"
+
+
+# static fields
+.field private static final PROPERTY_DESCRIPTORS:Ljava/util/List;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 2
+
+    new-instance v0, Ljava/util/ArrayList;
+
+    const/4 v1, 0x1
+
+    invoke-direct {v0, v1}, Ljava/util/ArrayList;-><init>(I)V
+
+    const-class v1, Lorg/eclipse/jdt/core/dom/BlockComment;
+
+    invoke-static {v1, v0}, Lorg/eclipse/jdt/core/dom/ASTNode;->createPropertyList(Ljava/lang/Class;Ljava/util/List;)V
+
+    invoke-static {v0}, Lorg/eclipse/jdt/core/dom/ASTNode;->reapPropertyList(Ljava/util/List;)Ljava/util/List;
+
+    move-result-object v0
+
+    sput-object v0, Lorg/eclipse/jdt/core/dom/BlockComment;->PROPERTY_DESCRIPTORS:Ljava/util/List;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lorg/eclipse/jdt/core/dom/AST;)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Lorg/eclipse/jdt/core/dom/Comment;-><init>(Lorg/eclipse/jdt/core/dom/AST;)V
+
+    return-void
+.end method
+
+.method public static propertyDescriptors(I)Ljava/util/List;
+    .locals 0
+
+    sget-object p0, Lorg/eclipse/jdt/core/dom/BlockComment;->PROPERTY_DESCRIPTORS:Ljava/util/List;
+
+    return-object p0
+.end method
+
+
+# virtual methods
+.method public accept0(Lorg/eclipse/jdt/core/dom/ASTVisitor;)V
+    .locals 0
+
+    invoke-virtual {p1, p0}, Lorg/eclipse/jdt/core/dom/ASTVisitor;->visit(Lorg/eclipse/jdt/core/dom/BlockComment;)Z
+
+    invoke-virtual {p1, p0}, Lorg/eclipse/jdt/core/dom/ASTVisitor;->endVisit(Lorg/eclipse/jdt/core/dom/BlockComment;)V
+
+    return-void
+.end method
+
+.method public clone0(Lorg/eclipse/jdt/core/dom/AST;)Lorg/eclipse/jdt/core/dom/ASTNode;
+    .locals 2
+
+    new-instance v0, Lorg/eclipse/jdt/core/dom/BlockComment;
+
+    invoke-direct {v0, p1}, Lorg/eclipse/jdt/core/dom/BlockComment;-><init>(Lorg/eclipse/jdt/core/dom/AST;)V
+
+    invoke-virtual {p0}, Lorg/eclipse/jdt/core/dom/ASTNode;->getStartPosition()I
+
+    move-result p1
+
+    invoke-virtual {p0}, Lorg/eclipse/jdt/core/dom/ASTNode;->getLength()I
+
+    move-result v1
+
+    invoke-virtual {v0, p1, v1}, Lorg/eclipse/jdt/core/dom/ASTNode;->setSourceRange(II)V
+
+    return-object v0
+.end method
+
+.method public final getNodeType0()I
+    .locals 1
+
+    const/16 v0, 0x40
+
+    return v0
+.end method
+
+.method public final internalStructuralPropertiesForType(I)Ljava/util/List;
+    .locals 0
+
+    invoke-static {p1}, Lorg/eclipse/jdt/core/dom/BlockComment;->propertyDescriptors(I)Ljava/util/List;
+
+    move-result-object p1
+
+    return-object p1
+.end method
+
+.method public memSize()I
+    .locals 1
+
+    invoke-super {p0}, Lorg/eclipse/jdt/core/dom/Comment;->memSize()I
+
+    move-result v0
+
+    return v0
+.end method
+
+.method public final subtreeMatch0(Lorg/eclipse/jdt/core/dom/ASTMatcher;Ljava/lang/Object;)Z
+    .locals 0
+
+    invoke-virtual {p1, p0, p2}, Lorg/eclipse/jdt/core/dom/ASTMatcher;->match(Lorg/eclipse/jdt/core/dom/BlockComment;Ljava/lang/Object;)Z
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public treeSize()I
+    .locals 1
+
+    invoke-virtual {p0}, Lorg/eclipse/jdt/core/dom/BlockComment;->memSize()I
+
+    move-result v0
+
+    return v0
+.end method

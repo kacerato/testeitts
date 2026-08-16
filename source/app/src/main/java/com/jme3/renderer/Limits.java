@@ -1,0 +1,30 @@
+package com.jme3.renderer;
+
+public enum Limits {
+    VertexTextureUnits,
+    FragmentTextureUnits,
+    FragmentUniformVectors,
+    VertexUniformVectors,
+    VertexAttributes,
+    FrameBufferSamples,
+    FrameBufferAttachments,
+    FrameBufferMrtAttachments,
+    RenderBufferSize,
+    TextureSize,
+    CubemapSize,
+    ColorTextureSamples,
+    DepthTextureSamples,
+    TextureAnisotropy,
+    UniformBufferObjectMaxVertexBlocks,
+    UniformBufferObjectMaxFragmentBlocks,
+    UniformBufferObjectMaxGeometryBlocks,
+    UniformBufferObjectMaxBlockSize,
+    ShaderStorageBufferObjectMaxBlockSize,
+    ShaderStorageBufferObjectMaxVertexBlocks,
+    ShaderStorageBufferObjectMaxFragmentBlocks,
+    ShaderStorageBufferObjectMaxGeometryBlocks,
+    ShaderStorageBufferObjectMaxTessControlBlocks,
+    ShaderStorageBufferObjectMaxTessEvaluationBlocks,
+    ShaderStorageBufferObjectMaxComputeBlocks,
+    ShaderStorageBufferObjectMaxCombineBlocks
+}

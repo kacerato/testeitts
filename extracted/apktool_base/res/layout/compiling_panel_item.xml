@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/toucharea" android:background="@color/theme_tree_list_row_2" android:layout_width="fill_parent" android:layout_height="40.0dip">
+        <ImageView android:id="@id/icon" android:background="@color/theme_tree_list_row_2" android:padding="8.0dip" android:layout_width="40.0dip" android:layout_height="fill_parent" android:scaleType="centerCrop" app:srcCompat="@drawable/ad_block" />
+        <LinearLayout android:orientation="vertical" android:id="@id/linearTopbar" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/tittle" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Project title" android:singleLine="true" android:fontFamily="@font/musticapro_semibold" />
+            <Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="center_vertical" android:id="@id/desc" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="adsasdasd" android:singleLine="true" android:fontFamily="@font/musticapro_semibold" />
+            <Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/menu" android:layout_width="32.0dip" android:layout_height="fill_parent">
+            <ImageView android:padding="10.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" app:srcCompat="@drawable/menu" />
+        </LinearLayout>
+    </LinearLayout>
+    <Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+</LinearLayout>

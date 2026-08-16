@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/displayer" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ImageView android:id="@id/user_icon" android:layout_width="20.0dip" android:layout_height="20.0dip" app:srcCompat="@drawable/useraccount_rp" app:tint="@color/theme_high_icon_tint" />
+    <TextView android:textSize="14.0sp" android:textColor="@color/universal_green" android:layout_gravity="center_vertical" android:id="@id/user_name" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Name" android:fontFamily="@font/base_bold" android:layout_marginStart="8.0dip" />
+    <LinearLayout android:gravity="center_vertical" android:layout_gravity="center_vertical" android:orientation="horizontal" android:id="@id/user_profile_module" android:layout_width="wrap_content" android:layout_height="fill_parent" android:layout_marginStart="8.0dip" />
+</LinearLayout>

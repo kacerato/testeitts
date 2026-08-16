@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:background="@color/theme_panel_topbar" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" android:paddingStart="8.0dip">
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:gravity="bottom" android:id="@id/tittle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Cloud sync" android:textAllCaps="true" android:fontFamily="@font/base_bold" android:textAlignment="viewStart" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/menu" android:layout_width="42.0dip" android:layout_height="fill_parent">
+            <ImageView android:padding="12.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" app:srcCompat="@drawable/menu" />
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:background="@color/theme_panel_topbar" android:layout_width="fill_parent" android:layout_height="0.0dip" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/offLayout" android:background="@color/theme_card" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="64.0dip" app:srcCompat="@drawable/cloud_off" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="CloudSync is turned off in project settings" android:fontFamily="@font/base_regular" android:textAlignment="center" />
+        <Button android:textColor="@color/white" android:layout_gravity="center" android:id="@id/activateButton" android:background="@drawable/editor3d_v2_rounded_button" android:padding="8.0dip" android:layout_width="wrap_content" android:layout_height="38.0dip" android:text="Activate" android:fontFamily="@font/base_medium" android:backgroundTint="@color/theme_primary_dark" />
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/blankSlate" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <ImageView android:layout_width="fill_parent" android:layout_height="64.0dip" app:srcCompat="@drawable/blank_slate" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:padding="16.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="All files are up to date!" android:fontFamily="@font/base_regular" android:textAlignment="center" />
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+    </LinearLayout>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/recycler" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

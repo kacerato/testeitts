@@ -1,0 +1,33 @@
+.class public final Lcom/android/tools/r8/internal/x;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# static fields
+.field public static final b:Lcom/android/tools/r8/internal/x;
+
+
+# instance fields
+.field public a:Lcom/android/tools/r8/internal/x;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Lcom/android/tools/r8/internal/x;
+
+    invoke-direct {v0}, Lcom/android/tools/r8/internal/x;-><init>()V
+
+    sput-object v0, Lcom/android/tools/r8/internal/x;->b:Lcom/android/tools/r8/internal/x;
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method

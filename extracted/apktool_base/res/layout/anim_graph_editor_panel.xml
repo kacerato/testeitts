@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/leftPanel" android:background="@color/theme_panel" android:layout_width="128.0dip" android:layout_height="fill_parent">
+        <com.itsmagic.engine.Activities.Editor.Utils.ExceptionSafeRecyclerView android:id="@id/leftPanelRecycler" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <LinearLayout android:orientation="horizontal" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="26.0dip" android:layout_marginBottom="2.0dip">
+            <TextView android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/selectedTittle" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="LAYER" android:singleLine="true" android:textAllCaps="true" android:fontFamily="@font/base_medium" />
+        </LinearLayout>
+        <FrameLayout android:id="@id/renderArea" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="horizontal" android:id="@id/tools" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="32.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

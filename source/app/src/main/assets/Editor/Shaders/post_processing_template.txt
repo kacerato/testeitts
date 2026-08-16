@@ -1,0 +1,54 @@
+-MANIFEST-
+{
+  "params": {
+    "color": "rgba",
+    "texture": "sampler2D"
+  },
+  "defaults": {
+    "color": "[255, 0, 0, 255]",
+    "texture": "filled"
+  },
+  "precision": {
+    "color": "low"
+  }
+}
+-MANIFEST-
+
+/* SHADER CODE */
+void material(inout MaterialInputs m) {
+    prepareMaterial(m);
+    float2 uv = getUV0();
+
+    float4 color = materialParams.color;
+    float4 texPixel = texture(materialParams_texture, uv);
+    float4 cameraPixel = texture(materialParams_cameraImage, uv);
+
+    m.baseColor = color * texPixel * cameraPixel;
+}
+
+/* DOCUMENTATION
+Shader rendering engine is Google filament, search about Google filament shader attributes and uniforms
+
+Properties inspector params:
+Param types:
+    rgba -> color converts to float4
+    rgb -> color converts to float3 (no alpha)
+    float -> float
+    float2 -> vector2 converts to float2
+    float3 -> vector3 converts to float3
+    float4 -> vector4 converts to float4
+    float01 -> shows a 0..1 slider
+    bool -> shows a toggle mapped to a float in shader (1.0 == true)
+
+Sampler types:
+    sampler2D -> texture
+    samplerCube -> cubemap
+
+Precisions:
+    low, medium & high
+
+Default sampler values:
+    filled -> all pixels 255,255,255,255
+    empty -> all pixels 0,0,0,0
+    black -> all pixels 0,0,0,255
+*/

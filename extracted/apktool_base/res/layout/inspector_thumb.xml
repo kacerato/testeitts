@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.makeramen.roundedimageview.RoundedImageView android:id="@id/background" android:layout_width="fill_parent" android:layout_height="96.0dip" android:src="@drawable/thumb_background_v2" android:scaleType="centerCrop" app:riv_border_color="@color/theme_panel_topbar" app:riv_border_width="2.0dip" app:riv_corner_radius="4.0dip" app:riv_mutate_background="true" app:riv_oval="false" app:riv_tile_mode="clamp" />
+    <ImageView android:id="@id/imageView" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="96.0dip" android:scaleType="fitCenter" />
+    <ImageView android:layout_gravity="center|right|top" android:id="@id/contextMenu" android:padding="6.0dip" android:visibility="visible" android:layout_width="40.0dip" android:layout_height="40.0dip" android:tint="@color/theme_primary_dark" app:srcCompat="@drawable/pen" />
+</FrameLayout>

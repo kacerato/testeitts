@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_weight="2.0"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/topbar" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="28.0dip">
+        <ImageView android:id="@id/goBack" android:padding="6.0dip" android:layout_width="32.0dip" android:layout_height="fill_parent" android:src="@drawable/back_button" android:tint="@color/theme_high_icon_tint" />
+        <HorizontalScrollView android:id="@id/topbarTittleScrollView" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/topbarTittle" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="Fies/lTsMagicOffcials/Rocks/Rock1/v" android:singleLine="true" android:fontFamily="@font/base_regular" />
+            </LinearLayout>
+        </HorizontalScrollView>
+        <Space android:layout_width="4.0dip" android:layout_height="fill_parent" />
+        <ImageView android:id="@id/importFiles" android:padding="6.0dip" android:layout_width="32.0dip" android:layout_height="fill_parent" android:src="@drawable/new_icon" android:tint="@color/theme_high_icon_tint" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:focusable="true" android:focusableInTouchMode="true" android:clickable="true" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:id="@id/leftPanel" android:background="@color/theme_background" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="2.0">
+            <HorizontalScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                    <com.itsmagic.engine.Activities.Editor.Utils.ExceptionSafeRecyclerView android:id="@id/leftPanelRecycler" android:layout_width="10000.0dip" android:layout_height="fill_parent" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/rightPanel" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:id="@id/contentView" android:background="@color/mp_back" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <com.itsmagic.engine.Activities.Editor.Utils.ExceptionSafeRecyclerView android:id="@id/contentViewRecycler" android:layout_width="fill_parent" android:layout_height="fill_parent" android:paddingStart="4.0dip" android:paddingEnd="4.0dip" />
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/blankSlate" android:background="@color/mp_back" android:padding="0.0dip" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <ImageView android:id="@id/emptyIcon" android:layout_width="48.0dip" android:layout_height="48.0dip" android:src="@drawable/folder_v3" android:contentDescription="No data" />
+                <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="#ff888888" android:id="@id/emptyTitle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip" android:text="Hmmâ€¦" android:fontFamily="@font/base_medium" />
+                <TextView android:textSize="12.0sp" android:textColor="#ffb0b0b0" android:id="@id/emptyMessage" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="Nothing here!" android:fontFamily="@font/base_medium" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

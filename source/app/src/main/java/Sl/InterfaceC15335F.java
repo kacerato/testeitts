@@ -1,0 +1,41 @@
+package sl;
+
+import java.nio.ByteBuffer;
+import java.security.InvalidKeyException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.SecureRandom;
+import java.security.SignatureException;
+import java.security.cert.Certificate;
+
+public interface InterfaceC15335F {
+    boolean a();
+
+    PrivateKey c();
+
+    String getAlgorithm();
+
+    void initSign(PrivateKey privateKey) throws InvalidKeyException;
+
+    void initSign(PrivateKey privateKey, SecureRandom secureRandom) throws InvalidKeyException;
+
+    void initVerify(PublicKey publicKey) throws InvalidKeyException;
+
+    void initVerify(Certificate certificate) throws InvalidKeyException;
+
+    int sign(byte[] bArr, int i10, int i11) throws SignatureException;
+
+    byte[] sign() throws SignatureException;
+
+    void update(byte b10) throws SignatureException;
+
+    void update(ByteBuffer byteBuffer) throws SignatureException;
+
+    void update(byte[] bArr) throws SignatureException;
+
+    void update(byte[] bArr, int i10, int i11) throws SignatureException;
+
+    boolean verify(byte[] bArr) throws SignatureException;
+
+    boolean verify(byte[] bArr, int i10, int i11) throws SignatureException;
+}

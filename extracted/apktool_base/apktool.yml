@@ -1,0 +1,550 @@
+version: 2.10.0
+apkFileName: base.apk
+isFrameworkApk: false
+usesFramework:
+  ids:
+  - 1
+  tag: null
+sdkInfo:
+  minSdkVersion: 26
+  targetSdkVersion: 36
+packageInfo:
+  forcedPackageId: 127
+  renameManifestPackage: null
+versionInfo:
+  versionCode: 2123
+  versionName: P2.2026.08f4
+resourcesAreCompressed: false
+sharedLibrary: false
+sparseResources: false
+unknownFiles:
+  Configuration.proto: 8
+  DebugProbesKt.bin: 8
+  Resources.proto: 8
+  ResourcesInternal.proto: 8
+  core-common.properties: 8
+  defaultFragmentShader.src: 8
+  defaultFragmentShaderDepth.src: 8
+  defaultFragmentShaderFog.src: 8
+  defaultFragmentShaderFogLight0.src: 8
+  defaultFragmentShaderTex0.src: 8
+  defaultFragmentShaderTex0Amb.src: 8
+  defaultFragmentShaderTex0Light0.src: 8
+  defaultFragmentShaderTex1.src: 8
+  defaultVertexShader.src: 8
+  defaultVertexShaderDepth.src: 8
+  defaultVertexShaderFog.src: 8
+  defaultVertexShaderFogLight0.src: 8
+  defaultVertexShaderTex0.src: 8
+  defaultVertexShaderTex0Amb.src: 8
+  defaultVertexShaderTex0Light0.src: 8
+  defaultVertexShaderTex1.src: 8
+  firebase-analytics.properties: 8
+  firebase-annotations.properties: 8
+  firebase-measurement-connector.properties: 8
+  jdtCompilerAdapter.jar: 8
+  joystick-mapping.properties: 8
+  kotlin-tooling-metadata.json: 8
+  license.txt: 8
+  play-services-ads-identifier.properties: 8
+  play-services-auth-api-phone.properties: 8
+  play-services-auth-base.properties: 8
+  play-services-auth.properties: 8
+  play-services-base.properties: 8
+  play-services-basement.properties: 8
+  play-services-fido.properties: 8
+  play-services-measurement-api.properties: 8
+  play-services-measurement-base.properties: 8
+  play-services-measurement-impl.properties: 8
+  play-services-measurement-sdk-api.properties: 8
+  play-services-measurement-sdk.properties: 8
+  play-services-measurement.properties: 8
+  play-services-stats.properties: 8
+  play-services-tasks.properties: 8
+  plugin.properties: 8
+  plugin.xml: 8
+  r8-version.properties: 8
+  review.properties: 8
+  user-messaging-platform.properties: 8
+  Common/IBL/IBLKernels.frag: 8
+  Common/IBL/IBLKernels.j3md: 8
+  Common/IBL/IBLKernels.vert: 8
+  Common/IBL/Math.glsl: 8
+  Common/IBLSphH/IBLSphH.frag: 8
+  Common/IBLSphH/IBLSphH.j3md: 8
+  Common/IBLSphH/IBLSphH.vert: 8
+  Common/MatDefs/Blit/Blit.frag: 8
+  Common/MatDefs/Blit/Blit.j3md: 8
+  Common/MatDefs/Blit/Blit.vert: 8
+  Common/MatDefs/Blur/HGaussianBlur.frag: 8
+  Common/MatDefs/Blur/HGaussianBlur.j3md: 8
+  Common/MatDefs/Blur/RadialBlur.frag: 8
+  Common/MatDefs/Blur/RadialBlur.j3md: 8
+  Common/MatDefs/Blur/VGaussianBlur.frag: 8
+  Common/MatDefs/Blur/VGaussianBlur.j3md: 8
+  Common/MatDefs/Gui/Gui.frag: 8
+  Common/MatDefs/Gui/Gui.j3md: 8
+  Common/MatDefs/Gui/Gui.vert: 8
+  Common/MatDefs/Hdr/LogLum.frag: 8
+  Common/MatDefs/Hdr/LogLum.j3md: 8
+  Common/MatDefs/Hdr/ToneMap.frag: 8
+  Common/MatDefs/Hdr/ToneMap.j3md: 8
+  Common/MatDefs/Light/Deferred.frag: 8
+  Common/MatDefs/Light/Deferred.j3md: 8
+  Common/MatDefs/Light/Deferred.vert: 8
+  Common/MatDefs/Light/GBuf.frag: 8
+  Common/MatDefs/Light/GBuf.vert: 8
+  Common/MatDefs/Light/Glow.frag: 8
+  Common/MatDefs/Light/Lighting.frag: 8
+  Common/MatDefs/Light/Lighting.j3md: 8
+  Common/MatDefs/Light/Lighting.vert: 8
+  Common/MatDefs/Light/PBRGlow.frag: 8
+  Common/MatDefs/Light/PBRLighting.frag: 8
+  Common/MatDefs/Light/PBRLighting.j3md: 8
+  Common/MatDefs/Light/PBRLighting.vert: 8
+  Common/MatDefs/Light/SPLighting.frag: 8
+  Common/MatDefs/Light/SPLighting.vert: 8
+  Common/MatDefs/Misc/Billboard.j3md: 8
+  Common/MatDefs/Misc/ColoredTextured.frag: 8
+  Common/MatDefs/Misc/ColoredTextured.j3md: 8
+  Common/MatDefs/Misc/ColoredTextured.vert: 8
+  Common/MatDefs/Misc/Dashed.j3md: 8
+  Common/MatDefs/Misc/DashedLine.j3md: 8
+  Common/MatDefs/Misc/Particle.frag: 8
+  Common/MatDefs/Misc/Particle.j3md: 8
+  Common/MatDefs/Misc/Particle.vert: 8
+  Common/MatDefs/Misc/ShowNormals.frag: 8
+  Common/MatDefs/Misc/ShowNormals.j3md: 8
+  Common/MatDefs/Misc/ShowNormals.vert: 8
+  Common/MatDefs/Misc/Sky.frag: 8
+  Common/MatDefs/Misc/Sky.j3md: 8
+  Common/MatDefs/Misc/Sky.vert: 8
+  Common/MatDefs/Misc/SkyNonCube.j3md: 8
+  Common/MatDefs/Misc/SoftParticle.frag: 8
+  Common/MatDefs/Misc/SoftParticle.vert: 8
+  Common/MatDefs/Misc/Unshaded.frag: 8
+  Common/MatDefs/Misc/Unshaded.j3md: 8
+  Common/MatDefs/Misc/Unshaded.vert: 8
+  Common/MatDefs/Misc/UnshadedNodes.j3md: 8
+  Common/MatDefs/Misc/fakeLighting.j3md: 8
+  Common/MatDefs/Misc/reflect.j3md: 8
+  Common/MatDefs/ShaderNodes/Basic/AlphaDiscard.j3sn: 8
+  Common/MatDefs/ShaderNodes/Basic/AttributeToVarying.j3sn: 8
+  Common/MatDefs/ShaderNodes/Basic/ColorAdd.j3sn: 8
+  Common/MatDefs/ShaderNodes/Basic/ColorMix.j3sn: 8
+  Common/MatDefs/ShaderNodes/Basic/ColorMult.j3sn: 8
+  Common/MatDefs/ShaderNodes/Basic/ColorSplitter.j3sn: 8
+  Common/MatDefs/ShaderNodes/Basic/ColorToGrey.j3sn: 8
+  Common/MatDefs/ShaderNodes/Basic/ConstructColor.j3sn: 8
+  Common/MatDefs/ShaderNodes/Basic/Mat3Vec3Mult.j3sn: 8
+  Common/MatDefs/ShaderNodes/Basic/Mat3Vec3Mult100.frag: 8
+  Common/MatDefs/ShaderNodes/Basic/TextureFetch.j3sn: 8
+  Common/MatDefs/ShaderNodes/Basic/TransformPosition.j3sn: 8
+  Common/MatDefs/ShaderNodes/Basic/alphaDiscard.frag: 0
+  Common/MatDefs/ShaderNodes/Basic/colorAdd.frag: 8
+  Common/MatDefs/ShaderNodes/Basic/colorMix.frag: 8
+  Common/MatDefs/ShaderNodes/Basic/colorMult.frag: 8
+  Common/MatDefs/ShaderNodes/Basic/colorSplitter.frag: 8
+  Common/MatDefs/ShaderNodes/Basic/colorToGrey.frag: 8
+  Common/MatDefs/ShaderNodes/Basic/constructColor.frag: 0
+  Common/MatDefs/ShaderNodes/Basic/null.vert: 0
+  Common/MatDefs/ShaderNodes/Basic/texture.frag: 8
+  Common/MatDefs/ShaderNodes/Basic/texture15.frag: 8
+  Common/MatDefs/ShaderNodes/Basic/transformPosition.vert: 8
+  Common/MatDefs/ShaderNodes/Common/Billboard.j3sn: 8
+  Common/MatDefs/ShaderNodes/Common/Billboard100.frag: 8
+  Common/MatDefs/ShaderNodes/Common/CommonVert.j3sn: 8
+  Common/MatDefs/ShaderNodes/Common/DashedPattern.j3sn: 8
+  Common/MatDefs/ShaderNodes/Common/DashedPattern100.frag: 8
+  Common/MatDefs/ShaderNodes/Common/FixedScale.j3sn: 8
+  Common/MatDefs/ShaderNodes/Common/FixedScale100.frag: 8
+  Common/MatDefs/ShaderNodes/Common/Unshaded.j3sn: 8
+  Common/MatDefs/ShaderNodes/Common/commonVert.vert: 8
+  Common/MatDefs/ShaderNodes/Common/texCoord.j3sn: 8
+  Common/MatDefs/ShaderNodes/Common/texCoord100.frag: 0
+  Common/MatDefs/ShaderNodes/Common/unshaded.frag: 8
+  Common/MatDefs/ShaderNodes/Environment/envMapping.j3sn: 8
+  Common/MatDefs/ShaderNodes/Environment/envMapping100.frag: 8
+  Common/MatDefs/ShaderNodes/Environment/envMapping130.frag: 8
+  Common/MatDefs/ShaderNodes/Environment/reflect.j3sn: 8
+  Common/MatDefs/ShaderNodes/Environment/reflect100.vert: 8
+  Common/MatDefs/ShaderNodes/Fog/Fog.j3sn: 8
+  Common/MatDefs/ShaderNodes/Fog/fogFactor.vert: 8
+  Common/MatDefs/ShaderNodes/Fog/fogOutput.frag: 8
+  Common/MatDefs/ShaderNodes/HardwareSkinning/HardwareSkinning.j3sn: 8
+  Common/MatDefs/ShaderNodes/HardwareSkinning/basicGpuSkinning.vert: 8
+  Common/MatDefs/ShaderNodes/HardwareSkinning/fullGpuSkinning.vert: 8
+  Common/MatDefs/ShaderNodes/LightMapping/LightMapping.j3sn: 8
+  Common/MatDefs/ShaderNodes/LightMapping/lightMap.frag: 8
+  Common/MatDefs/ShaderNodes/Math/AddVec2.j3sn: 8
+  Common/MatDefs/ShaderNodes/Math/ConstructVec2.j3sn: 8
+  Common/MatDefs/ShaderNodes/Math/ConstructVec3.j3sn: 8
+  Common/MatDefs/ShaderNodes/Math/Mult.j3sn: 8
+  Common/MatDefs/ShaderNodes/Math/MultVec2.j3sn: 8
+  Common/MatDefs/ShaderNodes/Math/MultVec3.j3sn: 8
+  Common/MatDefs/ShaderNodes/Math/OneMinus.j3sn: 8
+  Common/MatDefs/ShaderNodes/Math/Pow.j3sn: 8
+  Common/MatDefs/ShaderNodes/Math/addVec2.frag: 8
+  Common/MatDefs/ShaderNodes/Math/constructVec2.frag: 0
+  Common/MatDefs/ShaderNodes/Math/constructVec3.frag: 0
+  Common/MatDefs/ShaderNodes/Math/mult.frag: 8
+  Common/MatDefs/ShaderNodes/Math/multVec2.frag: 8
+  Common/MatDefs/ShaderNodes/Math/multVec3.frag: 8
+  Common/MatDefs/ShaderNodes/Math/oneMinus.frag: 0
+  Common/MatDefs/ShaderNodes/Math/pow.frag: 0
+  Common/MatDefs/ShaderNodes/Misc/Dashed.j3sn: 8
+  Common/MatDefs/ShaderNodes/Misc/Dashed100.frag: 8
+  Common/MatDefs/ShaderNodes/Misc/PerspectiveDivide.j3sn: 8
+  Common/MatDefs/ShaderNodes/Misc/PerspectiveDivide100.frag: 8
+  Common/MatDefs/ShaderNodes/Misc/fakeLighting.j3sn: 8
+  Common/MatDefs/ShaderNodes/Misc/fakeLighting100.frag: 8
+  Common/MatDefs/Shadow/BasicPostShadow.frag: 8
+  Common/MatDefs/Shadow/BasicPostShadow.j3md: 8
+  Common/MatDefs/Shadow/BasicPostShadow.vert: 8
+  Common/MatDefs/Shadow/PostShadow.frag: 8
+  Common/MatDefs/Shadow/PostShadow.j3md: 8
+  Common/MatDefs/Shadow/PostShadow.vert: 8
+  Common/MatDefs/Shadow/PostShadowFilter.frag: 8
+  Common/MatDefs/Shadow/PostShadowFilter.j3md: 8
+  Common/MatDefs/Shadow/PostShadowFilter.vert: 8
+  Common/MatDefs/Shadow/PostShadowFilter15.frag: 8
+  Common/MatDefs/Shadow/PostShadowPBR.frag: 8
+  Common/MatDefs/Shadow/PreShadow.frag: 8
+  Common/MatDefs/Shadow/PreShadow.j3md: 8
+  Common/MatDefs/Shadow/PreShadow.vert: 8
+  Common/MatDefs/Shadow/PreShadowPBR.frag: 8
+  Common/MatDefs/Shadow/Sdsm/FitLightFrustums.comp: 8
+  Common/MatDefs/Shadow/Sdsm/ReduceDepth.comp: 8
+  Common/MatDefs/Shadow/Sdsm/SdsmPostShadow.frag: 8
+  Common/MatDefs/Shadow/Sdsm/SdsmPostShadow.j3md: 8
+  Common/MatDefs/Terrain/AdvancedPBRTerrain.frag: 8
+  Common/MatDefs/Terrain/AdvancedPBRTerrain.j3md: 8
+  Common/MatDefs/Terrain/HeightBasedTerrain.frag: 8
+  Common/MatDefs/Terrain/HeightBasedTerrain.j3md: 8
+  Common/MatDefs/Terrain/HeightBasedTerrain.vert: 8
+  Common/MatDefs/Terrain/PBRTerrain.j3md: 8
+  Common/MatDefs/Terrain/PBRTerrain.vert: 8
+  Common/MatDefs/Terrain/SPTerrainLighting.frag: 8
+  Common/MatDefs/Terrain/SPTerrainLighting.vert: 8
+  Common/MatDefs/Terrain/Terrain.frag: 8
+  Common/MatDefs/Terrain/Terrain.j3md: 8
+  Common/MatDefs/Terrain/Terrain.vert: 8
+  Common/MatDefs/Terrain/TerrainLighting.frag: 8
+  Common/MatDefs/Terrain/TerrainLighting.j3md: 8
+  Common/MatDefs/Terrain/TerrainLighting.vert: 8
+  Common/MatDefs/Terrain/Modular/AfflictionLib.glsllib: 8
+  Common/MatDefs/Terrain/Modular/PBRTerrainTextureLayer.glsl: 8
+  Common/MatDefs/Terrain/Modular/PBRTerrainUtils.glsllib: 8
+  Common/Materials/RedColor.j3m: 8
+  Common/Materials/VertexColor.j3m: 8
+  Common/Materials/WhiteColor.j3m: 8
+  Common/OpenCL/Matrix3f.clh: 8
+  Common/OpenCL/Matrix4f.clh: 8
+  Common/OpenCL/Random.clh: 8
+  Common/ShaderLib/BasicShadow.glsllib: 8
+  Common/ShaderLib/BlinnPhongLighting.glsllib: 8
+  Common/ShaderLib/Bump.glsllib: 8
+  Common/ShaderLib/Common.glsllib: 8
+  Common/ShaderLib/Fog.glsllib: 8
+  Common/ShaderLib/GLSLCompat.glsllib: 8
+  Common/ShaderLib/HSVUtils.glsllib: 8
+  Common/ShaderLib/Hdr.glsllib: 8
+  Common/ShaderLib/Instancing.glsllib: 8
+  Common/ShaderLib/Lighting.glsllib: 8
+  Common/ShaderLib/MaterialFog.glsllib: 8
+  Common/ShaderLib/Math.glsllib: 8
+  Common/ShaderLib/MorphAnim.glsllib: 8
+  Common/ShaderLib/MultiSample.glsllib: 8
+  Common/ShaderLib/NoiseLib.glsllib: 8
+  Common/ShaderLib/Optics.glsllib: 8
+  Common/ShaderLib/PBR.glsllib: 8
+  Common/ShaderLib/Parallax.glsllib: 8
+  Common/ShaderLib/Shadows.glsllib: 8
+  Common/ShaderLib/Skinning.glsllib: 8
+  Common/ShaderLib/Splatting.glsllib: 8
+  Common/ShaderLib/Tangent.glsllib: 8
+  Common/ShaderLib/TangentUtils.glsllib: 8
+  Common/ShaderLib/Texture.glsllib: 8
+  Common/ShaderLib/TriPlanarUtils.glsllib: 8
+  Common/ShaderLib/Ubo.glsllib: 8
+  Common/ShaderLib/WaterUtil.glsllib: 8
+  Common/ShaderLib/module/Light.glsl: 8
+  Common/ShaderLib/module/PBRSurface.glsl: 8
+  Common/ShaderLib/module/pbrlighting/PBRLightingUtils.glsllib: 8
+  Common/Textures/MissingMaterial.png: 0
+  Common/Textures/MissingModel.png: 0
+  Common/Textures/MissingTexture.png: 0
+  Common/Textures/dot.png: 0
+  Common/Textures/integrateBRDF.ktx: 8
+  Common/Textures/lightbulb32.png: 0
+  Interface/Fonts/Console.fnt: 8
+  Interface/Fonts/Console.png: 0
+  Interface/Fonts/Default.fnt: 8
+  Interface/Fonts/Default.png: 0
+  MatDefs/debug/ShowNormals.j3md: 8
+  MatDefs/filter/ContrastAdjustment.j3md: 8
+  MatDefs/wireframe/multicolor.j3md: 8
+  MatDefs/wireframe/multicolor2.j3md: 8
+  MatDefs/wireframe/wireframe.j3md: 8
+  Models/indicators/arrow/arrow.j3o: 8
+  Shaders/debug/ShowNormals.frag: 8
+  Shaders/debug/ShowNormals.vert: 8
+  Shaders/filter/ContrastAdjustment.frag: 8
+  Shaders/filter/ContrastAdjustment15.frag: 8
+  Shaders/wireframe/multicolor.frag: 8
+  Shaders/wireframe/multicolor.vert: 8
+  Shaders/wireframe/multicolor2.frag: 8
+  Shaders/wireframe/multicolor2.vert: 8
+  Shaders/wireframe/wireframe.frag: 8
+  Shaders/wireframe/wireframe.vert: 8
+  Textures/shapes/cross.png: 0
+  Textures/shapes/lozenge.png: 0
+  Textures/shapes/mascle.png: 0
+  Textures/shapes/pin.png: 0
+  Textures/shapes/ring.png: 0
+  Textures/shapes/saltire.png: 0
+  Textures/shapes/solid circle.png: 0
+  Textures/shapes/square.png: 0
+  com/android/tools/r8/jetbrains/kotlin/LazyKt__LazyKt/kotlin.kotlin_builtins: 8
+  com/android/tools/r8/jetbrains/kotlin/annotation/Repeatable/annotation.kotlin_builtins: 8
+  com/android/tools/r8/jetbrains/kotlin/collections/AbstractMap$toString$1/collections.kotlin_builtins: 8
+  com/android/tools/r8/jetbrains/kotlin/coroutines/ContinuationInterceptor$Key/coroutines.kotlin_builtins: 8
+  com/android/tools/r8/jetbrains/kotlin/internal/ContractsDsl/internal.kotlin_builtins: 8
+  com/android/tools/r8/jetbrains/kotlin/ranges/UIntProgression/ranges.kotlin_builtins: 8
+  com/android/tools/r8/jetbrains/kotlin/reflect/GenericArrayTypeImpl/reflect.kotlin_builtins: 8
+  com/ardor3d/renderer/state/notloaded.tga: 8
+  com/ardor3d/ui/text/arial-24-bold-regular.fnt: 8
+  com/ardor3d/ui/text/arial-24-bold-regular_00.png: 0
+  com/jme3/asset/Desktop.cfg: 8
+  com/jme3/asset/General.cfg: 8
+  com/jme3/system/version.properties: 8
+  darwin/aarch64/libzstd-jni-1.5.5-4.dylib: 8
+  darwin/x86_64/libzstd-jni-1.5.5-4.dylib: 8
+  google/protobuf/any.proto: 8
+  google/protobuf/api.proto: 8
+  google/protobuf/descriptor.proto: 8
+  google/protobuf/duration.proto: 8
+  google/protobuf/empty.proto: 8
+  google/protobuf/field_mask.proto: 8
+  google/protobuf/source_context.proto: 8
+  google/protobuf/struct.proto: 8
+  google/protobuf/timestamp.proto: 8
+  google/protobuf/type.proto: 8
+  google/protobuf/wrappers.proto: 8
+  javax/vecmath/ExceptionStrings.properties: 8
+  okhttp3/internal/publicsuffix/publicsuffixes.gz: 0
+  org/bouncycastle/pkix/CertPathReviewerMessages.properties: 8
+  org/bouncycastle/pkix/CertPathReviewerMessages_de.properties: 8
+  org/bouncycastle/pqc/crypto/picnic/lowmcL1.bin.properties: 8
+  org/bouncycastle/pqc/crypto/picnic/lowmcL3.bin.properties: 8
+  org/bouncycastle/pqc/crypto/picnic/lowmcL5.bin.properties: 8
+  org/bouncycastle/x509/CertPathReviewerMessages.properties: 8
+  org/bouncycastle/x509/CertPathReviewerMessages_de.properties: 8
+  org/commonmark/internal/util/entities.properties: 8
+  org/eclipse/jdt/core/formatter/messages.properties: 8
+  org/eclipse/jdt/core/index/messages.properties: 8
+  org/eclipse/jdt/internal/compiler/messages.properties: 8
+  org/eclipse/jdt/internal/compiler/batch/messages.properties: 8
+  org/eclipse/jdt/internal/compiler/parser/parser1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser10.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser11.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser12.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser13.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser14.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser15.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser16.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser17.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser18.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser19.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser20.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser21.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser22.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser23.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser24.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser3.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser4.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser5.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser6.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser7.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser8.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/parser9.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/readableNames.props: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode/part0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode/part1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode/part14.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode/part2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode/start0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode/start1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode/start2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode10/part0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode10/part1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode10/part14.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode10/part2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode10/start0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode10/start1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode10/start2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode11/part0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode11/part1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode11/part14.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode11/part2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode11/start0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode11/start1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode11/start2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6/part0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6/part1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6/part14.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6/part2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6/start0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6/start1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6/start2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6_2/part0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6_2/part1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6_2/part14.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6_2/part2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6_2/start0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6_2/start1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode6_2/start2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode7/part0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode7/part1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode7/part14.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode7/part2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode7/start0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode7/start1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode7/start2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode8/part0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode8/part1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode8/part14.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode8/part2.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode8/start0.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode8/start1.rsc: 8
+  org/eclipse/jdt/internal/compiler/parser/unicode8/start2.rsc: 8
+  org/eclipse/jdt/internal/compiler/problem/messages.properties: 8
+  org/eclipse/jdt/internal/core/nd/indexer/messages.properties: 8
+  org/eclipse/jdt/internal/core/util/messages.properties: 8
+  resources/new_api_database.ser: 8
+  win/amd64/libzstd-jni-1.5.5-4.dll: 8
+  win/x86/libzstd-jni-1.5.5-4.dll: 8
+doNotCompress:
+- classes.dex
+- classes2.dex
+- classes3.dex
+- classes4.dex
+- classes5.dex
+- classes6.dex
+- classes7.dex
+- classes8.dex
+- classes9.dex
+- classes10.dex
+- resources.arsc
+- META-INF/androidx.activity_activity-ktx.version
+- META-INF/androidx.activity_activity.version
+- META-INF/androidx.annotation_annotation-experimental.version
+- META-INF/androidx.appcompat_appcompat-resources.version
+- META-INF/androidx.appcompat_appcompat.version
+- META-INF/androidx.arch.core_core-runtime.version
+- META-INF/androidx.asynclayoutinflater_asynclayoutinflater.version
+- META-INF/androidx.cardview_cardview.version
+- META-INF/androidx.coordinatorlayout_coordinatorlayout.version
+- META-INF/androidx.core_core-ktx.version
+- META-INF/androidx.core_core.version
+- META-INF/androidx.cursoradapter_cursoradapter.version
+- META-INF/androidx.customview_customview.version
+- META-INF/androidx.databinding_viewbinding.version
+- META-INF/androidx.documentfile_documentfile.version
+- META-INF/androidx.drawerlayout_drawerlayout.version
+- META-INF/androidx.dynamicanimation_dynamicanimation.version
+- META-INF/androidx.emoji2_emoji2-views-helper.version
+- META-INF/androidx.emoji2_emoji2.version
+- META-INF/androidx.exifinterface_exifinterface.version
+- META-INF/androidx.fragment_fragment-ktx.version
+- META-INF/androidx.fragment_fragment.version
+- META-INF/androidx.gridlayout_gridlayout.version
+- META-INF/androidx.interpolator_interpolator.version
+- META-INF/androidx.legacy_legacy-support-core-ui.version
+- META-INF/androidx.legacy_legacy-support-core-utils.version
+- META-INF/androidx.lifecycle_lifecycle-livedata-core-ktx.version
+- META-INF/androidx.lifecycle_lifecycle-livedata-core.version
+- META-INF/androidx.lifecycle_lifecycle-process.version
+- META-INF/androidx.lifecycle_lifecycle-runtime-ktx.version
+- META-INF/androidx.lifecycle_lifecycle-runtime.version
+- META-INF/androidx.lifecycle_lifecycle-viewmodel-ktx.version
+- META-INF/androidx.lifecycle_lifecycle-viewmodel-savedstate.version
+- META-INF/androidx.lifecycle_lifecycle-viewmodel.version
+- META-INF/androidx.loader_loader.version
+- META-INF/androidx.localbroadcastmanager_localbroadcastmanager.version
+- META-INF/androidx.preference_preference-ktx.version
+- META-INF/androidx.preference_preference.version
+- META-INF/androidx.print_print.version
+- META-INF/androidx.privacysandbox.ads_ads-adservices-java.version
+- META-INF/androidx.privacysandbox.ads_ads-adservices.version
+- META-INF/androidx.recyclerview_recyclerview.version
+- META-INF/androidx.room_room-runtime.version
+- META-INF/androidx.room_room-rxjava2.version
+- META-INF/androidx.savedstate_savedstate-ktx.version
+- META-INF/androidx.savedstate_savedstate.version
+- META-INF/androidx.slidingpanelayout_slidingpanelayout.version
+- META-INF/androidx.sqlite_sqlite-framework.version
+- META-INF/androidx.sqlite_sqlite.version
+- META-INF/androidx.startup_startup-runtime.version
+- META-INF/androidx.swiperefreshlayout_swiperefreshlayout.version
+- META-INF/androidx.tracing_tracing.version
+- META-INF/androidx.transition_transition.version
+- META-INF/androidx.vectordrawable_vectordrawable-animated.version
+- META-INF/androidx.vectordrawable_vectordrawable.version
+- META-INF/androidx.versionedparcelable_versionedparcelable.version
+- META-INF/androidx.viewpager2_viewpager2.version
+- META-INF/androidx.viewpager_viewpager.version
+- META-INF/com.google.android.material_material.version
+- META-INF/kotlinx_coroutines_android.version
+- META-INF/kotlinx_coroutines_core.version
+- META-INF/kotlinx_coroutines_play_services.version
+- META-INF/services/com.android.tools.r8.internal.yW
+- META-INF/services/eg.N
+- META-INF/services/java.security.Provider
+- META-INF/services/mg.C
+- assets/tmpFile.txt
+- jpg
+- png
+- assets/Editor/Builder/key0.p8
+- assets/Engine/Graphics/Nodes/binary_func.glsl
+- assets/Engine/Graphics/Nodes/binary_op.glsl
+- assets/Engine/Graphics/Nodes/clamp.glsl
+- assets/Engine/Graphics/Nodes/clamp01.glsl
+- assets/Engine/Graphics/Nodes/cross.glsl
+- assets/Engine/Graphics/Nodes/cubemap_sample.glsl
+- assets/Engine/Graphics/Nodes/displacement.glsl
+- assets/Engine/Graphics/Nodes/distance.glsl
+- assets/Engine/Graphics/Nodes/dot.glsl
+- assets/Engine/Graphics/Nodes/gradient_eval.glsl
+- assets/Engine/Graphics/Nodes/inverse_lerp.glsl
+- assets/Engine/Graphics/Nodes/length.glsl
+- assets/Engine/Graphics/Nodes/log10.glsl
+- assets/Engine/Graphics/Nodes/luminance.glsl
+- assets/Engine/Graphics/Nodes/mix.glsl
+- assets/Engine/Graphics/Nodes/one_minus.glsl
+- assets/Engine/Graphics/Nodes/refract.glsl
+- assets/Engine/Graphics/Nodes/saturate.glsl
+- assets/Engine/Graphics/Nodes/signed_to_unit.glsl
+- assets/Engine/Graphics/Nodes/smoothstep.glsl
+- assets/Engine/Graphics/Nodes/srgb_to_linear.glsl
+- assets/Engine/Graphics/Nodes/texture_sample.glsl
+- assets/Engine/Graphics/Nodes/tiling_offset.glsl
+- assets/Engine/Graphics/Nodes/unary_func.glsl
+- assets/Engine/Graphics/Shaders/Material/CarPaint/easy_carpaint_carbonfiber_vertex.glsl
+- assets/Engine/Graphics/Shaders/Material/CarPaint/easy_carpaint_iridescent_vertex.glsl
+- assets/Engine/Graphics/Shaders/Material/Lightmap/easy_lit_lightmap_vertex.glsl
+- assets/Engine/Graphics/Shaders/Material/Matcap/easy_matcap_lit_vertex.glsl
+- assets/Engine/Graphics/Shaders/Material/PBR/easy_lit_orm_vertex.glsl
+- assets/Engine/Graphics/Shaders/Material/PBR/easy_lit_pbr_vertex.glsl
+- assets/Engine/Graphics/Shaders/Material/PBR/easy_lit_refractive_vertex.glsl
+- assets/Engine/Graphics/Shaders/Material/PBR/easy_lit_ultra_vertex.glsl
+- assets/Engine/Graphics/Shaders/Material/PS1/easy_ps1_lit_vertex.glsl
+- assets/Engine/Graphics/Shaders/Material/PS1/easy_ps1_unlit_vertex.glsl
+- assets/Engine/Graphics/Shaders/Material/Unlit/easy_unlit_simple_vertex.glsl
+- assets/Engine/Graphics/Shaders/VFX/base_vfx_frag.glsl
+- assets/Engine/Graphics/Shaders/VFX/base_vfx_sub_mat.glsl
+- assets/Engine/Graphics/Shaders/VFX/base_vfx_vertex.glsl
+- assets/dexopt/baseline.prof
+- assets/dexopt/baseline.profm
+- mp4

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@drawable/editor3d_v2_rounded_button" android:paddingLeft="4.0dip" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:backgroundTint="#ff2c2c54"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:layout_gravity="center_vertical" android:orientation="vertical" android:layout_width="56.0dip" android:layout_height="42.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="bottom|center" android:id="@id/textView40" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="FULL" android:fontFamily="@font/linkednow_extrabold" />
+        <TextView android:textSize="10.0sp" android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/textView40" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="ONLY" android:fontFamily="@font/base_extrabold" />
+    </LinearLayout>
+    <TextView android:textSize="11.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/text" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="This component is only available in the full version of ITsMagic Engine 2.0\n See more by clicking here!" android:layout_weight="1.0" android:fontFamily="@font/base_regular" android:paddingVertical="4.0dip" />
+</LinearLayout>

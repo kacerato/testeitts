@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/touch_area" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:background="@drawable/editor3d_v2_rounded_button" android:paddingLeft="2.0dip" android:paddingTop="2.0dip" android:paddingRight="4.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="0.0dip" android:backgroundTint="#ff1f1f1f">
+        <FrameLayout android:layout_width="80.0dip" android:layout_height="80.0dip">
+            <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" app:srcCompat="@drawable/ai_thumb_back" />
+            <ImageView android:id="@id/imageView38" android:layout_width="fill_parent" android:layout_height="fill_parent" app:srcCompat="@drawable/new_project_1" />
+        </FrameLayout>
+        <Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+            <TextView android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/title" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="Title" android:singleLine="true" android:layout_weight="1.0" android:fontFamily="@font/base_medium" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <Button android:textColor="@color/white" android:id="@id/copy" android:background="@drawable/editor3d_v2_rounded_button" android:paddingLeft="4.0dip" android:paddingTop="0.0dip" android:paddingRight="4.0dip" android:paddingBottom="0.0dip" android:layout_width="56.0dip" android:layout_height="26.0dip" android:text="Copy" android:backgroundTint="@color/theme_panel_topbar" />
+                <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <Button android:textColor="@color/white" android:id="@id/download" android:background="@drawable/editor3d_v2_rounded_button" android:paddingLeft="4.0dip" android:paddingTop="0.0dip" android:paddingRight="4.0dip" android:paddingBottom="0.0dip" android:layout_width="wrap_content" android:layout_height="26.0dip" android:text="Download" android:textAllCaps="true" android:fontFamily="@font/base_bold" android:backgroundTint="@color/theme_accent_green" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

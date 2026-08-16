@@ -1,0 +1,89 @@
+.class public Lu5/d$o$a;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lcn/pedant/SweetAlert/SweetAlertDialog$OnSweetClickListener;
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = Lu5/d$o;->click(Landroid/view/View;)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+
+# instance fields
+.field public final synthetic a:Lcn/pedant/SweetAlert/SweetAlertDialog;
+
+.field public final synthetic b:Lu5/d$o;
+
+
+# direct methods
+.method public constructor <init>(Lu5/d$o;Lcn/pedant/SweetAlert/SweetAlertDialog;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x8010,
+            0x1010
+        }
+        names = {
+            "this$1",
+            "val$dialog"
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()V"
+        }
+    .end annotation
+
+    iput-object p1, p0, Lu5/d$o$a;->b:Lu5/d$o;
+
+    iput-object p2, p0, Lu5/d$o$a;->a:Lcn/pedant/SweetAlert/SweetAlertDialog;
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public onClick(Lcn/pedant/SweetAlert/SweetAlertDialog;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0
+        }
+        names = {
+            "sweetAlertDialog"
+        }
+    .end annotation
+
+    iget-object p1, p0, Lu5/d$o$a;->b:Lu5/d$o;
+
+    iget-object p1, p1, Lu5/d$o;->b:Lu5/d;
+
+    invoke-static {p1}, Lu5/d;->w1(Lu5/d;)Lu5/d$w;
+
+    move-result-object p1
+
+    invoke-interface {p1}, Lu5/d$w;->onCancel()V
+
+    iget-object p1, p0, Lu5/d$o$a;->b:Lu5/d$o;
+
+    iget-object p1, p1, Lu5/d$o;->b:Lu5/d;
+
+    invoke-virtual {p1}, Lcom/itsmagic/engine/Activities/Editor/Interface/Objects/EditorPanel;->R0()V
+
+    iget-object p1, p0, Lu5/d$o$a;->a:Lcn/pedant/SweetAlert/SweetAlertDialog;
+
+    invoke-virtual {p1}, Lcn/pedant/SweetAlert/SweetAlertDialog;->dismissWithAnimation()V
+
+    return-void
+.end method

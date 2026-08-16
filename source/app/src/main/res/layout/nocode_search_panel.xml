@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:id="@id/searchRoot" android:background="@drawable/round_6" android:paddingLeft="2.0dip" android:paddingRight="4.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent" android:backgroundTint="@color/theme_panel_topbar"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <FrameLayout android:background="@drawable/round_6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:backgroundTint="@color/theme_panel">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/searchTopbar" android:background="@drawable/round_6_top" android:paddingLeft="8.0dip" android:paddingTop="4.0dip" android:paddingRight="8.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:backgroundTint="@color/theme_panel_topbar">
+                <androidx.appcompat.widget.AppCompatEditText android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_mid_text_color" android:id="@id/searchView" android:background="@drawable/editor3d_v2_input_text_background" android:layout_width="0.0dip" android:layout_height="32.0dip" android:hint="Search nodes..." android:singleLine="true" android:layout_weight="1.0" android:inputType="text" android:imeOptions="actionSearch|flagNoExtractUi" android:fontFamily="@font/base_regular" android:paddingStart="8.0dip" android:paddingEnd="8.0dip" android:layout_marginEnd="4.0dip" />
+                <com.itsmagic.engine.Activities.Editor.Utils.DragPanelView android:id="@id/moveBtn" android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/slide" android:tint="@color/theme_high_icon_tint" android:layout_marginStart="4.0dip" />
+                <ImageView android:id="@id/closeBtn" android:padding="8.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" android:src="@drawable/close_x" android:tint="@color/theme_high_icon_tint" android:layout_marginStart="4.0dip" />
+            </LinearLayout>
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/resultsRecycler" android:padding="8.0dip" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="center" android:id="@id/emptyState" android:padding="24.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="No nodes found." android:fontFamily="@font/base_regular" />
+        </LinearLayout>
+    </FrameLayout>
+</FrameLayout>

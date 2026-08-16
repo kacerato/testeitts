@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center" android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_gravity="center" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:layout_width="54.0dip" android:layout_height="54.0dip" app:srcCompat="@drawable/useraccount_rp" />
+        <ImageView android:layout_gravity="center" android:layout_width="54.0dip" android:layout_height="54.0dip" app:srcCompat="@drawable/prohibited" />
+    </FrameLayout>
+    <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+    <TextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/not_loged_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Você nâo está logado!\nFaça log-in para continuar " android:fontFamily="@font/base_bold" app:lineHeight="25.0dip" />
+    <androidx.legacy.widget.Space android:id="@id/space25" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+    <LinearLayout android:layout_gravity="bottom|center" android:orientation="vertical" android:id="@id/log_in" android:background="@drawable/button_red_rounded" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:backgroundTint="@color/theme_primary">
+        <TextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="center_horizontal" android:id="@id/purchase_text" android:paddingLeft="16.0dip" android:paddingTop="8.0dip" android:paddingRight="16.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="LOG IN" android:fontFamily="@font/base_bold" />
+    </LinearLayout>
+    <androidx.legacy.widget.Space android:id="@id/space5" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+</LinearLayout>

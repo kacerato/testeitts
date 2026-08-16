@@ -1,0 +1,54 @@
+.class public final synthetic Lcom/android/tools/r8/internal/oA0;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/util/function/Supplier;
+
+
+# instance fields
+.field public final synthetic b:Lcom/android/tools/r8/internal/B3;
+
+.field public final synthetic c:Lcom/android/tools/r8/graph/H5;
+
+.field public final synthetic d:Lcom/android/tools/r8/internal/Dq;
+
+.field public final synthetic e:Lcom/android/tools/r8/internal/Dq;
+
+
+# direct methods
+.method public synthetic constructor <init>(Lcom/android/tools/r8/internal/B3;Lcom/android/tools/r8/graph/H5;Lcom/android/tools/r8/internal/Dq;Lcom/android/tools/r8/internal/Dq;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    iput-object p1, p0, Lcom/android/tools/r8/internal/oA0;->b:Lcom/android/tools/r8/internal/B3;
+
+    iput-object p2, p0, Lcom/android/tools/r8/internal/oA0;->c:Lcom/android/tools/r8/graph/H5;
+
+    iput-object p3, p0, Lcom/android/tools/r8/internal/oA0;->d:Lcom/android/tools/r8/internal/Dq;
+
+    iput-object p4, p0, Lcom/android/tools/r8/internal/oA0;->e:Lcom/android/tools/r8/internal/Dq;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final get()Ljava/lang/Object;
+    .locals 4
+
+    iget-object v0, p0, Lcom/android/tools/r8/internal/oA0;->b:Lcom/android/tools/r8/internal/B3;
+
+    iget-object v1, p0, Lcom/android/tools/r8/internal/oA0;->c:Lcom/android/tools/r8/graph/H5;
+
+    iget-object v2, p0, Lcom/android/tools/r8/internal/oA0;->d:Lcom/android/tools/r8/internal/Dq;
+
+    iget-object v3, p0, Lcom/android/tools/r8/internal/oA0;->e:Lcom/android/tools/r8/internal/Dq;
+
+    invoke-virtual {v0, v1, v2, v3}, Lcom/android/tools/r8/internal/B3;->b(Lcom/android/tools/r8/graph/H5;Lcom/android/tools/r8/internal/Dq;Lcom/android/tools/r8/internal/Dq;)Lcom/android/tools/r8/graph/proto/j;
+
+    move-result-object v0
+
+    return-object v0
+.end method

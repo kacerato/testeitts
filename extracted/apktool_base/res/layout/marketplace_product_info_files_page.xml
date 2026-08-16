@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:id="@id/package_files_section" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <View android:background="?android:listDivider" android:layout_width="fill_parent" android:layout_height="1.0dip" android:backgroundTint="#ffffffff" android:backgroundTintMode="src_in" />
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+        <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/package_files_title" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Arquivos do pacote" android:fontFamily="@font/base_bold" />
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="6.0dip" />
+        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <ProgressBar android:id="@id/package_files_progress" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:maxWidth="20.0dip" android:maxHeight="20.0dip" android:minWidth="20.0dip" android:minHeight="20.0dip" android:indeterminateTint="@color/theme_selected_elements" style="@android:style/Widget.DeviceDefault.ProgressBar" />
+            <androidx.legacy.widget.Space android:layout_width="6.0dip" android:layout_height="fill_parent" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_mid_text_color" android:id="@id/package_files_status" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Carregando arquivos..." android:fontFamily="@font/base_regular" />
+        </LinearLayout>
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+        <HorizontalScrollView android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/package_files_recycler" android:layout_width="10000.0dip" android:layout_height="wrap_content" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+</LinearLayout>

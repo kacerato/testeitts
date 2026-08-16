@@ -1,0 +1,171 @@
+.class public Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/IgnoreSave/IgnoreSave;
+.super Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Components/Component;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/io/Serializable;
+
+
+# annotations
+.annotation runtime Ls8/b;
+.end annotation
+
+
+# static fields
+.field public static final E:Ljava/lang/String; = "IgnoreSave"
+
+.field public static final F:Ljava/lang/Class;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    const-class v0, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/IgnoreSave/IgnoreSave;
+
+    sput-object v0, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/IgnoreSave/IgnoreSave;->F:Ljava/lang/Class;
+
+    new-instance v0, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/IgnoreSave/IgnoreSave$a;
+
+    invoke-direct {v0}, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/IgnoreSave/IgnoreSave$a;-><init>()V
+
+    invoke-static {v0}, Lfb/a;->b(Lfb/b;)V
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 1
+
+    const-string v0, "IgnoreSave"
+
+    invoke-direct {p0, v0}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Components/Component;-><init>(Ljava/lang/String;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public clone()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Components/Component;
+    .locals 1
+
+    .line 2
+    new-instance v0, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/IgnoreSave/IgnoreSave;
+
+    invoke-direct {v0}, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/IgnoreSave/IgnoreSave;-><init>()V
+
+    return-object v0
+.end method
+
+.method public bridge synthetic clone()Ljava/lang/Object;
+    .locals 1
+    .annotation system Ldalvik/annotation/Throws;
+        value = {
+            Ljava/lang/CloneNotSupportedException;
+        }
+    .end annotation
+
+    .line 1
+    invoke-virtual {p0}, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/IgnoreSave/IgnoreSave;->clone()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Components/Component;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getDisplayableTitle()Ljava/lang/String;
+    .locals 1
+
+    sget-object v0, Lcom/itsmagic/engine/Activities/Editor/Extensions/LanguageSystem/Lang$T;->IGNORE_SAVE:LAc/b;
+
+    invoke-static {v0}, Lcom/itsmagic/engine/Activities/Editor/Extensions/LanguageSystem/Lang;->l(LAc/b;)Ljava/lang/String;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public getIconResource()I
+    .locals 1
+
+    const v0, 0x7f07024f
+
+    return v0
+.end method
+
+.method public getInspectorColor(Landroid/content/Context;)I
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0
+        }
+        names = {
+            "context"
+        }
+    .end annotation
+
+    const p1, 0x7f05009d
+
+    return p1
+.end method
+
+.method public getInspectorEntries(Landroid/content/Context;)Ljava/util/List;
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0
+        }
+        names = {
+            "context"
+        }
+    .end annotation
+
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Landroid/content/Context;",
+            ")",
+            "Ljava/util/List<",
+            "LC5/b;",
+            ">;"
+        }
+    .end annotation
+
+    new-instance p1, Ljava/util/LinkedList;
+
+    invoke-direct {p1}, Ljava/util/LinkedList;-><init>()V
+
+    return-object p1
+.end method
+
+.method public getTitle()Ljava/lang/String;
+    .locals 1
+
+    const-string v0, "IgnoreSave"
+
+    return-object v0
+.end method
+
+.method public getType()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Components/Component$e;
+    .locals 1
+
+    sget-object v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Components/Component$e;->IgnoreSave:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Components/Component$e;
+
+    return-object v0
+.end method
+
+.method public iconPriority()I
+    .locals 1
+
+    const/4 v0, 0x1
+
+    return v0
+.end method
+
+.method public shouldTintIcon()Z
+    .locals 1
+
+    const/4 v0, 0x1
+
+    return v0
+.end method

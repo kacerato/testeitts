@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:layout_width="@dimen/notification_width" android:layout_height="@dimen/notification_height"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:paddingLeft="8.0dip" android:paddingTop="8.0dip" android:paddingRight="4.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_gravity="center" android:id="@id/vipTag" android:background="@drawable/editor3d_v2_rounded_button" android:clickable="true" android:layout_width="32.0dip" android:layout_height="32.0dip" android:layout_marginTop="1.0dip" android:layout_marginBottom="1.0dip" android:layout_marginEnd="4.0dip" android:backgroundTint="@color/vip">
+            <LinearLayout android:orientation="vertical" android:padding="1.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textSize="12.0sp" android:textColor="@color/white" android:gravity="center" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="VIP" android:layout_weight="1.0" android:fontFamily="@font/linkednow_extrabold" />
+                <TextView android:textSize="10.0sp" android:textColor="@color/white" android:gravity="center|top" android:id="@id/textView41" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="++" android:layout_weight="1.0" android:fontFamily="@font/linkednow_extrabold" />
+            </LinearLayout>
+        </FrameLayout>
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+        <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="11.0sp" android:textColor="@color/white" android:layout_gravity="center" android:id="@id/tittle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Parabens você ganhou 4 moedas!" android:fontFamily="@font/base_bold" />
+            <TextView android:textSize="10.0sp" android:textColor="@color/white" android:layout_gravity="center" android:id="@id/desc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Voce usou a ItsMagic por 1 hora" android:fontFamily="@font/base_bold" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

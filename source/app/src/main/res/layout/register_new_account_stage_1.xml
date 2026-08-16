@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="22.0dip">
+        <TextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/email_tittle" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Email" android:fontFamily="@font/base_bold" />
+        <EditText android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_mid_text_color" android:id="@id/email_edit" android:background="@drawable/builds_panel_input_text" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="30.0dip" android:layout_marginTop="12.0dip" android:layout_marginBottom="12.0dip" android:hint="Email" android:ems="10" android:inputType="textPersonName" android:imeOptions="actionDone|flagNoExtractUi" android:fontFamily="@font/base_bold" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/email_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Um email valido para confirmaÃ§Ã¢o" android:fontFamily="@font/base_bold" />
+    </LinearLayout>
+    <CheckBox android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/aggre" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="-6.0dip" android:layout_marginBottom="4.0dip" android:checked="true" android:text="I accept the Terms of Service" android:fontFamily="@font/base_bold" android:buttonTint="@color/theme_high_icon_tint" />
+    <TextView android:textSize="12.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="right" android:id="@id/read_terms" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tap here to read." android:fontFamily="@font/base_bold" />
+</LinearLayout>

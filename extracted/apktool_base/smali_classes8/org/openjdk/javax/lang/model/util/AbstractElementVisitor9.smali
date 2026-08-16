@@ -1,0 +1,43 @@
+.class public abstract Lorg/openjdk/javax/lang/model/util/AbstractElementVisitor9;
+.super Lorg/openjdk/javax/lang/model/util/AbstractElementVisitor8;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "<R:",
+        "Ljava/lang/Object;",
+        "P:",
+        "Ljava/lang/Object;",
+        ">",
+        "Lorg/openjdk/javax/lang/model/util/AbstractElementVisitor8<",
+        "TR;TP;>;"
+    }
+.end annotation
+
+.annotation runtime Lorg/openjdk/javax/annotation/processing/SupportedSourceVersion;
+    value = .enum Lorg/openjdk/javax/lang/model/SourceVersion;->RELEASE_9:Lorg/openjdk/javax/lang/model/SourceVersion;
+.end annotation
+
+
+# direct methods
+.method public constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Lorg/openjdk/javax/lang/model/util/AbstractElementVisitor8;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public abstract visitModule(Lorg/openjdk/javax/lang/model/element/ModuleElement;Ljava/lang/Object;)Ljava/lang/Object;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "(",
+            "Lorg/openjdk/javax/lang/model/element/ModuleElement;",
+            "TP;)TR;"
+        }
+    .end annotation
+.end method

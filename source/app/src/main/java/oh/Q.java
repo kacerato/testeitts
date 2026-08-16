@@ -1,0 +1,94 @@
+package oh;
+
+import java.io.IOException;
+
+public abstract class Q extends B implements J {
+
+    public static final T f98824c = new a(Q.class, 12);
+
+    public final byte[] f98825b;
+
+    public class a extends T {
+        public a(Class cls, int i10) {
+            super(cls, i10);
+        }
+
+        @Override
+        public B e(C0 c02) {
+            return Q.E(c02.H());
+        }
+    }
+
+    public Q(String str) {
+        this(org.bouncycastle.util.w.n(str), false);
+    }
+
+    public static Q E(byte[] bArr) {
+        return new M0(bArr, false);
+    }
+
+    public static Q F(Object obj) {
+        if (obj == null || (obj instanceof Q)) {
+            return (Q) obj;
+        }
+        if (obj instanceof InterfaceC14516g) {
+            B r10 = ((InterfaceC14516g) obj).r();
+            if (r10 instanceof Q) {
+                return (Q) r10;
+            }
+        }
+        if (!(obj instanceof byte[])) {
+            throw new IllegalArgumentException("illegal object in getInstance: " + obj.getClass().getName());
+        }
+        try {
+            return (Q) f98824c.c((byte[]) obj);
+        } catch (Exception e10) {
+            throw new IllegalArgumentException("encoding error in getInstance: " + e10.toString());
+        }
+    }
+
+    public static Q G(M m10, boolean z10) {
+        return (Q) f98824c.f(m10, z10);
+    }
+
+    @Override
+    public final String getString() {
+        return org.bouncycastle.util.w.d(this.f98825b);
+    }
+
+    @Override
+    public final int hashCode() {
+        return org.bouncycastle.util.a.t0(this.f98825b);
+    }
+
+    public String toString() {
+        return getString();
+    }
+
+    @Override
+    public final boolean u(B b10) {
+        if (b10 instanceof Q) {
+            return org.bouncycastle.util.a.g(this.f98825b, ((Q) b10).f98825b);
+        }
+        return false;
+    }
+
+    @Override
+    public final void v(C14503A c14503a, boolean z10) throws IOException {
+        c14503a.r(z10, 12, this.f98825b);
+    }
+
+    @Override
+    public final boolean x() {
+        return false;
+    }
+
+    @Override
+    public final int y(boolean z10) {
+        return C14503A.i(z10, this.f98825b.length);
+    }
+
+    public Q(byte[] bArr, boolean z10) {
+        this.f98825b = z10 ? org.bouncycastle.util.a.p(bArr) : bArr;
+    }
+}

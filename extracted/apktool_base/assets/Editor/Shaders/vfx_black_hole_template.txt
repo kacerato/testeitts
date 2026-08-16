@@ -1,0 +1,124 @@
+-MANIFEST-
+{
+  "max_simultaneous_emitters": 6,
+  "params": {
+    "radius": "float"
+  },
+  "defaults": {
+    "radius": "5"
+  },
+  "precision": {
+    "radius": "low"
+  }
+}
+-MANIFEST-
+
+-FRAGMENT SHADER-
+void vfx_fn_fragment(inout VFXMaterialInputs material, VFXEmitter emitter) {
+    float radius = max(vfxParams.radius, 0.0001);
+    float distanceToEmitter = distance(getUserWorldPosition().xyz, emitter.position);
+    float innerRadius = radius * 0.2;
+    float falloff = clamp((distanceToEmitter - innerRadius) / max(radius - innerRadius, 0.0001), 0.0, 1.0);
+
+    float redFactor = pow(falloff, 0.80);
+    float greenFactor = pow(falloff, 1.80);
+    float blueFactor = pow(falloff, 3.20);
+
+    material.baseColor.rgb *= float3(redFactor, greenFactor, blueFactor);
+    material.ambientOcclusion *= falloff;
+    material.reflectance *= falloff;
+}
+-FRAGMENT SHADER-
+
+-SUB MATERIAL SHADER-
+void vfx_fn_subMaterial(inout SubMaterialData smData, VFXEmitter emitter) {
+    // passthrough
+}
+-SUB MATERIAL SHADER-
+
+-VERTEX SHADER-
+void vfx_fn_vertex(inout MaterialVertexInputs v, VFXEmitter emitter) {
+    float radius = max(vfxParams.radius, 0.0001);
+    float3 sourceWorldPosition = getUserWorldPosition();
+    float3 toEmitter = emitter.position - sourceWorldPosition;
+    float distanceToEmitter = length(toEmitter);
+    float proximity = clamp(1.0 - (distanceToEmitter / radius), 0.0, 1.0);
+
+    float suctionStrength = pow(proximity, 3.00);
+    float orbitStrength = pow(proximity, 5.00);
+    float3 directionToCenter = toEmitter / max(distanceToEmitter, 0.0001);
+    float3 orbitAxis = (abs(directionToCenter.y) < 0.999) ? float3(0.0, 1.0, 0.0) : float3(1.0, 0.0, 0.0);
+    float3 orbitDirectionRaw = cross(orbitAxis, directionToCenter);
+    float orbitDirectionLength = length(orbitDirectionRaw);
+    float3 orbitDirection = (orbitDirectionLength > 0.0001)
+        ? orbitDirectionRaw / orbitDirectionLength
+        : float3(1.0, 0.0, 0.0);
+
+    float remainingDistance = distanceToEmitter;
+    float suctionAmount = remainingDistance * 1.2 * suctionStrength;
+    float orbitAmount = remainingDistance * 0.6 * orbitStrength;
+    float3 displacement = (directionToCenter * suctionAmount) + (orbitDirection * orbitAmount);
+
+    v.worldPosition.xyz += displacement;
+}
+-VERTEX SHADER-
+
+/* DOCUMENTATION
+Shader rendering engine is Google filament, search about Google filament shader attributes and uniforms
+
+This is an example of a VFX Shader that distorts objects and changes their color, simulating a black hole.
+This code darkens the pixel color on the surface and omits ambient light as it gets closer to the VFX emitter and pulls the vertices into the VFX emitter, becoming increasingly intense as the vertex approaches the emitter.
+It runs on all rendered vertices and pixels of the scene.
+Using emitter.position is merely a matter of choice.
+A VFX effect can modify the entire scene without worrying about the emitter's position.
+
+The dynamic time value is available as vfxParams.time and is not shown in the inspector.
+
+Functions must begin with the prefix "vfx_fn_"
+Structs must begin with the prefix "VFX_STRUCT_"
+
+How to access parameters:
+-Use vfxParams instead of materialParams.
+-And it can only be accessed in the main function (vfx_fn_fragment or vfx_fn_vertex). If you need to access parameters in external functions, pass them as arguments.
+
+It is possible to sample decal textures using:
+float4 decal(int layer, float2 uv);
+float4 decalPixel(int layer, float2 uv);
+
+Properties inspector params:
+Param types:
+    rgba -> color converts to float4
+    rgb -> color converts to float3 (no alpha)
+    float -> float
+    float2 -> vector2 converts to float2
+    float3 -> vector3 converts to float3
+    float4 -> vector4 converts to float4
+    float01 -> shows a 0..1 slider
+    bool -> shows a toggle mapped to a float in shader (1.0 == true)
+    int -> integer
+
+Precisions:
+    low, medium & high
+
+Struct DOC:
+struct VFXMaterialInputs:
+    float4 baseColor;
+    float4 emissive;
+    float4 postLightingColor;
+    float  roughness;
+    float  metallic;
+    float  reflectance;
+    float  ambientOcclusion;
+    float3 normal;
+    float transmission;
+    float3 absorption;
+    float ior;
+    float microThickness;
+    int model;
+struct VFXEmitter:
+    float3 position;
+    int index;
+struct SubMaterialData:
+    float2 parallaxDelta;
+    float3 normalDisturb;
+*/

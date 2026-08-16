@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/background_blured_v2" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+            <com.itsmagic.engine.Activities.Editor.Utils.MaskView.MaskableFrameLayout android:background="@color/editor3d_v2_panel_semi_transparent" android:layout_width="fill_parent" android:layout_height="fill_parent" app:anti_aliasing="false" app:mask="@drawable/editor3d_v2_projects_panel_project_mask" app:porterduffxfermode="DST_IN">
+                <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                    <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/icon_layout" android:background="@color/login_screen_light_blue" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="72.0dip">
+                        <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" app:srcCompat="@drawable/happy" app:tint="#ff7089d3" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="vertical" android:id="@id/login_layout" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="16.0dip" />
+                        <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_horizontal" android:layout_gravity="center" android:id="@id/welcome_login" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Bem vindo Ã  casa, dev!" android:fontFamily="@font/base_bold" />
+                        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                            <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/userNameTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="USER NAME" android:fontFamily="@font/base_bold" />
+                            <EditText android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_mid_text_color" android:id="@id/userNameEditText" android:layout_width="fill_parent" android:layout_height="40.0dip" android:ems="10" android:inputType="textPersonName" android:imeOptions="flagNoExtractUi" android:backgroundTint="@color/white" />
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                            <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/passwordTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="PASSWORD" android:fontFamily="@font/base_bold" />
+                            <com.itsmagic.engine.Activities.Editor.Utils.UIComponents.PasswordEditText.PasswordEditText android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_mid_text_color" android:id="@id/passwordEditText" android:layout_width="fill_parent" android:layout_height="40.0dip" android:ems="10" android:inputType="textPassword" android:imeOptions="actionDone|flagNoExtractUi|flagNoFullscreen" android:backgroundTint="@color/white" />
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                        </LinearLayout>
+                        <ProgressBar android:id="@id/login_progress" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:indeterminateTint="@color/theme_primary" style="?android:progressBarStyle" />
+                        <androidx.legacy.widget.Space android:id="@id/space10" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/new_account" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="nÃ£o tem uma conta? toque aqui!" android:fontFamily="@font/base_bold" />
+                        <androidx.legacy.widget.Space android:id="@id/space26" android:layout_width="fill_parent" android:layout_height="12.0dip" />
+                        <Button android:textSize="16.0sp" android:textColor="@color/white" android:layout_gravity="center" android:id="@id/login_button" android:background="@drawable/editor3d_v2_rounded_button" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="36.0dip" android:text="login" android:fontFamily="@font/base_bold" android:backgroundTint="@color/discord" />
+                        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="16.0dip" />
+                    </LinearLayout>
+                    <LinearLayout android:orientation="vertical" android:id="@id/register_layout" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                        <LinearLayout android:orientation="vertical" android:paddingLeft="24.0dip" android:paddingRight="24.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                                <ImageView android:id="@id/exit" android:paddingTop="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="10.0dip" android:layout_width="32.0dip" android:layout_height="32.0dip" app:srcCompat="@drawable/rigth_arrow_full" />
+                                <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+                                <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_horizontal" android:layout_gravity="center" android:id="@id/welcome_register" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="Comece aqui" android:layout_weight="1.0" android:fontFamily="@font/base_bold" />
+                                <androidx.legacy.widget.Space android:id="@id/space29" android:layout_width="40.0dip" android:layout_height="fill_parent" />
+                            </LinearLayout>
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                            <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                                <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/registerUsernameTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="USER NAME" android:fontFamily="@font/base_bold" />
+                                <EditText android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_mid_text_color" android:id="@id/userNameRegister" android:layout_width="fill_parent" android:layout_height="40.0dip" android:ems="10" android:inputType="textPersonName" android:imeOptions="flagNoExtractUi" android:backgroundTint="@color/white" />
+                                <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                                <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/registerPasswordTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="PASSWORD" android:fontFamily="@font/base_bold" />
+                                <com.itsmagic.engine.Activities.Editor.Utils.UIComponents.PasswordEditText.PasswordEditText android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_mid_text_color" android:id="@id/passwordRegister" android:layout_width="fill_parent" android:layout_height="40.0dip" android:ems="10" android:inputType="textPassword" android:imeOptions="flagNoExtractUi|flagNoFullscreen" android:backgroundTint="@color/white" />
+                                <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                                <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/registerConfirmPasswordTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="CONFIRM PASSWORD" android:fontFamily="@font/base_bold" />
+                                <com.itsmagic.engine.Activities.Editor.Utils.UIComponents.PasswordEditText.PasswordEditText android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_mid_text_color" android:id="@id/confirmPasswordRegister" android:layout_width="fill_parent" android:layout_height="40.0dip" android:ems="10" android:inputType="textPassword" android:imeOptions="actionDone|flagNoExtractUi|flagNoFullscreen" android:backgroundTint="@color/white" />
+                                <androidx.legacy.widget.Space android:id="@id/space28" android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                            </LinearLayout>
+                            <ProgressBar android:id="@id/register_progress" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:indeterminateTint="@color/theme_primary" style="?android:progressBarStyle" />
+                            <androidx.legacy.widget.Space android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                            <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                                <CheckBox android:textSize="10.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/aggre" android:layout_width="wrap_content" android:layout_height="26.0dip" android:checked="true" android:text="I accept the Terms of Service" android:fontFamily="@font/base_bold" android:buttonTint="@color/theme_high_icon_tint" />
+                                <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:minWidth="8.0dip" android:layout_weight="1.0" />
+                                <TextView android:textSize="10.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="right" android:id="@id/read_terms" android:paddingTop="4.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Tap here to read." android:fontFamily="@font/base_bold" />
+                            </LinearLayout>
+                            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                            <Button android:textSize="16.0sp" android:textColor="@color/white" android:layout_gravity="center" android:id="@id/register_button" android:background="@drawable/editor3d_v2_rounded_button" android:padding="0.0dip" android:layout_width="fill_parent" android:layout_height="36.0dip" android:text="REGISTER" android:fontFamily="@font/base_bold" android:backgroundTint="@color/discord" />
+                            <androidx.legacy.widget.Space android:layout_width="wrap_content" android:layout_height="16.0dip" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.itsmagic.engine.Activities.Editor.Utils.MaskView.MaskableFrameLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

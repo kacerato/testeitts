@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="42.0dip">
+        <include android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0" android:layout_marginEnd="2.0dip" app:layout_constraintBottom_toBottomOf="@id/imageView6" app:layout_constraintEnd_toStartOf="@id/imageView6" app:layout_constraintTop_toTopOf="@id/imageView6" layout="@layout/editorv2_inspector_text_match_end" />
+        <com.makeramen.roundedimageview.RoundedImageView android:id="@id/imageView6" android:background="@color/theme_background" android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="1.0dip" android:layout_marginBottom="1.0dip" android:scaleType="fitXY" android:layout_marginEnd="4.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintDimensionRatio="1:1" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" app:riv_border_color="@color/theme_panel_topbar" app:riv_border_width="2.0dip" app:riv_corner_radius="4.0dip" app:riv_mutate_background="true" app:riv_oval="false" app:riv_tile_mode="clamp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:background="@color/theme_background" android:paddingTop="0.0dip" android:paddingBottom="1.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <LinearLayout android:orientation="horizontal" android:id="@id/topbarBackgroud" android:background="@color/theme_panel_topbar" android:layout_width="fill_parent" android:layout_height="@dimen/editor3d_v2_panel_sub_tittle">
+            <include android:layout_width="@dimen/editor3d_v2_panel_sub_tittle" android:layout_height="@dimen/editor3d_v2_panel_sub_tittle" layout="@layout/editorv2_inspector_toggle" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/tittle" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="Component" android:singleLine="true" android:layout_weight="1.0" android:fontFamily="@font/base_medium" android:layout_marginStart="6.0dip" android:layout_marginEnd="8.0dip" />
+            <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center|right" android:id="@id/rightTittle" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="Component" android:singleLine="true" />
+            <LinearLayout android:orientation="horizontal" android:id="@id/extras" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+            <Space android:layout_width="2.0dip" android:layout_height="fill_parent" />
+            <ToggleButton android:id="@id/component_oc" android:background="@drawable/colapse_toggle" android:layout_width="@dimen/editor3d_v2_panel_sub_tittle" android:layout_height="@dimen/editor3d_v2_panel_sub_tittle" android:checked="true" android:textOn="" android:textOff="" android:layout_marginEnd="4.0dip" android:backgroundTint="@color/theme_high_icon_tint" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/tb_component_content" android:background="@color/theme_card" android:paddingTop="8.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@drawable/inspector_component_divider" android:showDividers="middle" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/topbar" />
+        <LinearLayout android:orientation="vertical" android:id="@id/component_content" android:background="@color/theme_card" android:paddingTop="4.0dip" android:paddingBottom="2.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:divider="@drawable/inspector_component_divider" android:showDividers="middle" android:paddingStart="4.0dip" android:paddingEnd="2.0dip" />
+    </LinearLayout>
+</FrameLayout>

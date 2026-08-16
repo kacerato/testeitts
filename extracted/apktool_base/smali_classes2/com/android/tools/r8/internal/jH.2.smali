@@ -1,0 +1,98 @@
+.class public final Lcom/android/tools/r8/internal/jH;
+.super Lcom/android/tools/r8/internal/tH;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/android/tools/r8/internal/UH;
+
+
+# direct methods
+.method public constructor <init>(Lcom/android/tools/r8/internal/vH;)V
+    .locals 0
+
+    invoke-direct {p0, p1}, Lcom/android/tools/r8/internal/tH;-><init>(Lcom/android/tools/r8/internal/vH;)V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final add(Ljava/lang/Object;)V
+    .locals 0
+
+    check-cast p1, Ljava/lang/Integer;
+
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
+
+    invoke-direct {p1}, Ljava/lang/UnsupportedOperationException;-><init>()V
+
+    throw p1
+.end method
+
+.method public final c()I
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/android/tools/r8/internal/tH;->b()Lcom/android/tools/r8/internal/hH;
+
+    move-result-object v0
+
+    iget v0, v0, Lcom/android/tools/r8/internal/S;->b:I
+
+    return v0
+.end method
+
+.method public final next()Ljava/lang/Object;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/android/tools/r8/internal/tH;->a()Lcom/android/tools/r8/internal/hH;
+
+    move-result-object v0
+
+    iget v0, v0, Lcom/android/tools/r8/internal/S;->b:I
+
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final previous()Ljava/lang/Object;
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/android/tools/r8/internal/tH;->b()Lcom/android/tools/r8/internal/hH;
+
+    move-result-object v0
+
+    iget v0, v0, Lcom/android/tools/r8/internal/S;->b:I
+
+    invoke-static {v0}, Ljava/lang/Integer;->valueOf(I)Ljava/lang/Integer;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final r()I
+    .locals 1
+
+    invoke-virtual {p0}, Lcom/android/tools/r8/internal/tH;->a()Lcom/android/tools/r8/internal/hH;
+
+    move-result-object v0
+
+    iget v0, v0, Lcom/android/tools/r8/internal/S;->b:I
+
+    return v0
+.end method
+
+.method public final set(Ljava/lang/Object;)V
+    .locals 0
+
+    check-cast p1, Ljava/lang/Integer;
+
+    new-instance p1, Ljava/lang/UnsupportedOperationException;
+
+    invoke-direct {p1}, Ljava/lang/UnsupportedOperationException;-><init>()V
+
+    throw p1
+.end method

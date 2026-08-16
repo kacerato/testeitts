@@ -1,0 +1,55 @@
+.class public Lq6/h;
+.super LF7/i;
+.source "SourceFile"
+
+
+# instance fields
+.field public m:Ljava/lang/String;
+
+.field public n:Lq6/g;
+
+
+# direct methods
+.method public constructor <init>(Ljava/lang/String;Lq6/g;)V
+    .locals 1
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0,
+            0x0
+        }
+        names = {
+            "text",
+            "profile"
+        }
+    .end annotation
+
+    new-instance v0, Lm7/c;
+
+    invoke-direct {v0}, Lm7/c;-><init>()V
+
+    invoke-direct {p0, p1, v0}, LF7/i;-><init>(Ljava/lang/String;LF7/j;)V
+
+    iput-object p1, p0, Lq6/h;->m:Ljava/lang/String;
+
+    iput-object p2, p0, Lq6/h;->n:Lq6/g;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public g()Ljava/lang/String;
+    .locals 1
+
+    iget-object v0, p0, Lq6/h;->m:Ljava/lang/String;
+
+    return-object v0
+.end method
+
+.method public u()Lq6/g;
+    .locals 1
+
+    iget-object v0, p0, Lq6/h;->n:Lq6/g;
+
+    return-object v0
+.end method

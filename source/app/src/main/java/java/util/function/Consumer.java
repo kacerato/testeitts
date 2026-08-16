@@ -1,0 +1,13 @@
+package java.util.function;
+
+/* JADX WARN: Classes with same name are omitted:
+  base.apk:assets/Editor/javaLibs.zip:JAVARuntime/d8lib/android.jar:java/util/function/Consumer.class
+ */
+@FunctionalInterface
+public interface Consumer<T> {
+    void accept(T t10);
+
+    default Consumer<T> andThen(Consumer<? super T> after) {
+        throw new RuntimeException("Stub!");
+    }
+}

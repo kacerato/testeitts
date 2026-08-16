@@ -1,0 +1,36 @@
+.class public interface abstract Lcom/itsmagic/engine/Activities/Editor/Utils/q$f$j;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingClass;
+    value = Lcom/itsmagic/engine/Activities/Editor/Utils/q$f;
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x609
+    name = "j"
+.end annotation
+
+.annotation runtime Ljava/lang/Deprecated;
+.end annotation
+
+
+# virtual methods
+.method public abstract a(Ljava/lang/String;)V
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0
+        }
+        names = {
+            "message"
+        }
+    .end annotation
+.end method
+
+.method public abstract b()V
+.end method
+
+.method public abstract onSuccess()V
+.end method

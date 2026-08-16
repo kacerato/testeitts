@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" app:layout_constraintTop_toTopOf="parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <FrameLayout android:layout_gravity="center_vertical" android:id="@id/keyframeBtn" android:background="@drawable/editor3d_v2_input_text_background" android:padding="6.0dip" android:layout_width="@dimen/editor3d_v2_panel_row" android:layout_height="@dimen/editor3d_v2_panel_row">
+        <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" app:srcCompat="@drawable/keyframe_v2" />
+    </FrameLayout>
+    <Space android:layout_width="4.0dip" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/keyframeContent" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+</LinearLayout>

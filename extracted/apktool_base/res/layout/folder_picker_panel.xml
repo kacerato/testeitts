@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="horizontal" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="32.0dip">
+            <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="FOLDER PICKER" android:fontFamily="@font/base_bold" />
+            <androidx.legacy.widget.Space android:layout_width="16.0dip" android:layout_height="fill_parent" />
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_mid_text_color" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/formatTitle" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="Select any VERTEX" android:maxLines="1" android:singleLine="true" android:layout_weight="1.0" android:fontFamily="@font/base_bold" />
+            <ImageView android:id="@id/viewMode" android:padding="9.0dip" android:layout_width="32.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/view_mode" />
+            <ImageView android:id="@id/closeX" android:padding="10.0dip" android:layout_width="32.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/close_x" />
+            <androidx.legacy.widget.Space android:layout_width="4.0dip" android:layout_height="fill_parent" />
+        </LinearLayout>
+        <LinearLayout android:orientation="vertical" android:id="@id/filesContent" android:background="@color/theme_semi_card" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="42.0dip">
+            <androidx.legacy.widget.Space android:id="@id/space6" android:layout_width="4.0dip" android:layout_height="fill_parent" />
+            <Button android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/white" android:id="@id/none" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="Select none" android:fontFamily="@font/base_bold" android:backgroundTint="@color/editor_buttons" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+            <Space android:layout_width="4.0dip" android:layout_height="fill_parent" />
+            <TextView android:textSize="11.0sp" android:textColor="@color/theme_high_text_color" android:ellipsize="end" android:gravity="center|right" android:id="@id/selectedFile" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="Selected file:" android:maxLines="1" android:singleLine="true" android:layout_weight="1.0" android:fontFamily="@font/base_regular" />
+            <androidx.legacy.widget.Space android:id="@id/space6" android:layout_width="4.0dip" android:layout_height="fill_parent" />
+            <Button android:textSize="12.0sp" android:textStyle="bold" android:textColor="@color/white" android:id="@id/done" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="Select" android:fontFamily="@font/base_bold" android:backgroundTint="@color/theme_primary_dark" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+            <androidx.legacy.widget.Space android:id="@id/space6" android:layout_width="12.0dip" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

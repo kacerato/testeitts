@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="8.0sp" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:id="@id/statistic" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip" android:text="statistic" android:fontFamily="@font/base_regular" android:layout_marginStart="4.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" />
+    <LinearLayout android:orientation="horizontal" android:id="@id/modeSelectorButton" android:layout_width="wrap_content" android:layout_height="@dimen/editor3d_v2_topbar_height" android:layout_marginTop="4.0dip" android:layout_marginStart="4.0dip" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <HorizontalScrollView android:id="@id/horizontalScrollView4" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:layout_marginEnd="2.0dip" app:layout_constraintEnd_toStartOf="@id/scrollView3" app:layout_constraintStart_toEndOf="@id/modeSelectorButton" app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout android:orientation="horizontal" android:id="@id/topBar" android:layout_width="wrap_content" android:layout_height="fill_parent" />
+    </HorizontalScrollView>
+    <ScrollView android:id="@id/scrollView2" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginStart="4.0dip" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toBottomOf="@id/modeSelectorButton">
+        <LinearLayout android:orientation="vertical" android:id="@id/leftBar" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    </ScrollView>
+    <LinearLayout android:orientation="horizontal" android:id="@id/bottomBar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" />
+    <ScrollView android:id="@id/scrollView3" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginTop="4.0dip" android:fillViewport="true" android:layout_marginEnd="4.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/rightBar" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+            <Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+        </LinearLayout>
+    </ScrollView>
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/prefabStore" android:background="@drawable/editor_view_mode_background" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="4.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+        <ImageView android:id="@id/icon" android:padding="4.0dip" android:layout_width="@dimen/view3d_button_height" android:layout_height="@dimen/view3d_button_height" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" app:srcCompat="@drawable/fab" app:tint="@color/theme_high_icon_tint" />
+        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/text" android:paddingRight="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Objects" android:fontFamily="@font/base_medium" android:layout_marginStart="0.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toEndOf="@id/icon" app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

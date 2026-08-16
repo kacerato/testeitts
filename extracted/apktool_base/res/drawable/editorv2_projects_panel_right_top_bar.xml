@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners android:radius="@dimen/editor3d_v2_projects_panel_rounded_border_middle" />
+        </shape>
+    </item>
+    <item android:bottom="@dimen/editor3d_v2_projects_panel_rounded_border_middle">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners android:radius="0.0dip" />
+        </shape>
+    </item>
+    <item android:left="@dimen/editor3d_v2_projects_panel_rounded_border_middle">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/white" />
+            <corners android:radius="0.0dip" />
+        </shape>
+    </item>
+</layer-list>

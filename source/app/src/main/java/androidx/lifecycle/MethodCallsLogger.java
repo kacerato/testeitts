@@ -1,0 +1,16 @@
+package androidx.lifecycle;
+
+import java.util.HashMap;
+import java.util.Map;
+
+public class MethodCallsLogger {
+    private Map<String, Integer> mCalledMethods = new HashMap();
+
+    public boolean approveCall(String str, int i10) {
+        Integer num = this.mCalledMethods.get(str);
+        int intValue = num != null ? num.intValue() : 0;
+        boolean z10 = (intValue & i10) != 0;
+        this.mCalledMethods.put(str, Integer.valueOf(i10 | intValue));
+        return !z10;
+    }
+}

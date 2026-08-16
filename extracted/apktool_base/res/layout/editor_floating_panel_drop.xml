@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:padding="4.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:background="@drawable/editor3d_v2_floating_panel_drop" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" layout="@layout/editor_panel">
+        <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/dropText" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="Split panels" android:fontFamily="@font/linkednow_extrabold" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,5 @@
+package com.android.tools.r8.internal;
+
+public interface InterfaceC6653bq0 {
+    com.android.tools.r8.graph.L2 a(com.android.tools.r8.graph.L2 l22, int i10);
+}

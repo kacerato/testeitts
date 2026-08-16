@@ -1,0 +1,18 @@
+package java.security.cert;
+
+import java.security.InvalidAlgorithmParameterException;
+
+/* JADX WARN: Classes with same name are omitted:
+  base.apk:assets/Editor/javaLibs.zip:JAVARuntime/d8lib/android.jar:java/security/cert/CertPathValidatorSpi.class
+ */
+public abstract class CertPathValidatorSpi {
+    public abstract CertPathValidatorResult engineValidate(CertPath certPath, CertPathParameters certPathParameters) throws CertPathValidatorException, InvalidAlgorithmParameterException;
+
+    public CertPathValidatorSpi() {
+        throw new RuntimeException("Stub!");
+    }
+
+    public CertPathChecker engineGetRevocationChecker() {
+        throw new RuntimeException("Stub!");
+    }
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:padding="6.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="Select bake objects" android:layout_weight="1.0" android:fontFamily="@font/base_regular" />
+                <TextView android:textSize="10.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="right" android:layout_width="0.0dip" android:layout_height="wrap_content" android:text="Displaying static only" android:layout_weight="1.0" android:fontFamily="@font/base_regular" />
+            </LinearLayout>
+            <TextView android:textSize="10.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="right" android:id="@id/textView32" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="All children are included" android:fontFamily="@font/base_regular" />
+        </LinearLayout>
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="6.0dip" />
+        <HorizontalScrollView android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:background="@color/theme_semi_card" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <androidx.recyclerview.widget.RecyclerView android:id="@id/recyclerView" android:layout_width="10000.0dip" android:layout_height="fill_parent" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:padding="6.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.25">
+        <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Options" android:fontFamily="@font/base_regular" />
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="6.0dip" />
+        <ScrollView android:background="@color/theme_semi_card" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <LinearLayout android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+        </ScrollView>
+        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="6.0dip" />
+        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="10.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/info" android:paddingRight="8.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="TextView" android:layout_weight="1.0" />
+            <Button android:textSize="10.0sp" android:id="@id/bakeButton" android:layout_width="64.0dip" android:layout_height="36.0dip" android:text="Bake" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

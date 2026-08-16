@@ -1,0 +1,23 @@
+.class public interface abstract Lorg/openjdk/source/tree/BlockTree;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lorg/openjdk/source/tree/StatementTree;
+
+
+# virtual methods
+.method public abstract getStatements()Ljava/util/List;
+    .annotation system Ldalvik/annotation/Signature;
+        value = {
+            "()",
+            "Ljava/util/List<",
+            "+",
+            "Lorg/openjdk/source/tree/StatementTree;",
+            ">;"
+        }
+    .end annotation
+.end method
+
+.method public abstract isStatic()Z
+.end method

@@ -1,0 +1,95 @@
+package Za;
+
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.itsmagic.engine.Activities.Editor.Extensions.LanguageSystem.Lang;
+import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
+import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
+import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
+import ga.EnumC13304B;
+import ga.H;
+import ga.o;
+import ga.p;
+
+public class e extends NoCodeNode {
+
+    public static final String f31095h = "IsLoaded";
+
+    public static final int f31096i = 0;
+
+    public static final int f31097j = 1;
+
+    public final NoCodeSlot[] f31098g;
+
+    public class a implements p {
+        @Override
+        public NoCodeNode a() {
+            return new e();
+        }
+
+        @Override
+        public Class<? extends NoCodeNode> b() {
+            return e.class;
+        }
+
+        @Override
+        public String c() {
+            return e.f31095h;
+        }
+
+        @Override
+        public NoCodeNode d(JsonObject json) {
+            return (NoCodeNode) X7.a.m().fromJson((JsonElement) json, e.class);
+        }
+
+        @Override
+        public String e() {
+            return "Actions/World";
+        }
+
+        @Override
+        public String f() {
+            return "Is Loaded";
+        }
+
+        @Override
+        public boolean g() {
+            return true;
+        }
+    }
+
+    static {
+        o.a(new a());
+    }
+
+    public e() {
+        H h10 = H.BRANCH;
+        this.f31098g = new NoCodeSlot[]{new NoCodeSlot("On True", h10).c(Lang.l(Lang.T.NOCODE_SLOT_ON_TRUE)), new NoCodeSlot("On False", h10).c(Lang.l(Lang.T.NOCODE_SLOT_ON_FALSE))};
+        this.serializedNodeType = f31095h;
+    }
+
+    @Override
+    public NoCodeSlot[] J() {
+        return this.f31098g;
+    }
+
+    @Override
+    public EnumC13304B M() {
+        return EnumC13304B.BOTH;
+    }
+
+    @Override
+    public String N(NoCodeData graphData) {
+        return "Is Loaded";
+    }
+
+    @Override
+    public void m0() {
+        u(com.itsmagic.engine.Engines.Engine.World.a.z() ? this.f31098g[0] : this.f31098g[1]);
+    }
+
+    @Override
+    public String x(NoCodeData graphData) {
+        return Lang.l(Lang.T.NOCODE_IS_LOADED);
+    }
+}

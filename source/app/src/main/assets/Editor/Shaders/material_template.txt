@@ -1,0 +1,88 @@
+-MANIFEST-
+{
+  "name": "CustomShader/MyShader",
+  "doubleSided": false,
+  "blendingMode": "opaque",
+  "shadingModel": "lit",
+  "refraction": "false",
+  "params": {
+    "color": "rgba",
+    "texture": "sampler2D"
+  },
+  "defaults": {
+    "color": "[255, 0, 0, 255]",
+    "texture": "filled"
+  },
+  "precision": {
+    "color": "low"
+  }
+}
+-MANIFEST-
+
+-FRAGMENT SHADER-
+void easyMaterial(inout MaterialInputs m) {
+    prepareMaterial(m);
+    float2 uv = getUV0();
+
+    float4 color = materialParams.color;
+    float4 texPixel = texture(materialParams_texture, uv);
+
+    m.baseColor = color * texPixel;
+}
+-FRAGMENT SHADER-
+
+-VERTEX SHADER-
+void easyVertex(inout MaterialVertexInputs v) {
+    // passthrough
+}
+-VERTEX SHADER-
+
+/* DOCUMENTATION
+Shader rendering engine is Google filament, search about Google filament shader attributes and uniforms
+
+Properties inspector params:
+Param types:
+    rgba -> color converts to float4
+    rgb -> color converts to float3 (no alpha)
+    float -> float
+    float2 -> vector2 converts to float2
+    float3 -> vector3 converts to float3
+    float4 -> vector4 converts to float4
+    float01 -> shows a 0..1 slider
+    bool -> shows a toggle mapped to a float in shader (1.0 == true)
+
+Sampler types:
+    sampler2D -> texture
+    samplerCube -> cubemap
+
+It is possible to sample decal textures using:
+float4 decal(int layer, float2 uv);
+float4 decalPixel(int layer, float2 uv);
+
+Precisions:
+    low, medium & high
+
+Default sampler values:
+    filled -> all pixels 255,255,255,255
+    empty -> all pixels 0,0,0,0
+    black -> all pixels 0,0,0,255
+
+Blending modes:
+    opaque
+    transparent
+    masked
+    add
+    multiply
+    fade
+
+Shading models:
+    lit
+    unlit
+
+When refraction is true:
+    new MaterialInputs attributes:
+        material.transmission   : FLOAT
+        material.absorption     : FLOAT
+        material.ior            : FLOAT
+        material.microThickness : FLOAT
+*/

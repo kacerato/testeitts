@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/background_blured_v2" android:layout_width="fill_parent" android:layout_height="fill_parent" android:backgroundTintMode="src_in"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginTop="16.0dip" android:layout_marginBottom="16.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+            <com.itsmagic.engine.Activities.Editor.Utils.MaskView.MaskableFrameLayout android:layout_width="wrap_content" android:layout_height="fill_parent" app:anti_aliasing="false" app:mask="@drawable/editor3d_v2_floating_panel" app:porterduffxfermode="DST_IN">
+                <eightbitlab.com.blurview.BlurView android:id="@id/blurView" android:padding="8.0dip" android:layout_width="wrap_content" android:layout_height="fill_parent" app:blurOverlayColor="@color/editor3d_v2_translucent_panel_color">
+                    <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                            <androidx.legacy.widget.Space android:id="@id/space33" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                            <LinearLayout android:gravity="center" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                                <ImageView android:layout_gravity="center_horizontal" android:padding="6.0dip" android:layout_width="50.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/fire" />
+                                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                                    <TextView android:textSize="18.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/tittle_vip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Torne-se Membro Vip" android:fontFamily="@font/base_bold" />
+                                    <TextView android:textSize="12.0sp" android:textColor="@color/golden" android:gravity="center" android:id="@id/text1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Por menos que um lanche" android:fontFamily="@font/base_bold" />
+                                    <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/text2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="pare os anuncios!" android:fontFamily="@font/base_bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+                            <androidx.legacy.widget.Space android:id="@id/space34" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                            <ImageView android:layout_gravity="center|right|top" android:id="@id/closePanel" android:padding="6.0dip" android:visibility="invisible" android:layout_width="26.0dip" android:layout_height="26.0dip" app:srcCompat="@drawable/close_x" />
+                        </LinearLayout>
+                        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                        <LinearLayout android:orientation="vertical" android:id="@id/list" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                                <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" app:srcCompat="@drawable/check_box_icon" />
+                                <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/no_ads" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="Sem anúncios;" android:fontFamily="@font/base_bold" />
+                            </LinearLayout>
+                            <androidx.legacy.widget.Space android:id="@id/space38" android:layout_width="fill_parent" android:layout_height="4.0dip" />
+                            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                                <ImageView android:layout_width="14.0dip" android:layout_height="14.0dip" app:srcCompat="@drawable/check_box_icon" />
+                                <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/without_internet" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="Use sem internet;" android:fontFamily="@font/base_bold" />
+                            </LinearLayout>
+                            <androidx.legacy.widget.Space android:id="@id/space39" android:layout_width="fill_parent" android:layout_height="4.0dip" />
+                            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                                <ImageView android:id="@id/imageView18" android:layout_width="14.0dip" android:layout_height="14.0dip" app:srcCompat="@drawable/check_box_icon" />
+                                <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/export_free" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="Exporte para a Playstore;" android:fontFamily="@font/base_bold" />
+                            </LinearLayout>
+                            <androidx.legacy.widget.Space android:id="@id/space43" android:layout_width="fill_parent" android:layout_height="4.0dip" />
+                            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                                <ImageView android:id="@id/imageView18" android:layout_width="14.0dip" android:layout_height="14.0dip" app:srcCompat="@drawable/check_box_icon" />
+                                <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/export_to_playstore" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="Exporte para a Playstore;" android:fontFamily="@font/base_bold" />
+                            </LinearLayout>
+                            <androidx.legacy.widget.Space android:id="@id/space41" android:layout_width="fill_parent" android:layout_height="4.0dip" />
+                            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                                <ImageView android:id="@id/imageView18" android:layout_width="14.0dip" android:layout_height="14.0dip" app:srcCompat="@drawable/check_box_icon" />
+                                <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/upload_30mb_packages" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="Exporte para a Playstore;" android:fontFamily="@font/base_bold" />
+                            </LinearLayout>
+                            <androidx.legacy.widget.Space android:id="@id/space41" android:layout_width="fill_parent" android:layout_height="4.0dip" />
+                            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                                <ImageView android:id="@id/imageView19" android:layout_width="14.0dip" android:layout_height="14.0dip" app:srcCompat="@drawable/check_box_icon" />
+                                <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/sell_packages" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="Venda pacotes e ganhe dinheiro com o app;" android:fontFamily="@font/base_bold" />
+                            </LinearLayout>
+                            <androidx.legacy.widget.Space android:id="@id/space40" android:layout_width="fill_parent" android:layout_height="4.0dip" />
+                            <LinearLayout android:orientation="horizontal" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                                <ImageView android:id="@id/imageView20" android:layout_width="14.0dip" android:layout_height="14.0dip" app:srcCompat="@drawable/check_box_icon" />
+                                <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:id="@id/official_package_release" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:text="1500 packs:" android:fontFamily="@font/base_bold" />
+                            </LinearLayout>
+                        </LinearLayout>
+                        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0" />
+                        <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                            <LinearLayout android:orientation="horizontal" android:id="@id/purchase_monthly" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="0.0dip" android:layout_height="42.0dip" android:layout_weight="1.0" android:backgroundTint="@color/interface_primary">
+                                <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+                                    <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                                        <TextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/monthly" android:layout_width="wrap_content" android:layout_height="0.0dip" android:text="mensal" android:lines="1" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/base_extrabold" />
+                                        <TextView android:textSize="12.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/price_monthly" android:layout_width="wrap_content" android:layout_height="0.0dip" android:text="R$ 11,00 por mês" android:lines="1" android:layout_weight="1.0" android:fontFamily="@font/musticapro_semibold" />
+                                    </LinearLayout>
+                                </FrameLayout>
+                            </LinearLayout>
+                            <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="wrap_content" />
+                            <LinearLayout android:orientation="horizontal" android:id="@id/purchase_yearly" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="0.0dip" android:layout_height="42.0dip" android:layout_weight="1.0" android:backgroundTint="@color/interface_primary">
+                                <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="vertical" android:paddingTop="6.0dip" android:paddingBottom="6.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0">
+                                    <TextView android:textSize="16.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/yearly" android:layout_width="wrap_content" android:layout_height="0.0dip" android:text="Anual" android:lines="1" android:layout_weight="1.0" android:textAllCaps="true" android:fontFamily="@font/base_extrabold" />
+                                    <TextView android:textSize="12.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/price_yearly" android:layout_width="wrap_content" android:layout_height="0.0dip" android:layout_marginLeft="2.0dip" android:layout_marginRight="2.0dip" android:text="R$96,00 por ano" android:lines="1" android:layout_weight="1.0" android:fontFamily="@font/musticapro_semibold" />
+                                </LinearLayout>
+                                <LinearLayout android:gravity="center" android:orientation="vertical" android:background="@drawable/backups_rounded_right" android:layout_width="30.0dip" android:layout_height="fill_parent" android:backgroundTint="@color/white">
+                                    <TextView android:textSize="12.0sp" android:textColor="@color/colorAccent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="30%" android:fontFamily="@font/base_extrabold" />
+                                    <TextView android:textSize="12.0sp" android:textColor="@color/colorAccent" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="OFF" android:fontFamily="@font/base_extrabold" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                        <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+                        <TextView android:textSize="12.0sp" android:textColor="@color/white" android:gravity="center" android:id="@id/coin_subscription" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_margin="4.0dip" android:text="Ou assine 1 semana por 1000 moedas" android:fontFamily="@font/base_bold" />
+                    </LinearLayout>
+                </eightbitlab.com.blurview.BlurView>
+            </com.itsmagic.engine.Activities.Editor.Utils.MaskView.MaskableFrameLayout>
+        </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

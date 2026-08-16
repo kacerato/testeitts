@@ -1,0 +1,56 @@
+package com.google.common.collect;
+
+import java.util.Collection;
+import java.util.Map;
+import java.util.Set;
+import javax.annotation.CheckForNull;
+
+@X
+@v2.b
+public final class C12528i0<K, V> extends C12520g0<K, V> implements InterfaceC12552o0<K, V> {
+    public C12528i0(C2<K, V> c22, w2.I<? super Map.Entry<K, V>> i10) {
+        super(c22, i10);
+    }
+
+    /* JADX WARN: Multi-variable type inference failed */
+    @Override
+    public Collection d(@InterfaceC12518f2 Object obj, Iterable iterable) {
+        return d((C12528i0<K, V>) obj, iterable);
+    }
+
+    /* JADX WARN: Multi-variable type inference failed */
+    @Override
+    public Collection y(@InterfaceC12518f2 Object obj) {
+        return y((C12528i0<K, V>) obj);
+    }
+
+    @Override
+    public Set<Map.Entry<K, V>> b() {
+        return D2.i(o().v(), N());
+    }
+
+    @Override
+    public Set<V> c(@CheckForNull Object obj) {
+        return (Set) super.c(obj);
+    }
+
+    @Override
+    public Set<V> d(@InterfaceC12518f2 K k10, Iterable<? extends V> iterable) {
+        return (Set) super.d((C12528i0<K, V>) k10, (Iterable) iterable);
+    }
+
+    @Override
+    public Set<V> y(@InterfaceC12518f2 K k10) {
+        return (Set) super.y((C12528i0<K, V>) k10);
+    }
+
+    @Override
+    public C2<K, V> o() {
+        return (C2) this.f66626g;
+    }
+
+    @Override
+    public Set<Map.Entry<K, V>> v() {
+        return (Set) super.v();
+    }
+}

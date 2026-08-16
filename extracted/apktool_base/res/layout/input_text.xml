@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:id="@id/background" android:background="@drawable/editor3d_v2_input_text_background" android:paddingLeft="6.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:paddingEnd="4.0dip">
+        <com.google.android.material.textfield.TextInputEditText android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/textInputEditText" android:background="@null" android:layout_width="fill_parent" android:layout_height="@dimen/editor3d_v2_panel_row" android:text="1.0" android:singleLine="true" android:selectAllOnFocus="true" android:inputType="numberDecimal|numberSigned" android:windowSoftInputMode="stateHidden" android:imeOptions="actionDone" android:fontFamily="@font/base_medium" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    </LinearLayout>
+</LinearLayout>

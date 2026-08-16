@@ -1,0 +1,15 @@
+package v0;
+
+import G0.C2570i;
+import android.content.Context;
+import android.os.Looper;
+import com.google.android.gms.common.api.AbstractC11908l;
+import com.google.android.gms.common.api.C11894a;
+import com.google.android.gms.internal.auth.C11974q;
+
+public final class g extends C11894a.AbstractC0948a {
+    @Override
+    public final C11894a.f d(Context context, Looper looper, C2570i c2570i, Object obj, AbstractC11908l.b bVar, AbstractC11908l.c cVar) {
+        return new C11974q(context, looper, c2570i, (w) obj, bVar, cVar);
+    }
+}

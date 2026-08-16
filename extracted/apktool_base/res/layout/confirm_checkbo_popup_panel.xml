@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:gravity="center_vertical" android:id="@id/tittle_bar" android:background="@color/theme_semi_card" android:paddingLeft="6.0dip" android:paddingTop="4.0dip" android:paddingRight="4.0dip" android:paddingBottom="4.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textColor="@color/theme_high_text_color" android:id="@id/tittle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="title" android:textAllCaps="true" android:fontFamily="@font/base_bold" />
+        </LinearLayout>
+        <TextView android:textSize="14.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/desc" android:paddingLeft="8.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="text" android:layout_weight="1.0" android:fontFamily="@font/base_regular" android:paddingEnd="8.0dip" />
+        <LinearLayout android:gravity="center" android:layout_gravity="center" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <CheckBox android:textColor="@color/theme_high_text_color" android:id="@id/checkBox" android:layout_width="wrap_content" android:layout_height="32.0dip" android:text="CheckBox" android:buttonTint="@color/theme_high_icon_tint" />
+        </LinearLayout>
+        <LinearLayout android:orientation="horizontal" android:id="@id/bottom_bar" android:paddingLeft="8.0dip" android:paddingTop="6.0dip" android:paddingRight="10.0dip" android:paddingBottom="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Button android:textColor="@color/theme_high_text_color" android:id="@id/cancel" android:background="@drawable/round_2" android:layout_width="wrap_content" android:layout_height="26.0dip" android:text="Cancel" android:textAllCaps="true" android:fontFamily="@font/base_bold" android:backgroundTint="@color/editor_buttons" />
+            <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <Button android:textColor="@color/theme_high_text_color" android:id="@id/confirm" android:background="@drawable/round_2" android:layout_width="wrap_content" android:layout_height="26.0dip" android:text="Confirm" android:textAllCaps="true" android:fontFamily="@font/base_bold" android:backgroundTint="@color/theme_primary_dark" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

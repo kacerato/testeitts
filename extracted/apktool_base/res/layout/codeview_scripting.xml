@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="horizontal" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <org.blacksquircle.ui.editorkit.widget.TextProcessor android:textSize="16.0sp" android:gravity="start|center|top" android:id="@id/editor" android:paddingTop="0.0dip" android:paddingBottom="0.0dip" android:layout_width="0.0dip" android:layout_height="0.0dip" android:imeOptions="flagNoExtractUi" android:fontFamily="@font/progfont" app:layout_constraintBottom_toTopOf="@id/suggestionsPanel" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintHorizontal_bias="0.0" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+    <LinearLayout android:orientation="vertical" android:id="@id/suggestionsPanel" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="128.0dip" app:layout_constraintBottom_toTopOf="@id/leftBarContent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+        <com.itsmagic.engine.Activities.Editor.Utils.ExceptionSafeRecyclerView android:id="@id/suggestionsRecycler" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/leftBarContent" android:background="@color/theme_card" android:padding="2.0dip" android:layout_width="0.0dip" android:layout_height="wrap_content" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent">
+        <HorizontalScrollView android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <LinearLayout android:orientation="horizontal" android:id="@id/leftBar" android:layout_width="wrap_content" android:layout_height="fill_parent">
+                <ImageView android:id="@id/copy" android:padding="6.0dip" android:layout_width="24.0dip" android:layout_height="@dimen/editor3d_v2_topbar_height" app:srcCompat="@drawable/copy" />
+                <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="24.0dip" />
+                <ImageView android:id="@id/cut" android:padding="6.0dip" android:layout_width="24.0dip" android:layout_height="@dimen/editor3d_v2_topbar_height" app:srcCompat="@drawable/scissors" />
+            </LinearLayout>
+        </HorizontalScrollView>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@id/topBar" android:padding="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent">
+        <ImageView android:id="@id/copy" android:padding="6.0dip" android:layout_width="24.0dip" android:layout_height="@dimen/editor3d_v2_topbar_height" app:srcCompat="@drawable/copy" />
+        <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="24.0dip" />
+        <ImageView android:id="@id/cut" android:padding="6.0dip" android:layout_width="24.0dip" android:layout_height="@dimen/editor3d_v2_topbar_height" app:srcCompat="@drawable/scissors" />
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

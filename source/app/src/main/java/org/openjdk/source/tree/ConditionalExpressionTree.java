@@ -1,0 +1,9 @@
+package org.openjdk.source.tree;
+
+public interface ConditionalExpressionTree extends ExpressionTree {
+    ExpressionTree getCondition();
+
+    ExpressionTree getFalseExpression();
+
+    ExpressionTree getTrueExpression();
+}

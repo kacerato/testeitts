@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:id="@id/productView" android:background="@color/theme_panel" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="180.0dip" app:anti_aliasing="false" app:mask="@drawable/editor3d_v2_projects_panel_project_mask" app:porterduffxfermode="DST_IN">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent">
+            <FrameLayout android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <ImageView android:id="@id/icon" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" app:srcCompat="@drawable/embed_mp" />
+                <LinearLayout android:gravity="center_vertical" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent">
+                    <ImageView android:layout_width="12.0dip" android:layout_height="12.0dip" app:srcCompat="@drawable/star" app:tint="@color/theme_primary" />
+                    <androidx.legacy.widget.Space android:layout_width="2.0dip" android:layout_height="wrap_content" />
+                    <TextView android:textSize="8.0sp" android:textColor="@color/theme_high_text_color" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="5.0" android:imeOptions="actionNone" android:fontFamily="@font/base_bold" />
+                </LinearLayout>
+            </FrameLayout>
+            <LinearLayout android:orientation="horizontal" android:background="@color/theme_panel_topbar" android:layout_width="fill_parent" android:layout_height="26.0dip">
+                <ImageView android:id="@id/icon" android:padding="3.0dip" android:visibility="gone" android:layout_width="25.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/useraccount_rp" />
+                <androidx.legacy.widget.Space android:id="@id/space22" android:layout_width="4.0dip" android:layout_height="fill_parent" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/name" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="product" android:maxLines="1" android:layout_weight="1.0" android:fontFamily="@font/base_regular" />
+                <androidx.legacy.widget.Space android:layout_width="4.0dip" android:layout_height="fill_parent" />
+                <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/price" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="$40" android:maxLines="1" android:fontFamily="@font/progfont" />
+                <androidx.legacy.widget.Space android:id="@id/space23" android:layout_width="4.0dip" android:layout_height="fill_parent" />
+                <androidx.constraintlayout.widget.ConstraintLayout android:gravity="center" android:orientation="vertical" android:id="@id/promotion_layout" android:background="@color/marketplace_promotions" android:layout_width="30.0dip" android:layout_height="fill_parent">
+                    <TextView android:textSize="10.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="bottom|center" android:id="@id/percent_descont" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:text="100%" android:fontFamily="@font/progfont" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+                    <TextView android:textSize="10.0sp" android:textStyle="bold" android:textColor="@color/white" android:gravity="center|top" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="2.0dip" android:text="OFF" android:fontFamily="@font/progfont" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+        </LinearLayout>
+        <ImageView android:id="@id/imageView12" android:background="@drawable/rounded_foreground_tl" android:layout_width="8.0dip" android:layout_height="8.0dip" android:backgroundTint="@color/theme_card" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+        <ImageView android:id="@id/imageView22" android:background="@drawable/rounded_foreground_bl" android:layout_width="8.0dip" android:layout_height="8.0dip" android:backgroundTint="@color/theme_card" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" />
+        <ImageView android:id="@id/imageView13" android:background="@drawable/rounded_foreground_tr" android:layout_width="8.0dip" android:layout_height="8.0dip" android:backgroundTint="@color/theme_card" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+        <ImageView android:id="@id/imageView16" android:background="@drawable/rounded_foreground_br" android:layout_width="8.0dip" android:layout_height="8.0dip" android:backgroundTint="@color/theme_card" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="36.0dip">
+        <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+        <TextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center_vertical" android:id="@id/tittle" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="Animation Mask" android:fontFamily="@font/base_bold" />
+        <TextView android:textSize="11.0sp" android:textColor="@color/theme_mid_text_color" android:ellipsize="start" android:gravity="end|center" android:id="@id/maskFile" android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="Files/Animations/mask.amask" android:maxLines="1" android:singleLine="true" android:layout_weight="1.0" android:fontFamily="@font/base_regular" />
+        <ImageView android:id="@id/closeX" android:padding="10.0dip" android:layout_width="36.0dip" android:layout_height="fill_parent" app:srcCompat="@drawable/close_x" />
+    </LinearLayout>
+    <HorizontalScrollView android:background="@color/theme_semi_card" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="fill_parent">
+            <androidx.recyclerview.widget.RecyclerView android:id="@id/recyclerView" android:layout_width="10000.0dip" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </HorizontalScrollView>
+    <LinearLayout android:gravity="end|center" android:orientation="horizontal" android:background="@color/theme_panel" android:layout_width="fill_parent" android:layout_height="44.0dip">
+        <androidx.legacy.widget.Space android:layout_width="8.0dip" android:layout_height="fill_parent" />
+        <TextView android:textSize="11.0sp" android:textColor="@color/theme_mid_text_color" android:gravity="center_vertical" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="Weight per object" android:layout_weight="1.0" android:fontFamily="@font/base_regular" />
+        <Button android:textSize="12.0sp" android:textColor="@color/white" android:id="@id/save" android:layout_width="wrap_content" android:layout_height="fill_parent" android:text="Save" android:fontFamily="@font/base_bold" android:backgroundTint="@color/theme_primary_dark" />
+        <androidx.legacy.widget.Space android:layout_width="12.0dip" android:layout_height="fill_parent" />
+    </LinearLayout>
+</LinearLayout>

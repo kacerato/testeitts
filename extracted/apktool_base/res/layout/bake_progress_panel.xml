@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:id="@id/tittle_bar" android:background="@color/theme_semi_card" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+        <FrameLayout android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <TextView android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:layout_gravity="center" android:id="@id/panel_title" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_margin="6.0dip" android:text="BAKE GENERATOR" android:singleLine="true" android:fontFamily="@font/base_bold" />
+        </FrameLayout>
+        <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_marginLeft="8.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_marginBottom="8.0dip" android:layout_weight="1.0">
+        <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/content" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="10.0sp" android:typeface="monospace" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/tittle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Loading world" android:fontFamily="@font/progfont" android:textAlignment="center" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+            <TextView android:textSize="10.0sp" android:typeface="monospace" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/content1" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="100/100 - 100%" android:singleLine="true" android:fontFamily="@font/progfont" android:textAlignment="center" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+            <TextView android:textSize="10.0sp" android:typeface="monospace" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/content2" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Model renderer at" android:singleLine="true" android:fontFamily="@font/progfont" android:textAlignment="center" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="4.0dip" />
+            <TextView android:textSize="10.0sp" android:typeface="monospace" android:textStyle="bold" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/content3" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Loading material" android:singleLine="true" android:fontFamily="@font/progfont" android:textAlignment="center" />
+        </LinearLayout>
+        <LinearLayout android:gravity="bottom" android:id="@id/bottom_bar" android:layout_width="fill_parent" android:layout_height="38.0dip">
+            <androidx.legacy.widget.Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+            <Button android:textColor="@color/white" android:id="@id/finishButton" android:background="@drawable/editor3d_v2_rounded_button" android:layout_width="wrap_content" android:layout_height="28.0dip" android:text="FINISH" android:backgroundTint="@color/theme_panel_topbar" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

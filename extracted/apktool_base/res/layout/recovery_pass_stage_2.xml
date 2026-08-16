@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/textView15" android:layout_width="fill_parent" android:layout_height="fill_parent" android:text="We sent a message to your email, please check it there." android:fontFamily="@font/base_regular" />
+</LinearLayout>

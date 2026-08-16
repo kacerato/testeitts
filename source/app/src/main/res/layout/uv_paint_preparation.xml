@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:orientation="vertical" android:background="@color/theme_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <ScrollView android:paddingLeft="8.0dip" android:paddingRight="8.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+            <TextView android:textColor="@color/theme_high_text_color" android:id="@id/text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="This vertex has not yet been prepared for painting. How to proceed?" android:fontFamily="@font/base_regular" />
+            <Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+            <CheckBox android:textColor="@color/theme_high_text_color" android:id="@id/genUV" android:layout_width="fill_parent" android:layout_height="wrap_content" android:checked="true" android:text="Generate a new UV." android:buttonTint="@color/theme_high_icon_tint" />
+            <Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <CheckBox android:textColor="@color/theme_high_text_color" android:id="@id/genTex" android:layout_width="0.0dip" android:layout_height="wrap_content" android:checked="true" android:text="Generate a new blank texture." android:layout_weight="1.0" android:buttonTint="@color/theme_high_icon_tint" />
+                <EditText android:textSize="12.0sp" android:textColor="@color/theme_high_text_color" android:textColorHint="@color/theme_high_text_color" android:id="@id/resolution" android:layout_width="52.0dip" android:layout_height="wrap_content" android:text="1024" android:hint="Size" android:ems="10" android:inputType="textPersonName" android:fontFamily="@font/base_regular" android:backgroundTint="@color/white" />
+            </LinearLayout>
+            <Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+            <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="fill_parent">
+                <Space android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0" />
+                <Button android:textSize="12.0sp" android:textColor="@color/white" android:id="@id/cancel" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="Cancel" android:fontFamily="@font/linkednow_extrabold" android:backgroundTint="@color/mp_item_cancel1" />
+                <Space android:layout_width="16.0dip" android:layout_height="fill_parent" />
+                <Button android:textSize="12.0sp" android:textColor="@color/white" android:id="@id/generate" android:layout_width="wrap_content" android:layout_height="40.0dip" android:text="Generate" android:fontFamily="@font/linkednow_extrabold" android:backgroundTint="@color/theme_primary" />
+            </LinearLayout>
+            <Space android:layout_width="fill_parent" android:layout_height="0.0dip" android:minHeight="8.0dip" android:layout_weight="1.0" />
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,223 @@
+.class public LBa/z;
+.super LBa/q;
+.source "SourceFile"
+
+
+# static fields
+.field public static final h:Ljava/lang/String; = "VibratePattern"
+
+.field public static final i:I = 0x0
+
+.field public static final j:I = 0x1
+
+
+# instance fields
+.field public final g:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, LBa/z$a;
+
+    invoke-direct {v0}, LBa/z$a;-><init>()V
+
+    invoke-static {v0}, Lga/o;->a(Lga/p;)V
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 4
+
+    invoke-direct {p0}, LBa/q;-><init>()V
+
+    new-instance v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
+    const-string v1, "Timings"
+
+    sget-object v2, Lga/H;->LIST:Lga/H;
+
+    invoke-direct {v0, v1, v2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;-><init>(Ljava/lang/String;Lga/H;)V
+
+    new-instance v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
+    const-string v2, "Repeat"
+
+    sget-object v3, Lga/H;->NUMBER:Lga/H;
+
+    invoke-direct {v1, v2, v3}, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;-><init>(Ljava/lang/String;Lga/H;)V
+
+    filled-new-array {v0, v1}, [Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
+    move-result-object v0
+
+    iput-object v0, p0, LBa/z;->g:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
+    const-string v0, "VibratePattern"
+
+    iput-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeNode;->serializedNodeType:Ljava/lang/String;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public F()[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+    .locals 1
+
+    iget-object v0, p0, LBa/z;->g:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
+    return-object v0
+.end method
+
+.method public M()Lga/B;
+    .locals 1
+
+    sget-object v0, Lga/B;->BOTH:Lga/B;
+
+    return-object v0
+.end method
+
+.method public N(Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;)Ljava/lang/String;
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0
+        }
+        names = {
+            "graphData"
+        }
+    .end annotation
+
+    const-string p1, "Vibrate Pattern"
+
+    return-object p1
+.end method
+
+.method public a(ILga/H;)Ljava/lang/String;
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0,
+            0x0
+        }
+        names = {
+            "inputIndex",
+            "desiredType"
+        }
+    .end annotation
+
+    const/4 p2, 0x1
+
+    if-ne p1, p2, :cond_0
+
+    const-string p1, "-1"
+
+    return-object p1
+
+    :cond_0
+    const-string p1, ""
+
+    return-object p1
+.end method
+
+.method public m0()V
+    .locals 5
+
+    :try_start_0
+    iget-object v0, p0, LBa/z;->g:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
+    const/4 v1, 0x0
+
+    aget-object v0, v0, v1
+
+    invoke-virtual {p0, v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeNode;->Q(Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lga/m;->a0(Ljava/lang/Object;)Lga/l;
+
+    move-result-object v0
+
+    if-eqz v0, :cond_0
+
+    invoke-virtual {v0}, Lga/l;->e()Ljava/util/List;
+
+    move-result-object v0
+
+    goto :goto_0
+
+    :catchall_0
+    move-exception v0
+
+    goto :goto_2
+
+    :cond_0
+    invoke-static {}, Ljava/util/Collections;->emptyList()Ljava/util/List;
+
+    move-result-object v0
+
+    :goto_0
+    invoke-interface {v0}, Ljava/util/List;->size()I
+
+    move-result v2
+
+    new-array v2, v2, [J
+
+    :goto_1
+    invoke-interface {v0}, Ljava/util/List;->size()I
+
+    move-result v3
+
+    if-ge v1, v3, :cond_1
+
+    invoke-interface {v0, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v3
+
+    invoke-static {v3}, Lga/m;->V(Ljava/lang/Object;)F
+
+    move-result v3
+
+    float-to-long v3, v3
+
+    aput-wide v3, v2, v1
+
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_1
+
+    :cond_1
+    iget-object v0, p0, LBa/z;->g:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
+    const/4 v1, 0x1
+
+    aget-object v0, v0, v1
+
+    invoke-virtual {p0, v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeNode;->Q(Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;)Ljava/lang/Object;
+
+    move-result-object v0
+
+    invoke-static {v0}, Lga/m;->V(Ljava/lang/Object;)F
+
+    move-result v0
+
+    invoke-static {v0}, Ljava/lang/Math;->round(F)I
+
+    move-result v0
+
+    invoke-static {v2, v0}, LJAVARuntime/Device;->vibratePattern([JI)V
+    :try_end_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    invoke-virtual {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeNode;->t()V
+
+    return-void
+
+    :goto_2
+    invoke-virtual {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeNode;->t()V
+
+    throw v0
+.end method

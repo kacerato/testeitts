@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/theme_panel_topbar" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="@color/theme_panel" />
+            <corners android:radius="@dimen/editor3d_v2_projects_panel_rounded_border" />
+        </shape>
+    </item>
+    <item android:top="@dimen/editor3d_v2_projects_panel_rounded_border">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/theme_panel" />
+            <corners android:radius="0.0dip" />
+        </shape>
+    </item>
+    <item android:left="@dimen/editor3d_v2_projects_panel_rounded_border" android:right="@dimen/editor3d_v2_projects_panel_rounded_border">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/theme_panel" />
+            <corners android:radius="0.0dip" />
+        </shape>
+    </item>
+</layer-list>

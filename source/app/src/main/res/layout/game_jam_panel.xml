@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_panel" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <ScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="18.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/tittle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Participe e concorra a Prêmios!" android:fontFamily="@font/base_bold" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="32.0dip" />
+            <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/one_place" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="1° lugar: Conta de desenvolvedor da Google Play (ou 120 reais no PIX + 1 mês de VIP)" android:fontFamily="@font/base_bold" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="12.0dip" />
+            <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/second_place" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="2° lugar: 3 MESES DE VIP + 2000 MOEDAS" android:fontFamily="@font/base_bold" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="12.0dip" />
+            <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/third_place" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="3° Lugar: 3500 MOEDAS" android:fontFamily="@font/base_bold" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="12.0dip" />
+            <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/fourth_place" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="4° Lugar: 1500 MOEDAS" android:fontFamily="@font/base_bold" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="32.0dip" />
+            <com.itsmagic.engine.Activities.Editor.Utils.AdvancedTextView.AdvancedTextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/warning" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Envie seu projeto seguindo todas\nas regras e receba 400 MOEDAS." android:fontFamily="@font/base_bold" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="12.0dip" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/rules_link" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Ler regras" android:fontFamily="@font/base_bold" />
+            <androidx.legacy.widget.Space android:layout_width="fill_parent" android:layout_height="8.0dip" />
+            <TextView android:textSize="16.0sp" android:textColor="@color/theme_high_text_color" android:gravity="center" android:id="@id/register" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Clique aqui para realizar o cadastro do seu projeto\ne concorrer na GameJam" android:fontFamily="@font/base_bold" />
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

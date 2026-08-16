@@ -1,0 +1,9 @@
+package i1;
+
+public enum S {
+    DEBUG_PARAM_UNKNOWN,
+    ALWAYS_SHOW,
+    GEO_OVERRIDE_EEA,
+    GEO_OVERRIDE_NON_EEA,
+    PREVIEWING_DEBUG_MESSAGES
+}

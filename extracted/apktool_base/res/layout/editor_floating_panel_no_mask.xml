@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@drawable/round_6" android:layout_width="fill_parent" android:layout_height="fill_parent" android:backgroundTint="@color/theme_panel_topbar"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <include android:layout_width="0.0dip" android:layout_height="0.0dip" android:layout_marginTop="2.0dip" android:layout_marginBottom="2.0dip" android:layout_marginStart="2.0dip" android:layout_marginEnd="2.0dip" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" layout="@layout/editor_panel_for_floating" />
+        <View android:id="@id/leftResize" android:layout_width="@dimen/editor3d_v2_floating_panel_resize_border" android:layout_height="0.0dip" android:layout_marginTop="32.0dip" android:layout_weight="1.0" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent" app:layout_constraintTop_toTopOf="parent" />
+        <View android:id="@id/rightResize" android:layout_width="@dimen/editor3d_v2_floating_panel_resize_border" android:layout_height="0.0dip" android:layout_marginTop="32.0dip" android:layout_weight="1.0" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent" />
+        <View android:id="@id/bottomResize" android:layout_width="0.0dip" android:layout_height="@dimen/editor3d_v2_floating_panel_resize_border" android:layout_weight="1.0" app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

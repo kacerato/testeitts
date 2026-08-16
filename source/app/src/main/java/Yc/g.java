@@ -1,0 +1,7 @@
+package Yc;
+
+import jd.C13823b;
+
+public interface g {
+    void b(C13823b file);
+}

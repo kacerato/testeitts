@@ -1,0 +1,3 @@
+-dontwarn **
+-keep class com.itsmagic.** { *; }
+-keep class com.pairip.** { *; }

@@ -1,0 +1,28 @@
+package androidx.core.widget;
+
+import android.view.View;
+import android.widget.ListPopupWindow;
+
+public final class ListPopupWindowCompat {
+
+    public static class Api19Impl {
+        private Api19Impl() {
+        }
+
+        public static View.OnTouchListener createDragToOpenListener(ListPopupWindow listPopupWindow, View view) {
+            return listPopupWindow.createDragToOpenListener(view);
+        }
+    }
+
+    private ListPopupWindowCompat() {
+    }
+
+    @Deprecated
+    public static View.OnTouchListener createDragToOpenListener(Object obj, View view) {
+        return createDragToOpenListener((ListPopupWindow) obj, view);
+    }
+
+    public static View.OnTouchListener createDragToOpenListener(ListPopupWindow listPopupWindow, View view) {
+        return Api19Impl.createDragToOpenListener(listPopupWindow, view);
+    }
+}

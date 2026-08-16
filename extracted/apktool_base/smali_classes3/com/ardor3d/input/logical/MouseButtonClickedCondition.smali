@@ -1,0 +1,76 @@
+.class public final Lcom/ardor3d/input/logical/MouseButtonClickedCondition;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Lw2/I;
+
+
+# annotations
+.annotation system Ldalvik/annotation/Signature;
+    value = {
+        "Ljava/lang/Object;",
+        "Lw2/I<",
+        "Lcom/ardor3d/input/logical/TwoInputStates;",
+        ">;"
+    }
+.end annotation
+
+
+# instance fields
+.field private final _button:Lcom/ardor3d/input/MouseButton;
+
+
+# direct methods
+.method public constructor <init>(Lcom/ardor3d/input/MouseButton;)V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    invoke-virtual {p1}, Ljava/lang/Object;->getClass()Ljava/lang/Class;
+
+    iput-object p1, p0, Lcom/ardor3d/input/logical/MouseButtonClickedCondition;->_button:Lcom/ardor3d/input/MouseButton;
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public apply(Lcom/ardor3d/input/logical/TwoInputStates;)Z
+    .locals 1
+
+    .line 2
+    invoke-virtual {p1}, Lcom/ardor3d/input/logical/TwoInputStates;->getCurrent()Lcom/ardor3d/input/InputState;
+
+    move-result-object p1
+
+    .line 3
+    invoke-virtual {p1}, Lcom/ardor3d/input/InputState;->getMouseState()Lcom/ardor3d/input/MouseState;
+
+    move-result-object p1
+
+    invoke-virtual {p1}, Lcom/ardor3d/input/MouseState;->getButtonsClicked()Ljava/util/EnumSet;
+
+    move-result-object p1
+
+    iget-object v0, p0, Lcom/ardor3d/input/logical/MouseButtonClickedCondition;->_button:Lcom/ardor3d/input/MouseButton;
+
+    invoke-virtual {p1, v0}, Ljava/util/AbstractCollection;->contains(Ljava/lang/Object;)Z
+
+    move-result p1
+
+    return p1
+.end method
+
+.method public bridge synthetic apply(Ljava/lang/Object;)Z
+    .locals 0
+
+    .line 1
+    check-cast p1, Lcom/ardor3d/input/logical/TwoInputStates;
+
+    invoke-virtual {p0, p1}, Lcom/ardor3d/input/logical/MouseButtonClickedCondition;->apply(Lcom/ardor3d/input/logical/TwoInputStates;)Z
+
+    move-result p1
+
+    return p1
+.end method

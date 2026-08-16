@@ -1,0 +1,773 @@
+.class public final Lcom/android/tools/r8/internal/Fg0;
+.super Lcom/android/tools/r8/internal/wz;
+.source "SourceFile"
+
+# interfaces
+.implements Lcom/android/tools/r8/internal/nW;
+
+
+# static fields
+.field public static final g:Lcom/android/tools/r8/internal/Fg0;
+
+.field public static final h:Lcom/android/tools/r8/internal/Ag0;
+
+
+# instance fields
+.field public b:I
+
+.field public c:I
+
+.field public d:I
+
+.field public e:Ljava/util/List;
+
+.field public f:B
+
+
+# direct methods
+.method static constructor <clinit>()V
+    .locals 1
+
+    new-instance v0, Lcom/android/tools/r8/internal/Fg0;
+
+    invoke-direct {v0}, Lcom/android/tools/r8/internal/Fg0;-><init>()V
+
+    sput-object v0, Lcom/android/tools/r8/internal/Fg0;->g:Lcom/android/tools/r8/internal/Fg0;
+
+    new-instance v0, Lcom/android/tools/r8/internal/Ag0;
+
+    invoke-direct {v0}, Lcom/android/tools/r8/internal/Ag0;-><init>()V
+
+    sput-object v0, Lcom/android/tools/r8/internal/Fg0;->h:Lcom/android/tools/r8/internal/Ag0;
+
+    return-void
+.end method
+
+.method public constructor <init>()V
+    .locals 1
+
+    .line 3
+    invoke-direct {p0}, Lcom/android/tools/r8/internal/wz;-><init>()V
+
+    const/4 v0, -0x1
+
+    .line 4
+    iput-byte v0, p0, Lcom/android/tools/r8/internal/Fg0;->f:B
+
+    .line 5
+    sget-object v0, Ljava/util/Collections;->EMPTY_LIST:Ljava/util/List;
+
+    iput-object v0, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/android/tools/r8/internal/Be;Lcom/android/tools/r8/internal/zv;)V
+    .locals 6
+
+    .line 6
+    invoke-direct {p0}, Lcom/android/tools/r8/internal/Fg0;-><init>()V
+
+    .line 7
+    invoke-static {p2}, Lcom/android/tools/r8/internal/Ng;->a(Lcom/android/tools/r8/internal/zv;)Lcom/android/tools/r8/internal/kv0;
+
+    move-result-object v0
+
+    const/4 v1, 0x0
+
+    move v2, v1
+
+    :cond_0
+    :goto_0
+    if-nez v1, :cond_8
+
+    .line 8
+    :try_start_0
+    invoke-virtual {p1}, Lcom/android/tools/r8/internal/Be;->s()I
+
+    move-result v3
+
+    const/4 v4, 0x1
+
+    if-eqz v3, :cond_6
+
+    const/16 v5, 0x8
+
+    if-eq v3, v5, :cond_5
+
+    const/16 v5, 0x10
+
+    if-eq v3, v5, :cond_4
+
+    const/16 v5, 0x18
+
+    if-eq v3, v5, :cond_3
+
+    const/16 v5, 0x22
+
+    if-eq v3, v5, :cond_1
+
+    .line 9
+    invoke-virtual {p0, p1, v0, p2, v3}, Lcom/android/tools/r8/internal/wz;->parseUnknownField(Lcom/android/tools/r8/internal/Be;Lcom/android/tools/r8/internal/kv0;Lcom/android/tools/r8/internal/zv;I)Z
+
+    move-result v3
+
+    if-nez v3, :cond_0
+
+    goto :goto_1
+
+    :catchall_0
+    move-exception p1
+
+    goto :goto_4
+
+    :catch_0
+    move-exception p1
+
+    goto :goto_2
+
+    :catch_1
+    move-exception p1
+
+    goto :goto_3
+
+    :cond_1
+    if-nez v2, :cond_2
+
+    .line 10
+    new-instance v3, Ljava/util/ArrayList;
+
+    invoke-direct {v3}, Ljava/util/ArrayList;-><init>()V
+
+    iput-object v3, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    move v2, v4
+
+    .line 11
+    :cond_2
+    iget-object v3, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    .line 12
+    sget-object v4, Lcom/android/tools/r8/internal/Eg0;->i:Lcom/android/tools/r8/internal/Cg0;
+
+    .line 13
+    invoke-virtual {p1, v4, p2}, Lcom/android/tools/r8/internal/Be;->a(Lcom/android/tools/r8/internal/z50;Lcom/android/tools/r8/internal/zv;)Lcom/android/tools/r8/internal/kW;
+
+    move-result-object v4
+
+    check-cast v4, Lcom/android/tools/r8/internal/Eg0;
+
+    .line 14
+    invoke-interface {v3, v4}, Ljava/util/List;->add(Ljava/lang/Object;)Z
+
+    goto :goto_0
+
+    .line 15
+    :cond_3
+    invoke-virtual {p1}, Lcom/android/tools/r8/internal/Be;->j()I
+
+    move-result v3
+
+    iput v3, p0, Lcom/android/tools/r8/internal/Fg0;->d:I
+
+    goto :goto_0
+
+    .line 16
+    :cond_4
+    invoke-virtual {p1}, Lcom/android/tools/r8/internal/Be;->j()I
+
+    move-result v3
+
+    iput v3, p0, Lcom/android/tools/r8/internal/Fg0;->c:I
+
+    goto :goto_0
+
+    .line 17
+    :cond_5
+    invoke-virtual {p1}, Lcom/android/tools/r8/internal/Be;->t()I
+
+    move-result v3
+
+    iput v3, p0, Lcom/android/tools/r8/internal/Fg0;->b:I
+    :try_end_0
+    .catch Lcom/android/tools/r8/internal/MJ; {:try_start_0 .. :try_end_0} :catch_1
+    .catch Ljava/io/IOException; {:try_start_0 .. :try_end_0} :catch_0
+    .catchall {:try_start_0 .. :try_end_0} :catchall_0
+
+    goto :goto_0
+
+    :cond_6
+    :goto_1
+    move v1, v4
+
+    goto :goto_0
+
+    .line 18
+    :goto_2
+    :try_start_1
+    new-instance p2, Lcom/android/tools/r8/internal/MJ;
+
+    invoke-direct {p2, p1}, Lcom/android/tools/r8/internal/MJ;-><init>(Ljava/io/IOException;)V
+
+    .line 19
+    iput-object p0, p2, Lcom/android/tools/r8/internal/MJ;->b:Lcom/android/tools/r8/internal/kW;
+
+    .line 20
+    throw p2
+
+    .line 21
+    :goto_3
+    iput-object p0, p1, Lcom/android/tools/r8/internal/MJ;->b:Lcom/android/tools/r8/internal/kW;
+
+    .line 22
+    throw p1
+    :try_end_1
+    .catchall {:try_start_1 .. :try_end_1} :catchall_0
+
+    :goto_4
+    if-eqz v2, :cond_7
+
+    .line 23
+    iget-object p2, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    invoke-static {p2}, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;
+
+    move-result-object p2
+
+    iput-object p2, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    .line 24
+    :cond_7
+    invoke-virtual {v0}, Lcom/android/tools/r8/internal/kv0;->a()Lcom/android/tools/r8/internal/pv0;
+
+    move-result-object p2
+
+    iput-object p2, p0, Lcom/android/tools/r8/internal/wz;->unknownFields:Lcom/android/tools/r8/internal/pv0;
+
+    .line 25
+    invoke-virtual {p0}, Lcom/android/tools/r8/internal/wz;->makeExtensionsImmutable()V
+
+    .line 26
+    throw p1
+
+    :cond_8
+    if-eqz v2, :cond_9
+
+    .line 27
+    iget-object p1, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    invoke-static {p1}, Ljava/util/Collections;->unmodifiableList(Ljava/util/List;)Ljava/util/List;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    .line 28
+    :cond_9
+    invoke-virtual {v0}, Lcom/android/tools/r8/internal/kv0;->a()Lcom/android/tools/r8/internal/pv0;
+
+    move-result-object p1
+
+    iput-object p1, p0, Lcom/android/tools/r8/internal/wz;->unknownFields:Lcom/android/tools/r8/internal/pv0;
+
+    .line 29
+    invoke-virtual {p0}, Lcom/android/tools/r8/internal/wz;->makeExtensionsImmutable()V
+
+    return-void
+.end method
+
+.method public constructor <init>(Lcom/android/tools/r8/internal/Bg0;)V
+    .locals 0
+
+    .line 1
+    invoke-direct {p0, p1}, Lcom/android/tools/r8/internal/wz;-><init>(Lcom/android/tools/r8/internal/fz;)V
+
+    const/4 p1, -0x1
+
+    .line 2
+    iput-byte p1, p0, Lcom/android/tools/r8/internal/Fg0;->f:B
+
+    return-void
+.end method
+
+.method public static synthetic access$9300()Z
+    .locals 1
+
+    sget-boolean v0, Lcom/android/tools/r8/internal/wz;->alwaysUseFieldBuilders:Z
+
+    return v0
+.end method
+
+
+# virtual methods
+.method public final a()Lcom/android/tools/r8/internal/Bg0;
+    .locals 1
+
+    sget-object v0, Lcom/android/tools/r8/internal/Fg0;->g:Lcom/android/tools/r8/internal/Fg0;
+
+    if-ne p0, v0, :cond_0
+
+    new-instance v0, Lcom/android/tools/r8/internal/Bg0;
+
+    invoke-direct {v0}, Lcom/android/tools/r8/internal/Bg0;-><init>()V
+
+    return-object v0
+
+    :cond_0
+    new-instance v0, Lcom/android/tools/r8/internal/Bg0;
+
+    invoke-direct {v0}, Lcom/android/tools/r8/internal/Bg0;-><init>()V
+
+    invoke-virtual {v0, p0}, Lcom/android/tools/r8/internal/Bg0;->a(Lcom/android/tools/r8/internal/Fg0;)Lcom/android/tools/r8/internal/Bg0;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final equals(Ljava/lang/Object;)Z
+    .locals 4
+
+    const/4 v0, 0x1
+
+    if-ne p1, p0, :cond_0
+
+    return v0
+
+    :cond_0
+    instance-of v1, p1, Lcom/android/tools/r8/internal/Fg0;
+
+    if-nez v1, :cond_1
+
+    invoke-super {p0, p1}, Lcom/android/tools/r8/internal/K0;->equals(Ljava/lang/Object;)Z
+
+    move-result p1
+
+    return p1
+
+    :cond_1
+    check-cast p1, Lcom/android/tools/r8/internal/Fg0;
+
+    iget v1, p0, Lcom/android/tools/r8/internal/Fg0;->b:I
+
+    iget v2, p1, Lcom/android/tools/r8/internal/Fg0;->b:I
+
+    const/4 v3, 0x0
+
+    if-eq v1, v2, :cond_2
+
+    return v3
+
+    :cond_2
+    iget v1, p0, Lcom/android/tools/r8/internal/Fg0;->c:I
+
+    iget v2, p1, Lcom/android/tools/r8/internal/Fg0;->c:I
+
+    if-eq v1, v2, :cond_3
+
+    return v3
+
+    :cond_3
+    iget v1, p0, Lcom/android/tools/r8/internal/Fg0;->d:I
+
+    iget v2, p1, Lcom/android/tools/r8/internal/Fg0;->d:I
+
+    if-eq v1, v2, :cond_4
+
+    return v3
+
+    :cond_4
+    iget-object v1, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    iget-object v2, p1, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    invoke-interface {v1, v2}, Ljava/util/List;->equals(Ljava/lang/Object;)Z
+
+    move-result v1
+
+    if-nez v1, :cond_5
+
+    return v3
+
+    :cond_5
+    iget-object v1, p0, Lcom/android/tools/r8/internal/wz;->unknownFields:Lcom/android/tools/r8/internal/pv0;
+
+    iget-object p1, p1, Lcom/android/tools/r8/internal/wz;->unknownFields:Lcom/android/tools/r8/internal/pv0;
+
+    invoke-virtual {v1, p1}, Lcom/android/tools/r8/internal/pv0;->equals(Ljava/lang/Object;)Z
+
+    move-result p1
+
+    if-nez p1, :cond_6
+
+    return v3
+
+    :cond_6
+    return v0
+.end method
+
+.method public final getDefaultInstanceForType()Lcom/android/tools/r8/internal/fW;
+    .locals 1
+
+    .line 1
+    sget-object v0, Lcom/android/tools/r8/internal/Fg0;->g:Lcom/android/tools/r8/internal/Fg0;
+
+    return-object v0
+.end method
+
+.method public final getDefaultInstanceForType()Lcom/android/tools/r8/internal/kW;
+    .locals 1
+
+    .line 2
+    sget-object v0, Lcom/android/tools/r8/internal/Fg0;->g:Lcom/android/tools/r8/internal/Fg0;
+
+    return-object v0
+.end method
+
+.method public final getSerializedSize()I
+    .locals 4
+
+    iget v0, p0, Lcom/android/tools/r8/internal/K0;->memoizedSize:I
+
+    const/4 v1, -0x1
+
+    if-eq v0, v1, :cond_0
+
+    return v0
+
+    :cond_0
+    iget v0, p0, Lcom/android/tools/r8/internal/Fg0;->b:I
+
+    const/4 v1, 0x0
+
+    if-eqz v0, :cond_1
+
+    const/4 v2, 0x1
+
+    invoke-static {v2}, Lcom/android/tools/r8/internal/Ie;->b(I)I
+
+    move-result v2
+
+    invoke-static {v0}, Lcom/android/tools/r8/internal/Ie;->c(I)I
+
+    move-result v0
+
+    add-int/2addr v0, v2
+
+    goto :goto_0
+
+    :cond_1
+    move v0, v1
+
+    :goto_0
+    iget v2, p0, Lcom/android/tools/r8/internal/Fg0;->c:I
+
+    if-eqz v2, :cond_2
+
+    const/4 v3, 0x2
+
+    invoke-static {v3, v2}, Lcom/android/tools/r8/internal/Ie;->a(II)I
+
+    move-result v2
+
+    add-int/2addr v0, v2
+
+    :cond_2
+    iget v2, p0, Lcom/android/tools/r8/internal/Fg0;->d:I
+
+    if-eqz v2, :cond_3
+
+    const/4 v3, 0x3
+
+    invoke-static {v3, v2}, Lcom/android/tools/r8/internal/Ie;->a(II)I
+
+    move-result v2
+
+    add-int/2addr v0, v2
+
+    :cond_3
+    :goto_1
+    iget-object v2, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    invoke-interface {v2}, Ljava/util/List;->size()I
+
+    move-result v2
+
+    if-ge v1, v2, :cond_4
+
+    iget-object v2, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    invoke-interface {v2, v1}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v2
+
+    check-cast v2, Lcom/android/tools/r8/internal/kW;
+
+    const/4 v3, 0x4
+
+    invoke-static {v3, v2}, Lcom/android/tools/r8/internal/Ie;->a(ILcom/android/tools/r8/internal/kW;)I
+
+    move-result v2
+
+    add-int/2addr v0, v2
+
+    add-int/lit8 v1, v1, 0x1
+
+    goto :goto_1
+
+    :cond_4
+    iget-object v1, p0, Lcom/android/tools/r8/internal/wz;->unknownFields:Lcom/android/tools/r8/internal/pv0;
+
+    invoke-virtual {v1}, Lcom/android/tools/r8/internal/pv0;->getSerializedSize()I
+
+    move-result v1
+
+    add-int/2addr v1, v0
+
+    iput v1, p0, Lcom/android/tools/r8/internal/K0;->memoizedSize:I
+
+    return v1
+.end method
+
+.method public final getUnknownFields()Lcom/android/tools/r8/internal/pv0;
+    .locals 1
+
+    iget-object v0, p0, Lcom/android/tools/r8/internal/wz;->unknownFields:Lcom/android/tools/r8/internal/pv0;
+
+    return-object v0
+.end method
+
+.method public final hashCode()I
+    .locals 5
+
+    iget v0, p0, Lcom/android/tools/r8/internal/P0;->memoizedHashCode:I
+
+    if-eqz v0, :cond_0
+
+    return v0
+
+    :cond_0
+    sget-object v0, Lcom/android/tools/r8/internal/vj0;->m0:Lcom/android/tools/r8/internal/Cl;
+
+    const/4 v1, 0x1
+
+    const/16 v2, 0x30b
+
+    const/16 v3, 0x25
+
+    const/16 v4, 0x35
+
+    invoke-static {v0, v2, v3, v1, v4}, Lcom/android/tools/r8/internal/Kg;->a(Lcom/android/tools/r8/internal/Cl;IIII)I
+
+    move-result v0
+
+    iget v1, p0, Lcom/android/tools/r8/internal/Fg0;->b:I
+
+    const/4 v2, 0x2
+
+    invoke-static {v0, v1, v3, v2, v4}, Lcom/android/tools/r8/internal/Jg;->a(IIIII)I
+
+    move-result v0
+
+    iget v1, p0, Lcom/android/tools/r8/internal/Fg0;->c:I
+
+    const/4 v2, 0x3
+
+    invoke-static {v0, v1, v3, v2, v4}, Lcom/android/tools/r8/internal/Jg;->a(IIIII)I
+
+    move-result v0
+
+    iget v1, p0, Lcom/android/tools/r8/internal/Fg0;->d:I
+
+    add-int/2addr v0, v1
+
+    iget-object v1, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    invoke-interface {v1}, Ljava/util/List;->size()I
+
+    move-result v1
+
+    if-lez v1, :cond_1
+
+    const/4 v1, 0x4
+
+    invoke-static {v0, v3, v1, v4}, Lcom/android/tools/r8/internal/qg0;->a(IIII)I
+
+    move-result v0
+
+    iget-object v1, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    invoke-interface {v1}, Ljava/util/List;->hashCode()I
+
+    move-result v1
+
+    add-int/2addr v0, v1
+
+    :cond_1
+    mul-int/lit8 v0, v0, 0x1d
+
+    iget-object v1, p0, Lcom/android/tools/r8/internal/wz;->unknownFields:Lcom/android/tools/r8/internal/pv0;
+
+    invoke-virtual {v1}, Lcom/android/tools/r8/internal/pv0;->hashCode()I
+
+    move-result v1
+
+    add-int/2addr v1, v0
+
+    iput v1, p0, Lcom/android/tools/r8/internal/P0;->memoizedHashCode:I
+
+    return v1
+.end method
+
+.method public final internalGetFieldAccessorTable()Lcom/android/tools/r8/internal/uz;
+    .locals 3
+
+    sget-object v0, Lcom/android/tools/r8/internal/vj0;->n0:Lcom/android/tools/r8/internal/uz;
+
+    const-class v1, Lcom/android/tools/r8/internal/Fg0;
+
+    const-class v2, Lcom/android/tools/r8/internal/Bg0;
+
+    invoke-virtual {v0, v1, v2}, Lcom/android/tools/r8/internal/uz;->a(Ljava/lang/Class;Ljava/lang/Class;)Lcom/android/tools/r8/internal/uz;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final isInitialized()Z
+    .locals 2
+
+    iget-byte v0, p0, Lcom/android/tools/r8/internal/Fg0;->f:B
+
+    const/4 v1, 0x1
+
+    if-ne v0, v1, :cond_0
+
+    return v1
+
+    :cond_0
+    if-nez v0, :cond_1
+
+    const/4 v0, 0x0
+
+    return v0
+
+    :cond_1
+    iput-byte v1, p0, Lcom/android/tools/r8/internal/Fg0;->f:B
+
+    return v1
+.end method
+
+.method public final newBuilderForType()Lcom/android/tools/r8/internal/eW;
+    .locals 1
+
+    .line 1
+    sget-object v0, Lcom/android/tools/r8/internal/Fg0;->g:Lcom/android/tools/r8/internal/Fg0;
+
+    invoke-virtual {v0}, Lcom/android/tools/r8/internal/Fg0;->a()Lcom/android/tools/r8/internal/Bg0;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final newBuilderForType(Lcom/android/tools/r8/internal/gz;)Lcom/android/tools/r8/internal/eW;
+    .locals 1
+
+    .line 2
+    new-instance v0, Lcom/android/tools/r8/internal/Bg0;
+
+    check-cast p1, Lcom/android/tools/r8/internal/dz;
+
+    invoke-direct {v0, p1}, Lcom/android/tools/r8/internal/Bg0;-><init>(Lcom/android/tools/r8/internal/dz;)V
+
+    return-object v0
+.end method
+
+.method public final bridge synthetic toBuilder()Lcom/android/tools/r8/internal/eW;
+    .locals 1
+
+    .line 1
+    invoke-virtual {p0}, Lcom/android/tools/r8/internal/Fg0;->a()Lcom/android/tools/r8/internal/Bg0;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final bridge synthetic toBuilder()Lcom/android/tools/r8/internal/jW;
+    .locals 1
+
+    .line 2
+    invoke-virtual {p0}, Lcom/android/tools/r8/internal/Fg0;->a()Lcom/android/tools/r8/internal/Bg0;
+
+    move-result-object v0
+
+    return-object v0
+.end method
+
+.method public final writeTo(Lcom/android/tools/r8/internal/Ie;)V
+    .locals 3
+
+    iget v0, p0, Lcom/android/tools/r8/internal/Fg0;->b:I
+
+    if-eqz v0, :cond_0
+
+    const/4 v1, 0x1
+
+    invoke-virtual {p1, v1, v0}, Lcom/android/tools/r8/internal/Ie;->e(II)V
+
+    :cond_0
+    iget v0, p0, Lcom/android/tools/r8/internal/Fg0;->c:I
+
+    if-eqz v0, :cond_1
+
+    const/4 v1, 0x2
+
+    invoke-virtual {p1, v1, v0}, Lcom/android/tools/r8/internal/Ie;->c(II)V
+
+    :cond_1
+    iget v0, p0, Lcom/android/tools/r8/internal/Fg0;->d:I
+
+    if-eqz v0, :cond_2
+
+    const/4 v1, 0x3
+
+    invoke-virtual {p1, v1, v0}, Lcom/android/tools/r8/internal/Ie;->c(II)V
+
+    :cond_2
+    const/4 v0, 0x0
+
+    :goto_0
+    iget-object v1, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    invoke-interface {v1}, Ljava/util/List;->size()I
+
+    move-result v1
+
+    if-ge v0, v1, :cond_3
+
+    iget-object v1, p0, Lcom/android/tools/r8/internal/Fg0;->e:Ljava/util/List;
+
+    invoke-interface {v1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
+
+    move-result-object v1
+
+    check-cast v1, Lcom/android/tools/r8/internal/kW;
+
+    const/4 v2, 0x4
+
+    invoke-virtual {p1, v2, v1}, Lcom/android/tools/r8/internal/Ie;->b(ILcom/android/tools/r8/internal/kW;)V
+
+    add-int/lit8 v0, v0, 0x1
+
+    goto :goto_0
+
+    :cond_3
+    iget-object v0, p0, Lcom/android/tools/r8/internal/wz;->unknownFields:Lcom/android/tools/r8/internal/pv0;
+
+    invoke-virtual {v0, p1}, Lcom/android/tools/r8/internal/pv0;->writeTo(Lcom/android/tools/r8/internal/Ie;)V
+
+    return-void
+.end method

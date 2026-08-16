@@ -1,0 +1,32 @@
+.class public final synthetic LE4/o;
+.super Ljava/lang/Object;
+.source "SourceFile"
+
+# interfaces
+.implements Ljava/util/Comparator;
+
+
+# direct methods
+.method public synthetic constructor <init>()V
+    .locals 0
+
+    invoke-direct {p0}, Ljava/lang/Object;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public final compare(Ljava/lang/Object;Ljava/lang/Object;)I
+    .locals 0
+
+    check-cast p1, Le8/a;
+
+    check-cast p2, Le8/a;
+
+    invoke-static {p1, p2}, LE4/p;->r1(Le8/a;Le8/a;)I
+
+    move-result p1
+
+    return p1
+.end method

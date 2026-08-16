@@ -1,0 +1,173 @@
+.class public LH3/b$c$a;
+.super Lcom/itsmagic/engine/Activities/Editor/Utils/a;
+.source "SourceFile"
+
+
+# annotations
+.annotation system Ldalvik/annotation/EnclosingMethod;
+    value = LH3/b$c;->c(LH3/i;Ljava/lang/String;I)V
+.end annotation
+
+.annotation system Ldalvik/annotation/InnerClass;
+    accessFlags = 0x1
+    name = null
+.end annotation
+
+
+# instance fields
+.field public final synthetic b:LH3/i;
+
+.field public final synthetic c:Ljava/lang/String;
+
+.field public final synthetic d:LH3/b$c;
+
+
+# direct methods
+.method public constructor <init>(LH3/b$c;LH3/i;Ljava/lang/String;)V
+    .locals 0
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x8010,
+            0x1010,
+            0x1010
+        }
+        names = {
+            "this$1",
+            "val$holder",
+            "val$path"
+        }
+    .end annotation
+
+    iput-object p1, p0, LH3/b$c$a;->d:LH3/b$c;
+
+    iput-object p2, p0, LH3/b$c$a;->b:LH3/i;
+
+    iput-object p3, p0, LH3/b$c$a;->c:Ljava/lang/String;
+
+    invoke-direct {p0}, Lcom/itsmagic/engine/Activities/Editor/Utils/a;-><init>()V
+
+    return-void
+.end method
+
+
+# virtual methods
+.method public click(Landroid/view/View;)V
+    .locals 4
+    .annotation system Ldalvik/annotation/MethodParameters;
+        accessFlags = {
+            0x0
+        }
+        names = {
+            "v"
+        }
+    .end annotation
+
+    iget-object p1, p0, LH3/b$c$a;->d:LH3/b$c;
+
+    iget-object p1, p1, LH3/b$c;->a:LH3/b;
+
+    invoke-static {p1}, LH3/b;->p1(LH3/b;)[Landroid/widget/ImageView;
+
+    move-result-object p1
+
+    const/4 v0, 0x0
+
+    aget-object p1, p1, v0
+
+    if-eqz p1, :cond_0
+
+    iget-object p1, p0, LH3/b$c$a;->d:LH3/b$c;
+
+    iget-object p1, p1, LH3/b$c;->a:LH3/b;
+
+    invoke-static {p1}, LH3/b;->p1(LH3/b;)[Landroid/widget/ImageView;
+
+    move-result-object p1
+
+    aget-object p1, p1, v0
+
+    iget-object v1, p0, LH3/b$c$a;->d:LH3/b$c;
+
+    iget-object v1, v1, LH3/b$c;->a:LH3/b;
+
+    invoke-virtual {v1}, Lcom/itsmagic/engine/Activities/Editor/Interface/Objects/EditorPanel;->M()Landroid/content/Context;
+
+    move-result-object v1
+
+    new-instance v2, Lcom/itsmagic/engine/Engines/Engine/Color/ColorINT;
+
+    sget-object v3, Lcom/itsmagic/engine/Activities/Editor/Extensions/ThemeSystem/Theme$T;->PANEL:LAc/b;
+
+    invoke-static {v3}, Lcom/itsmagic/engine/Activities/Editor/Extensions/ThemeSystem/Theme;->i(LAc/b;)I
+
+    move-result v3
+
+    invoke-direct {v2, v3}, Lcom/itsmagic/engine/Engines/Engine/Color/ColorINT;-><init>(I)V
+
+    invoke-static {p1, v1, v2}, LVc/e;->y(Landroid/widget/ImageView;Landroid/content/Context;Lcom/itsmagic/engine/Engines/Engine/Color/ColorINT;)V
+
+    iget-object p1, p0, LH3/b$c$a;->d:LH3/b$c;
+
+    iget-object p1, p1, LH3/b$c;->a:LH3/b;
+
+    invoke-static {p1}, LH3/b;->p1(LH3/b;)[Landroid/widget/ImageView;
+
+    move-result-object p1
+
+    const/4 v1, 0x0
+
+    aput-object v1, p1, v0
+
+    :cond_0
+    iget-object p1, p0, LH3/b$c$a;->b:LH3/i;
+
+    iget-object p1, p1, LH3/i;->c:Landroid/widget/ImageView;
+
+    iget-object v1, p0, LH3/b$c$a;->d:LH3/b$c;
+
+    iget-object v1, v1, LH3/b$c;->a:LH3/b;
+
+    invoke-virtual {v1}, Lcom/itsmagic/engine/Activities/Editor/Interface/Objects/EditorPanel;->M()Landroid/content/Context;
+
+    move-result-object v1
+
+    const v2, 0x7f05003e
+
+    invoke-static {p1, v1, v2}, LVc/e;->x(Landroid/widget/ImageView;Landroid/content/Context;I)V
+
+    iget-object p1, p0, LH3/b$c$a;->d:LH3/b$c;
+
+    iget-object p1, p1, LH3/b$c;->a:LH3/b;
+
+    invoke-static {p1}, LH3/b;->p1(LH3/b;)[Landroid/widget/ImageView;
+
+    move-result-object p1
+
+    iget-object v1, p0, LH3/b$c$a;->b:LH3/i;
+
+    iget-object v1, v1, LH3/i;->c:Landroid/widget/ImageView;
+
+    aput-object v1, p1, v0
+
+    iget-object p1, p0, LH3/b$c$a;->d:LH3/b$c;
+
+    iget-object p1, p1, LH3/b$c;->a:LH3/b;
+
+    invoke-static {p1}, LH3/b;->q1(LH3/b;)LH3/e;
+
+    move-result-object p1
+
+    iget-object v0, p0, LH3/b$c$a;->c:Ljava/lang/String;
+
+    invoke-interface {p1, v0}, LH3/e;->onSelected(Ljava/lang/String;)V
+
+    iget-object p1, p0, LH3/b$c$a;->d:LH3/b$c;
+
+    iget-object p1, p1, LH3/b$c;->a:LH3/b;
+
+    iget-object v0, p0, LH3/b$c$a;->c:Ljava/lang/String;
+
+    invoke-static {p1, v0}, LH3/b;->s1(LH3/b;Ljava/lang/String;)Ljava/lang/String;
+
+    return-void
+.end method

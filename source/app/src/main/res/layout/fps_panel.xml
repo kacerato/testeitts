@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.itsmagic.engine.Activities.Editor.Utils.StrokeTextView android:textSize="18.0sp" android:textColor="#ffc7c7c7" android:gravity="center" android:id="@id/fpsView" android:layout_width="fill_parent" android:layout_height="0.0dip" android:text="60" android:layout_weight="1.0" android:fontFamily="@font/base_bold" android:textAlignment="viewStart" />
+    <TextView android:textSize="10.0sp" android:textStyle="italic" android:textColor="#ff8f8f8f" android:gravity="center" android:id="@id/limitedtv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Limited" android:singleLine="true" android:fontFamily="@font/base_regular" />
+</LinearLayout>

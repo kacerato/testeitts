@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:background="@color/theme_semi_card" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/recyclerView" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="vertical" android:background="@color/theme_tree_list_row_2" android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.2">
+            <LinearLayout android:orientation="vertical" android:id="@id/simple_informations" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="4.0dip">
+                <TextView android:textColor="@color/theme_high_text_color" android:id="@id/informations_text" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="Informations" android:fontFamily="@font/base_medium" />
+                <LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content">
+                    <TextView android:textColor="@color/theme_high_text_color" android:id="@id/size_info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="size: 2MB" android:fontFamily="@font/base_medium" />
+                    <TextView android:textColor="@color/theme_high_text_color" android:id="@id/date_info" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:text="date: 08/07/2024" android:fontFamily="@font/base_medium" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:gravity="center" android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_weight="1.0">
+                <ScrollView android:id="@id/text_preview_layout" android:background="@color/theme_semi_card" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="8.0dip">
+                    <HorizontalScrollView android:layout_width="fill_parent" android:layout_height="fill_parent">
+                        <TextView android:textColor="@color/theme_high_text_color" android:id="@id/text_file" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="public class VCSViewHolder extends ViewHolder {\n      public TextView title;\n     public TextView date;\n     public View options;\n     public View root;\n      public VCSViewHolder(View viewBinding) {\n         super(viewBinding);\n     }\n      @Override     public void onCreate(View root) {\n         this.root = root;\n         this.title = root.findViewById(R.id.title);\n         this.date = root.findViewById(R.id.date);\n         this.options = root.findViewById(R.id.options);\n     } \n} " android:textIsSelectable="true" android:fontFamily="@font/base_regular" />
+                    </HorizontalScrollView>
+                </ScrollView>
+                <LinearLayout android:gravity="center" android:orientation="vertical" android:id="@id/image_preview_layout" android:background="@color/theme_semi_card" android:padding="8.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="0.0dip" android:layout_margin="8.0dip" android:layout_weight="1.0">
+                    <ImageView android:id="@id/image" android:layout_width="wrap_content" android:layout_height="wrap_content" app:srcCompat="@drawable/pack1" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout android:orientation="horizontal" android:background="@color/theme_card" android:padding="8.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
+                <LinearLayout android:orientation="horizontal" android:id="@id/delete_button" android:background="@drawable/editor3d_v2_rounded_button" android:paddingLeft="6.0dip" android:paddingTop="4.0dip" android:paddingRight="6.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:backgroundTint="@color/theme_accent">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/white" android:id="@id/delete_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Delete" android:fontFamily="@font/base_medium" />
+                </LinearLayout>
+                <Space android:layout_width="0.0dip" android:layout_height="fill_parent" android:layout_weight="1.0" />
+                <LinearLayout android:orientation="horizontal" android:id="@id/revert_button" android:background="@drawable/editor3d_v2_rounded_button" android:paddingLeft="6.0dip" android:paddingTop="4.0dip" android:paddingRight="6.0dip" android:paddingBottom="4.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:backgroundTint="@color/colorPrimary">
+                    <TextView android:textSize="14.0sp" android:textColor="@color/white" android:id="@id/revert_text" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Revert" android:fontFamily="@font/base_medium" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
