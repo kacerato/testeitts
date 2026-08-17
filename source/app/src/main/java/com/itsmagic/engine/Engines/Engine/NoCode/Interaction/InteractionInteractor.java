@@ -59,6 +59,11 @@ public class InteractionInteractor extends Component {
         C13201a.b(new Factory());
     }
 
+    /** Forca a inicializacao da classe/registro quando o runtime central sobe. */
+    public static void ensureRegistered() {
+        // A chamada deste metodo dispara o static initializer da classe.
+    }
+
     public InteractionInteractor() {
         super(COMPONENT_NAME);
     }
@@ -75,7 +80,6 @@ public class InteractionInteractor extends Component {
             }
         }
 
-        // Fallback seguro: permite usar o proprio transform como direcao de mira.
         if (cameraTransform == null) {
             cameraTransform = gameObject.J0();
         }
