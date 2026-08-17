@@ -106,7 +106,7 @@ public final class ElevatorService {
             float maxStep = session.speed * dt;
 
             if (Math.abs(delta) <= Math.max(0.005f, maxStep)) {
-                transform.f79337l.f(new Vector3(session.baseX, targetY, session.baseZ));
+                transform.setPosition(session.baseX, targetY, session.baseZ);
                 session.currentFloor = session.targetFloor;
                 session.moving = false;
                 InteractionRegistry.setAttribute(session.elevator, "current_floor", Integer.valueOf(session.currentFloor));
@@ -117,7 +117,7 @@ public final class ElevatorService {
             }
 
             float nextY = pos.getY() + Math.signum(delta) * maxStep;
-            transform.f79337l.f(new Vector3(session.baseX, nextY, session.baseZ));
+            transform.setPosition(session.baseX, nextY, session.baseZ);
         }
     }
 }
