@@ -18,15 +18,12 @@ import gb.C13317e;
 
 /** Runtime central do subsistema de interacao. */
 public class InteractionRuntime {
-
     private static InteractionRuntime instance;
     private GameObject interactor;
     private Transform cameraTransform;
-
     private final InteractionTargetResolver resolver = new InteractionTargetResolver();
     private final InteractionHoldSession holdSession = new InteractionHoldSession();
     private final InteractionContext currentContext = new InteractionContext();
-
     private GameObject previousTarget;
     private GameObject currentTarget;
     private GameObject pressedTarget;
@@ -63,6 +60,7 @@ public class InteractionRuntime {
         if (!C13317e.J(expectedInteractor) || expectedInteractor != this.interactor) return;
         clearFocusedTarget();
         holdSession.cancel();
+        InspectService.stop(expectedInteractor);
         resolver.reset();
         pressedTarget = null;
         pressedAction = null;
@@ -78,6 +76,7 @@ public class InteractionRuntime {
         if (!C13317e.J(interactor) || cameraTransform == null) autoDiscoverPlayerAndCamera();
 
         GrabService.update(dt);
+        InspectService.update(dt);
         DoorService.update(dt);
         ElevatorService.update(dt);
         ButtonService.update(dt);
@@ -104,7 +103,6 @@ public class InteractionRuntime {
                 InteractionRegistry.setFocused(currentTarget, true);
                 fillContextFromCandidate(currentTarget, bestCandidate);
                 InteractionDispatcher.dispatchFocusEnter(currentContext);
-
                 InteractionRegistry.InteractableData data = InteractionRegistry.get(currentTarget);
                 if (data != null) {
                     String pText = data.promptText != null ? data.promptText : (String) data.attributes.get("prompt_text");
@@ -124,7 +122,6 @@ public class InteractionRuntime {
         Camera mainCam = Camera.mainCamera();
         if (mainCam == null) mainCam = Camera.mainCameraAllowEditor();
         if (mainCam == null || !C13317e.J(mainCam.f79250n)) return;
-
         GameObject camObj = mainCam.f79250n;
         if (this.cameraTransform == null) this.cameraTransform = camObj.J0();
         if (!C13317e.J(this.interactor)) {
@@ -187,6 +184,13 @@ public class InteractionRuntime {
         pressedTarget = currentTarget;
         pressedAction = logicalAction;
 
+        String countKey = "interaction_count_" + logicalAction;
+        Object oldCount = InteractionRegistry.getAttribute(currentTarget, countKey);
+        int count = oldCount instanceof Number ? ((Number) oldCount).intValue() : 0;
+        InteractionRegistry.setAttribute(currentTarget, countKey, Integer.valueOf(count + 1));
+        InteractionRegistry.setAttribute(currentTarget, "last_interaction_action", logicalAction);
+        InteractionRegistry.setAttribute(currentTarget, "last_interaction_timestamp", Long.valueOf(System.currentTimeMillis()));
+
         currentContext.reset();
         currentContext.action = logicalAction;
         currentContext.interactor = actObj;
@@ -203,6 +207,8 @@ public class InteractionRuntime {
             currentContext.angle = bestCandidate.angle;
             currentContext.interactionPoint.set(bestCandidate.hitPosition);
         }
+
+        InteractionDispatcher.dispatchCustomEvent("interaction_started", currentTarget, logicalAction);
         InteractionDispatcher.dispatchInteract(currentContext);
     }
 
@@ -219,6 +225,7 @@ public class InteractionRuntime {
             currentContext.camera = cameraTransform;
             currentContext.inputState = InteractionContext.InputState.Released;
             InteractionDispatcher.dispatchInteractReleased(currentContext);
+            InteractionDispatcher.dispatchCustomEvent("interaction_released", releaseTarget, logicalAction);
         }
 
         holdSession.cancel();
