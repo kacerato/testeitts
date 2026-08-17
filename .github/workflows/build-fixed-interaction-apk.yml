@@ -1,0 +1,96 @@
+name: Build Fixed Interaction APK
+
+on:
+  push:
+    branches:
+      - feature/modular-interaction-system
+  workflow_dispatch:
+
+concurrency:
+  group: fixed-interaction-apk-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout APK build inputs
+        uses: actions/checkout@v4
+        with:
+          lfs: false
+          filter: blob:none
+          sparse-checkout: |
+            extracted/apktool_base
+            source/app/src/main/java/com/itsmagic/engine/Engines/Engine/NoCode/Interaction
+            source/app/src/main/java/com/itsmagic/engine/Engines/Engine/NoCode/Nodes
+            tools
+            work
+          sparse-checkout-cone-mode: true
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Android SDK
+        uses: android-actions/setup-android@v3
+
+      - name: Ensure Android build tools
+        shell: bash
+        run: |
+          yes | sdkmanager --licenses >/dev/null || true
+          sdkmanager "platform-tools" "build-tools;36.0.0"
+
+      - name: Recompile and verify Interaction source ABI
+        id: abi
+        shell: bash
+        run: python3 work/recompile_interaction_dex_safe.py
+
+      - name: Upload ABI report on failure
+        if: failure() && steps.abi.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: interaction-abi-report
+          path: interaction-abi-report.txt
+          if-no-files-found: warn
+
+      - name: Prepare manifest
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          p = Path('extracted/apktool_base/AndroidManifest.xml')
+          s = p.read_text(encoding='utf-8')
+          s = s.replace('android:extractNativeLibs="false"', 'android:extractNativeLibs="true"')
+          p.write_text(s, encoding='utf-8')
+          PY
+
+      - name: Build APK with Apktool
+        shell: bash
+        run: java -jar tools/apktool.jar b extracted/apktool_base -o ITsMagic_unsigned.apk
+
+      - name: Align and sign APK
+        shell: bash
+        run: |
+          BUILD_TOOLS="$ANDROID_HOME/build-tools/36.0.0"
+          "$BUILD_TOOLS/zipalign" -p -f 4 ITsMagic_unsigned.apk ITsMagic_interaction_fixed.apk
+          "$BUILD_TOOLS/apksigner" sign \
+            --ks tools/debug.keystore \
+            --ks-pass pass:android \
+            --key-pass pass:android \
+            --ks-key-alias androiddebugkey \
+            ITsMagic_interaction_fixed.apk
+          "$BUILD_TOOLS/apksigner" verify --verbose ITsMagic_interaction_fixed.apk
+
+      - name: Upload fixed APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: ITsMagic-interaction-fixed-apk
+          path: ITsMagic_interaction_fixed.apk
+          if-no-files-found: error

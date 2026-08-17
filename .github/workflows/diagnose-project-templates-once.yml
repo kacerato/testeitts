@@ -1,0 +1,101 @@
+name: Diagnose Project Templates Once
+
+on:
+  push:
+    branches:
+      - feature/modular-interaction-system
+    paths:
+      - '.github/workflows/diagnose-project-templates-once.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  diagnose:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout relevant decompiled sources
+        uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout: |
+            source/app/src/main/java
+            extracted/apktool_base
+          sparse-checkout-cone-mode: true
+
+      - name: Locate Project Browser handlers and template payloads
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          roots = [Path('source/app/src/main/java'), Path('extracted/apktool_base')]
+          text_ext = {'.java','.smali','.xml','.json','.txt','.yml','.yaml','.properties','.html','.js'}
+          needles = [
+              'activity_project_browser_newproject',
+              'activity_project_browser_open_project',
+              'activity_project_browser_project_imported',
+              'activity_project_browser_project_importing',
+              '0x7f1100b3','0x7f1100b4','0x7f1100b6','0x7f1100b7',
+              'Project imported','Project importing','New project','Open project',
+          ]
+          files=[]
+          for root in roots:
+              if not root.exists(): continue
+              for p in root.rglob('*'):
+                  if p.is_file() and p.suffix.lower() in text_ext:
+                      files.append(p)
+
+          print('=== EXACT PROJECT BROWSER REFERENCES ===')
+          owners=set()
+          for p in files:
+              try: t=p.read_text('utf-8',errors='ignore')
+              except: continue
+              hits=[]
+              lines=t.splitlines()
+              for i,line in enumerate(lines,1):
+                  if any(n in line for n in needles):
+                      hits.append((i,line.strip()))
+              if hits:
+                  owners.add(p)
+                  print(f'FILE {p}')
+                  for i,line in hits[:40]: print(f'  {i}: {line[:400]}')
+
+          print('\n=== TEMPLATE / IMPORT / DOWNLOAD SIGNALS IN OWNER FILES ===')
+          for p in sorted(owners):
+              t=p.read_text('utf-8',errors='ignore')
+              lines=t.splitlines()
+              print(f'FILE {p}')
+              for i,line in enumerate(lines,1):
+                  low=line.lower()
+                  if any(k in low for k in ('template','import','download','unzip','zipinput','project','http://','https://','storage','copy','mkdir')):
+                      print(f'  {i}: {line.strip()[:500]}')
+
+          print('\n=== GLOBAL TEMPLATE/DOWNLOAD URL SIGNALS (capped) ===')
+          count=0
+          for p in files:
+              try: lines=p.read_text('utf-8',errors='ignore').splitlines()
+              except: continue
+              for i,line in enumerate(lines,1):
+                  low=line.lower()
+                  if ('template' in low or 'project template' in low or 'zipinputstream' in low or 'project_import' in low or ('https://' in low and ('project' in low or 'template' in low))):
+                      print(f'{p}:{i}: {line.strip()[:500]}')
+                      count += 1
+                      if count >= 500: break
+              if count >= 500: break
+
+          print('\n=== ARCHIVE/PAYLOAD CANDIDATES UNDER APK ROOT ===')
+          apk=Path('extracted/apktool_base')
+          exts={'.zip','.itsmbp','.7z','.rar','.tar','.gz','.jar','.dat','.bin'}
+          payloads=[]
+          for p in apk.rglob('*'):
+              if p.is_file() and (p.suffix.lower() in exts or 'template' in p.name.lower() or 'project' in p.name.lower()):
+                  payloads.append(p)
+          for p in sorted(payloads)[:1000]:
+              try: size=p.stat().st_size
+              except: size=-1
+              print(f'{size:>12} {p}')
+          print(f'payload_candidate_count={len(payloads)}')
+          PY

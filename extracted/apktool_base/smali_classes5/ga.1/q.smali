@@ -2937,13 +2937,13 @@
     :catch_0
     move-exception v4
 
-    invoke-virtual {v4}, Ljava/lang/Throwable;->printStackTrace()V
-
     :goto_1
     add-int/2addr v0, v2
 
     goto :goto_0
 
     :cond_1
+    invoke-static {}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionNodeRegistry;->init()V
+
     return-void
 .end method

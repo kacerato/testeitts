@@ -299,6 +299,7 @@ public abstract class a {
     }
 
     public static void C(World world, long frameCount) {
+        com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.InteractionRuntime.getInstance().update(world, frameCount, K8.d.d());
         int y10 = R8.f.y();
         p6.g L12 = p6.d.E1() ? p6.d.L1("Update [" + y10 + "]") : null;
         f10981l += y10;
