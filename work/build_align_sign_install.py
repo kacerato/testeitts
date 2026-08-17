@@ -1,68 +1,166 @@
-import os, subprocess, re
+from __future__ import annotations
 
-SDK_BUILD_TOOLS = r"C:\Users\donod\AppData\Local\Android\Sdk\build-tools\36.1.0"
-ZIPALIGN = os.path.join(SDK_BUILD_TOOLS, "zipalign.exe")
-APKSIGNER = os.path.join(SDK_BUILD_TOOLS, "apksigner.bat")
-ADB = r"C:\Users\donod\AppData\Local\Android\Sdk\platform-tools\adb.exe"
+import os
+import re
+import subprocess
+import sys
+from pathlib import Path
 
-APKTOOL_JAR = r"C:\Users\donod\Downloads\itsmaagic\tools\apktool.jar"
-KEYSTORE = r"C:\Users\donod\Downloads\itsmaagic\tools\debug.keystore"
-APKTOOL_BASE = r"C:\Users\donod\Downloads\itsmaagic\extracted\apktool_base"
-MANIFEST_PATH = os.path.join(APKTOOL_BASE, "AndroidManifest.xml")
+ROOT = Path(__file__).resolve().parent.parent
+WORK = ROOT / "work"
+APKTOOL_BASE = ROOT / "extracted" / "apktool_base"
+MANIFEST_PATH = APKTOOL_BASE / "AndroidManifest.xml"
+APKTOOL_JAR = ROOT / "tools" / "apktool.jar"
+KEYSTORE = ROOT / "tools" / "debug.keystore"
+FIX_INTERACTION_SMALI = WORK / "fix_interaction_smali_aliases.py"
 
-UNSIGNED_APK = r"C:\Users\donod\Downloads\itsmaagic\ITsMagic_unsigned.apk"
-ALIGNED_APK = r"C:\Users\donod\Downloads\itsmaagic\ITsMagic_aligned.apk"
+UNSIGNED_APK = ROOT / "ITsMagic_unsigned.apk"
+ALIGNED_APK = ROOT / "ITsMagic_aligned.apk"
 
-print("[1/5] Setting android:extractNativeLibs=\"true\" in AndroidManifest.xml...")
-with open(MANIFEST_PATH, "r", encoding="utf-8") as f:
-    content = f.read()
 
-content = re.sub(r'android:extractNativeLibs="false"', 'android:extractNativeLibs="true"', content)
+def find_android_sdk() -> Path:
+    candidates = [
+        os.environ.get("ANDROID_SDK_ROOT"),
+        os.environ.get("ANDROID_HOME"),
+        str(Path.home() / "AppData" / "Local" / "Android" / "Sdk"),
+        str(Path.home() / "Android" / "Sdk"),
+    ]
+    for value in candidates:
+        if value and Path(value).is_dir():
+            return Path(value)
+    raise RuntimeError(
+        "Android SDK not found. Set ANDROID_SDK_ROOT or ANDROID_HOME before running this script."
+    )
 
-with open(MANIFEST_PATH, "w", encoding="utf-8") as f:
-    f.write(content)
 
-print("[2/5] Building APK with Apktool...")
-if os.path.exists(UNSIGNED_APK):
-    os.remove(UNSIGNED_APK)
-res_build = subprocess.run(["java", "-jar", APKTOOL_JAR, "b", APKTOOL_BASE, "-o", UNSIGNED_APK], capture_output=True, text=True)
-print("Apktool exit:", res_build.returncode)
-if res_build.returncode != 0:
-    print("Apktool error:", res_build.stderr)
-    exit(1)
+def version_key(path: Path):
+    parts = []
+    for item in re.split(r"[._-]", path.name):
+        parts.append(int(item) if item.isdigit() else item)
+    return parts
 
-print(f"[3/5] Zipaligning APK (4-byte alignment with page-alignment for .so)...")
-if os.path.exists(ALIGNED_APK):
-    os.remove(ALIGNED_APK)
-res_align = subprocess.run([ZIPALIGN, "-p", "-f", "4", UNSIGNED_APK, ALIGNED_APK], capture_output=True, text=True)
-print("Zipalign exit:", res_align.returncode)
-if res_align.returncode != 0:
-    print("Zipalign error:", res_align.stderr)
-    exit(1)
 
-print("[4/5] Signing APK with apksigner (v2, v3, v4 signatures)...")
-cmd_sign = [
-    APKSIGNER, "sign",
-    "--ks", KEYSTORE,
-    "--ks-pass", "pass:android",
-    "--key-pass", "pass:android",
-    "--ks-key-alias", "androiddebugkey",
-    ALIGNED_APK
-]
-res_sign = subprocess.run(cmd_sign, capture_output=True, text=True)
-print("Apksigner exit:", res_sign.returncode)
-if res_sign.returncode != 0:
-    print("Apksigner error:", res_sign.stderr)
-    exit(1)
+def find_build_tools(sdk: Path) -> Path:
+    root = sdk / "build-tools"
+    if not root.is_dir():
+        raise RuntimeError(f"Android build-tools directory not found: {root}")
+    versions = sorted((p for p in root.iterdir() if p.is_dir()), key=version_key, reverse=True)
+    for version in versions:
+        zipalign = version / ("zipalign.exe" if os.name == "nt" else "zipalign")
+        apksigner = version / ("apksigner.bat" if os.name == "nt" else "apksigner")
+        if zipalign.exists() and apksigner.exists():
+            return version
+    raise RuntimeError(f"No usable Android build-tools found under {root}")
 
-# Verify apksigner
-res_verify = subprocess.run([APKSIGNER, "verify", "--verbose", ALIGNED_APK], capture_output=True, text=True)
-print("Apksigner verify output:\n", res_verify.stdout[:300])
 
-print(f"[5/5] Installing via ADB to connected device...")
-res_install = subprocess.run([ADB, "install", "-r", "-t", "-d", ALIGNED_APK], capture_output=True, text=True)
-print("ADB install output:\n", res_install.stdout)
-if res_install.stderr:
-    print("ADB stderr:\n", res_install.stderr)
+def run_checked(cmd, label: str, capture: bool = True):
+    print(f"\n== {label} ==")
+    printable = " ".join(str(x) for x in cmd)
+    print(printable)
+    result = subprocess.run(
+        [str(x) for x in cmd],
+        capture_output=capture,
+        text=True,
+    )
+    if capture:
+        if result.stdout:
+            print(result.stdout)
+        if result.stderr:
+            print(result.stderr, file=sys.stderr)
+    if result.returncode != 0:
+        raise RuntimeError(f"{label} failed with exit code {result.returncode}")
+    return result
 
-print("PIPELINE EXECUTION COMPLETED!")
+
+def main() -> int:
+    sdk = find_android_sdk()
+    build_tools = find_build_tools(sdk)
+    zipalign = build_tools / ("zipalign.exe" if os.name == "nt" else "zipalign")
+    apksigner = build_tools / ("apksigner.bat" if os.name == "nt" else "apksigner")
+    adb = sdk / "platform-tools" / ("adb.exe" if os.name == "nt" else "adb")
+
+    required = [APKTOOL_BASE, MANIFEST_PATH, APKTOOL_JAR, KEYSTORE, FIX_INTERACTION_SMALI]
+    missing = [str(path) for path in required if not path.exists()]
+    if missing:
+        raise RuntimeError("Required build input(s) missing:\n  - " + "\n  - ".join(missing))
+
+    print("[1/7] Normalizing JADX aliases in Interaction smali...")
+    run_checked(
+        [sys.executable, FIX_INTERACTION_SMALI, APKTOOL_BASE / "smali_classes10"],
+        "Interaction smali normalization",
+    )
+
+    print('[2/7] Setting android:extractNativeLibs="true" in AndroidManifest.xml...')
+    content = MANIFEST_PATH.read_text(encoding="utf-8")
+    content = re.sub(
+        r'android:extractNativeLibs="false"',
+        'android:extractNativeLibs="true"',
+        content,
+    )
+    MANIFEST_PATH.write_text(content, encoding="utf-8")
+
+    print("[3/7] Building APK with Apktool...")
+    if UNSIGNED_APK.exists():
+        UNSIGNED_APK.unlink()
+    run_checked(
+        ["java", "-jar", APKTOOL_JAR, "b", APKTOOL_BASE, "-o", UNSIGNED_APK],
+        "Apktool build",
+    )
+
+    print("[4/7] Zipaligning APK...")
+    if ALIGNED_APK.exists():
+        ALIGNED_APK.unlink()
+    run_checked(
+        [zipalign, "-p", "-f", "4", UNSIGNED_APK, ALIGNED_APK],
+        "zipalign",
+    )
+
+    print("[5/7] Signing APK with debug keystore...")
+    run_checked(
+        [
+            apksigner,
+            "sign",
+            "--ks",
+            KEYSTORE,
+            "--ks-pass",
+            "pass:android",
+            "--key-pass",
+            "pass:android",
+            "--ks-key-alias",
+            "androiddebugkey",
+            ALIGNED_APK,
+        ],
+        "apksigner sign",
+    )
+
+    print("[6/7] Verifying APK signature...")
+    verify = run_checked([apksigner, "verify", "--verbose", ALIGNED_APK], "apksigner verify")
+    if "Verified" not in verify.stdout and "Verifies" not in verify.stdout:
+        print("Warning: apksigner returned success but no textual verification marker was found.")
+
+    print("[7/7] Optional ADB install...")
+    if adb.exists():
+        devices = subprocess.run([str(adb), "devices"], capture_output=True, text=True)
+        connected = []
+        for line in devices.stdout.splitlines()[1:]:
+            cols = line.split()
+            if len(cols) >= 2 and cols[1] == "device":
+                connected.append(cols[0])
+        if connected:
+            run_checked([adb, "install", "-r", "-t", "-d", ALIGNED_APK], "ADB install")
+        else:
+            print("No authorized Android device connected; APK generation is still successful.")
+    else:
+        print("adb not found; skipping install.")
+
+    print("\nPIPELINE EXECUTION COMPLETED!")
+    print(f"APK: {ALIGNED_APK}")
+    return 0
+
+
+if __name__ == "__main__":
+    try:
+        raise SystemExit(main())
+    except Exception as exc:
+        print(f"BUILD FAILED: {exc}", file=sys.stderr)
+        raise SystemExit(1)
