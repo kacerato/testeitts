@@ -26,6 +26,8 @@ jobs:
           filter: blob:none
           sparse-checkout: |
             extracted/apktool_base
+            source/app/src/main/java/com/itsmagic/engine/Engines/Engine/NoCode/Interaction
+            source/app/src/main/java/com/itsmagic/engine/Engines/Engine/NoCode/Nodes
             tools
             work
           sparse-checkout-cone-mode: true
@@ -45,18 +47,10 @@ jobs:
           yes | sdkmanager --licenses >/dev/null || true
           sdkmanager "platform-tools" "build-tools;36.0.0"
 
-      - name: Rewrite Transform position ABI
-        shell: bash
-        run: python3 work/fix_interaction_transform_position_smali.py extracted/apktool_base/smali_classes10
-
-      - name: Normalize Interaction smali
-        shell: bash
-        run: python3 work/fix_interaction_smali_aliases.py extracted/apktool_base/smali_classes10
-
-      - name: Verify Interaction smali ABI
+      - name: Recompile and verify Interaction source ABI
         id: abi
         shell: bash
-        run: python3 work/verify_interaction_smali_abi.py extracted/apktool_base --report interaction-abi-report.txt
+        run: python3 work/recompile_interaction_dex_safe.py
 
       - name: Upload ABI report on failure
         if: failure() && steps.abi.outcome == 'failure'
