@@ -1,5 +1,6 @@
 package com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime;
 
+import com.itsmagic.engine.Engines.Engine.ComponentsV2.Camera.Camera;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Feedback.InteractionHighlightController;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Feedback.InteractionPromptController;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionCandidate;
@@ -8,12 +9,13 @@ import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Resolver.InteractionTargetResolver;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.GameObject.GameObject;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.Transform.Transform;
+import com.itsmagic.engine.Engines.Engine.World.World;
 import gb.C13317e;
 
 /**
  * Runtime central do subsistema de interacao.
- * Executa exatamente uma vez por frame com calculo de deltaTime real,
- * gerenciando alvo contínuo, histerese, propagacao de hit, prompts e fisicas.
+ * Executa exatamente UMA vez por frame global da engine (K8.a.C),
+ * com auto-descoberta de Camera/Player, Raycast fisico, Line Of Sight e despachos contínuos.
  */
 public class InteractionRuntime {
 
@@ -29,7 +31,7 @@ public class InteractionRuntime {
     private GameObject previousTarget;
     private GameObject currentTarget;
 
-    private long lastUpdateNanoTime = 0L;
+    private long lastFrameCount = -1L;
 
     public static synchronized InteractionRuntime getInstance() {
         if (instance == null) {
@@ -44,33 +46,29 @@ public class InteractionRuntime {
     }
 
     /**
-     * Executa o loop do runtime com protecao de frame unico e deltaTime real.
+     * Ponto de entrada global por frame da engine.
      */
-    public void update(float fallbackDeltaTime) {
-        long now = System.nanoTime();
-        if (lastUpdateNanoTime == 0L) {
-            lastUpdateNanoTime = now;
-            return;
+    public void update(World world, long frameCount, float deltaTime) {
+        if (this.lastFrameCount == frameCount) {
+            return; // Frame Guard garantido: apenas 1 tick por frame global da engine
         }
+        this.lastFrameCount = frameCount;
 
-        long elapsedNanos = now - lastUpdateNanoTime;
-        // Evita atualizacoes duplicadas no mesmo frame (minimo ~2ms)
-        if (elapsedNanos < 2_000_000L) {
-            return;
+        float dt = (deltaTime > 0f && deltaTime < 0.1f) ? deltaTime : 0.0166f;
+
+        // Auto-descoberta de Camera e Interactor caso ainda nao tenham sido setados manualmente
+        if (!C13317e.J(interactor) || cameraTransform == null) {
+            autoDiscoverPlayerAndCamera();
         }
-
-        float deltaTime = elapsedNanos / 1_000_000_000.0f;
-        if (deltaTime > 0.1f) deltaTime = (fallbackDeltaTime > 0f) ? fallbackDeltaTime : 0.0166f;
-        lastUpdateNanoTime = now;
 
         // 1. Atualiza servicos continuos
-        GrabService.update(deltaTime);
-        DoorService.update(deltaTime);
-        holdSession.update(deltaTime);
+        GrabService.update(dt);
+        DoorService.update(dt);
+        holdSession.update(dt);
 
         if (!C13317e.J(interactor)) return;
 
-        // 2. Resolve o alvo atual usando a camera e histerese
+        // 2. Resolve o alvo atual usando Raycast, Camera e histerese
         currentTarget = resolver.resolveTarget(interactor, cameraTransform, null, null);
         InteractionCandidate bestCandidate = resolver.getCurrentResolvedCandidate();
 
@@ -98,7 +96,7 @@ public class InteractionRuntime {
                 }
                 InteractionDispatcher.dispatchFocusEnter(currentContext);
 
-                // Disparo automatico de Prompt e Highlight se configurados
+                // Disparo automatico de Prompt e Highlight
                 InteractionRegistry.InteractableData data = InteractionRegistry.get(currentTarget);
                 if (data != null) {
                     String pText = data.promptText != null ? data.promptText : (String) data.attributes.get("prompt_text");
@@ -120,6 +118,24 @@ public class InteractionRuntime {
                 currentContext.distance = bestCandidate.distance;
             }
             InteractionDispatcher.dispatchFocusStay(currentContext);
+        }
+    }
+
+    private void autoDiscoverPlayerAndCamera() {
+        Camera mainCam = Camera.mainCamera();
+        if (mainCam == null) {
+            mainCam = Camera.mainCameraAllowEditor();
+        }
+
+        if (mainCam != null && mainCam.f79250n != null) {
+            if (this.cameraTransform == null) {
+                this.cameraTransform = mainCam.f79250n.J0();
+            }
+            if (this.interactor == null) {
+                // Se a camera for filha de um corpo/jogador, usa o pai/raiz
+                GameObject camObj = mainCam.f79250n;
+                this.interactor = (camObj.h0() != null) ? camObj.h0() : camObj;
+            }
         }
     }
 

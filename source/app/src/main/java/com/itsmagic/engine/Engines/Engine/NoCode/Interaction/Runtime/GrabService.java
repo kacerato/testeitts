@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Servico central de manipulacao fisica e cinematica de objetos pegos (Grab, Inspect, Throw, Drop).
- * Suporta Transform Follow e Physics Follow real atraves de Rigidbody / Forcas.
+ * Implementa controle por Mola-Amortecedor (Spring-Damper PID) e restauracao completa de propriedades fisicas.
  */
 public class GrabService {
 
@@ -23,9 +23,12 @@ public class GrabService {
         public Transform cameraTransform;
         public float holdDistance = 2.0f;
         public float followSpeed = 15.0f;
+        public float springStrength = 120.0f;
+        public float damping = 14.0f;
+        public float maxVelocity = 25.0f;
         public boolean usePhysics = false;
         public Rigidbody rigidbody = null;
-        public final Vector3 targetHoldPos = new Vector3();
+        public final Vector3 lastVelocity = new Vector3();
     }
 
     private static final Map<GameObject, GrabSession> ACTIVE_GRABS = new ConcurrentHashMap<>();
@@ -105,17 +108,16 @@ public class GrabService {
                     throwDir.set(session.cameraTransform.forward());
                 }
 
-                float f = force > 0f ? force : 10.0f;
+                float f = force > 0f ? force : 12.0f;
 
-                // Se houver Rigidbody, aplica velocidade fisica real de arremesso
+                // Aplica impulso de arremesso no Rigidbody
                 if (session.rigidbody != null) {
                     session.rigidbody.setVelocity(new Vector3(
-                        throwDir.getX() * f,
-                        throwDir.getY() * f + 2.0f,
-                        throwDir.getZ() * f
+                        session.lastVelocity.getX() * 0.3f + throwDir.getX() * f,
+                        session.lastVelocity.getY() * 0.3f + throwDir.getY() * f + 2.0f,
+                        session.lastVelocity.getZ() * 0.3f + throwDir.getZ() * f
                     ));
                 } else {
-                    // Fallback cinemático
                     Vector3 pos = objT.J0();
                     if (pos != null) {
                         objT.f79337l.f(new Vector3(
@@ -156,7 +158,7 @@ public class GrabService {
             Vector3 camForward = camTransform.forward();
             if (camPos == null || camForward == null) continue;
 
-            // Ponto desejado na frente da camera
+            // Ponto de destino na mira da camera
             float targetX = camPos.getX() + camForward.getX() * session.holdDistance;
             float targetY = camPos.getY() + camForward.getY() * session.holdDistance;
             float targetZ = camPos.getZ() + camForward.getZ() * session.holdDistance;
@@ -165,13 +167,28 @@ public class GrabService {
             if (curPos == null) continue;
 
             if (session.usePhysics && session.rigidbody != null) {
-                // Physics Follow real: aplica velocidade proporcional a diferenca de posicao (Spring/PID)
-                float vx = (targetX - curPos.getX()) * session.followSpeed;
-                float vy = (targetY - curPos.getY()) * session.followSpeed;
-                float vz = (targetZ - curPos.getZ()) * session.followSpeed;
+                // Controlador Spring-Damper: Force = Spring * Error - Damping * Velocity
+                float errX = targetX - curPos.getX();
+                float errY = targetY - curPos.getY();
+                float errZ = targetZ - curPos.getZ();
+
+                float vx = errX * session.springStrength - session.lastVelocity.getX() * session.damping;
+                float vy = errY * session.springStrength - session.lastVelocity.getY() * session.damping;
+                float vz = errZ * session.springStrength - session.lastVelocity.getZ() * session.damping;
+
+                // Clamping de velocidade maxima para evitar teleporte ou explosao fisica
+                float vMag = (float) Math.sqrt(vx * vx + vy * vy + vz * vz);
+                if (vMag > session.maxVelocity) {
+                    float factor = session.maxVelocity / vMag;
+                    vx *= factor;
+                    vy *= factor;
+                    vz *= factor;
+                }
+
+                session.lastVelocity.set(vx, vy, vz);
                 session.rigidbody.setVelocity(new Vector3(vx, vy, vz));
             } else {
-                // Transform Follow: interpolacao suave (lerp)
+                // Transform Follow suave (Lerp)
                 float t = Math.min(1.0f, deltaTime * session.followSpeed);
                 float newX = curPos.getX() + (targetX - curPos.getX()) * t;
                 float newY = curPos.getY() + (targetY - curPos.getY()) * t;
