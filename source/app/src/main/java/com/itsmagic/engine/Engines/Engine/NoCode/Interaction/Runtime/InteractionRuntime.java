@@ -38,6 +38,7 @@ public class InteractionRuntime {
     private long lastFrameCount = -1L;
 
     public static synchronized InteractionRuntime getInstance() {
+        InteractionInteractor.ensureRegistered();
         if (instance == null) {
             instance = new InteractionRuntime();
         }
