@@ -291,6 +291,7 @@ public class NoCodeExecutor extends Component implements Serializable {
     @Override
     public void preUpdate(GameObject gameObject, boolean isEditor) {
         super.preUpdate(gameObject, isEditor);
+        com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.InteractionRuntime.getInstance().update(0.0166f);
         NoCodeData noCodeData = getNoCodeData();
         noCodeData.Y0(gameObject, this);
         dispatchStartEventIfNeeded(noCodeData);

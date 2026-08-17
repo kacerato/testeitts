@@ -3,7 +3,7 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Interaction;
 import java.io.Serializable;
 
 /**
- * Estados padronizados para entidades interativas.
+ * Estados discretos padronizados para consultas no NoCode.
  */
 public enum InteractionState implements Serializable {
     Enabled,

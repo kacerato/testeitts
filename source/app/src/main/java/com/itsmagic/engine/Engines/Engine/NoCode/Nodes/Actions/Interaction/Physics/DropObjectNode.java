@@ -2,8 +2,7 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Phys
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionState;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.GrabService;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
@@ -17,7 +16,7 @@ import ga.p;
 import gb.C13317e;
 
 /**
- * Solta um objeto segurado no mundo (Drop).
+ * Solta o objeto atualmente segurado via GrabService.
  */
 public class DropObjectNode extends NoCodeNode implements F {
 
@@ -69,7 +68,7 @@ public class DropObjectNode extends NoCodeNode implements F {
 
     public DropObjectNode() {
         this.inputs = new NoCodeSlot[]{
-            new NoCodeSlot("Object", H.GAME_OBJECT).c("Object")
+            new NoCodeSlot("Interactor", H.GAME_OBJECT).c("Interactor")
         };
         this.outputs = new NoCodeSlot[]{
             new NoCodeSlot("Out", H.BRANCH).c("Out")
@@ -89,16 +88,12 @@ public class DropObjectNode extends NoCodeNode implements F {
 
     @Override
     public void m0() {
-        GameObject object = Aa.b.b(this, this.f79021a, this.inputs[0]);
-        if (!C13317e.J(object) && this.f79021a != null) {
-            object = this.f79021a.h0();
+        GameObject interactor = Aa.b.b(this, this.f79021a, this.inputs[0]);
+        if (!C13317e.J(interactor) && this.f79021a != null) {
+            interactor = this.f79021a.h0();
         }
 
-        if (C13317e.J(object)) {
-            InteractionRegistry.setState(object, InteractionState.Dropped);
-            InteractionRegistry.setAttribute(object, "held_by", null);
-        }
-
+        GrabService.drop(interactor);
         u(this.outputs[0]);
     }
 

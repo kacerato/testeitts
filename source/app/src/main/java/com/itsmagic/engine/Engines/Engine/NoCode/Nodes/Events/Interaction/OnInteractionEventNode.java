@@ -2,6 +2,8 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Events.Interaction;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionContext;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.InteractionDispatcher;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
@@ -16,8 +18,9 @@ import ga.p;
 
 /**
  * Escuta eventos customizados desacoplados enviados atraves do barramento de interacao.
+ * Conectado diretamente ao barramento de eventos InteractionDispatcher.
  */
-public class OnInteractionEventNode extends Fa.a implements F {
+public class OnInteractionEventNode extends Fa.a implements F, InteractionDispatcher.InteractionEventListener {
 
     public static final String SERIALIZED_NAME = "Interaction.OnCustomEvent";
 
@@ -87,7 +90,19 @@ public class OnInteractionEventNode extends Fa.a implements F {
         return this.outputs;
     }
 
-    public void onEventReceived(String eventName, GameObject sender, Object payload) {
+    @Override
+    public void l0() {
+        super.l0();
+        String expected = m.Y(Q(this.inputs[0]));
+        if (expected != null && !expected.trim().isEmpty()) {
+            InteractionDispatcher.addCustomEventListener(expected, this);
+        } else {
+            InteractionDispatcher.addGlobalListener(this);
+        }
+    }
+
+    @Override
+    public void onCustomEvent(String eventName, GameObject sender, Object payload) {
         if (this.f79021a == null) return;
         String expected = m.Y(Q(this.inputs[0]));
         if (expected != null && !expected.trim().isEmpty()) {
@@ -101,6 +116,18 @@ public class OnInteractionEventNode extends Fa.a implements F {
             u(this.outputs[0]);
         }
     }
+
+    @Override
+    public void onFocusEnter(InteractionContext context) {}
+
+    @Override
+    public void onFocusStay(InteractionContext context) {}
+
+    @Override
+    public void onFocusExit(InteractionContext context) {}
+
+    @Override
+    public void onInteract(InteractionContext context) {}
 
     @Override
     public EnumC13304B M() {

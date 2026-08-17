@@ -2,6 +2,7 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Detection;
 
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionCandidate;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.GameObject.GameObject;
+import com.itsmagic.engine.Engines.Engine.ObjectOriented.Transform.Transform;
 import java.util.List;
 
 /**
@@ -19,8 +20,8 @@ public class InteractionSphereSensor implements InteractionSensor {
     }
 
     @Override
-    public void collectCandidates(GameObject interactor, List<InteractionCandidate> outCandidates) {
-        collector.collect(interactor, maxRadius, 180.0f, outCandidates);
+    public void collectCandidates(GameObject interactor, Transform cameraTransform, List<InteractionCandidate> outCandidates) {
+        collector.collect(interactor, cameraTransform, maxRadius, 180.0f, outCandidates);
     }
 
     @Override

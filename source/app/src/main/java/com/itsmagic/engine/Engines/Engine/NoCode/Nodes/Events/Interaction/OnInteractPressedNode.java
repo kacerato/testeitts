@@ -3,6 +3,8 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Events.Interaction;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionContext;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.InteractionDispatcher;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
@@ -14,11 +16,13 @@ import ga.F;
 import ga.H;
 import ga.o;
 import ga.p;
+import gb.C13317e;
 
 /**
  * Disparado quando o botao ou acao logica 'interact' e pressionada sobre o objeto.
+ * Conectado diretamente ao barramento de eventos InteractionDispatcher.
  */
-public class OnInteractPressedNode extends Fa.a implements F {
+public class OnInteractPressedNode extends Fa.a implements F, InteractionDispatcher.InteractionEventListener {
 
     public static final String SERIALIZED_NAME = "Interaction.OnInteractPressed";
 
@@ -88,7 +92,26 @@ public class OnInteractPressedNode extends Fa.a implements F {
         return this.outputs;
     }
 
-    public void trigger(InteractionContext context) {
+    @Override
+    public void l0() {
+        super.l0();
+        GameObject target = getTargetObject();
+        if (C13317e.J(target)) {
+            InteractionRegistry.register(target);
+            InteractionDispatcher.addObjectListener(target, this);
+        }
+    }
+
+    private GameObject getTargetObject() {
+        GameObject obj = Aa.b.b(this, this.f79021a, this.inputs[0]);
+        if (!C13317e.J(obj) && this.f79021a != null) {
+            obj = this.f79021a.h0();
+        }
+        return obj;
+    }
+
+    @Override
+    public void onInteract(InteractionContext context) {
         if (context == null || this.f79021a == null) return;
         y0(this.outputs[1], context.interactor);
         y0(this.outputs[2], new Vector3(context.hitPosition));
@@ -96,6 +119,18 @@ public class OnInteractPressedNode extends Fa.a implements F {
             u(this.outputs[0]);
         }
     }
+
+    @Override
+    public void onFocusEnter(InteractionContext context) {}
+
+    @Override
+    public void onFocusStay(InteractionContext context) {}
+
+    @Override
+    public void onFocusExit(InteractionContext context) {}
+
+    @Override
+    public void onCustomEvent(String eventName, GameObject target, Object payload) {}
 
     @Override
     public EnumC13304B M() {

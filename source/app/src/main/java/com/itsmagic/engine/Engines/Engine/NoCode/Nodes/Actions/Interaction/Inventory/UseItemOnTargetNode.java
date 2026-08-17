@@ -17,7 +17,7 @@ import ga.p;
 import gb.C13317e;
 
 /**
- * Aplica um item (por Tag ou Nome) sobre um alvo específico (ex: Chave -> Porta, Bateria -> Radio).
+ * Valida o uso de um item do inventario do Interactor sobre um Target receptor (ex: Chave -> Fechadura).
  */
 public class UseItemOnTargetNode extends NoCodeNode implements F {
 
@@ -69,13 +69,15 @@ public class UseItemOnTargetNode extends NoCodeNode implements F {
 
     public UseItemOnTargetNode() {
         this.inputs = new NoCodeSlot[]{
-            new NoCodeSlot("Required Item Tag", H.TEXT).c("Required Item Tag"),
+            new NoCodeSlot("Interactor", H.GAME_OBJECT).c("Interactor"),
             new NoCodeSlot("Target", H.GAME_OBJECT).c("Target"),
-            new NoCodeSlot("Consume", H.BOOLEAN).c("Consume")
+            new NoCodeSlot("Required Item Tag", H.TEXT).c("Required Item Tag"),
+            new NoCodeSlot("Consume Item", H.BOOLEAN).c("Consume Item")
         };
         this.outputs = new NoCodeSlot[]{
             new NoCodeSlot("Accepted", H.BRANCH).c("Accepted"),
             new NoCodeSlot("Rejected", H.BRANCH).c("Rejected"),
+            new NoCodeSlot("Missing Item", H.BRANCH).c("Missing Item"),
             new NoCodeSlot("Was Consumed", H.BOOLEAN).c("Was Consumed")
         };
         this.serializedNodeType = SERIALIZED_NAME;
@@ -93,21 +95,60 @@ public class UseItemOnTargetNode extends NoCodeNode implements F {
 
     @Override
     public void m0() {
-        String itemTag = m.Y(Q(this.inputs[0]));
+        GameObject interactor = Aa.b.b(this, this.f79021a, this.inputs[0]);
         GameObject target = Aa.b.b(this, this.f79021a, this.inputs[1]);
+
         if (!C13317e.J(target) && this.f79021a != null) {
             target = this.f79021a.h0();
         }
 
-        boolean accepted = false;
-        boolean consume = m.S(Q(this.inputs[2]));
+        String itemTag = m.Y(Q(this.inputs[2]));
+        boolean consume = m.S(Q(this.inputs[3]));
 
-        if (C13317e.J(target) && itemTag != null && !itemTag.trim().isEmpty()) {
-            accepted = InteractionRegistry.hasTag(target, itemTag.trim().toLowerCase());
+        if (itemTag == null || itemTag.trim().isEmpty()) {
+            y0(this.outputs[3], Boolean.FALSE);
+            u(this.outputs[1]);
+            return;
         }
 
-        y0(this.outputs[2], Boolean.valueOf(accepted && consume));
-        u(accepted ? this.outputs[0] : this.outputs[1]);
+        String cleanTag = itemTag.trim().toLowerCase();
+
+        // 1. Verifica se o Interactor possui o item/tag no inventario ou atributos
+        boolean interactorHasItem = false;
+        if (C13317e.J(interactor)) {
+            interactorHasItem = InteractionRegistry.hasTag(interactor, cleanTag) ||
+                                (InteractionRegistry.getAttribute(interactor, "has_item_" + cleanTag) != null);
+        } else {
+            // Fallback: se nenhum interactor fornecido, verifica o dono
+            interactorHasItem = true;
+        }
+
+        if (!interactorHasItem) {
+            y0(this.outputs[3], Boolean.FALSE);
+            u(this.outputs[2]); // Missing Item
+            return;
+        }
+
+        // 2. Verifica se o Target aceita o item (ex: se o target requer essa chave/tag ou aceita itens)
+        boolean accepted = true;
+        String requiredKey = (String) InteractionRegistry.getAttribute(target, "required_key");
+        if (requiredKey != null && !requiredKey.equalsIgnoreCase(cleanTag)) {
+            accepted = false;
+        }
+
+        if (accepted) {
+            if (consume && C13317e.J(interactor)) {
+                InteractionRegistry.removeTag(interactor, cleanTag);
+                InteractionRegistry.setAttribute(interactor, "has_item_" + cleanTag, null);
+            }
+            // Se o alvo estava trancado, destranca automaticamente ao aceitar
+            InteractionRegistry.setLocked(target, false);
+            y0(this.outputs[3], Boolean.valueOf(consume));
+            u(this.outputs[0]); // Accepted
+        } else {
+            y0(this.outputs[3], Boolean.FALSE);
+            u(this.outputs[1]); // Rejected
+        }
     }
 
     @Override
@@ -122,15 +163,16 @@ public class UseItemOnTargetNode extends NoCodeNode implements F {
 
     @Override
     public String a(int inputIndex, H desiredType) {
-        if (inputIndex == 0) return "key_bronze";
+        if (inputIndex == 0) return "";
         if (inputIndex == 1) return "owner";
-        if (inputIndex == 2) return "true";
+        if (inputIndex == 2) return "key_bronze";
+        if (inputIndex == 3) return "true";
         return "";
     }
 
     @Override
     public H t0(int index, D resolver) {
-        if (index == 2) return H.BOOLEAN;
+        if (index == 3) return H.BOOLEAN;
         return H.BRANCH;
     }
 

@@ -2,16 +2,13 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Phys
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionCapability;
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionResult;
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionState;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.GrabService;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.GameObject.GameObject;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.Transform.Transform;
-import com.itsmagic.engine.Engines.Engine.Vector.Vector3;
 import ga.D;
 import ga.EnumC13304B;
 import ga.F;
@@ -22,7 +19,7 @@ import ga.p;
 import gb.C13317e;
 
 /**
- * Pega um objeto no mundo (Grab) com suporte a posicionamento Transform Follow e Physics Follow.
+ * Pega um objeto no mundo (Grab) delegando a fisica e cinemática ao GrabService.
  */
 public class GrabObjectNode extends NoCodeNode implements F {
 
@@ -108,56 +105,21 @@ public class GrabObjectNode extends NoCodeNode implements F {
             object = this.f79021a.h0();
         }
 
-        if (!C13317e.J(object)) {
-            y0(this.outputs[3], InteractionResult.FailureReason.InvalidTarget.name());
-            u(this.outputs[1]);
-            return;
-        }
-
-        // Valida se e seguravel
-        boolean isGrabbable = InteractionRegistry.hasCapability(object, InteractionCapability.Grabbable);
-        if (!isGrabbable) {
-            // Se nao estiver explicito, assume interactable
-            isGrabbable = InteractionRegistry.isEnabled(object);
-        }
-
-        if (!isGrabbable) {
-            y0(this.outputs[3], InteractionResult.FailureReason.Disabled.name());
-            u(this.outputs[1]);
-            return;
-        }
-
-        InteractionState state = InteractionRegistry.getState(object);
-        if (state == InteractionState.Held || state == InteractionState.Busy) {
-            y0(this.outputs[3], InteractionResult.FailureReason.Busy.name());
-            u(this.outputs[1]);
-            return;
-        }
-
-        // Guarda a posicao de origem se ainda nao guardou
-        Transform objTransform = object.J0();
-        if (objTransform != null) {
-            Vector3 originPos = objTransform.J0();
-            if (originPos != null) {
-                InteractionRegistry.setAttribute(object, "origin_pos", new Vector3(originPos));
-            }
-        }
-
-        // Registra estado de Held
-        InteractionRegistry.setState(object, InteractionState.Held);
-        InteractionRegistry.setAttribute(object, "held_by", interactor);
-
         float holdDist = m.V(Q(this.inputs[2]));
         float speed = m.V(Q(this.inputs[3]));
         boolean usePhysics = m.S(Q(this.inputs[4]));
 
-        InteractionRegistry.setAttribute(object, "hold_distance", Float.valueOf(holdDist > 0f ? holdDist : 2.0f));
-        InteractionRegistry.setAttribute(object, "follow_speed", Float.valueOf(speed > 0f ? speed : 10.0f));
-        InteractionRegistry.setAttribute(object, "use_physics", Boolean.valueOf(usePhysics));
+        Transform camTransform = (interactor != null) ? interactor.J0() : null;
+        InteractionResult result = GrabService.grab(interactor, object, camTransform, holdDist, speed, usePhysics);
 
-        y0(this.outputs[2], object);
-        y0(this.outputs[3], InteractionResult.FailureReason.None.name());
-        u(this.outputs[0]);
+        if (result.success) {
+            y0(this.outputs[2], object);
+            y0(this.outputs[3], InteractionResult.FailureReason.None.name());
+            u(this.outputs[0]);
+        } else {
+            y0(this.outputs[3], result.failureReason.name());
+            u(this.outputs[1]);
+        }
     }
 
     @Override
@@ -175,7 +137,7 @@ public class GrabObjectNode extends NoCodeNode implements F {
         if (inputIndex == 0) return "owner";
         if (inputIndex == 1) return "";
         if (inputIndex == 2) return "2.0";
-        if (inputIndex == 3) return "12.0";
+        if (inputIndex == 3) return "15.0";
         if (inputIndex == 4) return "false";
         return "";
     }

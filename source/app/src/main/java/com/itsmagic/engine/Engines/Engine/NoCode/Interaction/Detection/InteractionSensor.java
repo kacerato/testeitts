@@ -2,6 +2,7 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Detection;
 
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionCandidate;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.GameObject.GameObject;
+import com.itsmagic.engine.Engines.Engine.ObjectOriented.Transform.Transform;
 import java.util.List;
 
 /**
@@ -9,9 +10,9 @@ import java.util.List;
  */
 public interface InteractionSensor {
     /**
-     * Coleta candidatos a interacao a partir de uma origem (interactor / camera).
+     * Coleta candidatos a interacao a partir de um interactor e camera de mira.
      */
-    void collectCandidates(GameObject interactor, List<InteractionCandidate> outCandidates);
+    void collectCandidates(GameObject interactor, Transform cameraTransform, List<InteractionCandidate> outCandidates);
 
     /**
      * Define o alcance maximo do sensor.

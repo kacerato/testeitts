@@ -10,35 +10,34 @@ import java.util.List;
 
 /**
  * Coletor centralizado de candidatos a interacao com calculo vetorial otimizado
- * e zero-alloc no loop principal.
+ * e ZERO alocacoes no loop principal.
  */
 public class InteractionCandidateCollector {
 
     private final Vector3 tempOrigin = new Vector3();
     private final Vector3 tempTargetPos = new Vector3();
     private final Vector3 tempForward = new Vector3();
-    private final Vector3 tempToTarget = new Vector3();
 
-    public void collect(GameObject interactor, float maxDistance, float maxAngleDeg, List<InteractionCandidate> outCandidates) {
+    public void collect(GameObject interactor, Transform cameraTransform, float maxDistance, float maxAngleDeg, List<InteractionCandidate> outCandidates) {
         if (!C13317e.J(interactor) || outCandidates == null) return;
 
-        Transform interactorTransform = interactor.J0();
-        if (interactorTransform == null) return;
+        // Prioriza camera para mira em primeira pessoa; se nao houver, usa o interactor
+        Transform rayOriginTransform = (cameraTransform != null) ? cameraTransform : interactor.J0();
+        if (rayOriginTransform == null) return;
 
         // Obter posicao e direcao frontal
-        interactorTransform.K0(tempOrigin);
-        Vector3 forward = interactorTransform.forward();
+        rayOriginTransform.K0(tempOrigin);
+        Vector3 forward = rayOriginTransform.forward();
         if (forward != null) {
             tempForward.set(forward);
         } else {
             tempForward.set(0f, 0f, 1f);
         }
 
-        List<GameObject> interactables = InteractionRegistry.getAllActiveInteractables();
-        float maxDistSq = maxDistance * maxDistance;
+        int count = InteractionRegistry.getActiveInteractablesCount();
 
-        for (int i = 0; i < interactables.size(); i++) {
-            GameObject target = interactables.get(i);
+        for (int i = 0; i < count; i++) {
+            GameObject target = InteractionRegistry.getActiveInteractableAt(i);
             if (!C13317e.J(target) || target == interactor) continue;
 
             InteractionRegistry.InteractableData data = InteractionRegistry.get(target);
@@ -49,7 +48,7 @@ public class InteractionCandidateCollector {
 
             targetTransform.K0(tempTargetPos);
 
-            // Vetor interactor -> target
+            // Vetor rayOrigin -> target
             float dx = tempTargetPos.getX() - tempOrigin.getX();
             float dy = tempTargetPos.getY() - tempOrigin.getY();
             float dz = tempTargetPos.getZ() - tempOrigin.getZ();
@@ -61,7 +60,7 @@ public class InteractionCandidateCollector {
             float distance = (float) Math.sqrt(distSq);
             if (distance < 0.0001f) distance = 0.0001f;
 
-            // Calculo do angulo em relacao ao forward
+            // Calculo do angulo em relacao ao vetor da mira (camera forward)
             float normX = dx / distance;
             float normY = dy / distance;
             float normZ = dz / distance;
@@ -78,7 +77,7 @@ public class InteractionCandidateCollector {
 
             InteractionCandidate candidate = InteractionCandidate.obtain(target, distance, angleDeg);
             candidate.priority = data.priority;
-            candidate.hasLineOfSight = true; // Validador fino pode refinar se necessario
+            candidate.hasLineOfSight = true; // Refinado por raycast se disponivel
             candidate.hitPosition.set(tempTargetPos);
 
             outCandidates.add(candidate);

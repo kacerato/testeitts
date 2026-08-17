@@ -4,13 +4,11 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionResult;
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionState;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.DoorService;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.GameObject.GameObject;
-import com.itsmagic.engine.Engines.Engine.ObjectOriented.Transform.Transform;
-import com.itsmagic.engine.Engines.Engine.Vector.Vector3;
 import ga.D;
 import ga.EnumC13304B;
 import ga.F;
@@ -21,9 +19,8 @@ import ga.p;
 import gb.C13317e;
 
 /**
- * Controlador de portas e compartimentos (Hinged, Sliding, Gavetas)
- * com suporte a calculo automatico de direcao de abertura em relacao ao jogador (Dot Product)
- * e verificacao integrada de trancas.
+ * Controlador de portas e compartimentos integrado ao DoorService
+ * para animacao angular suave em tempo real e abertura inteligente (Away from player).
  */
 public class DoorNode extends NoCodeNode implements F {
 
@@ -111,8 +108,7 @@ public class DoorNode extends NoCodeNode implements F {
             return;
         }
 
-        InteractionState state = InteractionRegistry.getState(door);
-        if (state == InteractionState.Locked) {
+        if (InteractionRegistry.isLocked(door)) {
             u(this.outputs[2]);
             return;
         }
@@ -122,50 +118,25 @@ public class DoorNode extends NoCodeNode implements F {
             action = "Toggle";
         }
 
-        boolean shouldOpen = false;
-        if ("Open".equalsIgnoreCase(action)) {
-            shouldOpen = true;
-        } else if ("Close".equalsIgnoreCase(action)) {
-            shouldOpen = false;
-        } else { // Toggle
-            shouldOpen = (state != InteractionState.Open);
-        }
-
-        // Calculo de lado de abertura (Away from player) via Dot Product
+        GameObject interactor = Aa.b.b(this, this.f79021a, this.inputs[2]);
         boolean autoDirection = m.S(Q(this.inputs[3]));
-        int directionSign = 1;
 
-        if (autoDirection) {
-            GameObject interactor = Aa.b.b(this, this.f79021a, this.inputs[2]);
-            if (C13317e.J(interactor)) {
-                Transform doorT = door.J0();
-                Transform playerT = interactor.J0();
-                if (doorT != null && playerT != null) {
-                    Vector3 doorPos = doorT.J0();
-                    Vector3 playerPos = playerT.J0();
-                    Vector3 doorForward = doorT.forward();
-
-                    if (doorPos != null && playerPos != null && doorForward != null) {
-                        float dx = playerPos.getX() - doorPos.getX();
-                        float dy = playerPos.getY() - doorPos.getY();
-                        float dz = playerPos.getZ() - doorPos.getZ();
-                        float dot = dx * doorForward.getX() + dy * doorForward.getY() + dz * doorForward.getZ();
-                        // Se o jogador esta na frente, abre para tras (negativo)
-                        if (dot > 0f) {
-                            directionSign = -1;
-                        }
-                    }
-                }
-            }
+        boolean targetOpen = false;
+        if ("Open".equalsIgnoreCase(action)) {
+            DoorService.setDoorOpen(door, interactor, true, autoDirection);
+            targetOpen = true;
+        } else if ("Close".equalsIgnoreCase(action)) {
+            DoorService.setDoorOpen(door, interactor, false, autoDirection);
+            targetOpen = false;
+        } else { // Toggle
+            boolean currentlyOpen = InteractionRegistry.isOpen(door);
+            DoorService.toggleDoor(door, interactor, autoDirection);
+            targetOpen = !currentlyOpen;
         }
 
-        InteractionRegistry.setAttribute(door, "door_dir_sign", Integer.valueOf(directionSign));
-        InteractionRegistry.setState(door, shouldOpen ? InteractionState.Open : InteractionState.Closed);
-        float openAmount = shouldOpen ? 1.0f : 0.0f;
-        InteractionRegistry.setAttribute(door, "open_amount", Float.valueOf(openAmount));
-
-        y0(this.outputs[3], Float.valueOf(openAmount));
-        u(shouldOpen ? this.outputs[0] : this.outputs[1]);
+        float amount = targetOpen ? 1.0f : 0.0f;
+        y0(this.outputs[3], Float.valueOf(amount));
+        u(targetOpen ? this.outputs[0] : this.outputs[1]);
     }
 
     @Override

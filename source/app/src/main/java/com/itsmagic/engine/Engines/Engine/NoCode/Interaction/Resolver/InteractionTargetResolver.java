@@ -5,6 +5,7 @@ import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Detection.Interacti
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionCandidate;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionCapability;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.GameObject.GameObject;
+import com.itsmagic.engine.Engines.Engine.ObjectOriented.Transform.Transform;
 import gb.C13317e;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,7 +13,7 @@ import java.util.List;
 
 /**
  * Motor central de resolucao de alvos de interacao.
- * Combina sensores, filtragem, pontuacao ponderada e histerese.
+ * Combina sensores, camera de visao, filtragem, pontuacao ponderada e histerese.
  */
 public class InteractionTargetResolver {
 
@@ -31,7 +32,7 @@ public class InteractionTargetResolver {
         this.sensor = sensor != null ? sensor : new InteractionRaySensor(4.0f, 45.0f);
     }
 
-    public GameObject resolveTarget(GameObject interactor, InteractionCapability requiredCapability, String requiredTag) {
+    public GameObject resolveTarget(GameObject interactor, Transform cameraTransform, InteractionCapability requiredCapability, String requiredTag) {
         if (!C13317e.J(interactor)) {
             hysteresis.reset();
             return null;
@@ -43,8 +44,8 @@ public class InteractionTargetResolver {
         }
         candidatesBuffer.clear();
 
-        // 1. Coleta candidatos via sensor
-        sensor.collectCandidates(interactor, candidatesBuffer);
+        // 1. Coleta candidatos via sensor usando a camera/olhar
+        sensor.collectCandidates(interactor, cameraTransform, candidatesBuffer);
         if (candidatesBuffer.isEmpty()) {
             hysteresis.reset();
             return null;
@@ -52,7 +53,6 @@ public class InteractionTargetResolver {
 
         GameObject currentTarget = hysteresis.getCurrentTarget();
         float currentTargetScore = 0f;
-        InteractionCandidate currentTargetCandidate = null;
 
         // 2. Filtra e pontua candidatos
         for (int i = candidatesBuffer.size() - 1; i >= 0; i--) {
@@ -67,7 +67,6 @@ public class InteractionTargetResolver {
             float score = scorer.calculateScore(candidate, sensor.getMaxDistance(), 45.0f, isCurrent);
             if (isCurrent) {
                 currentTargetScore = score;
-                currentTargetCandidate = candidate;
             }
         }
 
@@ -87,6 +86,10 @@ public class InteractionTargetResolver {
         }
 
         return hysteresis.getCurrentTarget();
+    }
+
+    public GameObject resolveTarget(GameObject interactor, InteractionCapability requiredCapability, String requiredTag) {
+        return resolveTarget(interactor, null, requiredCapability, requiredTag);
     }
 
     public GameObject getCurrentTarget() {

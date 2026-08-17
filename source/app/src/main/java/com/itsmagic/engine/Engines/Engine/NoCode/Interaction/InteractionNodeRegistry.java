@@ -1,7 +1,5 @@
 package com.itsmagic.engine.Engines.Engine.NoCode.Interaction;
 
-import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Feedback.InteractionHighlightController;
-import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Feedback.InteractionPromptController;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.HideInteractionPromptNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.HighlightObjectNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Inventory.SnapToSocketNode;
