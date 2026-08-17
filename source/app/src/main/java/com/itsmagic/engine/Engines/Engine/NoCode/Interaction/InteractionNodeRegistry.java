@@ -33,6 +33,7 @@ import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.GetIn
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.GetInteractionTargetNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.InteractionDetectionQueryNodes;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.InteractionHistoryNodes;
+import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.InteractionSearchQueryNodes;
 
 /** Carrega todas as classes de nodes para ativar seus factories estaticos. */
 public class InteractionNodeRegistry {
@@ -57,6 +58,9 @@ public class InteractionNodeRegistry {
         InteractionDetectionQueryNodes.IsTargetInViewNode.class,
         InteractionDetectionQueryNodes.HasLineOfSightNode.class,
         InteractionDetectionQueryNodes.IsRegisteredInteractableNode.class,
+        InteractionSearchQueryNodes.FindInRayNode.class,
+        InteractionSearchQueryNodes.FindInSphereNode.class,
+        InteractionSearchQueryNodes.FindNearestNode.class,
 
         // Events
         OnFocusEnterNode.class,
