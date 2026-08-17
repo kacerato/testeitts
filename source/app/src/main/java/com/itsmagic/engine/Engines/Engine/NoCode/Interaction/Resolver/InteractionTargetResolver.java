@@ -23,6 +23,7 @@ public class InteractionTargetResolver {
     private final InteractionHysteresis hysteresis = new InteractionHysteresis();
 
     private final List<InteractionCandidate> candidatesBuffer = new ArrayList<>(16);
+    private final InteractionCandidate currentResolvedCandidate = new InteractionCandidate();
 
     public InteractionTargetResolver() {
         this.sensor = new InteractionRaySensor(4.0f, 45.0f);
@@ -35,6 +36,7 @@ public class InteractionTargetResolver {
     public GameObject resolveTarget(GameObject interactor, Transform cameraTransform, InteractionCapability requiredCapability, String requiredTag) {
         if (!C13317e.J(interactor)) {
             hysteresis.reset();
+            currentResolvedCandidate.reset();
             return null;
         }
 
@@ -48,6 +50,7 @@ public class InteractionTargetResolver {
         sensor.collectCandidates(interactor, cameraTransform, candidatesBuffer);
         if (candidatesBuffer.isEmpty()) {
             hysteresis.reset();
+            currentResolvedCandidate.reset();
             return null;
         }
 
@@ -72,6 +75,7 @@ public class InteractionTargetResolver {
 
         if (candidatesBuffer.isEmpty()) {
             hysteresis.reset();
+            currentResolvedCandidate.reset();
             return null;
         }
 
@@ -82,6 +86,12 @@ public class InteractionTargetResolver {
         // 4. Aplica histerese para evitar flickering
         if (hysteresis.shouldSwitchTarget(bestCandidate, currentTargetScore)) {
             hysteresis.setCurrentTarget(bestCandidate.target);
+            currentResolvedCandidate.target = bestCandidate.target;
+            currentResolvedCandidate.distance = bestCandidate.distance;
+            currentResolvedCandidate.angle = bestCandidate.angle;
+            currentResolvedCandidate.score = bestCandidate.score;
+            currentResolvedCandidate.hitPosition.set(bestCandidate.hitPosition);
+            currentResolvedCandidate.hitNormal.set(bestCandidate.hitNormal);
             return bestCandidate.target;
         }
 
@@ -94,6 +104,10 @@ public class InteractionTargetResolver {
 
     public GameObject getCurrentTarget() {
         return hysteresis.getCurrentTarget();
+    }
+
+    public InteractionCandidate getCurrentResolvedCandidate() {
+        return currentResolvedCandidate;
     }
 
     public void setSensor(InteractionSensor sensor) {
@@ -116,6 +130,7 @@ public class InteractionTargetResolver {
 
     public void reset() {
         hysteresis.reset();
+        currentResolvedCandidate.reset();
         for (int i = 0; i < candidatesBuffer.size(); i++) {
             InteractionCandidate.recycle(candidatesBuffer.get(i));
         }

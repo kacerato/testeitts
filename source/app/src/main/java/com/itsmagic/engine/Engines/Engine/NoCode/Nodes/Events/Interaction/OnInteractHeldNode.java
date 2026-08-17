@@ -3,6 +3,10 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Events.Interaction;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionContext;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.InteractionDispatcher;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.InteractionHoldSession;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.InteractionRuntime;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
@@ -11,13 +15,15 @@ import ga.D;
 import ga.EnumC13304B;
 import ga.F;
 import ga.H;
+import ga.m;
 import ga.o;
 import ga.p;
+import gb.C13317e;
 
 /**
- * Evento continuo para acoes de 'segurar' (Hold) com progresso de 0.0 a 1.0 e cancelamento.
+ * Evento continuo para acoes de 'segurar' (Hold) com suporte a lifecycle.
  */
-public class OnInteractHeldNode extends Fa.a implements F {
+public class OnInteractHeldNode extends Fa.a implements F, InteractionDispatcher.InteractionEventListener, InteractionHoldSession.HoldListener {
 
     public static final String SERIALIZED_NAME = "Interaction.OnInteractHeld";
 
@@ -91,7 +97,52 @@ public class OnInteractHeldNode extends Fa.a implements F {
         return this.outputs;
     }
 
-    public void onProgress(InteractionContext context, float progress01) {
+    @Override
+    public void l0() {
+        super.l0();
+        GameObject target = getTargetObject();
+        if (C13317e.J(target)) {
+            InteractionRegistry.register(target);
+            InteractionDispatcher.addObjectListener(target, this);
+        }
+    }
+
+    @Override
+    public void k0() {
+        super.k0();
+        GameObject target = getTargetObject();
+        if (target != null) {
+            InteractionDispatcher.removeObjectListener(target, this);
+        }
+    }
+
+    private GameObject getTargetObject() {
+        GameObject obj = Aa.b.b(this, this.f79021a, this.inputs[0]);
+        if (!C13317e.J(obj) && this.f79021a != null) {
+            obj = this.f79021a.h0();
+        }
+        return obj;
+    }
+
+    @Override
+    public void onInteract(InteractionContext context) {
+        if (context == null || this.f79021a == null) return;
+        float duration = m.V(Q(this.inputs[1]));
+        InteractionRuntime.getInstance().getHoldSession().startHold(context.interactor, context.target, duration > 0f ? duration : 2.0f, this);
+    }
+
+    @Override
+    public void onHoldStarted(InteractionContext context) {
+        if (context == null || this.f79021a == null) return;
+        y0(this.outputs[4], Float.valueOf(0.0f));
+        y0(this.outputs[5], context.interactor);
+        if (this.f79021a.o0(this, this.outputs[0])) {
+            u(this.outputs[0]);
+        }
+    }
+
+    @Override
+    public void onHoldProgress(InteractionContext context, float progress01) {
         if (context == null || this.f79021a == null) return;
         y0(this.outputs[4], Float.valueOf(progress01));
         y0(this.outputs[5], context.interactor);
@@ -100,7 +151,8 @@ public class OnInteractHeldNode extends Fa.a implements F {
         }
     }
 
-    public void onCompleted(InteractionContext context) {
+    @Override
+    public void onHoldCompleted(InteractionContext context) {
         if (context == null || this.f79021a == null) return;
         y0(this.outputs[4], Float.valueOf(1.0f));
         y0(this.outputs[5], context.interactor);
@@ -109,13 +161,26 @@ public class OnInteractHeldNode extends Fa.a implements F {
         }
     }
 
-    public void onCancelled(InteractionContext context) {
+    @Override
+    public void onHoldCancelled(InteractionContext context) {
         if (context == null || this.f79021a == null) return;
         y0(this.outputs[5], context.interactor);
         if (this.f79021a.o0(this, this.outputs[3])) {
             u(this.outputs[3]);
         }
     }
+
+    @Override
+    public void onFocusEnter(InteractionContext context) {}
+
+    @Override
+    public void onFocusStay(InteractionContext context) {}
+
+    @Override
+    public void onFocusExit(InteractionContext context) {}
+
+    @Override
+    public void onCustomEvent(String eventName, GameObject target, Object payload) {}
 
     @Override
     public EnumC13304B M() {

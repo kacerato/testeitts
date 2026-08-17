@@ -2,7 +2,6 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Resolver;
 
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionCapability;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionState;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.GameObject.GameObject;
 import gb.C13317e;
 
@@ -15,10 +14,7 @@ public class InteractionFilter {
         if (!C13317e.J(target)) return false;
 
         InteractionRegistry.InteractableData data = InteractionRegistry.get(target);
-        if (data == null || !data.enabled) return false;
-
-        // Validar estado ocupado/desabilitado
-        if (data.state == InteractionState.Disabled || data.state == InteractionState.Busy) {
+        if (data == null || !data.enabled || data.isBusy) {
             return false;
         }
 

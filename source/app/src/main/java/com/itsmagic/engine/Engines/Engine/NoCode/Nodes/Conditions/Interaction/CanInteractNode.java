@@ -3,7 +3,6 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Conditions.Interaction;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionState;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
@@ -99,7 +98,7 @@ public class CanInteractNode extends NoCodeNode implements F {
         boolean canInteract = false;
         if (C13317e.J(target)) {
             InteractionRegistry.InteractableData data = InteractionRegistry.get(target);
-            canInteract = (data != null && data.enabled && data.state != InteractionState.Disabled && data.state != InteractionState.Busy);
+            canInteract = (data != null && data.enabled && !data.isBusy);
         }
 
         y0(this.outputs[2], Boolean.valueOf(canInteract));

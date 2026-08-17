@@ -19,7 +19,7 @@ import gb.C13317e;
 
 /**
  * Disparado quando o jogador mira / foca no objeto dono deste grafo.
- * Conectado diretamente ao barramento de eventos InteractionDispatcher.
+ * Conectado diretamente ao barramento de eventos InteractionDispatcher com suporte a lifecycle.
  */
 public class OnFocusEnterNode extends Fa.a implements F, InteractionDispatcher.InteractionEventListener {
 
@@ -97,6 +97,15 @@ public class OnFocusEnterNode extends Fa.a implements F, InteractionDispatcher.I
         if (C13317e.J(target)) {
             InteractionRegistry.register(target);
             InteractionDispatcher.addObjectListener(target, this);
+        }
+    }
+
+    @Override
+    public void k0() {
+        super.k0();
+        GameObject target = getTargetObject();
+        if (target != null) {
+            InteractionDispatcher.removeObjectListener(target, this);
         }
     }
 

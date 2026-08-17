@@ -2,8 +2,7 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Resolver.InteractionTargetResolver;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.InteractionRuntime;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
@@ -17,13 +16,11 @@ import ga.p;
 import gb.C13317e;
 
 /**
- * Consulta o alvo de interacao atualmente focado pelo interactor.
+ * Consulta o alvo de interacao unificado atualmente focado pelo InteractionRuntime.
  */
 public class GetInteractionTargetNode extends NoCodeNode implements F {
 
     public static final String SERIALIZED_NAME = "Interaction.GetTarget";
-
-    private static final InteractionTargetResolver RESOLVER = new InteractionTargetResolver();
 
     public final NoCodeSlot[] inputs;
     public final NoCodeSlot[] outputs;
@@ -98,9 +95,15 @@ public class GetInteractionTargetNode extends NoCodeNode implements F {
             interactor = this.f79021a.h0();
         }
 
-        GameObject target = RESOLVER.resolveTarget(interactor, null, null);
-        boolean found = C13317e.J(target);
+        InteractionRuntime runtime = InteractionRuntime.getInstance();
+        GameObject target = runtime.getCurrentTarget();
 
+        // Se ainda nao estiver setado no runtime, consulta o resolver central
+        if (!C13317e.J(target) && C13317e.J(interactor)) {
+            target = runtime.getResolver().resolveTarget(interactor, null, null, null);
+        }
+
+        boolean found = C13317e.J(target);
         y0(this.outputs[2], target);
         u(found ? this.outputs[0] : this.outputs[1]);
     }

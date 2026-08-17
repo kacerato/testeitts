@@ -19,7 +19,7 @@ import gb.C13317e;
 
 /**
  * Disparado quando a mira / foco do jogador sai do objeto.
- * Conectado diretamente ao barramento de eventos InteractionDispatcher.
+ * Conectado diretamente ao barramento de eventos InteractionDispatcher com suporte a lifecycle.
  */
 public class OnFocusExitNode extends Fa.a implements F, InteractionDispatcher.InteractionEventListener {
 
@@ -97,6 +97,15 @@ public class OnFocusExitNode extends Fa.a implements F, InteractionDispatcher.In
         if (C13317e.J(target)) {
             InteractionRegistry.register(target);
             InteractionDispatcher.addObjectListener(target, this);
+        }
+    }
+
+    @Override
+    public void k0() {
+        super.k0();
+        GameObject target = getTargetObject();
+        if (target != null) {
+            InteractionDispatcher.removeObjectListener(target, this);
         }
     }
 

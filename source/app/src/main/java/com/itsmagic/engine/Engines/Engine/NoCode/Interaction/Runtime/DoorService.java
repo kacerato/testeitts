@@ -4,7 +4,6 @@ import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionResult;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.GameObject.GameObject;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.Transform.Transform;
-import com.itsmagic.engine.Engines.Engine.Quaternion.Quaternion;
 import com.itsmagic.engine.Engines.Engine.Vector.Vector3;
 import gb.C13317e;
 import java.util.Map;
@@ -12,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Servico central para animacao e controle fisico de portas, gavetas e compartimentos.
- * Atualiza continuamente a interpolacao angular ou linear das portas a cada frame.
+ * Atualiza continuamente a interpolacao angular relativa ao angulo inicial a cada frame.
  */
 public class DoorService {
 
@@ -24,7 +23,9 @@ public class DoorService {
         public float speed = 3.5f;
         public int directionSign = 1;
         public float maxAngleDeg = 90.0f;
-        public final Quaternion initialRotation = new Quaternion();
+        public float initialEulerX = 0.0f;
+        public float initialEulerY = 0.0f;
+        public float initialEulerZ = 0.0f;
     }
 
     private static final Map<GameObject, DoorSession> ACTIVE_DOORS = new ConcurrentHashMap<>();
@@ -55,8 +56,10 @@ public class DoorService {
             DoorSession s = new DoorSession();
             s.door = door;
             Transform t = door.J0();
-            if (t != null && t.f79322C != null) {
-                s.initialRotation.set(t.f79322C.B0());
+            if (t != null && t.f79321B != null) {
+                s.initialEulerX = t.f79321B.getX();
+                s.initialEulerY = t.f79321B.getY();
+                s.initialEulerZ = t.f79321B.getZ();
             }
             return s;
         });
@@ -109,11 +112,11 @@ public class DoorService {
                 data.openAmount = session.currentOpenAmount;
             }
 
-            // Aplica rotacao na porta: Euler Y = directionSign * currentOpenAmount * maxAngle
+            // Aplica rotacao relativa ao angulo inicial do objeto
             Transform t = session.door.J0();
-            if (t != null) {
-                float targetAngle = session.directionSign * session.currentOpenAmount * session.maxAngleDeg;
-                t.f79321B.d(new Vector3(0f, targetAngle, 0f));
+            if (t != null && t.f79321B != null) {
+                float targetAngle = session.initialEulerY + (session.directionSign * session.currentOpenAmount * session.maxAngleDeg);
+                t.f79321B.setY(targetAngle);
             }
         }
     }

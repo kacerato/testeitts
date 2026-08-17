@@ -9,8 +9,8 @@ import gb.C13317e;
 import java.util.List;
 
 /**
- * Coletor centralizado de candidatos a interacao com calculo vetorial otimizado
- * e ZERO alocacoes no loop principal.
+ * Coletor centralizado de candidatos a interacao com calculo vetorial otimizado,
+ * projecao de mira (Ray/Cone da Camera), calculo de hitPosition/hitNormal e zero-alloc no loop principal.
  */
 public class InteractionCandidateCollector {
 
@@ -41,7 +41,7 @@ public class InteractionCandidateCollector {
             if (!C13317e.J(target) || target == interactor) continue;
 
             InteractionRegistry.InteractableData data = InteractionRegistry.get(target);
-            if (data == null || !data.enabled) continue;
+            if (data == null || !data.enabled || data.isBusy) continue;
 
             Transform targetTransform = target.J0();
             if (targetTransform == null) continue;
@@ -77,8 +77,10 @@ public class InteractionCandidateCollector {
 
             InteractionCandidate candidate = InteractionCandidate.obtain(target, distance, angleDeg);
             candidate.priority = data.priority;
-            candidate.hasLineOfSight = true; // Refinado por raycast se disponivel
+            candidate.hasLineOfSight = true;
             candidate.hitPosition.set(tempTargetPos);
+            // Normal de impacto apontando para o observador
+            candidate.hitNormal.set(-normX, -normY, -normZ);
 
             outCandidates.add(candidate);
         }

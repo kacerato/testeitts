@@ -1,6 +1,6 @@
 package com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime;
 
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionCapability;
+import com.itsmagic.engine.Engines.Engine.ComponentsV2.Physics.Rigidbody;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionResult;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionState;
@@ -13,7 +13,7 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Servico central de manipulacao fisica e cinematica de objetos pegos (Grab, Inspect, Throw, Drop).
- * Atualizado a cada tick no runtime para mover os objetos de forma estavel no espaco 3D.
+ * Suporta Transform Follow e Physics Follow real atraves de Rigidbody / Forcas.
  */
 public class GrabService {
 
@@ -24,8 +24,8 @@ public class GrabService {
         public float holdDistance = 2.0f;
         public float followSpeed = 15.0f;
         public boolean usePhysics = false;
+        public Rigidbody rigidbody = null;
         public final Vector3 targetHoldPos = new Vector3();
-        public final Vector3 currentPos = new Vector3();
     }
 
     private static final Map<GameObject, GrabSession> ACTIVE_GRABS = new ConcurrentHashMap<>();
@@ -59,6 +59,17 @@ public class GrabService {
         session.holdDistance = holdDistance > 0f ? holdDistance : 2.0f;
         session.followSpeed = followSpeed > 0f ? followSpeed : 15.0f;
         session.usePhysics = usePhysics;
+
+        // Tenta obter Rigidbody para Physics Follow
+        if (usePhysics && target.f79286b != null) {
+            for (int i = 0; i < target.f79286b.size(); i++) {
+                Object comp = target.f79286b.get(i);
+                if (comp instanceof Rigidbody) {
+                    session.rigidbody = (Rigidbody) comp;
+                    break;
+                }
+            }
+        }
 
         ACTIVE_GRABS.put(interactor != null ? interactor : target, session);
         InteractionRegistry.setHeld(target, true, interactor);
@@ -95,14 +106,24 @@ public class GrabService {
                 }
 
                 float f = force > 0f ? force : 10.0f;
-                // Aplica deslocamento inicial ou impulso
-                Vector3 pos = objT.J0();
-                if (pos != null) {
-                    objT.f79337l.f(new Vector3(
-                        pos.getX() + throwDir.getX() * (f * 0.05f),
-                        pos.getY() + throwDir.getY() * (f * 0.05f) + 0.1f,
-                        pos.getZ() + throwDir.getZ() * (f * 0.05f)
+
+                // Se houver Rigidbody, aplica velocidade fisica real de arremesso
+                if (session.rigidbody != null) {
+                    session.rigidbody.setVelocity(new Vector3(
+                        throwDir.getX() * f,
+                        throwDir.getY() * f + 2.0f,
+                        throwDir.getZ() * f
                     ));
+                } else {
+                    // Fallback cinemático
+                    Vector3 pos = objT.J0();
+                    if (pos != null) {
+                        objT.f79337l.f(new Vector3(
+                            pos.getX() + throwDir.getX() * (f * 0.1f),
+                            pos.getY() + throwDir.getY() * (f * 0.1f) + 0.2f,
+                            pos.getZ() + throwDir.getZ() * (f * 0.1f)
+                        ));
+                    }
                 }
             }
         }
@@ -135,7 +156,7 @@ public class GrabService {
             Vector3 camForward = camTransform.forward();
             if (camPos == null || camForward == null) continue;
 
-            // Ponto desejado na frente da camera: camPos + camForward * holdDistance
+            // Ponto desejado na frente da camera
             float targetX = camPos.getX() + camForward.getX() * session.holdDistance;
             float targetY = camPos.getY() + camForward.getY() * session.holdDistance;
             float targetZ = camPos.getZ() + camForward.getZ() * session.holdDistance;
@@ -143,13 +164,20 @@ public class GrabService {
             Vector3 curPos = objTransform.J0();
             if (curPos == null) continue;
 
-            // Interpolacao suave (lerp) em direcao ao ponto de segurar
-            float t = Math.min(1.0f, deltaTime * session.followSpeed);
-            float newX = curPos.getX() + (targetX - curPos.getX()) * t;
-            float newY = curPos.getY() + (targetY - curPos.getY()) * t;
-            float newZ = curPos.getZ() + (targetZ - curPos.getZ()) * t;
-
-            objTransform.f79337l.f(new Vector3(newX, newY, newZ));
+            if (session.usePhysics && session.rigidbody != null) {
+                // Physics Follow real: aplica velocidade proporcional a diferenca de posicao (Spring/PID)
+                float vx = (targetX - curPos.getX()) * session.followSpeed;
+                float vy = (targetY - curPos.getY()) * session.followSpeed;
+                float vz = (targetZ - curPos.getZ()) * session.followSpeed;
+                session.rigidbody.setVelocity(new Vector3(vx, vy, vz));
+            } else {
+                // Transform Follow: interpolacao suave (lerp)
+                float t = Math.min(1.0f, deltaTime * session.followSpeed);
+                float newX = curPos.getX() + (targetX - curPos.getX()) * t;
+                float newY = curPos.getY() + (targetY - curPos.getY()) * t;
+                float newZ = curPos.getZ() + (targetZ - curPos.getZ()) * t;
+                objTransform.f79337l.f(new Vector3(newX, newY, newZ));
+            }
         }
     }
 

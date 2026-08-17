@@ -17,8 +17,7 @@ import ga.o;
 import ga.p;
 
 /**
- * Escuta eventos customizados desacoplados enviados atraves do barramento de interacao.
- * Conectado diretamente ao barramento de eventos InteractionDispatcher.
+ * Escuta eventos customizados desacoplados enviados atraves do barramento de interacao com suporte a lifecycle.
  */
 public class OnInteractionEventNode extends Fa.a implements F, InteractionDispatcher.InteractionEventListener {
 
@@ -98,6 +97,17 @@ public class OnInteractionEventNode extends Fa.a implements F, InteractionDispat
             InteractionDispatcher.addCustomEventListener(expected, this);
         } else {
             InteractionDispatcher.addGlobalListener(this);
+        }
+    }
+
+    @Override
+    public void k0() {
+        super.k0();
+        String expected = m.Y(Q(this.inputs[0]));
+        if (expected != null && !expected.trim().isEmpty()) {
+            InteractionDispatcher.removeCustomEventListener(expected, this);
+        } else {
+            InteractionDispatcher.removeGlobalListener(this);
         }
     }
 

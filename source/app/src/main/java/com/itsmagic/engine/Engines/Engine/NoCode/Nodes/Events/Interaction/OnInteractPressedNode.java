@@ -20,7 +20,7 @@ import gb.C13317e;
 
 /**
  * Disparado quando o botao ou acao logica 'interact' e pressionada sobre o objeto.
- * Conectado diretamente ao barramento de eventos InteractionDispatcher.
+ * Conectado diretamente ao barramento de eventos InteractionDispatcher com suporte a lifecycle.
  */
 public class OnInteractPressedNode extends Fa.a implements F, InteractionDispatcher.InteractionEventListener {
 
@@ -99,6 +99,15 @@ public class OnInteractPressedNode extends Fa.a implements F, InteractionDispatc
         if (C13317e.J(target)) {
             InteractionRegistry.register(target);
             InteractionDispatcher.addObjectListener(target, this);
+        }
+    }
+
+    @Override
+    public void k0() {
+        super.k0();
+        GameObject target = getTargetObject();
+        if (target != null) {
+            InteractionDispatcher.removeObjectListener(target, this);
         }
     }
 
