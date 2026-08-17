@@ -1,0 +1,85 @@
+name: Fix Interaction ga.m Helpers Once
+
+on:
+  push:
+    branches:
+      - feature/modular-interaction-system
+    paths:
+      - '.trigger-interaction-ga-m-fix'
+
+permissions:
+  contents: write
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: feature/modular-interaction-system
+          fetch-depth: 0
+
+      - name: Replace decompiler-stub helper aliases with real engine helpers
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+
+          root = Path('source/app/src/main/java/com/itsmagic/engine/Engines/Engine/NoCode')
+          interaction_files = []
+          for p in root.rglob('*.java'):
+              if 'Interaction' not in p.parts:
+                  continue
+              text = p.read_text(encoding='utf-8')
+              new = text.replace('m.Y(', 'm.i0(').replace('m.S(', 'm.O(').replace('m.Z(', 'm.n0(')
+              if new != text:
+                  counts = {
+                      'Y_to_i0': text.count('m.Y('),
+                      'S_to_O': text.count('m.S('),
+                      'Z_to_n0': text.count('m.Z('),
+                  }
+                  p.write_text(new, encoding='utf-8')
+                  interaction_files.append((str(p), counts))
+
+          stub = Path('work/recompile_interaction_dex.py')
+          text = stub.read_text(encoding='utf-8')
+          new = text.replace(
+              'public static boolean S(Object val) { return false; }',
+              'public static boolean O(Object val) { return false; }'
+          ).replace(
+              'public static String Y(Object val) { return ""; }',
+              'public static String i0(Object val) { return ""; }'
+          ).replace(
+              'public static Vector3 Z(Object val) { return null; }',
+              'public static Vector3 n0(Object val) { return null; }'
+          )
+          if new == text:
+              raise SystemExit('Expected ga.m stub aliases were not found; refusing silent no-op')
+          stub.write_text(new, encoding='utf-8')
+
+          print('Changed Interaction Java files:')
+          for path, counts in interaction_files:
+              print(f'  {path}: {counts}')
+          print(f'Total changed Java files: {len(interaction_files)}')
+          if not interaction_files:
+              raise SystemExit('No Interaction source helper aliases were found')
+          PY
+
+      - name: Ensure bad helper aliases are gone from Interaction source
+        shell: bash
+        run: |
+          if grep -R -n -E 'm\.(Y|S|Z)\(' source/app/src/main/java/com/itsmagic/engine/Engines/Engine/NoCode --include='*.java' | grep '/Interaction/'; then
+            echo 'Forbidden ga.m helper alias remains in Interaction source.' >&2
+            exit 1
+          fi
+
+      - name: Commit source correction
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add source/app/src/main/java/com/itsmagic/engine/Engines/Engine/NoCode work/recompile_interaction_dex.py
+          git diff --cached --stat
+          git commit -m 'fix(interaction): use real ga.m conversion helpers'
+          git push origin HEAD:feature/modular-interaction-system
