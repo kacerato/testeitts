@@ -12,6 +12,7 @@ APKTOOL_BASE = ROOT / "extracted" / "apktool_base"
 MANIFEST_PATH = APKTOOL_BASE / "AndroidManifest.xml"
 APKTOOL_JAR = ROOT / "tools" / "apktool.jar"
 KEYSTORE = ROOT / "tools" / "debug.keystore"
+FIX_TRANSFORM_POSITION = WORK / "fix_interaction_transform_position_smali.py"
 FIX_INTERACTION_SMALI = WORK / "fix_interaction_smali_aliases.py"
 VERIFY_INTERACTION_ABI = WORK / "verify_interaction_smali_abi.py"
 ABI_REPORT = ROOT / "interaction-abi-report.txt"
@@ -86,6 +87,7 @@ def main() -> int:
         MANIFEST_PATH,
         APKTOOL_JAR,
         KEYSTORE,
+        FIX_TRANSFORM_POSITION,
         FIX_INTERACTION_SMALI,
         VERIFY_INTERACTION_ABI,
     ]
@@ -93,19 +95,25 @@ def main() -> int:
     if missing:
         raise RuntimeError("Required build input(s) missing:\n  - " + "\n  - ".join(missing))
 
-    print("[1/8] Normalizing JADX aliases and stub ABI descriptors in Interaction smali...")
+    print("[1/9] Rewriting raw Transform position-cache calls...")
+    run_checked(
+        [sys.executable, FIX_TRANSFORM_POSITION, APKTOOL_BASE / "smali_classes10"],
+        "Transform position ABI rewrite",
+    )
+
+    print("[2/9] Normalizing JADX aliases and stub ABI descriptors in Interaction smali...")
     run_checked(
         [sys.executable, FIX_INTERACTION_SMALI, APKTOOL_BASE / "smali_classes10"],
         "Interaction smali normalization",
     )
 
-    print("[2/8] Verifying Interaction calls against the real APK DEX ABI...")
+    print("[3/9] Verifying Interaction calls against the real APK DEX ABI...")
     run_checked(
         [sys.executable, VERIFY_INTERACTION_ABI, APKTOOL_BASE, "--report", ABI_REPORT],
         "Interaction smali ABI verification",
     )
 
-    print('[3/8] Setting android:extractNativeLibs="true" in AndroidManifest.xml...')
+    print('[4/9] Setting android:extractNativeLibs="true" in AndroidManifest.xml...')
     content = MANIFEST_PATH.read_text(encoding="utf-8")
     content = re.sub(
         r'android:extractNativeLibs="false"',
@@ -114,7 +122,7 @@ def main() -> int:
     )
     MANIFEST_PATH.write_text(content, encoding="utf-8")
 
-    print("[4/8] Building APK with Apktool...")
+    print("[5/9] Building APK with Apktool...")
     if UNSIGNED_APK.exists():
         UNSIGNED_APK.unlink()
     run_checked(
@@ -122,7 +130,7 @@ def main() -> int:
         "Apktool build",
     )
 
-    print("[5/8] Zipaligning APK...")
+    print("[6/9] Zipaligning APK...")
     if ALIGNED_APK.exists():
         ALIGNED_APK.unlink()
     run_checked(
@@ -130,7 +138,7 @@ def main() -> int:
         "zipalign",
     )
 
-    print("[6/8] Signing APK with debug keystore...")
+    print("[7/9] Signing APK with debug keystore...")
     run_checked(
         [
             apksigner,
@@ -148,12 +156,12 @@ def main() -> int:
         "apksigner sign",
     )
 
-    print("[7/8] Verifying APK signature...")
+    print("[8/9] Verifying APK signature...")
     verify = run_checked([apksigner, "verify", "--verbose", ALIGNED_APK], "apksigner verify")
     if "Verified" not in verify.stdout and "Verifies" not in verify.stdout:
         print("Warning: apksigner returned success but no textual verification marker was found.")
 
-    print("[8/8] Optional ADB install...")
+    print("[9/9] Optional ADB install...")
     if adb.exists():
         devices = subprocess.run([str(adb), "devices"], capture_output=True, text=True)
         connected = []
