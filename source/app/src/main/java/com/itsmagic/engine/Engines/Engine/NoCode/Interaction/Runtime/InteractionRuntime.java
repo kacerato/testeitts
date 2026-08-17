@@ -240,7 +240,7 @@ public class InteractionRuntime {
             currentContext.target = releaseTarget;
             currentContext.camera = cameraTransform;
             currentContext.inputState = InteractionContext.InputState.Released;
-            InteractionDispatcher.dispatchInteract(currentContext);
+            InteractionDispatcher.dispatchInteractReleased(currentContext);
         }
 
         holdSession.cancel();
@@ -248,27 +248,10 @@ public class InteractionRuntime {
         pressedAction = null;
     }
 
-    public GameObject getCurrentTarget() {
-        return currentTarget;
-    }
-
-    public InteractionContext getCurrentContext() {
-        return currentContext;
-    }
-
-    public InteractionTargetResolver getResolver() {
-        return resolver;
-    }
-
-    public InteractionHoldSession getHoldSession() {
-        return holdSession;
-    }
-
-    public GameObject getInteractor() {
-        return interactor;
-    }
-
-    public Transform getCameraTransform() {
-        return cameraTransform;
-    }
+    public GameObject getCurrentTarget() { return currentTarget; }
+    public InteractionContext getCurrentContext() { return currentContext; }
+    public InteractionTargetResolver getResolver() { return resolver; }
+    public InteractionHoldSession getHoldSession() { return holdSession; }
+    public GameObject getInteractor() { return interactor; }
+    public Transform getCameraTransform() { return cameraTransform; }
 }
