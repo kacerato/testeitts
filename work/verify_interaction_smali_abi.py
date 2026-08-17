@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Verify generated Interaction smali references against the APK's real DEX ABI.
 
-This catches the class of runtime failures that javac stubs can hide, such as compiling
-Vector3.set(float,float,float) as returning void when the real engine returns Vector3.
-The verifier resolves methods/fields through superclasses and interfaces before the APK
-is rebuilt, so a missing descriptor fails the build instead of crashing on-device.
+The original engine classes are indexed from every smali root *except* the generated
+Interaction root. Generated Interaction classes are then overlaid explicitly. This
+prevents a temporary/stub class in classes10 from accidentally satisfying a bad method
+or field descriptor during verification.
 """
 
 from __future__ import annotations
@@ -84,14 +84,40 @@ def class_descriptor_from_file(path: Path) -> str | None:
     return None
 
 
-def build_class_index(apktool_root: Path) -> dict[str, Path]:
+def dex_root_sort_key(path: Path) -> tuple[int, str]:
+    if path.name == "smali":
+        return (1, path.name)
+    match = re.fullmatch(r"smali_classes(\d+)", path.name)
+    if match:
+        return (int(match.group(1)), path.name)
+    return (10_000, path.name)
+
+
+def build_class_index(apktool_root: Path, interaction_root: Path) -> dict[str, Path]:
     index: dict[str, Path] = {}
-    smali_roots = sorted(p for p in apktool_root.iterdir() if p.is_dir() and p.name.startswith("smali"))
+    smali_roots = sorted(
+        (p for p in apktool_root.iterdir() if p.is_dir() and p.name.startswith("smali")),
+        key=dex_root_sort_key,
+    )
+
+    # First index the original APK classes only. classes10 contains our generated
+    # Interaction bytecode and must not shadow engine classes during ABI checks.
     for smali_root in smali_roots:
+        if smali_root.resolve() == interaction_root.resolve():
+            continue
         for path in smali_root.rglob("*.smali"):
             descriptor = class_descriptor_from_file(path)
             if descriptor and descriptor not in index:
                 index[descriptor] = path
+
+    # Overlay only genuine Interaction classes from classes10.
+    for path in interaction_root.rglob("*.smali"):
+        if not is_interaction_smali(path):
+            continue
+        descriptor = class_descriptor_from_file(path)
+        if descriptor:
+            index[descriptor] = path
+
     return index
 
 
@@ -155,8 +181,8 @@ def main() -> int:
         f"ABI audit input: interaction_files={len(interaction_files)}, "
         f"method_refs={len(method_refs)}, field_refs={len(field_refs)}"
     )
-    print("Indexing APK smali classes...")
-    class_index = build_class_index(apktool_root)
+    print("Indexing original APK smali classes + generated Interaction classes...")
+    class_index = build_class_index(apktool_root, interaction_root)
     print(f"Indexed {len(class_index)} classes")
 
     cache: dict[str, ClassInfo | None] = {}
