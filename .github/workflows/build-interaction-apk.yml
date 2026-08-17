@@ -1,14 +1,7 @@
-name: Build Interaction APK
+name: Build Interaction APK (Full Gradle Fallback)
 
 on:
-  push:
-    branches:
-      - build/interaction-apk
   workflow_dispatch:
-
-concurrency:
-  group: interaction-apk-${{ github.ref }}
-  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -62,14 +55,11 @@ jobs:
         run: |
           mkdir -p artifacts
           cp source/app/build/outputs/apk/debug/*.apk artifacts/
-          ls -lh artifacts
 
       - name: Upload APK
         if: success()
         uses: actions/upload-artifact@v4
         with:
-          name: interaction-debug-apk
+          name: interaction-debug-apk-gradle
           path: artifacts/*.apk
           if-no-files-found: error
-
-# Build input revision: resource-fixes-v2
