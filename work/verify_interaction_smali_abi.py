@@ -38,6 +38,28 @@ SYSTEM_PREFIXES = (
     "Lorg/xml/",
 )
 
+# These descriptors were produced only because temporary javac stubs used JADX-readable
+# helper names with the wrong return types. They do not exist in the real engine ABI.
+# Keep an explicit deny-list so this known class of crash cannot be hidden by a future
+# stub/index regression even if the generic hierarchy lookup is accidentally weakened.
+FORBIDDEN_METHOD_REFS: dict[tuple[str, str, str], str] = {
+    (
+        "Lga/m;",
+        "Y",
+        "(Ljava/lang/Object;)Ljava/lang/String;",
+    ): "ga.m.Y(Object) is InputDialog.Type in the real engine; use ga.m.i0(Object) for String",
+    (
+        "Lga/m;",
+        "S",
+        "(Ljava/lang/Object;)Z",
+    ): "ga.m.S(Object) is a collision/contact conversion in the real engine; use ga.m.O(Object) for boolean",
+    (
+        "Lga/m;",
+        "Z",
+        "(Ljava/lang/Object;)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;",
+    ): "ga.m.Z(Object) is InputStream in the real engine; use ga.m.n0(Object) for Vector3",
+}
+
 
 @dataclass(frozen=True)
 class MethodRef:
@@ -236,6 +258,13 @@ def main() -> int:
 
     errors: list[str] = []
     for ref in sorted(method_refs, key=lambda r: (r.owner, r.name, r.desc, str(r.source))):
+        forbidden_reason = FORBIDDEN_METHOD_REFS.get((ref.owner, ref.name, ref.desc))
+        if forbidden_reason:
+            errors.append(
+                f"FORBIDDEN METHOD {ref.owner}->{ref.name}{ref.desc} referenced by "
+                f"{ref.source.relative_to(apktool_root)} :: {forbidden_reason}"
+            )
+            continue
         if not hierarchy_has_method(ref.owner, ref.name, ref.desc):
             errors.append(
                 f"MISSING METHOD {ref.owner}->{ref.name}{ref.desc} referenced by {ref.source.relative_to(apktool_root)}"
