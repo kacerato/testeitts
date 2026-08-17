@@ -2,8 +2,9 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Mech
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionResult;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
-import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionState;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.ButtonService;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
@@ -17,144 +18,92 @@ import ga.o;
 import ga.p;
 import gb.C13317e;
 
-/**
- * Controlador de botoes mecanicos (Momentary, Toggle, One-Shot).
- */
+/** Controlador de botoes Momentary, Toggle, OneShot, Hold e Timed. */
 public class ButtonNode extends NoCodeNode implements F {
-
     public static final String SERIALIZED_NAME = "Interaction.Button";
-
     public final NoCodeSlot[] inputs;
     public final NoCodeSlot[] outputs;
 
     public static class NodeFactory implements p {
-        @Override
-        public NoCodeNode a() {
-            return new ButtonNode();
-        }
-
-        @Override
-        public Class<? extends NoCodeNode> b() {
-            return ButtonNode.class;
-        }
-
-        @Override
-        public String c() {
-            return SERIALIZED_NAME;
-        }
-
-        @Override
-        public NoCodeNode d(JsonObject json) {
-            return (NoCodeNode) X7.a.m().fromJson((JsonElement) json, ButtonNode.class);
-        }
-
-        @Override
-        public String e() {
-            return "Actions/Mechanisms";
-        }
-
-        @Override
-        public String f() {
-            return "Button Controller";
-        }
-
-        @Override
-        public boolean g() {
-            return true;
-        }
+        public NoCodeNode a() { return new ButtonNode(); }
+        public Class<? extends NoCodeNode> b() { return ButtonNode.class; }
+        public String c() { return SERIALIZED_NAME; }
+        public NoCodeNode d(JsonObject json) { return (NoCodeNode) X7.a.m().fromJson((JsonElement) json, ButtonNode.class); }
+        public String e() { return "Actions/Mechanisms"; }
+        public String f() { return "Button Controller"; }
+        public boolean g() { return true; }
     }
 
-    static {
-        o.a(new NodeFactory());
-    }
+    static { o.a(new NodeFactory()); }
 
     public ButtonNode() {
         this.inputs = new NoCodeSlot[]{
             new NoCodeSlot("Button Object", H.GAME_OBJECT).c("Button Object"),
-            new NoCodeSlot("Type", H.TEXT).c("Type")
+            new NoCodeSlot("Type", H.TEXT).c("Type"),
+            new NoCodeSlot("Action", H.TEXT).c("Action"),
+            new NoCodeSlot("Timed Duration", H.NUMBER).c("Timed Duration"),
+            new NoCodeSlot("Reset OneShot", H.BOOLEAN).c("Reset OneShot")
         };
         this.outputs = new NoCodeSlot[]{
             new NoCodeSlot("Pressed", H.BRANCH).c("Pressed"),
             new NoCodeSlot("Released", H.BRANCH).c("Released"),
-            new NoCodeSlot("Is Active", H.BOOLEAN).c("Is Active")
+            new NoCodeSlot("Failed", H.BRANCH).c("Failed"),
+            new NoCodeSlot("Is Active", H.BOOLEAN).c("Is Active"),
+            new NoCodeSlot("Failure Reason", H.TEXT).c("Failure Reason")
         };
         this.serializedNodeType = SERIALIZED_NAME;
     }
 
-    @Override
-    public NoCodeSlot[] F() {
-        return this.inputs;
-    }
+    public NoCodeSlot[] F() { return inputs; }
+    public NoCodeSlot[] J() { return outputs; }
 
-    @Override
-    public NoCodeSlot[] J() {
-        return this.outputs;
-    }
-
-    @Override
     public void m0() {
-        GameObject btn = Aa.b.b(this, this.f79021a, this.inputs[0]);
-        if (!C13317e.J(btn) && this.f79021a != null) {
-            btn = this.f79021a.h0();
-        }
-
-        if (!C13317e.J(btn)) {
-            u(this.outputs[1]);
+        GameObject button = Aa.b.b(this, this.f79021a, inputs[0]);
+        if (!C13317e.J(button) && this.f79021a != null) button = this.f79021a.h0();
+        if (!C13317e.J(button)) {
+            y0(outputs[4], InteractionResult.FailureReason.InvalidTarget.name());
+            u(outputs[2]);
             return;
         }
 
-        String type = m.Y(Q(this.inputs[1]));
-        if (type == null || type.trim().isEmpty()) {
-            type = "Toggle";
+        if (m.S(Q(inputs[4]))) {
+            ButtonService.resetOneShot(button);
+            y0(outputs[3], Boolean.FALSE);
+            y0(outputs[4], InteractionResult.FailureReason.None.name());
+            u(outputs[1]);
+            return;
         }
 
-        InteractionState state = InteractionRegistry.getState(btn);
-        boolean isActive = false;
+        String type = m.Y(Q(inputs[1]));
+        if (type == null || type.trim().isEmpty()) type = "Toggle";
+        String action = m.Y(Q(inputs[2]));
+        if (action == null || action.trim().isEmpty()) action = "Press";
 
-        if ("OneShot".equalsIgnoreCase(type)) {
-            if (state == InteractionState.On) {
-                u(this.outputs[1]);
-                return;
-            }
-            isActive = true;
-            InteractionRegistry.setState(btn, InteractionState.On);
-        } else if ("Toggle".equalsIgnoreCase(type)) {
-            isActive = (state != InteractionState.On);
-            InteractionRegistry.setState(btn, isActive ? InteractionState.On : InteractionState.Off);
-        } else { // Momentary
-            isActive = true;
-            InteractionRegistry.setState(btn, InteractionState.On);
-        }
+        InteractionResult result;
+        boolean released = "Release".equalsIgnoreCase(action);
+        if (released) result = ButtonService.release(button, type);
+        else result = ButtonService.press(button, type, m.V(Q(inputs[3])));
 
-        y0(this.outputs[2], Boolean.valueOf(isActive));
-        u(isActive ? this.outputs[0] : this.outputs[1]);
+        y0(outputs[3], Boolean.valueOf(InteractionRegistry.isOn(button)));
+        y0(outputs[4], result.failureReason.name());
+        if (!result.success) u(outputs[2]);
+        else u(released ? outputs[1] : outputs[0]);
     }
 
-    @Override
-    public EnumC13304B M() {
-        return EnumC13304B.BOTH;
-    }
-
-    @Override
-    public String N(NoCodeData graphData) {
-        return "Button Controller";
-    }
-
-    @Override
-    public String a(int inputIndex, H desiredType) {
-        if (inputIndex == 0) return "owner";
-        if (inputIndex == 1) return "Toggle";
+    public EnumC13304B M() { return EnumC13304B.BOTH; }
+    public String N(NoCodeData d) { return "Button Controller"; }
+    public String x(NoCodeData d) { return N(d); }
+    public String a(int i, H t) {
+        if (i == 0) return "owner";
+        if (i == 1) return "Toggle";
+        if (i == 2) return "Press";
+        if (i == 3) return "1.0";
+        if (i == 4) return "false";
         return "";
     }
-
-    @Override
-    public H t0(int index, D resolver) {
-        if (index == 2) return H.BOOLEAN;
+    public H t0(int i, D r) {
+        if (i == 3) return H.BOOLEAN;
+        if (i == 4) return H.TEXT;
         return H.BRANCH;
-    }
-
-    @Override
-    public String x(NoCodeData graphData) {
-        return "Button Controller";
     }
 }
