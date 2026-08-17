@@ -8,12 +8,11 @@ import com.itsmagic.engine.Engines.Engine.ObjectOriented.GameObject.GameObject;
 import com.itsmagic.engine.Engines.Engine.ObjectOriented.Transform.Transform;
 import gb.C13317e;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 /**
  * Motor central de resolucao de alvos de interacao.
- * Combina sensores, camera de visao, filtragem, pontuacao ponderada e histerese.
+ * Coleta, filtra e pontua em O(n), mantendo histerese sem criar um resolver paralelo.
  */
 public class InteractionTargetResolver {
 
@@ -33,20 +32,18 @@ public class InteractionTargetResolver {
         this.sensor = sensor != null ? sensor : new InteractionRaySensor(4.0f, 45.0f);
     }
 
-    public GameObject resolveTarget(GameObject interactor, Transform cameraTransform, InteractionCapability requiredCapability, String requiredTag) {
+    public GameObject resolveTarget(
+        GameObject interactor,
+        Transform cameraTransform,
+        InteractionCapability requiredCapability,
+        String requiredTag
+    ) {
         if (!C13317e.J(interactor)) {
-            hysteresis.reset();
-            currentResolvedCandidate.reset();
+            reset();
             return null;
         }
 
-        // Limpar e reciclar candidatos anteriores
-        for (int i = 0; i < candidatesBuffer.size(); i++) {
-            InteractionCandidate.recycle(candidatesBuffer.get(i));
-        }
-        candidatesBuffer.clear();
-
-        // 1. Coleta candidatos via sensor usando a camera/olhar
+        recycleCandidates();
         sensor.collectCandidates(interactor, cameraTransform, candidatesBuffer);
         if (candidatesBuffer.isEmpty()) {
             hysteresis.reset();
@@ -54,10 +51,13 @@ public class InteractionTargetResolver {
             return null;
         }
 
-        GameObject currentTarget = hysteresis.getCurrentTarget();
-        float currentTargetScore = 0f;
+        GameObject previousTarget = hysteresis.getCurrentTarget();
+        InteractionCandidate previousCandidate = null;
+        InteractionCandidate bestCandidate = null;
+        float previousTargetScore = 0f;
+        float maxAngle = getSensorMaxAngle();
 
-        // 2. Filtra e pontua candidatos
+        // Filtra, pontua e encontra o maximo em uma unica passagem.
         for (int i = candidatesBuffer.size() - 1; i >= 0; i--) {
             InteractionCandidate candidate = candidatesBuffer.get(i);
             if (!filter.isValidCandidate(candidate.target, requiredCapability, requiredTag)) {
@@ -66,40 +66,95 @@ public class InteractionTargetResolver {
                 continue;
             }
 
-            boolean isCurrent = (candidate.target == currentTarget);
-            float score = scorer.calculateScore(candidate, sensor.getMaxDistance(), 45.0f, isCurrent);
+            boolean isCurrent = candidate.target == previousTarget;
+            float score = scorer.calculateScore(
+                candidate,
+                sensor.getMaxDistance(),
+                maxAngle,
+                isCurrent
+            );
+
             if (isCurrent) {
-                currentTargetScore = score;
+                previousCandidate = candidate;
+                previousTargetScore = score;
+            }
+
+            if (bestCandidate == null || score > bestCandidate.score) {
+                bestCandidate = candidate;
             }
         }
 
-        if (candidatesBuffer.isEmpty()) {
+        if (bestCandidate == null) {
             hysteresis.reset();
             currentResolvedCandidate.reset();
             return null;
         }
 
-        // 3. Ordena por pontuacao (maior score primeiro)
-        Collections.sort(candidatesBuffer);
-        InteractionCandidate bestCandidate = candidatesBuffer.get(0);
-
-        // 4. Aplica histerese para evitar flickering
-        if (hysteresis.shouldSwitchTarget(bestCandidate, currentTargetScore)) {
+        // Se o alvo anterior saiu do conjunto valido, nao deixa a histerese prender um alvo morto.
+        if (C13317e.J(previousTarget) && previousCandidate == null) {
             hysteresis.setCurrentTarget(bestCandidate.target);
-            currentResolvedCandidate.target = bestCandidate.target;
-            currentResolvedCandidate.distance = bestCandidate.distance;
-            currentResolvedCandidate.angle = bestCandidate.angle;
-            currentResolvedCandidate.score = bestCandidate.score;
-            currentResolvedCandidate.hitPosition.set(bestCandidate.hitPosition);
-            currentResolvedCandidate.hitNormal.set(bestCandidate.hitNormal);
-            return bestCandidate.target;
+        } else if (hysteresis.shouldSwitchTarget(bestCandidate, previousTargetScore)) {
+            hysteresis.setCurrentTarget(bestCandidate.target);
         }
 
-        return hysteresis.getCurrentTarget();
+        GameObject selectedTarget = hysteresis.getCurrentTarget();
+        InteractionCandidate selectedCandidate;
+        if (selectedTarget == bestCandidate.target) {
+            selectedCandidate = bestCandidate;
+        } else if (previousCandidate != null && selectedTarget == previousCandidate.target) {
+            selectedCandidate = previousCandidate;
+        } else {
+            selectedCandidate = findCandidate(selectedTarget);
+        }
+
+        if (selectedCandidate == null) {
+            // Estado defensivo: nunca retorna um alvo sem candidato valido neste frame.
+            hysteresis.setCurrentTarget(bestCandidate.target);
+            selectedTarget = bestCandidate.target;
+            selectedCandidate = bestCandidate;
+        }
+
+        copyCandidate(selectedCandidate, currentResolvedCandidate);
+        return selectedTarget;
     }
 
     public GameObject resolveTarget(GameObject interactor, InteractionCapability requiredCapability, String requiredTag) {
         return resolveTarget(interactor, null, requiredCapability, requiredTag);
+    }
+
+    private InteractionCandidate findCandidate(GameObject target) {
+        if (!C13317e.J(target)) return null;
+        for (int i = 0; i < candidatesBuffer.size(); i++) {
+            InteractionCandidate candidate = candidatesBuffer.get(i);
+            if (candidate.target == target) return candidate;
+        }
+        return null;
+    }
+
+    private float getSensorMaxAngle() {
+        if (sensor instanceof InteractionRaySensor) {
+            return ((InteractionRaySensor) sensor).getMaxConeAngle();
+        }
+        return 180.0f;
+    }
+
+    private void copyCandidate(InteractionCandidate source, InteractionCandidate destination) {
+        destination.target = source.target;
+        destination.distance = source.distance;
+        destination.angle = source.angle;
+        destination.score = source.score;
+        destination.priority = source.priority;
+        destination.hasLineOfSight = source.hasLineOfSight;
+        destination.isSticky = source.isSticky;
+        destination.hitPosition.set(source.hitPosition);
+        destination.hitNormal.set(source.hitNormal);
+    }
+
+    private void recycleCandidates() {
+        for (int i = 0; i < candidatesBuffer.size(); i++) {
+            InteractionCandidate.recycle(candidatesBuffer.get(i));
+        }
+        candidatesBuffer.clear();
     }
 
     public GameObject getCurrentTarget() {
@@ -113,6 +168,7 @@ public class InteractionTargetResolver {
     public void setSensor(InteractionSensor sensor) {
         if (sensor != null) {
             this.sensor = sensor;
+            reset();
         }
     }
 
@@ -131,9 +187,6 @@ public class InteractionTargetResolver {
     public void reset() {
         hysteresis.reset();
         currentResolvedCandidate.reset();
-        for (int i = 0; i < candidatesBuffer.size(); i++) {
-            InteractionCandidate.recycle(candidatesBuffer.get(i));
-        }
-        candidatesBuffer.clear();
+        recycleCandidates();
     }
 }
