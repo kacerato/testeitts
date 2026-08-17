@@ -3,6 +3,7 @@ package com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Inve
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.InteractionDispatcher;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
@@ -16,56 +17,24 @@ import ga.o;
 import ga.p;
 import gb.C13317e;
 
-/**
- * Valida o uso de um item do inventario do Interactor sobre um Target receptor (ex: Chave -> Fechadura).
- */
+/** Usa um item do inventario/tag do interactor sobre um target receptor. */
 public class UseItemOnTargetNode extends NoCodeNode implements F {
 
     public static final String SERIALIZED_NAME = "Interaction.UseItemOnTarget";
-
     public final NoCodeSlot[] inputs;
     public final NoCodeSlot[] outputs;
 
     public static class NodeFactory implements p {
-        @Override
-        public NoCodeNode a() {
-            return new UseItemOnTargetNode();
-        }
-
-        @Override
-        public Class<? extends NoCodeNode> b() {
-            return UseItemOnTargetNode.class;
-        }
-
-        @Override
-        public String c() {
-            return SERIALIZED_NAME;
-        }
-
-        @Override
-        public NoCodeNode d(JsonObject json) {
-            return (NoCodeNode) X7.a.m().fromJson((JsonElement) json, UseItemOnTargetNode.class);
-        }
-
-        @Override
-        public String e() {
-            return "Actions/Inventory";
-        }
-
-        @Override
-        public String f() {
-            return "Use Item On Target";
-        }
-
-        @Override
-        public boolean g() {
-            return true;
-        }
+        public NoCodeNode a() { return new UseItemOnTargetNode(); }
+        public Class<? extends NoCodeNode> b() { return UseItemOnTargetNode.class; }
+        public String c() { return SERIALIZED_NAME; }
+        public NoCodeNode d(JsonObject json) { return (NoCodeNode) X7.a.m().fromJson((JsonElement) json, UseItemOnTargetNode.class); }
+        public String e() { return "Actions/Inventory"; }
+        public String f() { return "Use Item On Target"; }
+        public boolean g() { return true; }
     }
 
-    static {
-        o.a(new NodeFactory());
-    }
+    static { o.a(new NodeFactory()); }
 
     public UseItemOnTargetNode() {
         this.inputs = new NoCodeSlot[]{
@@ -83,101 +52,78 @@ public class UseItemOnTargetNode extends NoCodeNode implements F {
         this.serializedNodeType = SERIALIZED_NAME;
     }
 
-    @Override
-    public NoCodeSlot[] F() {
-        return this.inputs;
-    }
+    public NoCodeSlot[] F() { return inputs; }
+    public NoCodeSlot[] J() { return outputs; }
 
-    @Override
-    public NoCodeSlot[] J() {
-        return this.outputs;
-    }
-
-    @Override
     public void m0() {
-        GameObject interactor = Aa.b.b(this, this.f79021a, this.inputs[0]);
-        GameObject target = Aa.b.b(this, this.f79021a, this.inputs[1]);
+        GameObject interactor = Aa.b.b(this, this.f79021a, inputs[0]);
+        GameObject target = Aa.b.b(this, this.f79021a, inputs[1]);
+        if (!C13317e.J(target) && this.f79021a != null) target = this.f79021a.h0();
 
-        if (!C13317e.J(target) && this.f79021a != null) {
-            target = this.f79021a.h0();
-        }
-
-        String itemTag = m.Y(Q(this.inputs[2]));
-        boolean consume = m.S(Q(this.inputs[3]));
-
-        if (itemTag == null || itemTag.trim().isEmpty()) {
-            y0(this.outputs[3], Boolean.FALSE);
-            u(this.outputs[1]);
+        String itemTag = m.Y(Q(inputs[2]));
+        boolean consume = m.S(Q(inputs[3]));
+        if (itemTag == null || itemTag.trim().isEmpty() || !C13317e.J(target)) {
+            y0(outputs[3], Boolean.FALSE);
+            u(outputs[1]);
             return;
         }
 
         String cleanTag = itemTag.trim().toLowerCase();
-
-        // 1. Verifica se o Interactor possui o item/tag no inventario ou atributos
+        int inventoryCount = 0;
         boolean interactorHasItem = false;
         if (C13317e.J(interactor)) {
-            interactorHasItem = InteractionRegistry.hasTag(interactor, cleanTag) ||
-                                (InteractionRegistry.getAttribute(interactor, "has_item_" + cleanTag) != null);
-        } else {
-            // Fallback: se nenhum interactor fornecido, verifica o dono
-            interactorHasItem = true;
+            Object countObj = InteractionRegistry.getAttribute(interactor, "inventory_count_" + cleanTag);
+            inventoryCount = countObj instanceof Number ? ((Number) countObj).intValue() : 0;
+            interactorHasItem = inventoryCount > 0
+                || InteractionRegistry.hasTag(interactor, cleanTag)
+                || InteractionRegistry.getAttribute(interactor, "has_item_" + cleanTag) != null;
         }
 
         if (!interactorHasItem) {
-            y0(this.outputs[3], Boolean.FALSE);
-            u(this.outputs[2]); // Missing Item
+            y0(outputs[3], Boolean.FALSE);
+            u(outputs[2]);
             return;
         }
 
-        // 2. Verifica se o Target aceita o item (ex: se o target requer essa chave/tag ou aceita itens)
         boolean accepted = true;
-        String requiredKey = (String) InteractionRegistry.getAttribute(target, "required_key");
-        if (requiredKey != null && !requiredKey.equalsIgnoreCase(cleanTag)) {
-            accepted = false;
+        Object requiredObj = InteractionRegistry.getAttribute(target, "required_key");
+        if (requiredObj != null && !String.valueOf(requiredObj).equalsIgnoreCase(cleanTag)) accepted = false;
+
+        Object acceptedTagObj = InteractionRegistry.getAttribute(target, "accepted_item_tag");
+        if (acceptedTagObj != null && !String.valueOf(acceptedTagObj).equalsIgnoreCase(cleanTag)) accepted = false;
+
+        if (!accepted) {
+            y0(outputs[3], Boolean.FALSE);
+            u(outputs[1]);
+            return;
         }
 
-        if (accepted) {
-            if (consume && C13317e.J(interactor)) {
+        if (consume && C13317e.J(interactor)) {
+            if (inventoryCount > 0) {
+                int next = inventoryCount - 1;
+                InteractionRegistry.setAttribute(interactor, "inventory_count_" + cleanTag, Integer.valueOf(next));
+                InteractionRegistry.setAttribute(interactor, "has_item_" + cleanTag, next > 0 ? Boolean.TRUE : null);
+                if (next <= 0) InteractionRegistry.removeTag(interactor, cleanTag);
+            } else {
                 InteractionRegistry.removeTag(interactor, cleanTag);
                 InteractionRegistry.setAttribute(interactor, "has_item_" + cleanTag, null);
             }
-            // Se o alvo estava trancado, destranca automaticamente ao aceitar
-            InteractionRegistry.setLocked(target, false);
-            y0(this.outputs[3], Boolean.valueOf(consume));
-            u(this.outputs[0]); // Accepted
-        } else {
-            y0(this.outputs[3], Boolean.FALSE);
-            u(this.outputs[1]); // Rejected
         }
+
+        InteractionRegistry.setLocked(target, false);
+        InteractionDispatcher.dispatchCustomEvent("item_used_on_target", target, cleanTag);
+        y0(outputs[3], Boolean.valueOf(consume));
+        u(outputs[0]);
     }
 
-    @Override
-    public EnumC13304B M() {
-        return EnumC13304B.BOTH;
-    }
-
-    @Override
-    public String N(NoCodeData graphData) {
-        return "Use Item On Target";
-    }
-
-    @Override
+    public EnumC13304B M() { return EnumC13304B.BOTH; }
+    public String N(NoCodeData graphData) { return "Use Item On Target"; }
+    public String x(NoCodeData graphData) { return "Use Item On Target"; }
     public String a(int inputIndex, H desiredType) {
-        if (inputIndex == 0) return "";
         if (inputIndex == 1) return "owner";
         if (inputIndex == 2) return "key_bronze";
         if (inputIndex == 3) return "true";
         return "";
     }
-
-    @Override
-    public H t0(int index, D resolver) {
-        if (index == 3) return H.BOOLEAN;
-        return H.BRANCH;
-    }
-
-    @Override
-    public String x(NoCodeData graphData) {
-        return "Use Item On Target";
-    }
+    public H t0(int index, D resolver) { return index == 3 ? H.BOOLEAN : H.BRANCH; }
 }
