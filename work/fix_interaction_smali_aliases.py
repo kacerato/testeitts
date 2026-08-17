@@ -1,13 +1,10 @@
 #!/usr/bin/env python3
-"""Normalize JADX/decompiler aliases emitted by javac+d8 back to real DEX names.
+"""Normalize JADX aliases and javac-stub ABI mismatches in Interaction smali.
 
-The Java sources in this repository were produced by JADX. Some identifiers are aliases
-created only for decompiled Java readability (for example fb.AbstractC13203c and
-Component.f79250n). Those aliases do not exist in the original APK runtime, whose real
-DEX names are fb/c and field n.
-
-Interaction Java is compiled through temporary stubs, so the generated smali must be
-normalized before it is copied/rebuilt into the APK.
+The Interaction Java sources are compiled against temporary stubs because the project is
+reconstructed from a decompiled APK. JADX aliases and inaccurate stub return types can
+therefore produce bytecode descriptors that do not exist in the real engine at runtime.
+This pass rewrites only ABI mappings verified against the original engine sources/smali.
 """
 
 from __future__ import annotations
@@ -24,20 +21,30 @@ CLASS_ALIASES = {
     "Lga/EnumC13304B;": "Lga/B;",
 }
 
-# This call needs a dedicated rewrite. The JADX stub declared b(AbstractC13203c),
-# but the real fb/a.b method accepts the registry interface fb/b.
+# The JADX stub declared b(AbstractC13203c), but the real registry accepts fb/b.
 COMPONENT_REGISTRY_CALL = (
     "Lfb/C13201a;->b(Lfb/AbstractC13203c;)V",
     "Lfb/a;->b(Lfb/b;)V",
 )
 
+VECTOR3 = "Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;"
+VECTOR3F = "Lcom/jme3/math/Vector3f;"
+TRANSFORM = "Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;"
+
+# Exact descriptor corrections verified against the decompiled engine implementation.
+# These are needed even when callers ignore the return value: return type is part of a
+# Dalvik/ART method descriptor, so (FFF)V and (FFF)LVector3; are different methods.
+METHOD_DESCRIPTOR_ALIASES = {
+    f"{VECTOR3}->set(FFF)V": f"{VECTOR3}->set(FFF){VECTOR3}",
+    f"{VECTOR3}->set({VECTOR3})V": f"{VECTOR3}->set({VECTOR3}){VECTOR3}",
+    f"{VECTOR3}->setX(F)V": f"{VECTOR3}->setX(F)F",
+    f"{VECTOR3}->setY(F)V": f"{VECTOR3}->setY(F)F",
+    f"{VECTOR3}->setZ(F)V": f"{VECTOR3}->setZ(F)F",
+    f"{VECTOR3F}->set(FFF)V": f"{VECTOR3F}->set(FFF){VECTOR3F}",
+    f"{TRANSFORM}->K0({VECTOR3})V": f"{TRANSFORM}->K0({VECTOR3}){VECTOR3}",
+}
+
 # JADX renames colliding/obfuscated members as f<id><original> and mo<id><original>.
-# Examples from this project:
-#   f79250n  -> n
-#   f79294k  -> k
-#   f79321B  -> B
-#   f81611x  -> x
-#   mo1248clone -> clone
 FIELD_REF_RE = re.compile(r"->f\d+([A-Za-z_$][A-Za-z0-9_$]*)(?=:)")
 METHOD_REF_RE = re.compile(r"->mo\d+([A-Za-z_$][A-Za-z0-9_$]*)(?=\()")
 METHOD_DECL_RE = re.compile(
@@ -46,14 +53,12 @@ METHOD_DECL_RE = re.compile(
 )
 
 FORBIDDEN_CLASS_ALIASES = tuple(CLASS_ALIASES.keys())
+FORBIDDEN_METHOD_DESCRIPTORS = tuple(METHOD_DESCRIPTOR_ALIASES.keys())
 
 
 def is_interaction_smali(path: Path) -> bool:
     if path.suffix != ".smali":
         return False
-    # Covers both:
-    #   .../NoCode/Interaction/...
-    #   .../NoCode/Nodes/.../Interaction/...
     return "Interaction" in path.parts
 
 
@@ -65,6 +70,13 @@ def normalize_text(text: str) -> tuple[str, int]:
     if count:
         text = text.replace(old_call, new_call)
         changes += count
+
+    # Do exact descriptor rewrites before generic class/member alias rewrites.
+    for old, new in METHOD_DESCRIPTOR_ALIASES.items():
+        count = text.count(old)
+        if count:
+            text = text.replace(old, new)
+            changes += count
 
     for old, new in CLASS_ALIASES.items():
         count = text.count(old)
@@ -96,8 +108,10 @@ def validate_text(path: Path, text: str) -> list[str]:
     if COMPONENT_REGISTRY_CALL[0] in text:
         errors.append(f"{path}: unresolved component registry call descriptor")
 
-    # Any remaining JADX member aliases in generated Interaction code are dangerous:
-    # they normally point to members that do not exist in the original DEX.
+    for descriptor in FORBIDDEN_METHOD_DESCRIPTORS:
+        if descriptor in text:
+            errors.append(f"{path}: unresolved stub ABI descriptor {descriptor}")
+
     if re.search(r"->f\d+[A-Za-z_$][A-Za-z0-9_$]*:", text):
         errors.append(f"{path}: unresolved JADX field alias")
     if re.search(r"->mo\d+[A-Za-z_$][A-Za-z0-9_$]*\(", text):
@@ -153,7 +167,7 @@ def main() -> int:
         return 1
 
     if validation_errors:
-        print("ERROR: unresolved JADX aliases remain:", file=sys.stderr)
+        print("ERROR: unresolved JADX/stub ABI aliases remain:", file=sys.stderr)
         for error in validation_errors[:100]:
             print(f"  - {error}", file=sys.stderr)
         if len(validation_errors) > 100:
