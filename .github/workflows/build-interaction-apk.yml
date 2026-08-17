@@ -42,6 +42,10 @@ jobs:
         with:
           gradle-version: '8.7'
 
+      - name: Sanitize decompiled resources
+        shell: bash
+        run: python3 work/sanitize_android_resources.py source/app/src/main/res source/app/src/main/java
+
       - name: Build debug APK
         shell: bash
         run: gradle -p source :app:assembleDebug --stacktrace --no-daemon
