@@ -12,8 +12,8 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Servico central de manipulacao fisica e cinematica de objetos pegos (Grab, Inspect, Throw, Drop).
- * Implementa controle por Mola-Amortecedor (Spring-Damper PID) e restauracao completa de propriedades fisicas.
+ * Servico central de grab/drop/throw.
+ * Physics Follow usa um controlador PD integrado no deltaTime e a velocidade real do Rigidbody.
  */
 public class GrabService {
 
@@ -23,30 +23,36 @@ public class GrabService {
         public Transform cameraTransform;
         public float holdDistance = 2.0f;
         public float followSpeed = 15.0f;
-        public float springStrength = 120.0f;
+        public float springStrength = 65.0f;
         public float damping = 14.0f;
-        public float maxVelocity = 25.0f;
+        public float maxVelocity = 20.0f;
+        public float maxGrabDistance = 7.5f;
         public boolean usePhysics = false;
         public Rigidbody rigidbody = null;
-        public final Vector3 lastVelocity = new Vector3();
+        public boolean originalUseGravity = true;
+        public final Vector3 commandVelocity = new Vector3();
     }
 
     private static final Map<GameObject, GrabSession> ACTIVE_GRABS = new ConcurrentHashMap<>();
 
-    public static InteractionResult grab(GameObject interactor, GameObject target, Transform cameraTransform, float holdDistance, float followSpeed, boolean usePhysics) {
+    public static InteractionResult grab(
+        GameObject interactor,
+        GameObject target,
+        Transform cameraTransform,
+        float holdDistance,
+        float followSpeed,
+        boolean usePhysics
+    ) {
         if (!C13317e.J(target)) {
             return InteractionResult.failure(InteractionResult.FailureReason.InvalidTarget, "Alvo invalido");
         }
-
         if (InteractionRegistry.isLocked(target)) {
             return InteractionResult.failure(InteractionResult.FailureReason.Locked, "Objeto trancado");
         }
-
         if (InteractionRegistry.isBusy(target) || InteractionRegistry.isHeld(target)) {
             return InteractionResult.failure(InteractionResult.FailureReason.Busy, "Objeto ja esta sendo segurado");
         }
 
-        // Armazena a posicao original se ainda nao tiver
         Transform targetTransform = target.J0();
         if (targetTransform != null) {
             Vector3 originPos = targetTransform.J0();
@@ -58,17 +64,24 @@ public class GrabService {
         GrabSession session = new GrabSession();
         session.interactor = interactor;
         session.heldObject = target;
-        session.cameraTransform = cameraTransform != null ? cameraTransform : (interactor != null ? interactor.J0() : null);
+        session.cameraTransform = cameraTransform != null
+            ? cameraTransform
+            : (interactor != null ? interactor.J0() : null);
         session.holdDistance = holdDistance > 0f ? holdDistance : 2.0f;
         session.followSpeed = followSpeed > 0f ? followSpeed : 15.0f;
         session.usePhysics = usePhysics;
 
-        // Tenta obter Rigidbody para Physics Follow
         if (usePhysics && target.f79286b != null) {
             for (int i = 0; i < target.f79286b.size(); i++) {
                 Object comp = target.f79286b.get(i);
                 if (comp instanceof Rigidbody) {
                     session.rigidbody = (Rigidbody) comp;
+                    session.originalUseGravity = session.rigidbody.useGravity;
+                    session.rigidbody.useGravity = false;
+                    Vector3 initialVelocity = session.rigidbody.getVelocity();
+                    if (initialVelocity != null) {
+                        session.commandVelocity.set(initialVelocity);
+                    }
                     break;
                 }
             }
@@ -77,14 +90,16 @@ public class GrabService {
         ACTIVE_GRABS.put(interactor != null ? interactor : target, session);
         InteractionRegistry.setHeld(target, true, interactor);
         InteractionRegistry.setBusy(target, true);
-
         return InteractionResult.success(target);
     }
 
     public static void drop(GameObject interactor) {
         if (interactor == null) return;
         GrabSession session = ACTIVE_GRABS.remove(interactor);
-        if (session != null && C13317e.J(session.heldObject)) {
+        if (session == null) return;
+
+        restorePhysics(session);
+        if (C13317e.J(session.heldObject)) {
             InteractionRegistry.setHeld(session.heldObject, false, null);
             InteractionRegistry.setBusy(session.heldObject, false);
             InteractionRegistry.setState(session.heldObject, InteractionState.Dropped);
@@ -94,39 +109,49 @@ public class GrabService {
     public static void throwObject(GameObject interactor, Vector3 customDir, float force) {
         if (interactor == null) return;
         GrabSession session = ACTIVE_GRABS.remove(interactor);
-        if (session != null && C13317e.J(session.heldObject)) {
-            InteractionRegistry.setHeld(session.heldObject, false, null);
-            InteractionRegistry.setBusy(session.heldObject, false);
-            InteractionRegistry.setState(session.heldObject, InteractionState.Dropped);
+        if (session == null || !C13317e.J(session.heldObject)) return;
 
-            Transform objT = session.heldObject.J0();
-            if (objT != null) {
-                Vector3 throwDir = new Vector3(0f, 0f, 1f);
-                if (customDir != null) {
-                    throwDir.set(customDir);
-                } else if (session.cameraTransform != null && session.cameraTransform.forward() != null) {
-                    throwDir.set(session.cameraTransform.forward());
-                }
+        InteractionRegistry.setHeld(session.heldObject, false, null);
+        InteractionRegistry.setBusy(session.heldObject, false);
+        InteractionRegistry.setState(session.heldObject, InteractionState.Dropped);
 
-                float f = force > 0f ? force : 12.0f;
+        Transform objT = session.heldObject.J0();
+        if (objT == null) {
+            restorePhysics(session);
+            return;
+        }
 
-                // Aplica impulso de arremesso no Rigidbody
-                if (session.rigidbody != null) {
-                    session.rigidbody.setVelocity(new Vector3(
-                        session.lastVelocity.getX() * 0.3f + throwDir.getX() * f,
-                        session.lastVelocity.getY() * 0.3f + throwDir.getY() * f + 2.0f,
-                        session.lastVelocity.getZ() * 0.3f + throwDir.getZ() * f
-                    ));
-                } else {
-                    Vector3 pos = objT.J0();
-                    if (pos != null) {
-                        objT.f79337l.f(new Vector3(
-                            pos.getX() + throwDir.getX() * (f * 0.1f),
-                            pos.getY() + throwDir.getY() * (f * 0.1f) + 0.2f,
-                            pos.getZ() + throwDir.getZ() * (f * 0.1f)
-                        ));
-                    }
-                }
+        Vector3 throwDir = new Vector3(0f, 0f, 1f);
+        if (customDir != null) {
+            throwDir.set(customDir);
+        } else if (session.cameraTransform != null && session.cameraTransform.forward() != null) {
+            throwDir.set(session.cameraTransform.forward());
+        }
+        normalize(throwDir);
+
+        float throwForce = force > 0f ? force : 12.0f;
+        restorePhysics(session);
+
+        if (session.rigidbody != null) {
+            Vector3 currentVelocity = session.rigidbody.getVelocity();
+            float carryX = currentVelocity != null ? currentVelocity.getX() * 0.30f : 0f;
+            float carryY = currentVelocity != null ? currentVelocity.getY() * 0.30f : 0f;
+            float carryZ = currentVelocity != null ? currentVelocity.getZ() * 0.30f : 0f;
+
+            session.commandVelocity.set(
+                carryX + throwDir.getX() * throwForce,
+                carryY + throwDir.getY() * throwForce + 2.0f,
+                carryZ + throwDir.getZ() * throwForce
+            );
+            session.rigidbody.setVelocity(session.commandVelocity);
+        } else {
+            Vector3 pos = objT.J0();
+            if (pos != null) {
+                objT.f79337l.f(new Vector3(
+                    pos.getX() + throwDir.getX() * (throwForce * 0.1f),
+                    pos.getY() + throwDir.getY() * (throwForce * 0.1f) + 0.2f,
+                    pos.getZ() + throwDir.getZ() * (throwForce * 0.1f)
+                ));
             }
         }
     }
@@ -146,6 +171,7 @@ public class GrabService {
 
     public static void update(float deltaTime) {
         if (ACTIVE_GRABS.isEmpty()) return;
+        float dt = Math.max(0.001f, Math.min(0.05f, deltaTime));
 
         for (GrabSession session : ACTIVE_GRABS.values()) {
             if (!C13317e.J(session.heldObject)) continue;
@@ -158,7 +184,6 @@ public class GrabService {
             Vector3 camForward = camTransform.forward();
             if (camPos == null || camForward == null) continue;
 
-            // Ponto de destino na mira da camera
             float targetX = camPos.getX() + camForward.getX() * session.holdDistance;
             float targetY = camPos.getY() + camForward.getY() * session.holdDistance;
             float targetZ = camPos.getZ() + camForward.getZ() * session.holdDistance;
@@ -166,36 +191,70 @@ public class GrabService {
             Vector3 curPos = objTransform.J0();
             if (curPos == null) continue;
 
+            float errX = targetX - curPos.getX();
+            float errY = targetY - curPos.getY();
+            float errZ = targetZ - curPos.getZ();
+            float errorMagnitude = (float) Math.sqrt(errX * errX + errY * errY + errZ * errZ);
+
+            if (errorMagnitude > session.maxGrabDistance) {
+                drop(session.interactor);
+                continue;
+            }
+
             if (session.usePhysics && session.rigidbody != null) {
-                // Controlador Spring-Damper: Force = Spring * Error - Damping * Velocity
-                float errX = targetX - curPos.getX();
-                float errY = targetY - curPos.getY();
-                float errZ = targetZ - curPos.getZ();
+                Vector3 currentVelocity = session.rigidbody.getVelocity();
+                float currentVx = currentVelocity != null ? currentVelocity.getX() : 0f;
+                float currentVy = currentVelocity != null ? currentVelocity.getY() : 0f;
+                float currentVz = currentVelocity != null ? currentVelocity.getZ() : 0f;
 
-                float vx = errX * session.springStrength - session.lastVelocity.getX() * session.damping;
-                float vy = errY * session.springStrength - session.lastVelocity.getY() * session.damping;
-                float vz = errZ * session.springStrength - session.lastVelocity.getZ() * session.damping;
+                // PD: a = Kp * erro - Kd * velocidade; v(t+dt) = v(t) + a * dt.
+                float accelX = errX * session.springStrength - currentVx * session.damping;
+                float accelY = errY * session.springStrength - currentVy * session.damping;
+                float accelZ = errZ * session.springStrength - currentVz * session.damping;
 
-                // Clamping de velocidade maxima para evitar teleporte ou explosao fisica
-                float vMag = (float) Math.sqrt(vx * vx + vy * vy + vz * vz);
-                if (vMag > session.maxVelocity) {
-                    float factor = session.maxVelocity / vMag;
+                float vx = currentVx + accelX * dt;
+                float vy = currentVy + accelY * dt;
+                float vz = currentVz + accelZ * dt;
+
+                float velocityMagnitude = (float) Math.sqrt(vx * vx + vy * vy + vz * vz);
+                if (velocityMagnitude > session.maxVelocity) {
+                    float factor = session.maxVelocity / velocityMagnitude;
                     vx *= factor;
                     vy *= factor;
                     vz *= factor;
                 }
 
-                session.lastVelocity.set(vx, vy, vz);
-                session.rigidbody.setVelocity(new Vector3(vx, vy, vz));
+                session.commandVelocity.set(vx, vy, vz);
+                session.rigidbody.setVelocity(session.commandVelocity);
             } else {
-                // Transform Follow suave (Lerp)
-                float t = Math.min(1.0f, deltaTime * session.followSpeed);
-                float newX = curPos.getX() + (targetX - curPos.getX()) * t;
-                float newY = curPos.getY() + (targetY - curPos.getY()) * t;
-                float newZ = curPos.getZ() + (targetZ - curPos.getZ()) * t;
-                objTransform.f79337l.f(new Vector3(newX, newY, newZ));
+                float t = Math.min(1.0f, dt * session.followSpeed);
+                objTransform.f79337l.f(new Vector3(
+                    curPos.getX() + errX * t,
+                    curPos.getY() + errY * t,
+                    curPos.getZ() + errZ * t
+                ));
             }
         }
+    }
+
+    private static void restorePhysics(GrabSession session) {
+        if (session != null && session.rigidbody != null) {
+            session.rigidbody.useGravity = session.originalUseGravity;
+        }
+    }
+
+    private static void normalize(Vector3 vector) {
+        if (vector == null) return;
+        float x = vector.getX();
+        float y = vector.getY();
+        float z = vector.getZ();
+        float magnitudeSq = x * x + y * y + z * z;
+        if (magnitudeSq <= 0.000001f) {
+            vector.set(0f, 0f, 1f);
+            return;
+        }
+        float invMagnitude = 1.0f / (float) Math.sqrt(magnitudeSq);
+        vector.set(x * invMagnitude, y * invMagnitude, z * invMagnitude);
     }
 
     public static boolean isHolding(GameObject interactor) {
