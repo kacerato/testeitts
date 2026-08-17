@@ -38,6 +38,7 @@ public class InteractionRuntime {
 
     public void setPlayer(GameObject newInteractor, Transform newCameraTransform) {
         if (C13317e.J(newInteractor) && this.interactor != newInteractor) {
+            cleanupInteractorSessions(this.interactor);
             clearFocusedTarget();
             resolver.reset();
             pressedTarget = null;
@@ -60,7 +61,7 @@ public class InteractionRuntime {
         if (!C13317e.J(expectedInteractor) || expectedInteractor != this.interactor) return;
         clearFocusedTarget();
         holdSession.cancel();
-        InspectService.stop(expectedInteractor);
+        cleanupInteractorSessions(expectedInteractor);
         resolver.reset();
         pressedTarget = null;
         pressedAction = null;
@@ -80,6 +81,7 @@ public class InteractionRuntime {
         DoorService.update(dt);
         ElevatorService.update(dt);
         ButtonService.update(dt);
+        PowerService.update(dt);
         holdSession.update(dt);
 
         if (!C13317e.J(interactor)) return;
@@ -144,6 +146,15 @@ public class InteractionRuntime {
             current = current.f79294k;
         }
         return null;
+    }
+
+    private void cleanupInteractorSessions(GameObject actor) {
+        if (!C13317e.J(actor)) return;
+        GrabService.drop(actor);
+        InspectService.stop(actor);
+        SeatService.stand(actor, null);
+        LadderService.exit(actor, null);
+        VehicleService.exit(actor, null);
     }
 
     private void fillContextFromCandidate(GameObject target, InteractionCandidate candidate) {
