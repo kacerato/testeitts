@@ -36,7 +36,9 @@ public final class VehicleService {
             return InteractionResult.failure(InteractionResult.FailureReason.Locked, "Veiculo trancado");
         }
 
-        // Entrar em outro veiculo finaliza a sessao anterior; trocar assento usa switchSeat().
+        // Modos de locomocao sao mutuamente exclusivos.
+        SeatService.stand(interactor, null);
+        LadderService.exit(interactor, null);
         if (SESSIONS.containsKey(interactor)) exit(interactor, null);
 
         VehicleSession session = new VehicleSession();
@@ -72,6 +74,7 @@ public final class VehicleService {
         }
 
         GameObject oldSeat = session.seat;
+        if (oldSeat == newSeat) return InteractionResult.success(newSeat);
         if (C13317e.J(oldSeat)) InteractionRegistry.setAttribute(oldSeat, "occupied_by", null);
 
         session.seat = newSeat;
