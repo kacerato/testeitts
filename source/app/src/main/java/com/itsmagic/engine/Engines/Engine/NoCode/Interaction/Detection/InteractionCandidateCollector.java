@@ -49,7 +49,6 @@ public class InteractionCandidateCollector {
         } else {
             tempForward.set(0f, 0f, 1f);
         }
-
         normalizeForward();
 
         int count = InteractionRegistry.getActiveInteractablesCount();
@@ -96,10 +95,7 @@ public class InteractionCandidateCollector {
 
             boolean hitTarget = firstHit != null && isSameHierarchyBranch(hitObject, target);
             boolean hasLineOfSight = firstHit == null || hitTarget;
-
-            if (data.requireLineOfSight && !hasLineOfSight) {
-                continue;
-            }
+            if (data.requireLineOfSight && !hasLineOfSight) continue;
 
             float hitDistance = centerDistance;
             float hitX = tempTargetPos.getX();
@@ -148,7 +144,7 @@ public class InteractionCandidateCollector {
 
     /**
      * Retorna o primeiro collider fisico que nao pertence ao proprio interactor.
-     * CollisionSpace.rayTest ordena os resultados por hitFraction.
+     * Usa o mesmo lock global empregado pelo subsistema de Rigidbody ao alterar o PhysicsSpace.
      */
     private PhysicsRayTestResult raycastFirstNonInteractorHit(GameObject interactor, Vector3 targetPosition) {
         rayFrom.set(tempOrigin.getX(), tempOrigin.getY(), tempOrigin.getZ());
@@ -159,7 +155,7 @@ public class InteractionCandidateCollector {
             if (K8.a.f10984o == null || K8.a.f10984o.f2506c == null) {
                 return null;
             }
-            synchronized (K8.a.f10984o.f2506c) {
+            synchronized (Cc.c.f2503k) {
                 K8.a.f10984o.f2506c.rayTest(rayFrom, rayTo, rayResults);
             }
         } catch (Exception ignored) {
