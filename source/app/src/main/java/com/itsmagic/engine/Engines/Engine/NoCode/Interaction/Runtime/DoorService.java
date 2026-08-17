@@ -10,10 +10,18 @@ import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
 /**
- * Servico central para animacao e controle fisico de portas, gavetas e compartimentos.
- * Atualiza continuamente a interpolacao angular relativa ao angulo inicial a cada frame.
+ * Servico central para portas, gavetas e compartimentos.
+ * Um unico controller suporta diferentes modos sem multiplicar nodes por tipo de porta.
  */
-public class DoorService {
+public final class DoorService {
+
+    public enum DoorMode {
+        Hinged,
+        Sliding,
+        Vertical,
+        Drawer,
+        Garage
+    }
 
     public static class DoorSession {
         public GameObject door;
@@ -23,52 +31,91 @@ public class DoorService {
         public float speed = 3.5f;
         public int directionSign = 1;
         public float maxAngleDeg = 90.0f;
-        public float initialEulerX = 0.0f;
-        public float initialEulerY = 0.0f;
-        public float initialEulerZ = 0.0f;
+        public float travelDistance = 2.0f;
+        public DoorMode mode = DoorMode.Hinged;
+
+        public float initialX;
+        public float initialY;
+        public float initialZ;
+        public float initialEulerX;
+        public float initialEulerY;
+        public float initialEulerZ;
     }
 
     private static final Map<GameObject, DoorSession> ACTIVE_DOORS = new ConcurrentHashMap<>();
 
+    private DoorService() {}
+
+    public static DoorMode parseMode(String value) {
+        if (value == null) return DoorMode.Hinged;
+        for (DoorMode mode : DoorMode.values()) {
+            if (mode.name().equalsIgnoreCase(value.trim())) return mode;
+        }
+        if ("SlidingDoor".equalsIgnoreCase(value)) return DoorMode.Sliding;
+        if ("GarageDoor".equalsIgnoreCase(value)) return DoorMode.Garage;
+        return DoorMode.Hinged;
+    }
+
+    public static DoorSession configure(GameObject door, String mode, float speed, float maxAngleDeg, float travelDistance) {
+        DoorSession session = getOrCreate(door);
+        if (session == null) return null;
+        session.mode = parseMode(mode);
+        if (speed > 0f) session.speed = speed;
+        if (maxAngleDeg > 0f) session.maxAngleDeg = maxAngleDeg;
+        if (travelDistance > 0f) session.travelDistance = travelDistance;
+        return session;
+    }
+
+    private static DoorSession getOrCreate(GameObject door) {
+        if (!C13317e.J(door)) return null;
+        DoorSession session = ACTIVE_DOORS.get(door);
+        if (session != null) return session;
+
+        Transform t = door.J0();
+        if (t == null) return null;
+        Vector3 pos = t.J0();
+
+        DoorSession created = new DoorSession();
+        created.door = door;
+        if (pos != null) {
+            created.initialX = pos.getX();
+            created.initialY = pos.getY();
+            created.initialZ = pos.getZ();
+        }
+        if (t.f79321B != null) {
+            created.initialEulerX = t.f79321B.getX();
+            created.initialEulerY = t.f79321B.getY();
+            created.initialEulerZ = t.f79321B.getZ();
+        }
+        ACTIVE_DOORS.put(door, created);
+        return created;
+    }
+
     public static InteractionResult toggleDoor(GameObject door, GameObject interactor, boolean autoDirection) {
-        if (!C13317e.J(door)) {
-            return InteractionResult.failure(InteractionResult.FailureReason.InvalidTarget, "Porta invalida");
-        }
-
-        if (InteractionRegistry.isLocked(door)) {
-            return InteractionResult.failure(InteractionResult.FailureReason.Locked, "Porta trancada");
-        }
-
-        boolean isOpen = InteractionRegistry.isOpen(door);
-        return setDoorOpen(door, interactor, !isOpen, autoDirection);
+        if (!C13317e.J(door)) return InteractionResult.failure(InteractionResult.FailureReason.InvalidTarget, "Porta invalida");
+        if (InteractionRegistry.isLocked(door)) return InteractionResult.failure(InteractionResult.FailureReason.Locked, "Porta trancada");
+        return setDoorOpen(door, interactor, !InteractionRegistry.isOpen(door), autoDirection);
     }
 
     public static InteractionResult setDoorOpen(GameObject door, GameObject interactor, boolean open, boolean autoDirection) {
-        if (!C13317e.J(door)) {
-            return InteractionResult.failure(InteractionResult.FailureReason.InvalidTarget, "Porta invalida");
+        return setDoorOpenAmount(door, interactor, open ? 1f : 0f, autoDirection);
+    }
+
+    public static InteractionResult setDoorOpenAmount(GameObject door, GameObject interactor, float amount, boolean autoDirection) {
+        if (!C13317e.J(door)) return InteractionResult.failure(InteractionResult.FailureReason.InvalidTarget, "Porta invalida");
+        if (InteractionRegistry.isLocked(door)) return InteractionResult.failure(InteractionResult.FailureReason.Locked, "Porta trancada");
+        if (!InteractionRegistry.isPowered(door) && Boolean.TRUE.equals(InteractionRegistry.getAttribute(door, "requires_power"))) {
+            return InteractionResult.failure(InteractionResult.FailureReason.Disabled, "Porta sem energia");
         }
 
-        if (InteractionRegistry.isLocked(door)) {
-            return InteractionResult.failure(InteractionResult.FailureReason.Locked, "Porta trancada");
-        }
+        DoorSession session = getOrCreate(door);
+        if (session == null) return InteractionResult.failure(InteractionResult.FailureReason.InvalidTarget, "Transform invalido");
 
-        DoorSession session = ACTIVE_DOORS.computeIfAbsent(door, k -> {
-            DoorSession s = new DoorSession();
-            s.door = door;
-            Transform t = door.J0();
-            if (t != null && t.f79321B != null) {
-                s.initialEulerX = t.f79321B.getX();
-                s.initialEulerY = t.f79321B.getY();
-                s.initialEulerZ = t.f79321B.getZ();
-            }
-            return s;
-        });
+        float clamped = Math.max(0f, Math.min(1f, amount));
+        session.targetOpen = clamped > 0.001f;
+        session.targetOpenAmount = clamped;
 
-        session.targetOpen = open;
-        session.targetOpenAmount = open ? 1.0f : 0.0f;
-
-        // Calculo de lado de abertura (Away From Player) via Dot Product
-        if (autoDirection && open && C13317e.J(interactor)) {
+        if (autoDirection && clamped > session.currentOpenAmount && session.mode == DoorMode.Hinged && C13317e.J(interactor)) {
             Transform doorT = door.J0();
             Transform playerT = interactor.J0();
             if (doorT != null && playerT != null) {
@@ -80,44 +127,81 @@ public class DoorService {
                     float dy = playerPos.getY() - doorPos.getY();
                     float dz = playerPos.getZ() - doorPos.getZ();
                     float dot = dx * doorForward.getX() + dy * doorForward.getY() + dz * doorForward.getZ();
-                    session.directionSign = (dot > 0f) ? -1 : 1;
+                    session.directionSign = dot > 0f ? -1 : 1;
                 }
             }
         }
 
-        InteractionRegistry.setOpen(door, open);
+        InteractionRegistry.setOpenAmount(door, clamped);
+        InteractionDispatcher.dispatchCustomEvent("door_target_changed", door, Float.valueOf(clamped));
         return InteractionResult.success(door);
     }
 
     public static void update(float deltaTime) {
         if (ACTIVE_DOORS.isEmpty()) return;
+        float dt = Math.max(0.001f, Math.min(0.05f, deltaTime));
 
         for (DoorSession session : ACTIVE_DOORS.values()) {
             if (!C13317e.J(session.door)) continue;
 
-            if (Math.abs(session.currentOpenAmount - session.targetOpenAmount) < 0.001f) {
+            float before = session.currentOpenAmount;
+            if (Math.abs(before - session.targetOpenAmount) < 0.001f) {
                 session.currentOpenAmount = session.targetOpenAmount;
-                continue;
-            }
-
-            float step = deltaTime * session.speed;
-            if (session.currentOpenAmount < session.targetOpenAmount) {
-                session.currentOpenAmount = Math.min(session.targetOpenAmount, session.currentOpenAmount + step);
             } else {
-                session.currentOpenAmount = Math.max(session.targetOpenAmount, session.currentOpenAmount - step);
+                float step = dt * session.speed;
+                if (before < session.targetOpenAmount) session.currentOpenAmount = Math.min(session.targetOpenAmount, before + step);
+                else session.currentOpenAmount = Math.max(session.targetOpenAmount, before - step);
             }
 
-            InteractionRegistry.InteractableData data = InteractionRegistry.get(session.door);
-            if (data != null) {
-                data.openAmount = session.currentOpenAmount;
-            }
+            applyTransform(session);
+            InteractionRegistry.setOpenAmount(session.door, session.currentOpenAmount);
 
-            // Aplica rotacao relativa ao angulo inicial do objeto
-            Transform t = session.door.J0();
-            if (t != null && t.f79321B != null) {
-                float targetAngle = session.initialEulerY + (session.directionSign * session.currentOpenAmount * session.maxAngleDeg);
-                t.f79321B.setY(targetAngle);
+            boolean reached = Math.abs(session.currentOpenAmount - session.targetOpenAmount) < 0.001f;
+            if (reached && Math.abs(before - session.currentOpenAmount) >= 0.001f) {
+                InteractionDispatcher.dispatchCustomEvent(
+                    session.currentOpenAmount <= 0.001f ? "door_closed" : (session.currentOpenAmount >= 0.999f ? "door_opened" : "door_amount_reached"),
+                    session.door,
+                    Float.valueOf(session.currentOpenAmount)
+                );
             }
+        }
+    }
+
+    private static void applyTransform(DoorSession session) {
+        Transform t = session.door.J0();
+        if (t == null) return;
+        float amount = session.currentOpenAmount;
+
+        switch (session.mode) {
+            case Sliding:
+                t.f79337l.f(new Vector3(
+                    session.initialX + session.directionSign * session.travelDistance * amount,
+                    session.initialY,
+                    session.initialZ
+                ));
+                break;
+            case Vertical:
+            case Garage:
+                t.f79337l.f(new Vector3(
+                    session.initialX,
+                    session.initialY + session.travelDistance * amount,
+                    session.initialZ
+                ));
+                break;
+            case Drawer:
+                t.f79337l.f(new Vector3(
+                    session.initialX,
+                    session.initialY,
+                    session.initialZ + session.directionSign * session.travelDistance * amount
+                ));
+                break;
+            case Hinged:
+            default:
+                if (t.f79321B != null) {
+                    float targetAngle = session.initialEulerY + session.directionSign * amount * session.maxAngleDeg;
+                    t.f79321B.setY(targetAngle);
+                }
+                break;
         }
     }
 }
