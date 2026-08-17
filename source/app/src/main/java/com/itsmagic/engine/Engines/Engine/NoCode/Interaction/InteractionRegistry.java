@@ -14,8 +14,8 @@ import java.util.concurrent.ConcurrentHashMap;
 
 /**
  * Registro central de entidades de interacao no runtime.
- * Mantem estados ortogonais independentes (foco, lock, abertura, energia, posse)
- * para evitar que 'Focused' sobrescreva 'Locked'.
+ * Mantem estados ortogonais independentes (foco, lock, abertura, energia, posse e toggle)
+ * para evitar que um estado visual sobrescreva estados persistentes de gameplay.
  */
 public class InteractionRegistry implements Serializable {
 
@@ -23,7 +23,7 @@ public class InteractionRegistry implements Serializable {
         public boolean enabled = true;
         public int priority = 0;
 
-        // Estados ortogonais independentes
+        // Estados ortogonais independentes.
         public boolean isFocused = false;
         public boolean isLocked = false;
         public boolean isOpen = false;
@@ -31,6 +31,10 @@ public class InteractionRegistry implements Serializable {
         public boolean isBusy = false;
         public boolean isHeld = false;
         public GameObject heldBy = null;
+
+        // Estado binario opcional para botoes, switches, luzes etc.
+        public boolean hasOnOffState = false;
+        public boolean isOn = false;
 
         public float openAmount = 0.0f;
         public float analogValue = 0.0f;
@@ -40,7 +44,7 @@ public class InteractionRegistry implements Serializable {
         public final Map<String, Object> attributes = new ConcurrentHashMap<>();
 
         public float maxInteractionDistance = 4.0f;
-        public float maxInteractionAngle = 60.0f; // graus
+        public float maxInteractionAngle = 60.0f;
         public boolean requireLineOfSight = true;
         public String promptText;
         public String promptIcon;
@@ -73,8 +77,7 @@ public class InteractionRegistry implements Serializable {
     }
 
     public static boolean isRegistered(GameObject go) {
-        if (go == null) return false;
-        return REGISTRY.containsKey(go);
+        return go != null && REGISTRY.containsKey(go);
     }
 
     public static void register(GameObject go) {
@@ -91,9 +94,7 @@ public class InteractionRegistry implements Serializable {
 
     public static void setEnabled(GameObject go, boolean enabled) {
         InteractableData data = getOrCreate(go);
-        if (data != null) {
-            data.enabled = enabled;
-        }
+        if (data != null) data.enabled = enabled;
     }
 
     public static boolean isEnabled(GameObject go) {
@@ -103,9 +104,7 @@ public class InteractionRegistry implements Serializable {
 
     public static void setFocused(GameObject go, boolean focused) {
         InteractableData data = get(go);
-        if (data != null) {
-            data.isFocused = focused;
-        }
+        if (data != null) data.isFocused = focused;
     }
 
     public static boolean isFocused(GameObject go) {
@@ -115,9 +114,7 @@ public class InteractionRegistry implements Serializable {
 
     public static void setLocked(GameObject go, boolean locked) {
         InteractableData data = getOrCreate(go);
-        if (data != null) {
-            data.isLocked = locked;
-        }
+        if (data != null) data.isLocked = locked;
     }
 
     public static boolean isLocked(GameObject go) {
@@ -138,11 +135,22 @@ public class InteractionRegistry implements Serializable {
         return data != null && data.isOpen;
     }
 
-    public static void setBusy(GameObject go, boolean busy) {
+    public static void setOpenAmount(GameObject go, float amount) {
         InteractableData data = getOrCreate(go);
         if (data != null) {
-            data.isBusy = busy;
+            data.openAmount = clamp01(amount);
+            data.isOpen = data.openAmount > 0.001f;
         }
+    }
+
+    public static float getOpenAmount(GameObject go) {
+        InteractableData data = get(go);
+        return data != null ? data.openAmount : 0.0f;
+    }
+
+    public static void setBusy(GameObject go, boolean busy) {
+        InteractableData data = getOrCreate(go);
+        if (data != null) data.isBusy = busy;
     }
 
     public static boolean isBusy(GameObject go) {
@@ -168,20 +176,49 @@ public class InteractionRegistry implements Serializable {
         return data != null ? data.heldBy : null;
     }
 
+    public static void setPowered(GameObject go, boolean powered) {
+        InteractableData data = getOrCreate(go);
+        if (data != null) data.isPowered = powered;
+    }
+
+    public static boolean isPowered(GameObject go) {
+        InteractableData data = get(go);
+        return data != null && data.isPowered;
+    }
+
+    public static void setOn(GameObject go, boolean on) {
+        InteractableData data = getOrCreate(go);
+        if (data != null) {
+            data.hasOnOffState = true;
+            data.isOn = on;
+        }
+    }
+
+    public static boolean isOn(GameObject go) {
+        InteractableData data = get(go);
+        return data != null && data.hasOnOffState && data.isOn;
+    }
+
+    public static void setAnalogValue(GameObject go, float value) {
+        InteractableData data = getOrCreate(go);
+        if (data != null) data.analogValue = clamp01(value);
+    }
+
+    public static float getAnalogValue(GameObject go) {
+        InteractableData data = get(go);
+        return data != null ? data.analogValue : 0.0f;
+    }
+
     public static void addCapability(GameObject go, InteractionCapability capability) {
         if (capability == null) return;
         InteractableData data = getOrCreate(go);
-        if (data != null) {
-            data.capabilities.add(capability);
-        }
+        if (data != null) data.capabilities.add(capability);
     }
 
     public static void removeCapability(GameObject go, InteractionCapability capability) {
         if (capability == null) return;
         InteractableData data = get(go);
-        if (data != null) {
-            data.capabilities.remove(capability);
-        }
+        if (data != null) data.capabilities.remove(capability);
     }
 
     public static boolean hasCapability(GameObject go, InteractionCapability capability) {
@@ -193,17 +230,13 @@ public class InteractionRegistry implements Serializable {
     public static void addTag(GameObject go, String tag) {
         if (tag == null || tag.trim().isEmpty()) return;
         InteractableData data = getOrCreate(go);
-        if (data != null) {
-            data.tags.add(tag.trim().toLowerCase());
-        }
+        if (data != null) data.tags.add(tag.trim().toLowerCase());
     }
 
     public static void removeTag(GameObject go, String tag) {
         if (tag == null) return;
         InteractableData data = get(go);
-        if (data != null) {
-            data.tags.remove(tag.trim().toLowerCase());
-        }
+        if (data != null) data.tags.remove(tag.trim().toLowerCase());
     }
 
     public static boolean hasTag(GameObject go, String tag) {
@@ -214,9 +247,7 @@ public class InteractionRegistry implements Serializable {
 
     public static void setPriority(GameObject go, int priority) {
         InteractableData data = getOrCreate(go);
-        if (data != null) {
-            data.priority = priority;
-        }
+        if (data != null) data.priority = priority;
     }
 
     public static int getPriority(GameObject go) {
@@ -231,14 +262,35 @@ public class InteractionRegistry implements Serializable {
             case Enabled: data.enabled = true; break;
             case Disabled: data.enabled = false; break;
             case Focused: data.isFocused = true; break;
-            case Idle: data.isFocused = false; break;
+            case Idle:
+                data.isFocused = false;
+                data.isBusy = false;
+                break;
+            case Interacting: data.isBusy = true; break;
+            case Busy: data.isBusy = true; break;
             case Locked: data.isLocked = true; break;
             case Unlocked: data.isLocked = false; break;
-            case Open: data.isOpen = true; data.openAmount = 1f; break;
-            case Closed: data.isOpen = false; data.openAmount = 0f; break;
-            case Busy: data.isBusy = true; break;
+            case Open:
+                data.isOpen = true;
+                data.openAmount = 1f;
+                break;
+            case Closed:
+                data.isOpen = false;
+                data.openAmount = 0f;
+                break;
             case Held: data.isHeld = true; break;
-            case Dropped: data.isHeld = false; data.heldBy = null; break;
+            case Dropped:
+                data.isHeld = false;
+                data.heldBy = null;
+                break;
+            case On:
+                data.hasOnOffState = true;
+                data.isOn = true;
+                break;
+            case Off:
+                data.hasOnOffState = true;
+                data.isOn = false;
+                break;
             case Powered: data.isPowered = true; break;
             case Unpowered: data.isPowered = false; break;
             default: break;
@@ -253,6 +305,8 @@ public class InteractionRegistry implements Serializable {
         if (data.isBusy) return InteractionState.Busy;
         if (data.isOpen) return InteractionState.Open;
         if (data.isFocused) return InteractionState.Focused;
+        if (!data.isPowered) return InteractionState.Unpowered;
+        if (data.hasOnOffState) return data.isOn ? InteractionState.On : InteractionState.Off;
         return InteractionState.Idle;
     }
 
@@ -260,11 +314,8 @@ public class InteractionRegistry implements Serializable {
         if (key == null) return;
         InteractableData data = getOrCreate(go);
         if (data != null) {
-            if (value == null) {
-                data.attributes.remove(key);
-            } else {
-                data.attributes.put(key, value);
-            }
+            if (value == null) data.attributes.remove(key);
+            else data.attributes.put(key, value);
         }
     }
 
@@ -274,9 +325,6 @@ public class InteractionRegistry implements Serializable {
         return data != null ? data.attributes.get(key) : null;
     }
 
-    /**
-     * Itera diretamente sobre a lista ativa sem alocar ArrayList a cada frame.
-     */
     public static int getActiveInteractablesCount() {
         synchronized (ACTIVE_INTERACTABLES) {
             return ACTIVE_INTERACTABLES.size();
@@ -285,9 +333,7 @@ public class InteractionRegistry implements Serializable {
 
     public static GameObject getActiveInteractableAt(int index) {
         synchronized (ACTIVE_INTERACTABLES) {
-            if (index >= 0 && index < ACTIVE_INTERACTABLES.size()) {
-                return ACTIVE_INTERACTABLES.get(index);
-            }
+            if (index >= 0 && index < ACTIVE_INTERACTABLES.size()) return ACTIVE_INTERACTABLES.get(index);
             return null;
         }
     }
@@ -297,5 +343,9 @@ public class InteractionRegistry implements Serializable {
         synchronized (ACTIVE_INTERACTABLES) {
             ACTIVE_INTERACTABLES.clear();
         }
+    }
+
+    private static float clamp01(float value) {
+        return Math.max(0.0f, Math.min(1.0f, value));
     }
 }
