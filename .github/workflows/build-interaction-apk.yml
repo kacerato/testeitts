@@ -71,3 +71,5 @@ jobs:
           name: interaction-debug-apk
           path: artifacts/*.apk
           if-no-files-found: error
+
+# Build input revision: resource-fixes-v2
