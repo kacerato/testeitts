@@ -25,10 +25,14 @@ public final class LadderService {
         if (!C13317e.J(interactor) || !C13317e.J(ladder) || interactor.J0() == null || ladder.J0() == null) {
             return InteractionResult.failure(InteractionResult.FailureReason.InvalidTarget, "Escada invalida");
         }
+
+        LadderSession existing = SESSIONS.get(interactor);
+        if (existing != null && existing.ladder == ladder) return InteractionResult.success(ladder);
         if (InteractionRegistry.isBusy(ladder)) {
             Object current = InteractionRegistry.getAttribute(ladder, "ladder_user");
             if (current != interactor) return InteractionResult.failure(InteractionResult.FailureReason.Occupied, "Escada ocupada");
         }
+        if (existing != null) exit(interactor, null);
 
         LadderSession session = new LadderSession();
         session.interactor = interactor;
@@ -87,9 +91,7 @@ public final class LadderService {
         return InteractionResult.success(session.ladder);
     }
 
-    public static boolean isOnLadder(GameObject interactor) {
-        return interactor != null && SESSIONS.containsKey(interactor);
-    }
+    public static boolean isOnLadder(GameObject interactor) { return interactor != null && SESSIONS.containsKey(interactor); }
 
     private static float numberAttr(GameObject object, String key, float fallback) {
         Object value = InteractionRegistry.getAttribute(object, key);
