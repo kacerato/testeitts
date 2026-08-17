@@ -12,6 +12,7 @@ import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Mecha
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Mechanisms.ValveNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Physics.DropObjectNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Physics.GrabObjectNode;
+import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Physics.InspectInteractionNodes;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Physics.ReturnObjectToOriginNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Physics.ThrowObjectNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.SendInteractionEventNode;
@@ -30,6 +31,7 @@ import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Events.Interaction.OnInte
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.ExtendedInteractionQueryNodes;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.GetInteractionDistanceNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.GetInteractionTargetNode;
+import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.InteractionHistoryNodes;
 
 /** Carrega todas as classes de nodes para ativar seus factories estaticos. */
 public class InteractionNodeRegistry {
@@ -37,11 +39,9 @@ public class InteractionNodeRegistry {
     private static boolean initialized = false;
 
     public static final Class<?>[] INTERACTION_NODE_CLASSES = new Class<?>[]{
-        // Queries existentes
+        // Queries
         GetInteractionTargetNode.class,
         GetInteractionDistanceNode.class,
-
-        // Queries expandidas
         ExtendedInteractionQueryNodes.GetInteractorNode.class,
         ExtendedInteractionQueryNodes.GetHitPositionNode.class,
         ExtendedInteractionQueryNodes.GetHitNormalNode.class,
@@ -51,25 +51,22 @@ public class InteractionNodeRegistry {
         ExtendedInteractionQueryNodes.GetHeldObjectNode.class,
         ExtendedInteractionQueryNodes.GetAnalogValueNode.class,
         ExtendedInteractionQueryNodes.GetOpenAmountNode.class,
+        InteractionHistoryNodes.GetInteractionCountNode.class,
 
-        // Events existentes
+        // Events
         OnFocusEnterNode.class,
         OnFocusExitNode.class,
         OnInteractPressedNode.class,
         OnInteractHeldNode.class,
         OnInteractionEventNode.class,
-
-        // Events expandidos
         ExtendedInteractionEventNodes.OnFocusStayNode.class,
         ExtendedInteractionEventNodes.OnInteractReleasedNode.class,
         ExtendedInteractionEventNodes.OnInteractionActionNode.class,
 
-        // Conditions existentes
+        // Conditions
         CanInteractNode.class,
         TargetHasCapabilityNode.class,
         IsLockedNode.class,
-
-        // Conditions expandidas
         ExtendedInteractionConditionNodes.IsEnabledNode.class,
         ExtendedInteractionConditionNodes.HasTagNode.class,
         ExtendedInteractionConditionNodes.IsBusyNode.class,
@@ -79,15 +76,14 @@ public class InteractionNodeRegistry {
         ExtendedInteractionConditionNodes.CooldownReadyNode.class,
         ExtendedInteractionConditionNodes.IsTargetInRangeNode.class,
         ExtendedInteractionConditionNodes.HasRequiredItemNode.class,
+        InteractionHistoryNodes.InteractionUsedBeforeNode.class,
 
-        // Core actions existentes
+        // Core actions
         SetInteractableNode.class,
         SendInteractionEventNode.class,
         ShowInteractionPromptNode.class,
         HideInteractionPromptNode.class,
         HighlightObjectNode.class,
-
-        // Core actions expandidas
         ExtendedInteractionActionNodes.SetPriorityNode.class,
         ExtendedInteractionActionNodes.SetStateNode.class,
         ExtendedInteractionActionNodes.SetTagNode.class,
@@ -104,13 +100,17 @@ public class InteractionNodeRegistry {
         ExtendedInteractionActionNodes.DialogueNode.class,
         ExtendedInteractionActionNodes.MoveInteractorToSocketNode.class,
 
-        // Physics
+        // Physics / inspection
         GrabObjectNode.class,
         DropObjectNode.class,
         ThrowObjectNode.class,
         ReturnObjectToOriginNode.class,
         ExtendedGameplayNodes.PushPullObjectNode.class,
         ExtendedGameplayNodes.TeleportObjectNode.class,
+        InspectInteractionNodes.InspectObjectNode.class,
+        InspectInteractionNodes.RotateInspectedObjectNode.class,
+        InspectInteractionNodes.ZoomInspectObjectNode.class,
+        InspectInteractionNodes.BounceObjectNode.class,
 
         // Mechanisms
         DoorNode.class,
@@ -139,7 +139,6 @@ public class InteractionNodeRegistry {
     public static synchronized void init() {
         if (initialized) return;
         initialized = true;
-
         for (Class<?> nodeClass : INTERACTION_NODE_CLASSES) {
             try {
                 Class.forName(nodeClass.getName());
