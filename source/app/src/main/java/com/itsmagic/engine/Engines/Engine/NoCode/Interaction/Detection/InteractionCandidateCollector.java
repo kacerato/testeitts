@@ -16,10 +16,14 @@ import java.util.List;
 
 /**
  * Coletor centralizado de candidatos.
- * A selecao continua usando distancia/angulo/prioridade, mas Line Of Sight e Hit Result
- * sao obtidos do mesmo PhysicsSpace/Bullet usado pela engine, sem varrer interactables como obstaculos.
+ *
+ * Primeiro faz apenas filtros geometricos baratos (distancia/angulo/prioridade).
+ * Depois valida Line Of Sight somente para os melhores candidatos. Isso evita o antigo
+ * comportamento de um Bullet rayTest por interactable por frame.
  */
 public class InteractionCandidateCollector {
+
+    private static final int MAX_LOS_CHECKS_PER_COLLECT = 4;
 
     private final Vector3 tempOrigin = new Vector3();
     private final Vector3 tempTargetPos = new Vector3();
@@ -39,17 +43,16 @@ public class InteractionCandidateCollector {
     ) {
         if (!C13317e.J(interactor) || outCandidates == null) return;
 
-        Transform rayOriginTransform = (cameraTransform != null) ? cameraTransform : interactor.J0();
+        Transform rayOriginTransform = cameraTransform != null ? cameraTransform : interactor.J0();
         if (rayOriginTransform == null) return;
 
         rayOriginTransform.K0(tempOrigin);
         Vector3 forward = rayOriginTransform.forward();
-        if (forward != null) {
-            tempForward.set(forward);
-        } else {
-            tempForward.set(0f, 0f, 1f);
-        }
+        if (forward != null) tempForward.set(forward);
+        else tempForward.set(0f, 0f, 1f);
         normalizeForward();
+
+        final boolean omniDirectional = maxAngleDeg >= 179.99f;
 
         int count = InteractionRegistry.getActiveInteractablesCount();
         for (int i = 0; i < count; i++) {
@@ -81,52 +84,108 @@ public class InteractionCandidateCollector {
                 + tempForward.getY() * normY
                 + tempForward.getZ() * normZ;
 
-            if (dot <= 0.0f) continue;
-            dot = Math.min(1.0f, dot);
+            // Ray/cone sensor continua frontal; SphereSensor usa 180 graus e aceita hemisferio traseiro.
+            if (!omniDirectional && dot <= 0.0f) continue;
+            dot = Math.max(-1.0f, Math.min(1.0f, dot));
 
             float angleDeg = (float) Math.toDegrees(Math.acos(dot));
-            float targetMaxAngle = Math.min(maxAngleDeg, data.maxInteractionAngle);
+            float targetMaxAngle = omniDirectional ? 180.0f : Math.min(maxAngleDeg, data.maxInteractionAngle);
             if (angleDeg > targetMaxAngle) continue;
 
-            PhysicsRayTestResult firstHit = raycastFirstNonInteractorHit(interactor, tempTargetPos);
-            GameObject hitObject = firstHit != null
-                ? resolveGameObject(firstHit.getCollisionObject())
-                : null;
+            InteractionCandidate candidate = InteractionCandidate.obtain(target, centerDistance, angleDeg);
+            candidate.priority = data.priority;
+            candidate.hasLineOfSight = !data.requireLineOfSight;
+            candidate.hitPosition.set(tempTargetPos);
+            candidate.hitNormal.set(-normX, -normY, -normZ);
 
-            boolean hitTarget = firstHit != null && isSameHierarchyBranch(hitObject, target);
-            boolean hasLineOfSight = firstHit == null || hitTarget;
-            if (data.requireLineOfSight && !hasLineOfSight) continue;
+            // Score preliminar apenas para ordenar quem merece os poucos raycasts de LOS.
+            float normDist = targetMaxDist > 0f ? Math.min(1f, centerDistance / targetMaxDist) : 1f;
+            float normAngle = targetMaxAngle > 0f ? Math.min(1f, angleDeg / targetMaxAngle) : 1f;
+            candidate.score = data.priority * 100f + (1f - normAngle) * 50f + (1f - normDist) * 30f;
+            outCandidates.add(candidate);
+        }
 
-            float hitDistance = centerDistance;
-            float hitX = tempTargetPos.getX();
-            float hitY = tempTargetPos.getY();
-            float hitZ = tempTargetPos.getZ();
-            float normalX = -normX;
-            float normalY = -normY;
-            float normalZ = -normZ;
+        validateBestLineOfSightCandidates(interactor, outCandidates);
+    }
 
-            if (hitTarget) {
-                float fraction = Math.max(0.0f, Math.min(1.0f, firstHit.getHitFraction()));
-                hitDistance = centerDistance * fraction;
-                hitX = tempOrigin.getX() + dx * fraction;
-                hitY = tempOrigin.getY() + dy * fraction;
-                hitZ = tempOrigin.getZ() + dz * fraction;
+    private void validateBestLineOfSightCandidates(GameObject interactor, List<InteractionCandidate> candidates) {
+        int checks = 0;
 
-                Vector3f hitNormal = firstHit.getHitNormalLocal(tempHitNormal);
-                if (hitNormal != null) {
-                    normalX = hitNormal.f81611x;
-                    normalY = hitNormal.f81612y;
-                    normalZ = hitNormal.f81613z;
+        while (checks < MAX_LOS_CHECKS_PER_COLLECT) {
+            InteractionCandidate bestUnchecked = null;
+            float bestScore = -Float.MAX_VALUE;
+
+            for (int i = 0; i < candidates.size(); i++) {
+                InteractionCandidate candidate = candidates.get(i);
+                if (candidate == null || !C13317e.J(candidate.target) || candidate.hasLineOfSight) continue;
+                InteractionRegistry.InteractableData data = InteractionRegistry.get(candidate.target);
+                if (data == null || !data.requireLineOfSight) continue;
+                Object checked = data.attributes.get("_los_checked_frame_candidate_" + System.identityHashCode(candidate));
+                if (checked != null) continue;
+                if (candidate.score > bestScore) {
+                    bestScore = candidate.score;
+                    bestUnchecked = candidate;
                 }
             }
 
-            InteractionCandidate candidate = InteractionCandidate.obtain(target, hitDistance, angleDeg);
-            candidate.priority = data.priority;
-            candidate.hasLineOfSight = hasLineOfSight;
-            candidate.hitPosition.set(hitX, hitY, hitZ);
-            candidate.hitNormal.set(normalX, normalY, normalZ);
-            outCandidates.add(candidate);
+            if (bestUnchecked == null) break;
+
+            InteractionRegistry.InteractableData data = InteractionRegistry.get(bestUnchecked.target);
+            if (data != null) {
+                data.attributes.put("_los_checked_frame_candidate_" + System.identityHashCode(bestUnchecked), Boolean.TRUE);
+            }
+
+            boolean visible = fillLineOfSight(interactor, bestUnchecked);
+            bestUnchecked.hasLineOfSight = visible;
+            checks++;
         }
+
+        // Remove bloqueados e candidatos LOS que nao entraram no budget deste frame.
+        for (int i = candidates.size() - 1; i >= 0; i--) {
+            InteractionCandidate candidate = candidates.get(i);
+            InteractionRegistry.InteractableData data = InteractionRegistry.get(candidate.target);
+            if (data != null) {
+                data.attributes.remove("_los_checked_frame_candidate_" + System.identityHashCode(candidate));
+                if (data.requireLineOfSight && !candidate.hasLineOfSight) {
+                    candidates.remove(i);
+                    InteractionCandidate.recycle(candidate);
+                }
+            }
+        }
+    }
+
+    private boolean fillLineOfSight(GameObject interactor, InteractionCandidate candidate) {
+        if (candidate == null || !C13317e.J(candidate.target)) return false;
+        Transform targetTransform = candidate.target.J0();
+        if (targetTransform == null) return false;
+        targetTransform.K0(tempTargetPos);
+
+        PhysicsRayTestResult firstHit = raycastFirstNonInteractorHit(interactor, tempTargetPos);
+        if (firstHit == null) {
+            // Sem collider bloqueando: geometricamente visivel.
+            return true;
+        }
+
+        GameObject hitObject = resolveGameObject(firstHit.getCollisionObject());
+        boolean hitTarget = isSameHierarchyBranch(hitObject, candidate.target);
+        if (!hitTarget) return false;
+
+        float fraction = Math.max(0.0f, Math.min(1.0f, firstHit.getHitFraction()));
+        float dx = tempTargetPos.getX() - tempOrigin.getX();
+        float dy = tempTargetPos.getY() - tempOrigin.getY();
+        float dz = tempTargetPos.getZ() - tempOrigin.getZ();
+        candidate.distance = (float) Math.sqrt(dx * dx + dy * dy + dz * dz) * fraction;
+        candidate.hitPosition.set(
+            tempOrigin.getX() + dx * fraction,
+            tempOrigin.getY() + dy * fraction,
+            tempOrigin.getZ() + dz * fraction
+        );
+
+        Vector3f hitNormal = firstHit.getHitNormalLocal(tempHitNormal);
+        if (hitNormal != null) {
+            candidate.hitNormal.set(hitNormal.f81611x, hitNormal.f81612y, hitNormal.f81613z);
+        }
+        return true;
     }
 
     private void normalizeForward() {
@@ -142,19 +201,13 @@ public class InteractionCandidateCollector {
         tempForward.set(x * invMag, y * invMag, z * invMag);
     }
 
-    /**
-     * Retorna o primeiro collider fisico que nao pertence ao proprio interactor.
-     * Usa o mesmo lock global empregado pelo subsistema de Rigidbody ao alterar o PhysicsSpace.
-     */
     private PhysicsRayTestResult raycastFirstNonInteractorHit(GameObject interactor, Vector3 targetPosition) {
         rayFrom.set(tempOrigin.getX(), tempOrigin.getY(), tempOrigin.getZ());
         rayTo.set(targetPosition.getX(), targetPosition.getY(), targetPosition.getZ());
         rayResults.clear();
 
         try {
-            if (K8.a.f10984o == null || K8.a.f10984o.f2506c == null) {
-                return null;
-            }
+            if (K8.a.f10984o == null || K8.a.f10984o.f2506c == null) return null;
             synchronized (Cc.c.f2503k) {
                 K8.a.f10984o.f2506c.rayTest(rayFrom, rayTo, rayResults);
             }
@@ -166,11 +219,8 @@ public class InteractionCandidateCollector {
         for (int i = 0; i < rayResults.size(); i++) {
             PhysicsRayTestResult result = rayResults.get(i);
             if (result == null || result.getCollisionObject() == null) continue;
-
             GameObject hitObject = resolveGameObject(result.getCollisionObject());
-            if (C13317e.J(hitObject) && isSameHierarchyBranch(hitObject, interactor)) {
-                continue;
-            }
+            if (C13317e.J(hitObject) && isSameHierarchyBranch(hitObject, interactor)) continue;
             return result;
         }
         return null;
@@ -179,15 +229,9 @@ public class InteractionCandidateCollector {
     private GameObject resolveGameObject(PhysicsCollisionObject collisionObject) {
         if (collisionObject == null) return null;
         Object userObject = collisionObject.getUserObject();
-        if (userObject instanceof PhysicsComponent) {
-            return ((PhysicsComponent) userObject).getGameObjectForPhysics();
-        }
-        if (userObject instanceof Component) {
-            return ((Component) userObject).f79250n;
-        }
-        if (userObject instanceof GameObject) {
-            return (GameObject) userObject;
-        }
+        if (userObject instanceof PhysicsComponent) return ((PhysicsComponent) userObject).getGameObjectForPhysics();
+        if (userObject instanceof Component) return ((Component) userObject).f79250n;
+        if (userObject instanceof GameObject) return (GameObject) userObject;
         return null;
     }
 
