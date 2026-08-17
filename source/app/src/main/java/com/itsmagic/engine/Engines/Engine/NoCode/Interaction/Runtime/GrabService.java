@@ -11,10 +11,7 @@ import gb.C13317e;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-/**
- * Servico central de grab/drop/throw.
- * Physics Follow usa um controlador PD integrado no deltaTime e a velocidade real do Rigidbody.
- */
+/** Servico central de grab/drop/throw com Transform Follow e Physics Follow. */
 public class GrabService {
 
     public static class GrabSession {
@@ -35,23 +32,10 @@ public class GrabService {
 
     private static final Map<GameObject, GrabSession> ACTIVE_GRABS = new ConcurrentHashMap<>();
 
-    public static InteractionResult grab(
-        GameObject interactor,
-        GameObject target,
-        Transform cameraTransform,
-        float holdDistance,
-        float followSpeed,
-        boolean usePhysics
-    ) {
-        if (!C13317e.J(target)) {
-            return InteractionResult.failure(InteractionResult.FailureReason.InvalidTarget, "Alvo invalido");
-        }
-        if (InteractionRegistry.isLocked(target)) {
-            return InteractionResult.failure(InteractionResult.FailureReason.Locked, "Objeto trancado");
-        }
-        if (InteractionRegistry.isBusy(target) || InteractionRegistry.isHeld(target)) {
-            return InteractionResult.failure(InteractionResult.FailureReason.Busy, "Objeto ja esta sendo segurado");
-        }
+    public static InteractionResult grab(GameObject interactor, GameObject target, Transform cameraTransform, float holdDistance, float followSpeed, boolean usePhysics) {
+        if (!C13317e.J(target)) return InteractionResult.failure(InteractionResult.FailureReason.InvalidTarget, "Alvo invalido");
+        if (InteractionRegistry.isLocked(target)) return InteractionResult.failure(InteractionResult.FailureReason.Locked, "Objeto trancado");
+        if (InteractionRegistry.isBusy(target) || InteractionRegistry.isHeld(target)) return InteractionResult.failure(InteractionResult.FailureReason.Busy, "Objeto ja esta sendo segurado");
 
         Transform targetTransform = target.J0();
         if (targetTransform != null) {
@@ -59,14 +43,15 @@ public class GrabService {
             if (originPos != null && InteractionRegistry.getAttribute(target, "origin_pos") == null) {
                 InteractionRegistry.setAttribute(target, "origin_pos", new Vector3(originPos));
             }
+            if (targetTransform.f79321B != null && InteractionRegistry.getAttribute(target, "origin_rot") == null) {
+                InteractionRegistry.setAttribute(target, "origin_rot", new Vector3(targetTransform.f79321B));
+            }
         }
 
         GrabSession session = new GrabSession();
         session.interactor = interactor;
         session.heldObject = target;
-        session.cameraTransform = cameraTransform != null
-            ? cameraTransform
-            : (interactor != null ? interactor.J0() : null);
+        session.cameraTransform = cameraTransform != null ? cameraTransform : (interactor != null ? interactor.J0() : null);
         session.holdDistance = holdDistance > 0f ? holdDistance : 2.0f;
         session.followSpeed = followSpeed > 0f ? followSpeed : 15.0f;
         session.usePhysics = usePhysics;
@@ -79,9 +64,7 @@ public class GrabService {
                     session.originalUseGravity = session.rigidbody.useGravity;
                     session.rigidbody.useGravity = false;
                     Vector3 initialVelocity = session.rigidbody.getVelocity();
-                    if (initialVelocity != null) {
-                        session.commandVelocity.set(initialVelocity);
-                    }
+                    if (initialVelocity != null) session.commandVelocity.set(initialVelocity);
                     break;
                 }
             }
@@ -90,6 +73,7 @@ public class GrabService {
         ACTIVE_GRABS.put(interactor != null ? interactor : target, session);
         InteractionRegistry.setHeld(target, true, interactor);
         InteractionRegistry.setBusy(target, true);
+        InteractionDispatcher.dispatchCustomEvent("grabbed", target, interactor);
         return InteractionResult.success(target);
     }
 
@@ -103,6 +87,7 @@ public class GrabService {
             InteractionRegistry.setHeld(session.heldObject, false, null);
             InteractionRegistry.setBusy(session.heldObject, false);
             InteractionRegistry.setState(session.heldObject, InteractionState.Dropped);
+            InteractionDispatcher.dispatchCustomEvent("dropped", session.heldObject, interactor);
         }
     }
 
@@ -111,22 +96,21 @@ public class GrabService {
         GrabSession session = ACTIVE_GRABS.remove(interactor);
         if (session == null || !C13317e.J(session.heldObject)) return;
 
-        InteractionRegistry.setHeld(session.heldObject, false, null);
-        InteractionRegistry.setBusy(session.heldObject, false);
-        InteractionRegistry.setState(session.heldObject, InteractionState.Dropped);
+        GameObject thrownObject = session.heldObject;
+        InteractionRegistry.setHeld(thrownObject, false, null);
+        InteractionRegistry.setBusy(thrownObject, false);
+        InteractionRegistry.setState(thrownObject, InteractionState.Dropped);
 
-        Transform objT = session.heldObject.J0();
+        Transform objT = thrownObject.J0();
         if (objT == null) {
             restorePhysics(session);
+            InteractionDispatcher.dispatchCustomEvent("thrown", thrownObject, Float.valueOf(force));
             return;
         }
 
         Vector3 throwDir = new Vector3(0f, 0f, 1f);
-        if (customDir != null) {
-            throwDir.set(customDir);
-        } else if (session.cameraTransform != null && session.cameraTransform.forward() != null) {
-            throwDir.set(session.cameraTransform.forward());
-        }
+        if (customDir != null) throwDir.set(customDir);
+        else if (session.cameraTransform != null && session.cameraTransform.forward() != null) throwDir.set(session.cameraTransform.forward());
         normalize(throwDir);
 
         float throwForce = force > 0f ? force : 12.0f;
@@ -137,7 +121,6 @@ public class GrabService {
             float carryX = currentVelocity != null ? currentVelocity.getX() * 0.30f : 0f;
             float carryY = currentVelocity != null ? currentVelocity.getY() * 0.30f : 0f;
             float carryZ = currentVelocity != null ? currentVelocity.getZ() * 0.30f : 0f;
-
             session.commandVelocity.set(
                 carryX + throwDir.getX() * throwForce,
                 carryY + throwDir.getY() * throwForce + 2.0f,
@@ -154,19 +137,21 @@ public class GrabService {
                 ));
             }
         }
+        InteractionDispatcher.dispatchCustomEvent("thrown", thrownObject, Float.valueOf(throwForce));
     }
 
     public static void returnToOrigin(GameObject target) {
         if (!C13317e.J(target)) return;
         Object originObj = InteractionRegistry.getAttribute(target, "origin_pos");
-        if (originObj instanceof Vector3) {
-            Transform t = target.J0();
-            if (t != null) {
-                t.f79337l.f((Vector3) originObj);
-            }
+        Object originRot = InteractionRegistry.getAttribute(target, "origin_rot");
+        Transform t = target.J0();
+        if (t != null) {
+            if (originObj instanceof Vector3) t.f79337l.f(new Vector3((Vector3) originObj));
+            if (originRot instanceof Vector3 && t.f79321B != null) t.f79321B.set((Vector3) originRot);
         }
         InteractionRegistry.setHeld(target, false, null);
         InteractionRegistry.setBusy(target, false);
+        InteractionDispatcher.dispatchCustomEvent("returned_to_origin", target, null);
     }
 
     public static void update(float deltaTime) {
@@ -175,7 +160,6 @@ public class GrabService {
 
         for (GrabSession session : ACTIVE_GRABS.values()) {
             if (!C13317e.J(session.heldObject)) continue;
-
             Transform objTransform = session.heldObject.J0();
             Transform camTransform = session.cameraTransform;
             if (objTransform == null || camTransform == null) continue;
@@ -187,7 +171,6 @@ public class GrabService {
             float targetX = camPos.getX() + camForward.getX() * session.holdDistance;
             float targetY = camPos.getY() + camForward.getY() * session.holdDistance;
             float targetZ = camPos.getZ() + camForward.getZ() * session.holdDistance;
-
             Vector3 curPos = objTransform.J0();
             if (curPos == null) continue;
 
@@ -195,7 +178,6 @@ public class GrabService {
             float errY = targetY - curPos.getY();
             float errZ = targetZ - curPos.getZ();
             float errorMagnitude = (float) Math.sqrt(errX * errX + errY * errY + errZ * errZ);
-
             if (errorMagnitude > session.maxGrabDistance) {
                 drop(session.interactor);
                 continue;
@@ -206,64 +188,43 @@ public class GrabService {
                 float currentVx = currentVelocity != null ? currentVelocity.getX() : 0f;
                 float currentVy = currentVelocity != null ? currentVelocity.getY() : 0f;
                 float currentVz = currentVelocity != null ? currentVelocity.getZ() : 0f;
-
-                // PD: a = Kp * erro - Kd * velocidade; v(t+dt) = v(t) + a * dt.
                 float accelX = errX * session.springStrength - currentVx * session.damping;
                 float accelY = errY * session.springStrength - currentVy * session.damping;
                 float accelZ = errZ * session.springStrength - currentVz * session.damping;
-
                 float vx = currentVx + accelX * dt;
                 float vy = currentVy + accelY * dt;
                 float vz = currentVz + accelZ * dt;
-
                 float velocityMagnitude = (float) Math.sqrt(vx * vx + vy * vy + vz * vz);
                 if (velocityMagnitude > session.maxVelocity) {
                     float factor = session.maxVelocity / velocityMagnitude;
-                    vx *= factor;
-                    vy *= factor;
-                    vz *= factor;
+                    vx *= factor; vy *= factor; vz *= factor;
                 }
-
                 session.commandVelocity.set(vx, vy, vz);
                 session.rigidbody.setVelocity(session.commandVelocity);
             } else {
-                float t = Math.min(1.0f, dt * session.followSpeed);
+                float lerp = Math.min(1.0f, dt * session.followSpeed);
                 objTransform.f79337l.f(new Vector3(
-                    curPos.getX() + errX * t,
-                    curPos.getY() + errY * t,
-                    curPos.getZ() + errZ * t
+                    curPos.getX() + errX * lerp,
+                    curPos.getY() + errY * lerp,
+                    curPos.getZ() + errZ * lerp
                 ));
             }
         }
     }
 
     private static void restorePhysics(GrabSession session) {
-        if (session != null && session.rigidbody != null) {
-            session.rigidbody.useGravity = session.originalUseGravity;
-        }
+        if (session != null && session.rigidbody != null) session.rigidbody.useGravity = session.originalUseGravity;
     }
 
     private static void normalize(Vector3 vector) {
         if (vector == null) return;
-        float x = vector.getX();
-        float y = vector.getY();
-        float z = vector.getZ();
+        float x = vector.getX(), y = vector.getY(), z = vector.getZ();
         float magnitudeSq = x * x + y * y + z * z;
-        if (magnitudeSq <= 0.000001f) {
-            vector.set(0f, 0f, 1f);
-            return;
-        }
+        if (magnitudeSq <= 0.000001f) { vector.set(0f, 0f, 1f); return; }
         float invMagnitude = 1.0f / (float) Math.sqrt(magnitudeSq);
         vector.set(x * invMagnitude, y * invMagnitude, z * invMagnitude);
     }
 
-    public static boolean isHolding(GameObject interactor) {
-        return interactor != null && ACTIVE_GRABS.containsKey(interactor);
-    }
-
-    public static GameObject getHeldObject(GameObject interactor) {
-        if (interactor == null) return null;
-        GrabSession session = ACTIVE_GRABS.get(interactor);
-        return session != null ? session.heldObject : null;
-    }
+    public static boolean isHolding(GameObject interactor) { return interactor != null && ACTIVE_GRABS.containsKey(interactor); }
+    public static GameObject getHeldObject(GameObject interactor) { if (interactor == null) return null; GrabSession s=ACTIVE_GRABS.get(interactor); return s!=null?s.heldObject:null; }
 }
