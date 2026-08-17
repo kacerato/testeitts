@@ -16,15 +16,10 @@ import com.itsmagic.engine.Engines.Engine.ObjectOriented.Transform.Transform;
 import com.itsmagic.engine.Engines.Engine.World.World;
 import gb.C13317e;
 
-/**
- * Runtime central do subsistema de interacao.
- * Executa uma vez por frame global da engine, mantendo uma unica fonte de verdade
- * para interactor, camera, alvo focado, contexto e servicos continuos.
- */
+/** Runtime central do subsistema de interacao. */
 public class InteractionRuntime {
 
     private static InteractionRuntime instance;
-
     private GameObject interactor;
     private Transform cameraTransform;
 
@@ -36,7 +31,6 @@ public class InteractionRuntime {
     private GameObject currentTarget;
     private GameObject pressedTarget;
     private String pressedAction;
-
     private long lastFrameCount = -1L;
 
     public static synchronized InteractionRuntime getInstance() {
@@ -59,13 +53,10 @@ public class InteractionRuntime {
     public void configureSensor(float maxDistance, float maxAngleDeg) {
         InteractionSensor sensor = resolver.getSensor();
         if (sensor == null) return;
-
         float safeDistance = Math.max(0.1f, Math.min(100.0f, maxDistance));
         float safeAngle = Math.max(1.0f, Math.min(180.0f, maxAngleDeg));
         sensor.setMaxDistance(safeDistance);
-        if (sensor instanceof InteractionRaySensor) {
-            ((InteractionRaySensor) sensor).setMaxConeAngle(safeAngle);
-        }
+        if (sensor instanceof InteractionRaySensor) ((InteractionRaySensor) sensor).setMaxConeAngle(safeAngle);
     }
 
     public void clearPlayer(GameObject expectedInteractor) {
@@ -82,7 +73,6 @@ public class InteractionRuntime {
     public void update(World world, long frameCount, float deltaTime) {
         if (this.lastFrameCount == frameCount) return;
         this.lastFrameCount = frameCount;
-
         float dt = (deltaTime > 0f && deltaTime < 0.1f) ? deltaTime : 0.0166f;
 
         if (!C13317e.J(interactor) || cameraTransform == null) autoDiscoverPlayerAndCamera();
@@ -90,6 +80,7 @@ public class InteractionRuntime {
         GrabService.update(dt);
         DoorService.update(dt);
         ElevatorService.update(dt);
+        ButtonService.update(dt);
         holdSession.update(dt);
 
         if (!C13317e.J(interactor)) return;
@@ -118,18 +109,10 @@ public class InteractionRuntime {
                 if (data != null) {
                     String pText = data.promptText != null ? data.promptText : (String) data.attributes.get("prompt_text");
                     String pIcon = data.promptIcon != null ? data.promptIcon : (String) data.attributes.get("prompt_icon");
-                    if (pText != null) {
-                        InteractionPromptController.showPrompt(pText, pIcon, "interact", 0f, data.priority);
-                    }
-                    InteractionHighlightController.highlight(
-                        currentTarget,
-                        InteractionHighlightController.HighlightMode.MaterialTint,
-                        1.0f,
-                        0xFFFFFF
-                    );
+                    if (pText != null) InteractionPromptController.showPrompt(pText, pIcon, "interact", 0f, data.priority);
+                    InteractionHighlightController.highlight(currentTarget, InteractionHighlightController.HighlightMode.MaterialTint, 1.0f, 0xFFFFFF);
                 }
             }
-
             previousTarget = currentTarget;
         } else if (C13317e.J(currentTarget)) {
             fillContextFromCandidate(currentTarget, bestCandidate);
@@ -144,7 +127,6 @@ public class InteractionRuntime {
 
         GameObject camObj = mainCam.f79250n;
         if (this.cameraTransform == null) this.cameraTransform = camObj.J0();
-
         if (!C13317e.J(this.interactor)) {
             GameObject explicitInteractor = findInteractorOwner(camObj);
             if (C13317e.J(explicitInteractor)) this.interactor = explicitInteractor;
@@ -221,15 +203,11 @@ public class InteractionRuntime {
             currentContext.angle = bestCandidate.angle;
             currentContext.interactionPoint.set(bestCandidate.hitPosition);
         }
-
         InteractionDispatcher.dispatchInteract(currentContext);
     }
 
     public void handleActionReleased(String action, GameObject actor) {
-        String logicalAction = action != null && !action.trim().isEmpty()
-            ? action.trim().toLowerCase()
-            : (pressedAction != null ? pressedAction : "interact");
-
+        String logicalAction = action != null && !action.trim().isEmpty() ? action.trim().toLowerCase() : (pressedAction != null ? pressedAction : "interact");
         GameObject releaseTarget = C13317e.J(pressedTarget) ? pressedTarget : currentTarget;
         GameObject actObj = C13317e.J(actor) ? actor : interactor;
 
