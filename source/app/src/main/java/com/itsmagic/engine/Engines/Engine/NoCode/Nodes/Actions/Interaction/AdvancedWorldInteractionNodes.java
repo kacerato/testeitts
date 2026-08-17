@@ -48,7 +48,7 @@ public final class AdvancedWorldInteractionNodes {
         public void m0(){
             InteractionRuntime rt=InteractionRuntime.getInstance();
             GameObject actor=Aa.b.b(this,f79021a,inputs[1]);if(!C13317e.J(actor))actor=rt.getInteractor();
-            if(!m.S(Q(inputs[2])){GrabService.drop(actor);y0(outputs[3],InteractionResult.FailureReason.None.name());u(outputs[1]);return;}
+            if(!m.S(Q(inputs[2]))){GrabService.drop(actor);y0(outputs[3],InteractionResult.FailureReason.None.name());u(outputs[1]);return;}
             GameObject object=Aa.b.b(this,f79021a,inputs[0]);if(!C13317e.J(object)&&f79021a!=null)object=f79021a.h0();
             InteractionResult r=GrabService.grab(actor,object,rt.getCameraTransform(),m.V(Q(inputs[3])),m.V(Q(inputs[4])),true);
             y0(outputs[3],r.failureReason.name());u(r.success?outputs[0]:outputs[2]);

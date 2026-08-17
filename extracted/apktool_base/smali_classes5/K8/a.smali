@@ -458,6 +458,16 @@
         }
     .end annotation
 
+    invoke-static {}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionRuntime;->getInstance()Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionRuntime;
+
+    move-result-object v0
+
+    invoke-static {}, LK8/d;->d()F
+
+    move-result v1
+
+    invoke-virtual {v0, p0, p1, p2, v1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionRuntime;->update(Lcom/itsmagic/engine/Engines/Engine/World/World;JF)V
+
     invoke-static {}, LR8/f;->y()I
 
     move-result p0
