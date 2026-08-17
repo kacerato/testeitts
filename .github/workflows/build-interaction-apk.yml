@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - build/interaction-apk
+  pull_request:
+    branches:
+      - feature/modular-interaction-system
   workflow_dispatch:
 
 permissions:
