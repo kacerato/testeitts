@@ -36,7 +36,8 @@ public final class VehicleService {
             return InteractionResult.failure(InteractionResult.FailureReason.Locked, "Veiculo trancado");
         }
 
-        exit(interactor, null);
+        // Entrar em outro veiculo finaliza a sessao anterior; trocar assento usa switchSeat().
+        if (SESSIONS.containsKey(interactor)) exit(interactor, null);
 
         VehicleSession session = new VehicleSession();
         session.interactor = interactor;
@@ -60,15 +61,27 @@ public final class VehicleService {
 
     public static InteractionResult switchSeat(GameObject interactor, GameObject newSeat) {
         VehicleSession session = SESSIONS.get(interactor);
-        if (session == null || !C13317e.J(session.vehicle)) {
-            return InteractionResult.failure(InteractionResult.FailureReason.InvalidTarget, "Interactor nao esta em veiculo");
+        if (session == null || !C13317e.J(session.vehicle) || !C13317e.J(newSeat)
+            || newSeat.J0() == null || newSeat.J0().J0() == null || interactor.J0() == null) {
+            return InteractionResult.failure(InteractionResult.FailureReason.InvalidTarget, "Assento invalido ou interactor fora do veiculo");
         }
-        GameObject vehicle = session.vehicle;
-        if (C13317e.J(session.seat)) InteractionRegistry.setAttribute(session.seat, "occupied_by", null);
-        SESSIONS.remove(interactor);
-        InteractionResult result = enter(interactor, vehicle, newSeat);
-        if (result.success) InteractionDispatcher.dispatchCustomEvent("vehicle_seat_switched", vehicle, newSeat);
-        return result;
+
+        Object occupant = InteractionRegistry.getAttribute(newSeat, "occupied_by");
+        if (occupant instanceof GameObject && C13317e.J((GameObject) occupant) && occupant != interactor) {
+            return InteractionResult.failure(InteractionResult.FailureReason.Occupied, "Assento ocupado");
+        }
+
+        GameObject oldSeat = session.seat;
+        if (C13317e.J(oldSeat)) InteractionRegistry.setAttribute(oldSeat, "occupied_by", null);
+
+        session.seat = newSeat;
+        InteractionRegistry.setAttribute(newSeat, "occupied_by", interactor);
+        InteractionRegistry.setAttribute(interactor, "current_vehicle_seat", newSeat);
+        interactor.J0().f79337l.f(new Vector3(newSeat.J0().J0()));
+        InteractionDispatcher.dispatchCustomEvent("vehicle_seat_exited", oldSeat, interactor);
+        InteractionDispatcher.dispatchCustomEvent("vehicle_seat_switched", session.vehicle, newSeat);
+        InteractionDispatcher.dispatchCustomEvent("vehicle_seat_entered", newSeat, interactor);
+        return InteractionResult.success(newSeat);
     }
 
     public static InteractionResult exit(GameObject interactor, GameObject exitPoint) {
@@ -88,6 +101,7 @@ public final class VehicleService {
 
         InteractionRegistry.setAttribute(interactor, "current_vehicle", null);
         InteractionRegistry.setAttribute(interactor, "current_vehicle_seat", null);
+        InteractionDispatcher.dispatchCustomEvent("vehicle_seat_exited", session.seat, interactor);
         InteractionDispatcher.dispatchCustomEvent("vehicle_exited", session.vehicle, interactor);
         return InteractionResult.success(interactor);
     }
@@ -105,17 +119,7 @@ public final class VehicleService {
         return InteractionResult.success(vehicle);
     }
 
-    public static boolean isInside(GameObject interactor) {
-        return interactor != null && SESSIONS.containsKey(interactor);
-    }
-
-    public static GameObject getVehicle(GameObject interactor) {
-        VehicleSession session = SESSIONS.get(interactor);
-        return session != null ? session.vehicle : null;
-    }
-
-    public static GameObject getSeat(GameObject interactor) {
-        VehicleSession session = SESSIONS.get(interactor);
-        return session != null ? session.seat : null;
-    }
+    public static boolean isInside(GameObject interactor) { return interactor != null && SESSIONS.containsKey(interactor); }
+    public static GameObject getVehicle(GameObject interactor) { VehicleSession s=SESSIONS.get(interactor); return s!=null?s.vehicle:null; }
+    public static GameObject getSeat(GameObject interactor) { VehicleSession s=SESSIONS.get(interactor); return s!=null?s.seat:null; }
 }
