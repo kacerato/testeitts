@@ -49,6 +49,19 @@ jobs:
         shell: bash
         run: python3 work/fix_interaction_smali_aliases.py extracted/apktool_base/smali_classes10
 
+      - name: Verify Interaction smali ABI
+        id: abi
+        shell: bash
+        run: python3 work/verify_interaction_smali_abi.py extracted/apktool_base --report interaction-abi-report.txt
+
+      - name: Upload ABI report on failure
+        if: failure() && steps.abi.outcome == 'failure'
+        uses: actions/upload-artifact@v4
+        with:
+          name: interaction-abi-report
+          path: interaction-abi-report.txt
+          if-no-files-found: warn
+
       - name: Prepare manifest
         shell: bash
         run: |
