@@ -18,10 +18,15 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
-      - name: Checkout
+      - name: Checkout build inputs
         uses: actions/checkout@v4
         with:
           lfs: false
+          sparse-checkout: |
+            .github
+            source
+            work
+          sparse-checkout-cone-mode: true
 
       - name: Set up JDK 17
         uses: actions/setup-java@v4
