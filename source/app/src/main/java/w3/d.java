@@ -182,10 +182,9 @@ public class d {
 
     public static byte[] c(File signatureFile, PrivateKey privateKey, X509Certificate certificate) throws Exception {
         org.bouncycastle.operator.jcajce.b bVar = new org.bouncycastle.operator.jcajce.b(k(certificate));
-        C14720a c14720a = f126412e;
-        InterfaceC3013f b10 = bVar.g(c14720a).b(privateKey);
+        InterfaceC3013f b10 = bVar.b(privateKey);
         P p10 = new P();
-        p10.i(new C14646g(new org.bouncycastle.operator.jcajce.d().e(c14720a).b()).a(b10, certificate));
+        p10.i(new C14646g(new org.bouncycastle.operator.jcajce.d().b()).a(b10, certificate));
         p10.f(new org.bouncycastle.cert.jcajce.e(Collections.singletonList(certificate)));
         return p10.o(new G(Files.readAllBytes(signatureFile.toPath())), false).getEncoded();
     }
@@ -287,8 +286,7 @@ public class d {
         C13228d c13228d = new C13228d("CN=ITsMagic Offline AAB");
         BigInteger bit = new BigInteger(160, new SecureRandom()).setBit(0);
         org.bouncycastle.operator.jcajce.b bVar = new org.bouncycastle.operator.jcajce.b("SHA256withRSA");
-        C14720a c14720a = f126412e;
-        X509Certificate a10 = new JcaX509CertificateConverter().c(c14720a).a(new org.bouncycastle.cert.jcajce.n(c13228d, bit, date, time, c13228d, generateKeyPair.getPublic()).e(bVar.g(c14720a).b(generateKeyPair.getPrivate())));
+        X509Certificate a10 = new JcaX509CertificateConverter().a(new org.bouncycastle.cert.jcajce.n(c13228d, bit, date, time, c13228d, generateKeyPair.getPublic()).e(bVar.b(generateKeyPair.getPrivate())));
         a10.checkValidity(new Date());
         a10.verify(generateKeyPair.getPublic());
         char[] u10 = u(keyStorePassword, "Keystore password");

@@ -477,11 +477,7 @@
 
     invoke-direct {v1, v0}, Lorg/bouncycastle/operator/jcajce/b;-><init>(Ljava/lang/String;)V
 
-    sget-object v0, Lw3/d;->e:Lorg/bouncycastle/jce/provider/a;
-
-    invoke-virtual {v1, v0}, Lorg/bouncycastle/operator/jcajce/b;->g(Ljava/security/Provider;)Lorg/bouncycastle/operator/jcajce/b;
-
-    move-result-object v1
+    # removed setProvider(BC) to use default Android JCA (Conscrypt/AndroidOpenSSL)
 
     invoke-virtual {v1, p1}, Lorg/bouncycastle/operator/jcajce/b;->b(Ljava/security/PrivateKey;)LQk/f;
 
@@ -497,9 +493,7 @@
 
     invoke-direct {v3}, Lorg/bouncycastle/operator/jcajce/d;-><init>()V
 
-    invoke-virtual {v3, v0}, Lorg/bouncycastle/operator/jcajce/d;->e(Ljava/security/Provider;)Lorg/bouncycastle/operator/jcajce/d;
-
-    move-result-object v0
+    move-object v0, v3
 
     invoke-virtual {v0}, Lorg/bouncycastle/operator/jcajce/d;->b()LQk/q;
 
@@ -1129,11 +1123,7 @@
 
     invoke-direct {v3, v4}, Lorg/bouncycastle/operator/jcajce/b;-><init>(Ljava/lang/String;)V
 
-    sget-object v4, Lw3/d;->e:Lorg/bouncycastle/jce/provider/a;
-
-    invoke-virtual {v3, v4}, Lorg/bouncycastle/operator/jcajce/b;->g(Ljava/security/Provider;)Lorg/bouncycastle/operator/jcajce/b;
-
-    move-result-object v3
+    # removed setProvider(BC) to use default Android JCA (Conscrypt/AndroidOpenSSL)
 
     invoke-virtual {v2}, Ljava/security/KeyPair;->getPrivate()Ljava/security/PrivateKey;
 
@@ -1147,9 +1137,7 @@
 
     invoke-direct {v3}, Lorg/bouncycastle/cert/jcajce/JcaX509CertificateConverter;-><init>()V
 
-    invoke-virtual {v3, v4}, Lorg/bouncycastle/cert/jcajce/JcaX509CertificateConverter;->c(Ljava/security/Provider;)Lorg/bouncycastle/cert/jcajce/JcaX509CertificateConverter;
-
-    move-result-object v11
+    move-object v11, v3
 
     new-instance v12, Lorg/bouncycastle/cert/jcajce/n;
 
