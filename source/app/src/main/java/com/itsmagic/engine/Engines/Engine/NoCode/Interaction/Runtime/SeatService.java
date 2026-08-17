@@ -30,7 +30,10 @@ public final class SeatService {
             return InteractionResult.failure(InteractionResult.FailureReason.Occupied, "Assento ocupado");
         }
 
+        VehicleService.exit(interactor, null);
+        LadderService.exit(interactor, null);
         stand(interactor, null);
+
         SeatSession session = new SeatSession();
         session.interactor = interactor;
         session.seat = seat;
