@@ -44,8 +44,8 @@ public final class InteractionDetectionQueryNodes {
         public void m0(){
             InteractionRuntime rt=InteractionRuntime.getInstance();
             GameObject actor=Aa.b.b(this,this.f79021a,inputs[0]);if(!C13317e.J(actor))actor=rt.getInteractor();
-            InteractionCapability cap=InteractionCapability.fromString(m.Y(Q(inputs[1])));
-            String tag=m.Y(Q(inputs[2]));if(tag!=null&&tag.trim().isEmpty())tag=null;
+            InteractionCapability cap=InteractionCapability.fromString(m.i0(Q(inputs[1])));
+            String tag=m.i0(Q(inputs[2]));if(tag!=null&&tag.trim().isEmpty())tag=null;
             GameObject target=rt.getResolver().resolveTarget(actor,rt.getCameraTransform(),cap,tag);
             InteractionCandidate candidate=rt.getResolver().getCurrentResolvedCandidate();
             y0(outputs[2],target);

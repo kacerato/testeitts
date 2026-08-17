@@ -98,9 +98,9 @@ public class HighlightObjectNode extends NoCodeNode implements F {
         }
 
         if (C13317e.J(target)) {
-            boolean active = m.S(Q(this.inputs[1]));
+            boolean active = m.O(Q(this.inputs[1]));
             if (active) {
-                String modeStr = m.Y(Q(this.inputs[2]));
+                String modeStr = m.i0(Q(this.inputs[2]));
                 float intensity = m.V(Q(this.inputs[3]));
                 InteractionHighlightController.HighlightMode mode = InteractionHighlightController.HighlightMode.MaterialTint;
                 if ("Outline".equalsIgnoreCase(modeStr)) {

@@ -60,7 +60,7 @@ public class ValveNode extends NoCodeNode implements F {
         if (!C13317e.J(valve)) { u(outputs[0]); return; }
 
         float input = m.V(Q(inputs[1]));
-        String mode = m.Y(Q(inputs[2]));
+        String mode = m.i0(Q(inputs[2]));
         float next = "Set".equalsIgnoreCase(mode) ? input : InteractionRegistry.getAnalogValue(valve) + input;
         InteractionRegistry.setAnalogValue(valve, next);
         float value = InteractionRegistry.getAnalogValue(valve);

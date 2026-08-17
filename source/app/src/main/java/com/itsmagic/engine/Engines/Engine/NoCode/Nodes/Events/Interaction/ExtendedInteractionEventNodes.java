@@ -125,8 +125,8 @@ public final class ExtendedInteractionEventNodes {
         public NoCodeSlot[] J() { return outputs; }
         public void l0() { super.l0(); GameObject go = getTarget(); if (C13317e.J(go)) { InteractionRegistry.register(go); InteractionDispatcher.addObjectListener(go, this); } }
         public void k0() { GameObject go = getTarget(); if (go != null) InteractionDispatcher.removeObjectListener(go, this); super.k0(); }
-        private boolean actionMatches(InteractionContext c) { String expected = m.Y(Q(inputs[1])); return expected == null || expected.trim().isEmpty() || expected.trim().equalsIgnoreCase(c.action); }
-        private boolean phaseMatches(String phase) { String expected = m.Y(Q(inputs[2])); return expected == null || expected.trim().isEmpty() || "Any".equalsIgnoreCase(expected.trim()) || expected.trim().equalsIgnoreCase(phase); }
+        private boolean actionMatches(InteractionContext c) { String expected = m.i0(Q(inputs[1])); return expected == null || expected.trim().isEmpty() || expected.trim().equalsIgnoreCase(c.action); }
+        private boolean phaseMatches(String phase) { String expected = m.i0(Q(inputs[2])); return expected == null || expected.trim().isEmpty() || "Any".equalsIgnoreCase(expected.trim()) || expected.trim().equalsIgnoreCase(phase); }
         private void fire(InteractionContext c, String phase) { if (c == null || this.f79021a == null || !actionMatches(c) || !phaseMatches(phase)) return; y0(outputs[1], c.interactor); y0(outputs[2], c.target); y0(outputs[3], c.action); y0(outputs[4], phase); if (this.f79021a.o0(this, outputs[0])) u(outputs[0]); }
         public void onInteract(InteractionContext c) { fire(c, "Pressed"); }
         public void onInteractReleased(InteractionContext c) { fire(c, "Released"); }

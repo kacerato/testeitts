@@ -66,7 +66,7 @@ public class ButtonNode extends NoCodeNode implements F {
             return;
         }
 
-        if (m.S(Q(inputs[4]))) {
+        if (m.O(Q(inputs[4]))) {
             ButtonService.resetOneShot(button);
             y0(outputs[3], Boolean.FALSE);
             y0(outputs[4], InteractionResult.FailureReason.None.name());
@@ -74,9 +74,9 @@ public class ButtonNode extends NoCodeNode implements F {
             return;
         }
 
-        String type = m.Y(Q(inputs[1]));
+        String type = m.i0(Q(inputs[1]));
         if (type == null || type.trim().isEmpty()) type = "Toggle";
-        String action = m.Y(Q(inputs[2]));
+        String action = m.i0(Q(inputs[2]));
         if (action == null || action.trim().isEmpty()) action = "Press";
 
         InteractionResult result;

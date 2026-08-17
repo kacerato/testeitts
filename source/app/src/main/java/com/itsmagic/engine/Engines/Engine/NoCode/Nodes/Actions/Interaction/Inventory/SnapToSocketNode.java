@@ -71,7 +71,7 @@ public class SnapToSocketNode extends NoCodeNode implements F {
             return;
         }
 
-        String requiredTag = m.Y(Q(inputs[2]));
+        String requiredTag = m.i0(Q(inputs[2]));
         if (requiredTag != null && !requiredTag.trim().isEmpty() && !InteractionRegistry.hasTag(object, requiredTag)) {
             y0(outputs[2], Boolean.valueOf(occupant != null));
             u(outputs[1]);

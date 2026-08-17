@@ -92,7 +92,7 @@ public class OnInteractionEventNode extends Fa.a implements F, InteractionDispat
     @Override
     public void l0() {
         super.l0();
-        String expected = m.Y(Q(this.inputs[0]));
+        String expected = m.i0(Q(this.inputs[0]));
         if (expected != null && !expected.trim().isEmpty()) {
             InteractionDispatcher.addCustomEventListener(expected, this);
         } else {
@@ -103,7 +103,7 @@ public class OnInteractionEventNode extends Fa.a implements F, InteractionDispat
     @Override
     public void k0() {
         super.k0();
-        String expected = m.Y(Q(this.inputs[0]));
+        String expected = m.i0(Q(this.inputs[0]));
         if (expected != null && !expected.trim().isEmpty()) {
             InteractionDispatcher.removeCustomEventListener(expected, this);
         } else {
@@ -114,7 +114,7 @@ public class OnInteractionEventNode extends Fa.a implements F, InteractionDispat
     @Override
     public void onCustomEvent(String eventName, GameObject sender, Object payload) {
         if (this.f79021a == null) return;
-        String expected = m.Y(Q(this.inputs[0]));
+        String expected = m.i0(Q(this.inputs[0]));
         if (expected != null && !expected.trim().isEmpty()) {
             if (!expected.trim().equalsIgnoreCase(eventName != null ? eventName.trim() : "")) {
                 return;

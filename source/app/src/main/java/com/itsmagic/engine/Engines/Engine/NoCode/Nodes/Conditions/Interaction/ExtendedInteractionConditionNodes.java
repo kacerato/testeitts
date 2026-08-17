@@ -60,7 +60,7 @@ public final class ExtendedInteractionConditionNodes {
             public NoCodeNode d(JsonObject j){return(NoCodeNode)X7.a.m().fromJson((JsonElement)j,HasTagNode.class);} public String e(){return"Conditions/Interaction";} public String f(){return"Target Has Interaction Tag";} public boolean g(){return true;}
         }
         static{o.a(new Factory());} public HasTagNode(){this.serializedNodeType=SERIALIZED_NAME;} public NoCodeSlot[]F(){return inputs;}
-        public void m0(){emit(InteractionRegistry.hasTag(resolveTarget(inputs[0]),m.Y(Q(inputs[1]))));} public String N(NoCodeData d){return"Target Has Interaction Tag";} public String x(NoCodeData d){return N(d);} public String a(int i,H t){if(i==0)return"owner";if(i==1)return"tag";return"";}
+        public void m0(){emit(InteractionRegistry.hasTag(resolveTarget(inputs[0]),m.i0(Q(inputs[1]))));} public String N(NoCodeData d){return"Target Has Interaction Tag";} public String x(NoCodeData d){return N(d);} public String a(int i,H t){if(i==0)return"owner";if(i==1)return"tag";return"";}
     }
 
     public static class IsBusyNode extends BaseCondition {
@@ -106,7 +106,7 @@ public final class ExtendedInteractionConditionNodes {
         static{o.a(new Factory());} public CompareStateNode(){this.serializedNodeType=SERIALIZED_NAME;} public NoCodeSlot[]F(){return inputs;}
         public void m0(){
             GameObject go=resolveTarget(inputs[0]);
-            InteractionState desired=InteractionState.fromString(m.Y(Q(inputs[1])));
+            InteractionState desired=InteractionState.fromString(m.i0(Q(inputs[1])));
             InteractionRegistry.InteractableData data=InteractionRegistry.get(go);
             boolean value=false;
             if(desired!=null&&data!=null){
@@ -142,7 +142,7 @@ public final class ExtendedInteractionConditionNodes {
             public NoCodeNode d(JsonObject j){return(NoCodeNode)X7.a.m().fromJson((JsonElement)j,CooldownReadyNode.class);} public String e(){return"Conditions/Interaction";} public String f(){return"Interaction Cooldown Ready";} public boolean g(){return true;}
         }
         static{o.a(new Factory());} public CooldownReadyNode(){this.serializedNodeType=SERIALIZED_NAME;} public NoCodeSlot[]F(){return inputs;}
-        public void m0(){emit(InteractionCooldownManager.isReady(resolveTarget(inputs[0]),m.Y(Q(inputs[1]))));} public String N(NoCodeData d){return"Interaction Cooldown Ready";} public String x(NoCodeData d){return N(d);} public String a(int i,H t){if(i==0)return"owner";if(i==1)return"interact";return"";}
+        public void m0(){emit(InteractionCooldownManager.isReady(resolveTarget(inputs[0]),m.i0(Q(inputs[1]))));} public String N(NoCodeData d){return"Interaction Cooldown Ready";} public String x(NoCodeData d){return N(d);} public String a(int i,H t){if(i==0)return"owner";if(i==1)return"interact";return"";}
     }
 
     public static class IsTargetInRangeNode extends BaseCondition {
@@ -180,7 +180,7 @@ public final class ExtendedInteractionConditionNodes {
         public void m0(){
             GameObject actor=Aa.b.b(this,this.f79021a,inputs[0]);
             if(!C13317e.J(actor))actor=InteractionRuntime.getInstance().getInteractor();
-            String tag=m.Y(Q(inputs[1]));
+            String tag=m.i0(Q(inputs[1]));
             boolean has=false;
             if(C13317e.J(actor)&&tag!=null&&!tag.trim().isEmpty()){
                 String clean=tag.trim().toLowerCase();

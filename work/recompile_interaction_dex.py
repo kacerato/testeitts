@@ -323,9 +323,9 @@ write_stub("ga/m.java", """package ga;
 import com.itsmagic.engine.Engines.Engine.Vector.Vector3;
 public class m {
     public static float V(Object val) { return 0f; }
-    public static boolean S(Object val) { return false; }
-    public static String Y(Object val) { return ""; }
-    public static Vector3 Z(Object val) { return null; }
+    public static boolean O(Object val) { return false; }
+    public static String i0(Object val) { return ""; }
+    public static Vector3 n0(Object val) { return null; }
 }
 """)
 write_stub("com/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot.java", """package com.itsmagic.engine.Engines.Engine.NoCode;

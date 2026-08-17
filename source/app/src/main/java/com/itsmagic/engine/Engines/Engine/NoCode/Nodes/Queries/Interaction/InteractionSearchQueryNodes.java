@@ -34,8 +34,8 @@ public final class InteractionSearchQueryNodes {
         };
         protected void emit(InteractionCandidate c){boolean found=c!=null&&C13317e.J(c.target);y0(outputs[2],found?c.target:null);y0(outputs[3],Float.valueOf(found?c.distance:0f));y0(outputs[4],found?new Vector3(c.hitPosition):new Vector3());u(found?outputs[0]:outputs[1]);}
         protected GameObject actor(NoCodeSlot slot){GameObject a=Aa.b.b(this,this.f79021a,slot);return C13317e.J(a)?a:InteractionRuntime.getInstance().getInteractor();}
-        protected InteractionCapability cap(NoCodeSlot slot){return InteractionCapability.fromString(m.Y(Q(slot)));}
-        protected String tag(NoCodeSlot slot){String v=m.Y(Q(slot));return v==null||v.trim().isEmpty()?null:v.trim();}
+        protected InteractionCapability cap(NoCodeSlot slot){return InteractionCapability.fromString(m.i0(Q(slot)));}
+        protected String tag(NoCodeSlot slot){String v=m.i0(Q(slot));return v==null||v.trim().isEmpty()?null:v.trim();}
         public NoCodeSlot[]J(){return outputs;}public EnumC13304B M(){return EnumC13304B.BOTH;}public H t0(int i,D r){if(i==2)return H.GAME_OBJECT;if(i==3)return H.NUMBER;if(i==4)return H.FLOAT3;return H.BRANCH;}
     }
 

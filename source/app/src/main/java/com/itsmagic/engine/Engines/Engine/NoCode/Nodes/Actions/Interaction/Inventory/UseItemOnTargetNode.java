@@ -60,8 +60,8 @@ public class UseItemOnTargetNode extends NoCodeNode implements F {
         GameObject target = Aa.b.b(this, this.f79021a, inputs[1]);
         if (!C13317e.J(target) && this.f79021a != null) target = this.f79021a.h0();
 
-        String itemTag = m.Y(Q(inputs[2]));
-        boolean consume = m.S(Q(inputs[3]));
+        String itemTag = m.i0(Q(inputs[2]));
+        boolean consume = m.O(Q(inputs[3]));
         if (itemTag == null || itemTag.trim().isEmpty() || !C13317e.J(target)) {
             y0(outputs[3], Boolean.FALSE);
             u(outputs[1]);

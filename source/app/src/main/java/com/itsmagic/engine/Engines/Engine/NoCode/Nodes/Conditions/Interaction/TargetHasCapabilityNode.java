@@ -98,7 +98,7 @@ public class TargetHasCapabilityNode extends NoCodeNode implements F {
             target = this.f79021a.h0();
         }
 
-        String capStr = m.Y(Q(this.inputs[1]));
+        String capStr = m.i0(Q(this.inputs[1]));
         InteractionCapability cap = InteractionCapability.fromString(capStr);
 
         boolean has = false;

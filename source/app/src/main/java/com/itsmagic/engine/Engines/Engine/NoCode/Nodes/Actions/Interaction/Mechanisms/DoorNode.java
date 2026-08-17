@@ -72,11 +72,11 @@ public class DoorNode extends NoCodeNode implements F {
             return;
         }
 
-        String action = m.Y(Q(inputs[1]));
+        String action = m.i0(Q(inputs[1]));
         if (action == null || action.trim().isEmpty()) action = "Toggle";
         GameObject interactor = Aa.b.b(this, this.f79021a, inputs[2]);
-        boolean autoDirection = m.S(Q(inputs[3]));
-        String mode = m.Y(Q(inputs[4]));
+        boolean autoDirection = m.O(Q(inputs[3]));
+        String mode = m.i0(Q(inputs[4]));
         float speed = m.V(Q(inputs[5]));
         float maxAngle = m.V(Q(inputs[6]));
         float travel = m.V(Q(inputs[7]));

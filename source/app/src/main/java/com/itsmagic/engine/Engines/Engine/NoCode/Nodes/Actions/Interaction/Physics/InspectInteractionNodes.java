@@ -48,8 +48,8 @@ public final class InspectInteractionNodes {
             GameObject actor=Aa.b.b(this,this.f79021a,inputs[1]);
             InteractionRuntime rt=InteractionRuntime.getInstance();
             if(!C13317e.J(actor))actor=rt.getInteractor();
-            if(m.S(Q(inputs[2]))){
-                InteractionResult r=InspectService.start(actor,object,rt.getCameraTransform(),m.V(Q(inputs[3])),m.S(Q(inputs[4])));
+            if(m.O(Q(inputs[2]))){
+                InteractionResult r=InspectService.start(actor,object,rt.getCameraTransform(),m.V(Q(inputs[3])),m.O(Q(inputs[4])));
                 y0(outputs[3],r.failureReason.name());
                 u(r.success?outputs[0]:outputs[2]);
             }else{

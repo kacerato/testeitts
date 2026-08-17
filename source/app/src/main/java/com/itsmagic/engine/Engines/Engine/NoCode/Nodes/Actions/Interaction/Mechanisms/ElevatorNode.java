@@ -68,7 +68,7 @@ public class ElevatorNode extends NoCodeNode implements F {
         int targetFloor = (int) m.V(Q(this.inputs[1]));
         float speed = m.V(Q(this.inputs[2]));
         float floorHeight = m.V(Q(this.inputs[3]));
-        String action = m.Y(Q(this.inputs[4]));
+        String action = m.i0(Q(this.inputs[4]));
         if (action == null || action.trim().isEmpty()) action = "Move";
 
         if ("Stop".equalsIgnoreCase(action)) {

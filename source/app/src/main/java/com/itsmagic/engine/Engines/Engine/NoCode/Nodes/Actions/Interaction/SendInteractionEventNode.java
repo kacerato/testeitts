@@ -90,7 +90,7 @@ public class SendInteractionEventNode extends NoCodeNode implements F {
 
     @Override
     public void m0() {
-        String eventName = m.Y(Q(this.inputs[0]));
+        String eventName = m.i0(Q(this.inputs[0]));
         GameObject target = Aa.b.b(this, this.f79021a, this.inputs[1]);
         Object payload = Q(this.inputs[2]);
 

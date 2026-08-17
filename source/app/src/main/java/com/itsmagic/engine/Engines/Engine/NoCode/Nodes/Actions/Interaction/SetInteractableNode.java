@@ -99,9 +99,9 @@ public class SetInteractableNode extends NoCodeNode implements F {
         }
 
         if (C13317e.J(target)) {
-            boolean enabled = m.S(Q(this.inputs[1]));
+            boolean enabled = m.O(Q(this.inputs[1]));
             int priority = (int) m.V(Q(this.inputs[2]));
-            String capStr = m.Y(Q(this.inputs[3]));
+            String capStr = m.i0(Q(this.inputs[3]));
 
             InteractionRegistry.setEnabled(target, enabled);
             InteractionRegistry.setPriority(target, priority);

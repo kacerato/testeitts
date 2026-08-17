@@ -107,7 +107,7 @@ public class GrabObjectNode extends NoCodeNode implements F {
 
         float holdDist = m.V(Q(this.inputs[2]));
         float speed = m.V(Q(this.inputs[3]));
-        boolean usePhysics = m.S(Q(this.inputs[4]));
+        boolean usePhysics = m.O(Q(this.inputs[4]));
 
         Transform camTransform = (interactor != null) ? interactor.J0() : null;
         InteractionResult result = GrabService.grab(interactor, object, camTransform, holdDist, speed, usePhysics);

@@ -90,9 +90,9 @@ public class ShowInteractionPromptNode extends NoCodeNode implements F {
 
     @Override
     public void m0() {
-        String text = m.Y(Q(this.inputs[0]));
-        String icon = m.Y(Q(this.inputs[1]));
-        String actionKey = m.Y(Q(this.inputs[2]));
+        String text = m.i0(Q(this.inputs[0]));
+        String icon = m.i0(Q(this.inputs[1]));
+        String actionKey = m.i0(Q(this.inputs[2]));
         float duration = m.V(Q(this.inputs[3]));
 
         InteractionPromptController.showPrompt(text, icon, actionKey, duration, 0);
