@@ -1,0 +1,42 @@
+name: Verify Interaction ABI Fast
+
+on:
+  push:
+    branches:
+      - verify/interaction-abi-current
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout only smali and ABI tools
+        uses: actions/checkout@v4
+        with:
+          filter: blob:none
+          sparse-checkout-cone-mode: false
+          sparse-checkout: |
+            /work/
+            /extracted/apktool_base/smali*/
+
+      - name: Rewrite Transform position ABI
+        run: python3 work/fix_interaction_transform_position_smali.py extracted/apktool_base/smali_classes10
+
+      - name: Normalize Interaction smali
+        run: python3 work/fix_interaction_smali_aliases.py extracted/apktool_base/smali_classes10
+
+      - name: Verify Interaction smali ABI
+        id: abi
+        run: python3 work/verify_interaction_smali_abi.py extracted/apktool_base --report interaction-abi-report.txt
+
+      - name: Upload ABI report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: interaction-abi-fast-report
+          path: interaction-abi-report.txt
+          if-no-files-found: warn
