@@ -1,5 +1,7 @@
 package com.itsmagic.engine.Engines.Engine.NoCode.Interaction;
 
+import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.ExtendedGameplayNodes;
+import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.ExtendedInteractionActionNodes;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.HideInteractionPromptNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.HighlightObjectNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.Inventory.SnapToSocketNode;
@@ -16,63 +18,122 @@ import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.SendI
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.SetInteractableNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.ShowInteractionPromptNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Conditions.Interaction.CanInteractNode;
+import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Conditions.Interaction.ExtendedInteractionConditionNodes;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Conditions.Interaction.IsLockedNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Conditions.Interaction.TargetHasCapabilityNode;
+import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Events.Interaction.ExtendedInteractionEventNodes;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Events.Interaction.OnFocusEnterNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Events.Interaction.OnFocusExitNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Events.Interaction.OnInteractHeldNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Events.Interaction.OnInteractPressedNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Events.Interaction.OnInteractionEventNode;
+import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.ExtendedInteractionQueryNodes;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.GetInteractionDistanceNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Queries.Interaction.GetInteractionTargetNode;
 
-/**
- * Inicializador e registrador central dos nós do sistema de interação.
- * Carrega todas as classes de nós para ativar seus blocos static { o.a(new NodeFactory()); }.
- */
+/** Carrega todas as classes de nodes para ativar seus factories estaticos. */
 public class InteractionNodeRegistry {
 
     private static boolean initialized = false;
 
     public static final Class<?>[] INTERACTION_NODE_CLASSES = new Class<?>[]{
-        // Queries
+        // Queries existentes
         GetInteractionTargetNode.class,
         GetInteractionDistanceNode.class,
 
-        // Events
+        // Queries expandidas
+        ExtendedInteractionQueryNodes.GetInteractorNode.class,
+        ExtendedInteractionQueryNodes.GetHitPositionNode.class,
+        ExtendedInteractionQueryNodes.GetHitNormalNode.class,
+        ExtendedInteractionQueryNodes.GetInteractionPointNode.class,
+        ExtendedInteractionQueryNodes.GetPriorityNode.class,
+        ExtendedInteractionQueryNodes.GetStateNode.class,
+        ExtendedInteractionQueryNodes.GetHeldObjectNode.class,
+        ExtendedInteractionQueryNodes.GetAnalogValueNode.class,
+        ExtendedInteractionQueryNodes.GetOpenAmountNode.class,
+
+        // Events existentes
         OnFocusEnterNode.class,
         OnFocusExitNode.class,
         OnInteractPressedNode.class,
         OnInteractHeldNode.class,
         OnInteractionEventNode.class,
 
-        // Conditions
+        // Events expandidos
+        ExtendedInteractionEventNodes.OnFocusStayNode.class,
+        ExtendedInteractionEventNodes.OnInteractReleasedNode.class,
+        ExtendedInteractionEventNodes.OnInteractionActionNode.class,
+
+        // Conditions existentes
         CanInteractNode.class,
         TargetHasCapabilityNode.class,
         IsLockedNode.class,
 
-        // Actions / Core
+        // Conditions expandidas
+        ExtendedInteractionConditionNodes.IsEnabledNode.class,
+        ExtendedInteractionConditionNodes.HasTagNode.class,
+        ExtendedInteractionConditionNodes.IsBusyNode.class,
+        ExtendedInteractionConditionNodes.IsHeldNode.class,
+        ExtendedInteractionConditionNodes.IsPoweredNode.class,
+        ExtendedInteractionConditionNodes.CompareStateNode.class,
+        ExtendedInteractionConditionNodes.CooldownReadyNode.class,
+        ExtendedInteractionConditionNodes.IsTargetInRangeNode.class,
+        ExtendedInteractionConditionNodes.HasRequiredItemNode.class,
+
+        // Core actions existentes
         SetInteractableNode.class,
         SendInteractionEventNode.class,
         ShowInteractionPromptNode.class,
         HideInteractionPromptNode.class,
         HighlightObjectNode.class,
 
+        // Core actions expandidas
+        ExtendedInteractionActionNodes.SetPriorityNode.class,
+        ExtendedInteractionActionNodes.SetStateNode.class,
+        ExtendedInteractionActionNodes.SetTagNode.class,
+        ExtendedInteractionActionNodes.SetCapabilityNode.class,
+        ExtendedInteractionActionNodes.SetBusyNode.class,
+        ExtendedInteractionActionNodes.SetPoweredNode.class,
+        ExtendedInteractionActionNodes.SetLockedNode.class,
+        ExtendedInteractionActionNodes.SetCooldownNode.class,
+        ExtendedInteractionActionNodes.SetAnalogValueNode.class,
+        ExtendedInteractionActionNodes.ConfigurePromptNode.class,
+        ExtendedInteractionActionNodes.SetInteractionLimitsNode.class,
+        ExtendedInteractionActionNodes.SendInputActionNode.class,
+        ExtendedInteractionActionNodes.ReadableNode.class,
+        ExtendedInteractionActionNodes.DialogueNode.class,
+        ExtendedInteractionActionNodes.MoveInteractorToSocketNode.class,
+
         // Physics
         GrabObjectNode.class,
         DropObjectNode.class,
         ThrowObjectNode.class,
         ReturnObjectToOriginNode.class,
+        ExtendedGameplayNodes.PushPullObjectNode.class,
+        ExtendedGameplayNodes.TeleportObjectNode.class,
 
         // Mechanisms
         DoorNode.class,
         ValveNode.class,
         ButtonNode.class,
         ElevatorNode.class,
+        ExtendedGameplayNodes.PressurePlateNode.class,
+        ExtendedGameplayNodes.PowerLinkNode.class,
 
-        // Inventory / Sockets
+        // Inventory / sockets
         UseItemOnTargetNode.class,
-        SnapToSocketNode.class
+        SnapToSocketNode.class,
+        ExtendedInteractionActionNodes.InventoryItemNode.class,
+        ExtendedInteractionActionNodes.UnsnapSocketNode.class,
+        ExtendedGameplayNodes.CombineItemsNode.class,
+        ExtendedGameplayNodes.EquipItemNode.class,
+
+        // Gameplay / puzzle / profiles / feedback
+        ExtendedGameplayNodes.ApplyProfileNode.class,
+        ExtendedGameplayNodes.SequenceNode.class,
+        ExtendedGameplayNodes.InteractionGateNode.class,
+        ExtendedGameplayNodes.ReversibleInteractionNode.class,
+        ExtendedGameplayNodes.FeedbackNode.class
     };
 
     public static synchronized void init() {
@@ -86,5 +147,9 @@ public class InteractionNodeRegistry {
                 t.printStackTrace();
             }
         }
+    }
+
+    public static int getRegisteredInteractionNodeCount() {
+        return INTERACTION_NODE_CLASSES.length;
     }
 }
