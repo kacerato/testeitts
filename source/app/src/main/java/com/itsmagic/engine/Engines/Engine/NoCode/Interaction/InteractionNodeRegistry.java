@@ -1,5 +1,6 @@
 package com.itsmagic.engine.Engines.Engine.NoCode.Interaction;
 
+import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.AdvancedWorldInteractionNodes;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.ExtendedGameplayNodes;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.ExtendedInteractionActionNodes;
 import com.itsmagic.engine.Engines.Engine.NoCode.Nodes.Actions.Interaction.HideInteractionPromptNode;
@@ -108,6 +109,12 @@ public class InteractionNodeRegistry {
         ExtendedInteractionActionNodes.ReadableNode.class,
         ExtendedInteractionActionNodes.DialogueNode.class,
         ExtendedInteractionActionNodes.MoveInteractorToSocketNode.class,
+        AdvancedWorldInteractionNodes.ConfigureLockNode.class,
+        AdvancedWorldInteractionNodes.TryUnlockNode.class,
+        AdvancedWorldInteractionNodes.SeatInteractionNode.class,
+        AdvancedWorldInteractionNodes.LadderInteractionNode.class,
+        AdvancedWorldInteractionNodes.VehicleInteractionNode.class,
+        AdvancedWorldInteractionNodes.PowerNetworkNode.class,
 
         // Physics / inspection
         GrabObjectNode.class,
@@ -120,6 +127,7 @@ public class InteractionNodeRegistry {
         InspectInteractionNodes.RotateInspectedObjectNode.class,
         InspectInteractionNodes.ZoomInspectObjectNode.class,
         InspectInteractionNodes.BounceObjectNode.class,
+        AdvancedWorldInteractionNodes.DragObjectNode.class,
 
         // Mechanisms
         DoorNode.class,

@@ -15,7 +15,9 @@ public final class PowerService {
     private PowerService() {}
 
     public static void connect(GameObject source, GameObject target) {
-        if (!C13317e.J(source) || !C13317e.J(target) || source == target) return;
+        if (!C13317e.J(source) || !C13317e.J(target) || source == target || wouldCreateCycle(source, target)) return;
+        InteractionRegistry.register(source);
+        InteractionRegistry.register(target);
         CONNECTIONS.put(target, source);
         InteractionRegistry.setAttribute(target, "power_source", source);
         apply(source, target);
@@ -70,5 +72,15 @@ public final class PowerService {
             InteractionRegistry.setPowered(target, newPowered);
             InteractionDispatcher.dispatchCustomEvent(newPowered ? "power_on" : "power_off", target, source);
         }
+    }
+
+    private static boolean wouldCreateCycle(GameObject source, GameObject target) {
+        GameObject cursor = source;
+        int guard = 0;
+        while (C13317e.J(cursor) && guard++ < 128) {
+            if (cursor == target) return true;
+            cursor = CONNECTIONS.get(cursor);
+        }
+        return false;
     }
 }

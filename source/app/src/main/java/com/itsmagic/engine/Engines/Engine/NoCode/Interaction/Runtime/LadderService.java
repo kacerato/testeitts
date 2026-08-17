@@ -32,6 +32,9 @@ public final class LadderService {
             Object current = InteractionRegistry.getAttribute(ladder, "ladder_user");
             if (current != interactor) return InteractionResult.failure(InteractionResult.FailureReason.Occupied, "Escada ocupada");
         }
+
+        VehicleService.exit(interactor, null);
+        SeatService.stand(interactor, null);
         if (existing != null) exit(interactor, null);
 
         LadderSession session = new LadderSession();
