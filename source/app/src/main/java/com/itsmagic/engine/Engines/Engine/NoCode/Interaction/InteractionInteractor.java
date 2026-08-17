@@ -31,6 +31,7 @@ public class InteractionInteractor extends Component {
     public boolean autoFindCamera = true;
 
     private transient Transform cameraTransform;
+    private transient long runtimeFrameCounter = 0L;
 
     /** Registro nativo para serializacao e menu de componentes. */
     public static class Factory extends AbstractC13203c {
@@ -87,6 +88,11 @@ public class InteractionInteractor extends Component {
         InteractionRuntime runtime = InteractionRuntime.getInstance();
         runtime.setPlayer(gameObject, cameraTransform);
         runtime.configureSensor(interactionDistance, interactionAngle);
+
+        // O resolver e os servicos (Door/Grab/Inspect/etc.) precisam de um tick por frame.
+        // O World ainda nao e consumido pelo InteractionRuntime; usar null evita acoplar
+        // este componente a uma API de World apenas para manter o subsistema atualizado.
+        runtime.update(null, ++this.runtimeFrameCounter, K8.d.d());
     }
 
     @Override
