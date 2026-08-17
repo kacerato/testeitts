@@ -16,14 +16,20 @@ import re
 import sys
 from pathlib import Path
 
-# Explicit class aliases that are known to be JADX names, verified against the original
-# smali shipped in extracted/apktool_base.
+# Explicit class aliases verified against the original APK smali.
 CLASS_ALIASES = {
     "Lfb/AbstractC13203c;": "Lfb/c;",
     "Lfb/C13201a;": "Lfb/a;",
     "Lgb/C13317e;": "Lgb/e;",
     "Lga/EnumC13304B;": "Lga/B;",
 }
+
+# This call needs a dedicated rewrite. The JADX stub declared b(AbstractC13203c),
+# but the real fb/a.b method accepts the registry interface fb/b.
+COMPONENT_REGISTRY_CALL = (
+    "Lfb/C13201a;->b(Lfb/AbstractC13203c;)V",
+    "Lfb/a;->b(Lfb/b;)V",
+)
 
 # JADX renames colliding/obfuscated members as f<id><original> and mo<id><original>.
 # Examples from this project:
@@ -39,7 +45,6 @@ METHOD_DECL_RE = re.compile(
     re.MULTILINE,
 )
 
-# These must never survive in Interaction smali after normalization.
 FORBIDDEN_CLASS_ALIASES = tuple(CLASS_ALIASES.keys())
 
 
@@ -54,6 +59,12 @@ def is_interaction_smali(path: Path) -> bool:
 
 def normalize_text(text: str) -> tuple[str, int]:
     changes = 0
+
+    old_call, new_call = COMPONENT_REGISTRY_CALL
+    count = text.count(old_call)
+    if count:
+        text = text.replace(old_call, new_call)
+        changes += count
 
     for old, new in CLASS_ALIASES.items():
         count = text.count(old)
@@ -81,6 +92,9 @@ def validate_text(path: Path, text: str) -> list[str]:
     for alias in FORBIDDEN_CLASS_ALIASES:
         if alias in text:
             errors.append(f"{path}: unresolved class alias {alias}")
+
+    if COMPONENT_REGISTRY_CALL[0] in text:
+        errors.append(f"{path}: unresolved component registry call descriptor")
 
     # Any remaining JADX member aliases in generated Interaction code are dangerous:
     # they normally point to members that do not exist in the original DEX.
