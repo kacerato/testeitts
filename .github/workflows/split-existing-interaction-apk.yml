@@ -1,0 +1,71 @@
+name: Split Existing Interaction APK
+
+on:
+  push:
+    branches:
+      - build/split-interaction-apk
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Download successful APK artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ITsMagic-interaction-fixed-apk
+          path: input
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          repository: kacerato/testeitts
+          run-id: 32028704329
+
+      - name: Inspect and split APK
+        shell: bash
+        run: |
+          set -euo pipefail
+          ls -lh input
+          APK="input/ITsMagic_interaction_fixed.apk"
+          test -f "$APK"
+          mkdir -p parts
+          sha256sum "$APK" | tee parts/original.sha256
+          split -b 450M -d -a 1 "$APK" parts/ITsMagic_interaction_fixed.apk.part.
+          ls -lh parts
+          test -f parts/ITsMagic_interaction_fixed.apk.part.0
+          test -f parts/ITsMagic_interaction_fixed.apk.part.1
+          test -f parts/ITsMagic_interaction_fixed.apk.part.2
+
+      - name: Upload part 0
+        uses: actions/upload-artifact@v4
+        with:
+          name: ITsMagic-fixed-part-0
+          path: parts/ITsMagic_interaction_fixed.apk.part.0
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Upload part 1
+        uses: actions/upload-artifact@v4
+        with:
+          name: ITsMagic-fixed-part-1
+          path: parts/ITsMagic_interaction_fixed.apk.part.1
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Upload part 2
+        uses: actions/upload-artifact@v4
+        with:
+          name: ITsMagic-fixed-part-2
+          path: parts/ITsMagic_interaction_fixed.apk.part.2
+          compression-level: 0
+          if-no-files-found: error
+
+      - name: Upload checksum
+        uses: actions/upload-artifact@v4
+        with:
+          name: ITsMagic-fixed-checksum
+          path: parts/original.sha256
+          if-no-files-found: error
