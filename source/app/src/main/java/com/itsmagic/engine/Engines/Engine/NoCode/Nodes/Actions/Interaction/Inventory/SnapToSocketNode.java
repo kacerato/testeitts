@@ -4,6 +4,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionRegistry;
 import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.InteractionState;
+import com.itsmagic.engine.Engines.Engine.NoCode.Interaction.Runtime.InteractionDispatcher;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeData;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeNode;
 import com.itsmagic.engine.Engines.Engine.NoCode.NoCodeSlot;
@@ -19,56 +20,23 @@ import ga.o;
 import ga.p;
 import gb.C13317e;
 
-/**
- * Encaixa perfeitamente um objeto dentro de um ponto de socket (ex: Bateria na maquina, chave na fechadura).
- */
+/** Encaixa um objeto em um socket respeitando tag aceita e ocupacao. */
 public class SnapToSocketNode extends NoCodeNode implements F {
-
     public static final String SERIALIZED_NAME = "Interaction.SnapToSocket";
-
     public final NoCodeSlot[] inputs;
     public final NoCodeSlot[] outputs;
 
     public static class NodeFactory implements p {
-        @Override
-        public NoCodeNode a() {
-            return new SnapToSocketNode();
-        }
-
-        @Override
-        public Class<? extends NoCodeNode> b() {
-            return SnapToSocketNode.class;
-        }
-
-        @Override
-        public String c() {
-            return SERIALIZED_NAME;
-        }
-
-        @Override
-        public NoCodeNode d(JsonObject json) {
-            return (NoCodeNode) X7.a.m().fromJson((JsonElement) json, SnapToSocketNode.class);
-        }
-
-        @Override
-        public String e() {
-            return "Actions/Mechanisms";
-        }
-
-        @Override
-        public String f() {
-            return "Snap Object To Socket";
-        }
-
-        @Override
-        public boolean g() {
-            return true;
-        }
+        public NoCodeNode a() { return new SnapToSocketNode(); }
+        public Class<? extends NoCodeNode> b() { return SnapToSocketNode.class; }
+        public String c() { return SERIALIZED_NAME; }
+        public NoCodeNode d(JsonObject json) { return (NoCodeNode) X7.a.m().fromJson((JsonElement) json, SnapToSocketNode.class); }
+        public String e() { return "Actions/Inventory"; }
+        public String f() { return "Snap Object To Socket"; }
+        public boolean g() { return true; }
     }
 
-    static {
-        o.a(new NodeFactory());
-    }
+    static { o.a(new NodeFactory()); }
 
     public SnapToSocketNode() {
         this.inputs = new NoCodeSlot[]{
@@ -84,76 +52,56 @@ public class SnapToSocketNode extends NoCodeNode implements F {
         this.serializedNodeType = SERIALIZED_NAME;
     }
 
-    @Override
-    public NoCodeSlot[] F() {
-        return this.inputs;
-    }
+    public NoCodeSlot[] F() { return inputs; }
+    public NoCodeSlot[] J() { return outputs; }
 
-    @Override
-    public NoCodeSlot[] J() {
-        return this.outputs;
-    }
-
-    @Override
     public void m0() {
-        GameObject object = Aa.b.b(this, this.f79021a, this.inputs[0]);
-        GameObject socket = Aa.b.b(this, this.f79021a, this.inputs[1]);
-
+        GameObject object = Aa.b.b(this, this.f79021a, inputs[0]);
+        GameObject socket = Aa.b.b(this, this.f79021a, inputs[1]);
         if (!C13317e.J(object) || !C13317e.J(socket)) {
-            y0(this.outputs[2], Boolean.FALSE);
-            u(this.outputs[1]);
+            y0(outputs[2], Boolean.FALSE);
+            u(outputs[1]);
             return;
         }
 
-        String requiredTag = m.Y(Q(this.inputs[2]));
-        if (requiredTag != null && !requiredTag.trim().isEmpty()) {
-            if (!InteractionRegistry.hasTag(object, requiredTag)) {
-                y0(this.outputs[2], Boolean.FALSE);
-                u(this.outputs[1]);
-                return;
-            }
+        Object occupant = InteractionRegistry.getAttribute(socket, "socket_occupant");
+        if (occupant instanceof GameObject && C13317e.J((GameObject) occupant) && occupant != object) {
+            y0(outputs[2], Boolean.TRUE);
+            u(outputs[1]);
+            return;
+        }
+
+        String requiredTag = m.Y(Q(inputs[2]));
+        if (requiredTag != null && !requiredTag.trim().isEmpty() && !InteractionRegistry.hasTag(object, requiredTag)) {
+            y0(outputs[2], Boolean.valueOf(occupant != null));
+            u(outputs[1]);
+            return;
         }
 
         Transform objT = object.J0();
         Transform sockT = socket.J0();
-        if (objT != null && sockT != null) {
-            Vector3 sockPos = sockT.J0();
-            if (sockPos != null) {
-                objT.f79337l.f(sockPos);
-            }
+        if (objT == null || sockT == null || sockT.J0() == null) {
+            y0(outputs[2], Boolean.FALSE);
+            u(outputs[1]);
+            return;
         }
 
+        Vector3 sockPos = sockT.J0();
+        objT.f79337l.f(new Vector3(sockPos));
         InteractionRegistry.setAttribute(socket, "socket_occupant", object);
+        InteractionRegistry.setAttribute(object, "snapped_socket", socket);
+        InteractionRegistry.setHeld(object, false, null);
+        InteractionRegistry.setBusy(object, false);
         InteractionRegistry.setState(object, InteractionState.Idle);
+        InteractionDispatcher.dispatchCustomEvent("socket_filled", socket, object);
 
-        y0(this.outputs[2], Boolean.TRUE);
-        u(this.outputs[0]);
+        y0(outputs[2], Boolean.TRUE);
+        u(outputs[0]);
     }
 
-    @Override
-    public EnumC13304B M() {
-        return EnumC13304B.BOTH;
-    }
-
-    @Override
-    public String N(NoCodeData graphData) {
-        return "Snap Object To Socket";
-    }
-
-    @Override
-    public String a(int inputIndex, H desiredType) {
-        if (inputIndex == 0) return "owner";
-        return "";
-    }
-
-    @Override
-    public H t0(int index, D resolver) {
-        if (index == 2) return H.BOOLEAN;
-        return H.BRANCH;
-    }
-
-    @Override
-    public String x(NoCodeData graphData) {
-        return "Snap Object To Socket";
-    }
+    public EnumC13304B M() { return EnumC13304B.BOTH; }
+    public String N(NoCodeData graphData) { return "Snap Object To Socket"; }
+    public String x(NoCodeData graphData) { return "Snap Object To Socket"; }
+    public String a(int inputIndex, H desiredType) { return inputIndex == 0 ? "owner" : ""; }
+    public H t0(int index, D resolver) { return index == 2 ? H.BOOLEAN : H.BRANCH; }
 }
