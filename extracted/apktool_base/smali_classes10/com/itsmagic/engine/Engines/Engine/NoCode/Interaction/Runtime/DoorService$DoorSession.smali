@@ -21,11 +21,7 @@
 
 .field public door:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-.field public initialEulerX:F
-
 .field public initialEulerY:F
-
-.field public initialEulerZ:F
 
 .field public initialX:F
 

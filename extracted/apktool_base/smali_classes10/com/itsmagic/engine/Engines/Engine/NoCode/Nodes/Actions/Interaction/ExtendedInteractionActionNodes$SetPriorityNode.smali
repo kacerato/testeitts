@@ -101,23 +101,23 @@
     .locals 1
 
     .line 47
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedInteractionActionNodes$SetPriorityNode;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedInteractionActionNodes$SetPriorityNode;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     invoke-static {p0, v0, p1}, LAa/b;->b(Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeNode;Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;)Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     move-result-object p1
 
-    invoke-static {p1}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {p1}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedInteractionActionNodes$SetPriorityNode;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedInteractionActionNodes$SetPriorityNode;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     if-eqz v0, :cond_0
 
-    iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedInteractionActionNodes$SetPriorityNode;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedInteractionActionNodes$SetPriorityNode;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     invoke-virtual {p1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;->h0()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
@@ -149,11 +149,11 @@
     return-object v0
 .end method
 
-.method public bridge synthetic M()Lga/EnumC13304B;
+.method public bridge synthetic M()Lga/B;
     .locals 1
 
     .line 39
-    invoke-super {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedInteractionActionNodes$SimpleAction;->M()Lga/EnumC13304B;
+    invoke-super {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedInteractionActionNodes$SimpleAction;->M()Lga/B;
 
     move-result-object v0
 
@@ -233,16 +233,6 @@
 
 .method public bridge synthetic t0(ILga/D;)Lga/H;
     .locals 0
-    .annotation system Ldalvik/annotation/MethodParameters;
-        accessFlags = {
-            0x1000,
-            0x1000
-        }
-        names = {
-            null,
-            null
-        }
-    .end annotation
 
     .line 39
     invoke-super {p0, p1, p2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedInteractionActionNodes$SimpleAction;->t0(ILga/D;)Lga/H;

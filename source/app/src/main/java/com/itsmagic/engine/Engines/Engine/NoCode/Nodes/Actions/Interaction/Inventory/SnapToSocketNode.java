@@ -87,7 +87,7 @@ public class SnapToSocketNode extends NoCodeNode implements F {
         }
 
         Vector3 sockPos = sockT.J0();
-        objT.f79337l.f(new Vector3(sockPos));
+        objT.p3(new Vector3(sockPos));
         InteractionRegistry.setAttribute(socket, "socket_occupant", object);
         InteractionRegistry.setAttribute(object, "snapped_socket", socket);
         InteractionRegistry.setHeld(object, false, null);

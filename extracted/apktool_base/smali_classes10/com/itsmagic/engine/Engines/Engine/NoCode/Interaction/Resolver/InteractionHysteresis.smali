@@ -51,7 +51,7 @@
     .line 22
     iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionHysteresis;->currentTarget:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -130,7 +130,7 @@
     :cond_0
     iget-object v2, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionHysteresis;->currentTarget:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v2}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v2}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v2
 

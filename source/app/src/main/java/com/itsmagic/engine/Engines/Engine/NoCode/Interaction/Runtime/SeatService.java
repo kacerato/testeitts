@@ -37,7 +37,7 @@ public final class SeatService {
         Vector3 origin = interactor.J0().J0();
         if (origin != null) session.origin.set(origin);
 
-        interactor.J0().f79337l.f(new Vector3(seat.J0().J0()));
+        interactor.J0().p3(new Vector3(seat.J0().J0()));
         SESSIONS.put(interactor, session);
         InteractionRegistry.setAttribute(seat, "occupied_by", interactor);
         InteractionRegistry.setAttribute(interactor, "current_seat", seat);
@@ -53,8 +53,8 @@ public final class SeatService {
         if (C13317e.J(session.seat)) InteractionRegistry.setAttribute(session.seat, "occupied_by", null);
         if (interactor.J0() != null) {
             Vector3 destination = C13317e.J(exitPoint) && exitPoint.J0() != null ? exitPoint.J0().J0() : null;
-            if (destination != null) interactor.J0().f79337l.f(new Vector3(destination));
-            else interactor.J0().f79337l.f(new Vector3(session.origin));
+            if (destination != null) interactor.J0().p3(new Vector3(destination));
+            else interactor.J0().p3(new Vector3(session.origin));
         }
         InteractionRegistry.setAttribute(interactor, "current_seat", null);
         InteractionDispatcher.dispatchCustomEvent("seat_vacated", session.seat, interactor);

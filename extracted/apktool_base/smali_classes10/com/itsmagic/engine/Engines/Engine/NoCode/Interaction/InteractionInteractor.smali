@@ -50,7 +50,7 @@
 
     invoke-direct {v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor$Factory;-><init>()V
 
-    invoke-static {v0}, Lfb/C13201a;->b(Lfb/AbstractC13203c;)V
+    invoke-static {v0}, Lfb/a;->b(Lfb/b;)V
 
     .line 60
     return-void
@@ -147,16 +147,16 @@
     .locals 2
 
     .line 113
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->f79250n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
     .line 114
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->f79250n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->cameraTransform:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
@@ -179,7 +179,7 @@
     return-void
 .end method
 
-.method public mo1248clone()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Components/Component;
+.method public clone()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Components/Component;
     .locals 2
 
     .line 162
@@ -214,7 +214,7 @@
 
     move-result-object v0
 
-    iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->f79250n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     invoke-virtual {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionRuntime;->clearPlayer(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)V
 
@@ -232,7 +232,7 @@
     invoke-super {p0, p1, p2}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Components/Component;->preUpdate(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Z)V
 
     .line 74
-    invoke-static {p1}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {p1}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -260,16 +260,16 @@
     .line 78
     if-eqz p2, :cond_1
 
-    iget-object v0, p2, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Camera/Camera;->f79250n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    iget-object v0, p2, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Camera/Camera;->n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
     if-eqz v0, :cond_1
 
     .line 79
-    iget-object p2, p2, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Camera/Camera;->f79250n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    iget-object p2, p2, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Camera/Camera;->n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     invoke-virtual {p2}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->J0()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
@@ -321,16 +321,16 @@
     .locals 2
 
     .line 139
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->f79250n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
     .line 140
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->f79250n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->cameraTransform:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
@@ -345,16 +345,16 @@
     .locals 1
 
     .line 145
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->f79250n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
     if-eqz v0, :cond_0
 
     .line 146
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->f79250n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     invoke-static {p1, v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionInputBridge;->onActionReleased(Ljava/lang/String;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)V
 
@@ -394,9 +394,9 @@
     iput-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->cameraTransform:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
     .line 100
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->f79250n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -408,7 +408,7 @@
     move-result-object v0
 
     .line 102
-    iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->f79250n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor;->n:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     invoke-virtual {v0, v1, p1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionRuntime;->setPlayer(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;)V
 

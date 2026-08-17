@@ -110,11 +110,11 @@
     return-object v0
 .end method
 
-.method public M()Lga/EnumC13304B;
+.method public M()Lga/B;
     .locals 1
 
     .line 40
-    sget-object v0, Lga/EnumC13304B;->BOTH:Lga/EnumC13304B;
+    sget-object v0, Lga/B;->BOTH:Lga/B;
 
     return-object v0
 .end method
@@ -135,22 +135,20 @@
 
     invoke-virtual {p0, v0, v1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Conditions/Interaction/ExtendedInteractionConditionNodes$BaseCondition;->y0(Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;Ljava/lang/Object;)V
 
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Conditions/Interaction/ExtendedInteractionConditionNodes$BaseCondition;->boolOutputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
     if-eqz p1, :cond_0
 
-    iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Conditions/Interaction/ExtendedInteractionConditionNodes$BaseCondition;->boolOutputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+    const/4 p1, 0x0
 
-    const/4 v0, 0x0
-
-    aget-object p1, p1, v0
+    aget-object p1, v0, p1
 
     goto :goto_0
 
     :cond_0
-    iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Conditions/Interaction/ExtendedInteractionConditionNodes$BaseCondition;->boolOutputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+    const/4 p1, 0x1
 
-    const/4 v0, 0x1
-
-    aget-object p1, p1, v0
+    aget-object p1, v0, p1
 
     :goto_0
     invoke-virtual {p0, p1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Conditions/Interaction/ExtendedInteractionConditionNodes$BaseCondition;->u(Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;)V
@@ -162,24 +160,24 @@
     .locals 1
 
     .line 35
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Conditions/Interaction/ExtendedInteractionConditionNodes$BaseCondition;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Conditions/Interaction/ExtendedInteractionConditionNodes$BaseCondition;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     invoke-static {p0, v0, p1}, LAa/b;->b(Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeNode;Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;)Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     move-result-object p1
 
     .line 36
-    invoke-static {p1}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {p1}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
     if-nez v0, :cond_0
 
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Conditions/Interaction/ExtendedInteractionConditionNodes$BaseCondition;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Conditions/Interaction/ExtendedInteractionConditionNodes$BaseCondition;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     if-eqz v0, :cond_0
 
-    iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Conditions/Interaction/ExtendedInteractionConditionNodes$BaseCondition;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Conditions/Interaction/ExtendedInteractionConditionNodes$BaseCondition;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     invoke-virtual {p1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;->h0()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 

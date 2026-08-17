@@ -144,11 +144,11 @@
     return-object v0
 .end method
 
-.method public M()Lga/EnumC13304B;
+.method public M()Lga/B;
     .locals 1
 
     .line 48
-    sget-object v0, Lga/EnumC13304B;->BOTH:Lga/EnumC13304B;
+    sget-object v0, Lga/B;->BOTH:Lga/B;
 
     return-object v0
 .end method
@@ -191,26 +191,24 @@
 
     invoke-virtual {p0, v1, v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Queries/Interaction/ExtendedInteractionQueryNodes$GetInteractorNode;->y0(Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;Ljava/lang/Object;)V
 
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
+    iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Queries/Interaction/ExtendedInteractionQueryNodes$GetInteractorNode;->outputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
     if-eqz v0, :cond_0
 
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Queries/Interaction/ExtendedInteractionQueryNodes$GetInteractorNode;->outputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+    const/4 v0, 0x0
 
-    const/4 v1, 0x0
-
-    aget-object v0, v0, v1
+    aget-object v0, v1, v0
 
     goto :goto_0
 
     :cond_0
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Queries/Interaction/ExtendedInteractionQueryNodes$GetInteractorNode;->outputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+    const/4 v0, 0x1
 
-    const/4 v1, 0x1
-
-    aget-object v0, v0, v1
+    aget-object v0, v1, v0
 
     :goto_0
     invoke-virtual {p0, v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Queries/Interaction/ExtendedInteractionQueryNodes$GetInteractorNode;->u(Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;)V

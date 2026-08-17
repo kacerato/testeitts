@@ -169,11 +169,11 @@
     return-object v0
 .end method
 
-.method public M()Lga/EnumC13304B;
+.method public M()Lga/B;
     .locals 1
 
     .line 82
-    sget-object v0, Lga/EnumC13304B;->BOTH:Lga/EnumC13304B;
+    sget-object v0, Lga/B;->BOTH:Lga/B;
 
     return-object v0
 .end method
@@ -209,7 +209,7 @@
     .locals 7
 
     .line 81
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedGameplayNodes$EquipItemNode;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedGameplayNodes$EquipItemNode;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/ExtendedGameplayNodes$EquipItemNode;->inputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
 
@@ -249,7 +249,7 @@
 
     move-result v4
 
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v5
 

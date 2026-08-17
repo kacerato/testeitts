@@ -141,11 +141,11 @@
     return-object v0
 .end method
 
-.method public M()Lga/EnumC13304B;
+.method public M()Lga/B;
     .locals 1
 
     .line 73
-    sget-object v0, Lga/EnumC13304B;->BOTH:Lga/EnumC13304B;
+    sget-object v0, Lga/B;->BOTH:Lga/B;
 
     return-object v0
 .end method
@@ -188,7 +188,7 @@
 
     iget-object v3, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionContext;->target:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v3}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v3}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v3
 

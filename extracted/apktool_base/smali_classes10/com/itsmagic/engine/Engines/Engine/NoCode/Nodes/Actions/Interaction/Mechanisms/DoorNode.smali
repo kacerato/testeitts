@@ -311,11 +311,11 @@
     return-object v0
 .end method
 
-.method public M()Lga/EnumC13304B;
+.method public M()Lga/B;
     .locals 1
 
     .line 115
-    sget-object v0, Lga/EnumC13304B;->BOTH:Lga/EnumC13304B;
+    sget-object v0, Lga/B;->BOTH:Lga/B;
 
     return-object v0
 .end method
@@ -420,7 +420,7 @@
     .locals 15
 
     .line 67
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->inputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
 
@@ -433,17 +433,17 @@
     move-result-object v0
 
     .line 68
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     if-eqz v1, :cond_0
 
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     invoke-virtual {v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;->h0()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
@@ -451,7 +451,7 @@
 
     .line 69
     :cond_0
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v1
 
@@ -518,7 +518,7 @@
 
     .line 77
     :cond_3
-    iget-object v6, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v6, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     iget-object v7, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->inputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
 
@@ -722,12 +722,14 @@
     :goto_1
     iget-boolean v6, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult;->success:Z
 
+    .line 110
+    iget-object v7, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->outputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
+    .line 103
     if-nez v6, :cond_9
 
     .line 104
-    iget-object v2, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->outputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
-
-    aget-object v2, v2, v8
+    aget-object v2, v7, v8
 
     invoke-static {v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->getOpenAmount(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)F
 
@@ -764,9 +766,7 @@
 
     .line 110
     :cond_9
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->outputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
-
-    aget-object v0, v0, v8
+    aget-object v0, v7, v8
 
     invoke-static {v10}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
@@ -792,18 +792,16 @@
 
     cmpl-float v0, v10, v0
 
+    iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->outputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
+
     if-lez v0, :cond_a
 
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->outputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
-
-    aget-object v0, v0, v2
+    aget-object v0, v1, v2
 
     goto :goto_2
 
     :cond_a
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->outputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
-
-    aget-object v0, v0, v5
+    aget-object v0, v1, v5
 
     :goto_2
     invoke-virtual {p0, v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Mechanisms/DoorNode;->u(Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;)V

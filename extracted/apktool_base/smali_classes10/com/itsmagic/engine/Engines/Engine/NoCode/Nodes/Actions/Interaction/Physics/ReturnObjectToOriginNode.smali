@@ -118,11 +118,11 @@
     return-object v0
 .end method
 
-.method public M()Lga/EnumC13304B;
+.method public M()Lga/B;
     .locals 1
 
     .line 116
-    sget-object v0, Lga/EnumC13304B;->BOTH:Lga/EnumC13304B;
+    sget-object v0, Lga/B;->BOTH:Lga/B;
 
     return-object v0
 .end method
@@ -157,7 +157,7 @@
     .locals 4
 
     .line 94
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Physics/ReturnObjectToOriginNode;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Physics/ReturnObjectToOriginNode;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Physics/ReturnObjectToOriginNode;->inputs:[Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeSlot;
 
@@ -170,18 +170,18 @@
     move-result-object v0
 
     .line 95
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v1
 
     if-nez v1, :cond_0
 
-    iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Physics/ReturnObjectToOriginNode;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Physics/ReturnObjectToOriginNode;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     if-eqz v1, :cond_0
 
     .line 96
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Physics/ReturnObjectToOriginNode;->f79021a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
+    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Actions/Interaction/Physics/ReturnObjectToOriginNode;->a:Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;
 
     invoke-virtual {v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/NoCodeData;->h0()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
@@ -189,7 +189,7 @@
 
     .line 99
     :cond_0
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v1
 
@@ -216,11 +216,9 @@
     if-eqz v3, :cond_1
 
     .line 104
-    iget-object v3, v3, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79337l:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
     check-cast v1, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    invoke-virtual {v3, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->f(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {v3, v1}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->p3(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
 
     .line 107
     :cond_1

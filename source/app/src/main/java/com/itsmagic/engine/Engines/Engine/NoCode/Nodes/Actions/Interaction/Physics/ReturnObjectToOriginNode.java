@@ -101,7 +101,7 @@ public class ReturnObjectToOriginNode extends NoCodeNode implements F {
             if (originObj instanceof Vector3) {
                 Transform t = object.J0();
                 if (t != null) {
-                    t.f79337l.f((Vector3) originObj);
+                    t.p3((Vector3) originObj);
                 }
             }
             InteractionRegistry.setState(object, InteractionState.Idle);

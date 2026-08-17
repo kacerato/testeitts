@@ -258,14 +258,14 @@
 
     iget-object v1, p1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionContext;->hitPosition:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    invoke-virtual {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     .line 72
     iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionContext;->hitNormal:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     iget-object v1, p1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionContext;->hitNormal:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    invoke-virtual {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     .line 73
     iget v0, p1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionContext;->distance:F
@@ -302,7 +302,7 @@
 
     iget-object v1, p1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionContext;->interactionPoint:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    invoke-virtual {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     .line 80
     iget-object p1, p1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionContext;->payload:Ljava/lang/Object;
@@ -338,14 +338,14 @@
 
     const/4 v2, 0x0
 
-    invoke-virtual {v1, v2, v2, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)V
+    invoke-virtual {v1, v2, v2, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     .line 53
     iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionContext;->hitNormal:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     const/high16 v3, 0x3f800000    # 1.0f
 
-    invoke-virtual {v1, v2, v3, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)V
+    invoke-virtual {v1, v2, v3, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     .line 54
     iput v2, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionContext;->distance:F
@@ -376,7 +376,7 @@
     .line 60
     iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionContext;->interactionPoint:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    invoke-virtual {v1, v2, v2, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)V
+    invoke-virtual {v1, v2, v2, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     .line 61
     iput-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionContext;->payload:Ljava/lang/Object;

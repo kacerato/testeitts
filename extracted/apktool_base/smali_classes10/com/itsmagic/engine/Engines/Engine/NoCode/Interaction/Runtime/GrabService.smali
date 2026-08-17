@@ -50,12 +50,12 @@
 .method public static drop(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)V
     .locals 4
 
-    .line 81
+    .line 82
     if-nez p0, :cond_0
 
     return-void
 
-    .line 82
+    .line 83
     :cond_0
     sget-object v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService;->ACTIVE_GRABS:Ljava/util/Map;
 
@@ -65,25 +65,25 @@
 
     check-cast v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;
 
-    .line 83
+    .line 84
     if-nez v0, :cond_1
 
     return-void
 
-    .line 85
+    .line 86
     :cond_1
     invoke-static {v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService;->restorePhysics(Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;)V
 
-    .line 86
+    .line 87
     iget-object v1, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->heldObject:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v1}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v1}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v1
 
     if-eqz v1, :cond_2
 
-    .line 87
+    .line 88
     iget-object v1, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->heldObject:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     const/4 v2, 0x0
@@ -92,26 +92,26 @@
 
     invoke-static {v1, v3, v2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setHeld(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;ZLcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)V
 
-    .line 88
+    .line 89
     iget-object v1, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->heldObject:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     invoke-static {v1, v3}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setBusy(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Z)V
 
-    .line 89
+    .line 90
     iget-object v1, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->heldObject:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     sget-object v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionState;->Dropped:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionState;
 
     invoke-static {v1, v2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setState(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionState;)V
 
-    .line 90
+    .line 91
     const-string v1, "dropped"
 
     iget-object v0, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->heldObject:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     invoke-static {v1, v0, p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionDispatcher;->dispatchCustomEvent(Ljava/lang/String;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/Object;)V
 
-    .line 92
+    .line 93
     :cond_2
     return-void
 .end method
@@ -119,7 +119,7 @@
 .method public static getHeldObject(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
     .locals 2
 
-    .line 229
+    .line 230
     const/4 v0, 0x0
 
     if-nez p0, :cond_0
@@ -144,10 +144,10 @@
 .end method
 
 .method public static grab(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;FFZ)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult;
-    .locals 4
+    .locals 5
 
     .line 36
-    invoke-static {p1}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {p1}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -204,67 +204,70 @@
     move-result-object v0
 
     .line 41
+    const/4 v1, 0x0
+
     if-eqz v0, :cond_4
 
     .line 42
     invoke-virtual {v0}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->J0()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    move-result-object v1
+    move-result-object v2
 
     .line 43
-    if-eqz v1, :cond_3
+    const-string v3, "origin_rot"
+
+    if-eqz v2, :cond_3
+
+    invoke-static {p1, v3}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->getAttribute(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/String;)Ljava/lang/Object;
+
+    move-result-object v4
+
+    if-nez v4, :cond_3
+
+    .line 44
+    new-instance v4, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
+
+    invoke-direct {v4, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
 
     const-string v2, "origin_pos"
 
-    invoke-static {p1, v2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->getAttribute(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/String;)Ljava/lang/Object;
-
-    move-result-object v3
-
-    if-nez v3, :cond_3
-
-    .line 44
-    new-instance v3, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    invoke-direct {v3, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
-
-    invoke-static {p1, v2, v3}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setAttribute(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/String;Ljava/lang/Object;)V
+    invoke-static {p1, v2, v4}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setAttribute(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/String;Ljava/lang/Object;)V
 
     .line 46
     :cond_3
-    iget-object v1, v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79321B:Lcom/itsmagic/engine/Engines/Engine/Vector/i;
+    invoke-virtual {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->K0(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    if-eqz v1, :cond_4
+    move-result-object v0
 
-    const-string v1, "origin_rot"
+    .line 47
+    if-eqz v0, :cond_4
 
-    invoke-static {p1, v1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->getAttribute(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/String;)Ljava/lang/Object;
+    invoke-static {p1, v3}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->getAttribute(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v2
 
     if-nez v2, :cond_4
 
-    .line 47
+    .line 48
     new-instance v2, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    iget-object v0, v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79321B:Lcom/itsmagic/engine/Engines/Engine/Vector/i;
 
     invoke-direct {v2, v0}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
 
-    invoke-static {p1, v1, v2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setAttribute(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/String;Ljava/lang/Object;)V
+    invoke-static {p1, v3, v2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setAttribute(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/String;Ljava/lang/Object;)V
 
-    .line 51
+    .line 52
     :cond_4
     new-instance v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;
 
     invoke-direct {v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;-><init>()V
 
-    .line 52
+    .line 53
     iput-object p0, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->interactor:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    .line 53
+    .line 54
     iput-object p1, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->heldObject:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    .line 54
+    .line 55
     if-eqz p2, :cond_5
 
     goto :goto_0
@@ -279,12 +282,12 @@
     goto :goto_0
 
     :cond_6
-    const/4 p2, 0x0
+    move-object p2, v1
 
     :goto_0
     iput-object p2, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->cameraTransform:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
-    .line 55
+    .line 56
     const/4 p2, 0x0
 
     cmpl-float v1, p3, p2
@@ -299,7 +302,7 @@
     :goto_1
     iput p3, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->holdDistance:F
 
-    .line 56
+    .line 57
     cmpl-float p2, p4, p2
 
     if-lez p2, :cond_8
@@ -312,23 +315,23 @@
     :goto_2
     iput p4, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->followSpeed:F
 
-    .line 57
+    .line 58
     iput-boolean p5, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->usePhysics:Z
 
-    .line 59
+    .line 60
     if-eqz p5, :cond_a
 
-    iget-object p2, p1, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->f79286b:Ljava/util/List;
+    iget-object p2, p1, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->b:Ljava/util/List;
 
     if-eqz p2, :cond_a
 
-    .line 60
+    .line 61
     const/4 p2, 0x0
 
     const/4 p3, 0x0
 
     :goto_3
-    iget-object p4, p1, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->f79286b:Ljava/util/List;
+    iget-object p4, p1, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->b:Ljava/util/List;
 
     invoke-interface {p4}, Ljava/util/List;->size()I
 
@@ -336,58 +339,58 @@
 
     if-ge p3, p4, :cond_a
 
-    .line 61
-    iget-object p4, p1, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->f79286b:Ljava/util/List;
+    .line 62
+    iget-object p4, p1, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->b:Ljava/util/List;
 
     invoke-interface {p4, p3}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object p4
 
-    .line 62
+    .line 63
     instance-of p5, p4, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
 
     if-eqz p5, :cond_9
 
-    .line 63
+    .line 64
     check-cast p4, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
 
     iput-object p4, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->rigidbody:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
 
-    .line 64
+    .line 65
     iget-object p3, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->rigidbody:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
 
     iget-boolean p3, p3, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;->useGravity:Z
 
     iput-boolean p3, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->originalUseGravity:Z
 
-    .line 65
+    .line 66
     iget-object p3, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->rigidbody:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
 
     iput-boolean p2, p3, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;->useGravity:Z
 
-    .line 66
+    .line 67
     iget-object p2, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->rigidbody:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
 
     invoke-virtual {p2}, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;->getVelocity()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     move-result-object p2
 
-    .line 67
+    .line 68
     if-eqz p2, :cond_a
 
     iget-object p3, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->commandVelocity:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    invoke-virtual {p3, p2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {p3, p2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     goto :goto_4
 
-    .line 60
+    .line 61
     :cond_9
     add-int/lit8 p3, p3, 0x1
 
     goto :goto_3
 
-    .line 73
+    .line 74
     :cond_a
     :goto_4
     sget-object p2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService;->ACTIVE_GRABS:Ljava/util/Map;
@@ -404,20 +407,20 @@
     :goto_5
     invoke-interface {p2, p3, v0}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 74
+    .line 75
     const/4 p2, 0x1
 
     invoke-static {p1, p2, p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setHeld(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;ZLcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)V
 
-    .line 75
+    .line 76
     invoke-static {p1, p2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setBusy(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Z)V
 
-    .line 76
+    .line 77
     const-string p2, "grabbed"
 
     invoke-static {p2, p1, p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionDispatcher;->dispatchCustomEvent(Ljava/lang/String;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/Object;)V
 
-    .line 77
+    .line 78
     invoke-static {p1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult;->success(Ljava/lang/Object;)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult;
 
     move-result-object p0
@@ -441,7 +444,7 @@
 .method public static isHolding(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
     .locals 1
 
-    .line 228
+    .line 229
     if-eqz p0, :cond_0
 
     sget-object v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService;->ACTIVE_GRABS:Ljava/util/Map;
@@ -466,12 +469,12 @@
 .method private static normalize(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
     .locals 6
 
-    .line 220
+    .line 221
     if-nez p0, :cond_0
 
     return-void
 
-    .line 221
+    .line 222
     :cond_0
     invoke-virtual {p0}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getX()F
 
@@ -485,7 +488,7 @@
 
     move-result v2
 
-    .line 222
+    .line 223
     mul-float v3, v0, v0
 
     mul-float v4, v1, v1
@@ -496,7 +499,7 @@
 
     add-float/2addr v3, v4
 
-    .line 223
+    .line 224
     const v4, 0x358637bd    # 1.0E-6f
 
     const/high16 v5, 0x3f800000    # 1.0f
@@ -507,11 +510,11 @@
 
     const/4 v0, 0x0
 
-    invoke-virtual {p0, v0, v0, v5}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)V
+    invoke-virtual {p0, v0, v0, v5}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     return-void
 
-    .line 224
+    .line 225
     :cond_1
     float-to-double v3, v3
 
@@ -523,23 +526,23 @@
 
     div-float/2addr v5, v3
 
-    .line 225
+    .line 226
     mul-float v0, v0, v5
 
     mul-float v1, v1, v5
 
     mul-float v2, v2, v5
 
-    invoke-virtual {p0, v0, v1, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)V
+    invoke-virtual {p0, v0, v1, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    .line 226
+    .line 227
     return-void
 .end method
 
 .method private static restorePhysics(Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;)V
     .locals 1
 
-    .line 216
+    .line 217
     if-eqz p0, :cond_0
 
     iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->rigidbody:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
@@ -552,16 +555,16 @@
 
     iput-boolean p0, v0, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;->useGravity:Z
 
-    .line 217
+    .line 218
     :cond_0
     return-void
 .end method
 
 .method public static returnToOrigin(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)V
-    .locals 5
+    .locals 4
 
-    .line 144
-    invoke-static {p0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    .line 145
+    invoke-static {p0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -569,7 +572,7 @@
 
     return-void
 
-    .line 145
+    .line 146
     :cond_0
     const-string v0, "origin_pos"
 
@@ -577,53 +580,45 @@
 
     move-result-object v0
 
-    .line 146
+    .line 147
     const-string v1, "origin_rot"
 
     invoke-static {p0, v1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->getAttribute(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/String;)Ljava/lang/Object;
 
     move-result-object v1
 
-    .line 147
+    .line 148
     invoke-virtual {p0}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->J0()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
     move-result-object v2
 
-    .line 148
+    .line 149
     if-eqz v2, :cond_2
 
-    .line 149
+    .line 150
     instance-of v3, v0, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     if-eqz v3, :cond_1
 
-    iget-object v3, v2, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79337l:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    new-instance v4, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
+    new-instance v3, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     check-cast v0, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    invoke-direct {v4, v0}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-direct {v3, v0}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
 
-    invoke-virtual {v3, v4}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->f(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {v2, v3}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->p3(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
 
-    .line 150
+    .line 151
     :cond_1
     instance-of v0, v1, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     if-eqz v0, :cond_2
 
-    iget-object v0, v2, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79321B:Lcom/itsmagic/engine/Engines/Engine/Vector/i;
-
-    if-eqz v0, :cond_2
-
-    iget-object v0, v2, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79321B:Lcom/itsmagic/engine/Engines/Engine/Vector/i;
-
     check-cast v1, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    invoke-virtual {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/i;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {v2, v1}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->setRotation(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
 
-    .line 152
+    .line 153
     :cond_2
     const/4 v0, 0x0
 
@@ -631,27 +626,27 @@
 
     invoke-static {p0, v0, v1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setHeld(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;ZLcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)V
 
-    .line 153
+    .line 154
     invoke-static {p0, v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setBusy(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Z)V
 
-    .line 154
+    .line 155
     const-string v0, "returned_to_origin"
 
     invoke-static {v0, p0, v1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionDispatcher;->dispatchCustomEvent(Ljava/lang/String;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/Object;)V
 
-    .line 155
+    .line 156
     return-void
 .end method
 
 .method public static throwObject(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;F)V
     .locals 8
 
-    .line 95
+    .line 96
     if-nez p0, :cond_0
 
     return-void
 
-    .line 96
+    .line 97
     :cond_0
     sget-object v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService;->ACTIVE_GRABS:Ljava/util/Map;
 
@@ -661,12 +656,12 @@
 
     check-cast p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;
 
-    .line 97
+    .line 98
     if-eqz p0, :cond_b
 
     iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->heldObject:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -674,49 +669,49 @@
 
     goto/16 :goto_5
 
-    .line 99
+    .line 100
     :cond_1
     iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->heldObject:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    .line 100
+    .line 101
     const/4 v1, 0x0
 
     const/4 v2, 0x0
 
     invoke-static {v0, v2, v1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setHeld(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;ZLcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)V
 
-    .line 101
+    .line 102
     invoke-static {v0, v2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setBusy(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Z)V
 
-    .line 102
+    .line 103
     sget-object v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionState;->Dropped:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionState;
 
     invoke-static {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setState(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionState;)V
 
-    .line 104
+    .line 105
     invoke-virtual {v0}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->J0()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
     move-result-object v1
 
-    .line 105
+    .line 106
     const-string v2, "thrown"
 
     if-nez v1, :cond_2
 
-    .line 106
+    .line 107
     invoke-static {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService;->restorePhysics(Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;)V
 
-    .line 107
+    .line 108
     invoke-static {p2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
     move-result-object p0
 
     invoke-static {v2, v0, p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionDispatcher;->dispatchCustomEvent(Ljava/lang/String;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/Object;)V
 
-    .line 108
+    .line 109
     return-void
 
-    .line 111
+    .line 112
     :cond_2
     new-instance v3, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
@@ -726,14 +721,14 @@
 
     invoke-direct {v3, v5, v5, v4}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(FFF)V
 
-    .line 112
+    .line 113
     if-eqz p1, :cond_3
 
-    invoke-virtual {v3, p1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {v3, p1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     goto :goto_0
 
-    .line 113
+    .line 114
     :cond_3
     iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->cameraTransform:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
@@ -753,14 +748,14 @@
 
     move-result-object p1
 
-    invoke-virtual {v3, p1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {v3, p1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    .line 114
+    .line 115
     :cond_4
     :goto_0
     invoke-static {v3}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService;->normalize(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
 
-    .line 116
+    .line 117
     cmpl-float p1, p2, v5
 
     if-lez p1, :cond_5
@@ -770,23 +765,23 @@
     :cond_5
     const/high16 p2, 0x41400000    # 12.0f
 
-    .line 117
+    .line 118
     :goto_1
     invoke-static {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService;->restorePhysics(Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;)V
 
-    .line 119
+    .line 120
     iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->rigidbody:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
 
     if-eqz p1, :cond_9
 
-    .line 120
+    .line 121
     iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->rigidbody:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
 
     invoke-virtual {p1}, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;->getVelocity()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     move-result-object p1
 
-    .line 121
+    .line 122
     const v1, 0x3e99999a    # 0.3f
 
     if-eqz p1, :cond_6
@@ -802,7 +797,7 @@
     :cond_6
     const/4 v4, 0x0
 
-    .line 122
+    .line 123
     :goto_2
     if-eqz p1, :cond_7
 
@@ -817,7 +812,7 @@
     :cond_7
     const/4 v6, 0x0
 
-    .line 123
+    .line 124
     :goto_3
     if-eqz p1, :cond_8
 
@@ -827,11 +822,11 @@
 
     mul-float v5, p1, v1
 
-    .line 124
+    .line 125
     :cond_8
     iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->commandVelocity:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    .line 125
+    .line 126
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getX()F
 
     move-result v1
@@ -840,7 +835,7 @@
 
     add-float/2addr v4, v1
 
-    .line 126
+    .line 127
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getY()F
 
     move-result v1
@@ -853,7 +848,7 @@
 
     add-float/2addr v6, v1
 
-    .line 127
+    .line 128
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getZ()F
 
     move-result v1
@@ -862,34 +857,32 @@
 
     add-float/2addr v5, v1
 
-    .line 124
-    invoke-virtual {p1, v4, v6, v5}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)V
+    .line 125
+    invoke-virtual {p1, v4, v6, v5}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    .line 129
+    .line 130
     iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->rigidbody:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
 
     iget-object p0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->commandVelocity:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     invoke-virtual {p1, p0}, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;->setVelocity(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
 
-    .line 130
+    .line 131
     goto :goto_4
 
-    .line 131
+    .line 132
     :cond_9
     invoke-virtual {v1}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->J0()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     move-result-object p0
 
-    .line 132
+    .line 133
     if-eqz p0, :cond_a
 
-    .line 133
-    iget-object p1, v1, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79337l:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    new-instance v1, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
     .line 134
+    new-instance p1, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
+
+    .line 135
     invoke-virtual {p0}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getX()F
 
     move-result v4
@@ -906,7 +899,7 @@
 
     add-float/2addr v4, v5
 
-    .line 135
+    .line 136
     invoke-virtual {p0}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getY()F
 
     move-result v5
@@ -923,7 +916,7 @@
 
     add-float/2addr v5, v7
 
-    .line 136
+    .line 137
     invoke-virtual {p0}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getZ()F
 
     move-result p0
@@ -936,12 +929,12 @@
 
     add-float/2addr p0, v3
 
-    invoke-direct {v1, v4, v5, p0}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(FFF)V
+    invoke-direct {p1, v4, v5, p0}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(FFF)V
 
-    .line 133
-    invoke-virtual {p1, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->f(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    .line 134
+    invoke-virtual {v1, p1}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->p3(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
 
-    .line 140
+    .line 141
     :cond_a
     :goto_4
     invoke-static {p2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
@@ -950,10 +943,10 @@
 
     invoke-static {v2, v0, p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionDispatcher;->dispatchCustomEvent(Ljava/lang/String;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/Object;)V
 
-    .line 141
+    .line 142
     return-void
 
-    .line 97
+    .line 98
     :cond_b
     :goto_5
     return-void
@@ -962,7 +955,7 @@
 .method public static update(F)V
     .locals 9
 
-    .line 158
+    .line 159
     sget-object v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService;->ACTIVE_GRABS:Ljava/util/Map;
 
     invoke-interface {v0}, Ljava/util/Map;->isEmpty()Z
@@ -973,7 +966,7 @@
 
     return-void
 
-    .line 159
+    .line 160
     :cond_0
     const v0, 0x3d4ccccd    # 0.05f
 
@@ -987,7 +980,7 @@
 
     move-result p0
 
-    .line 161
+    .line 162
     sget-object v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService;->ACTIVE_GRABS:Ljava/util/Map;
 
     invoke-interface {v0}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -1012,10 +1005,10 @@
 
     check-cast v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;
 
-    .line 162
+    .line 163
     iget-object v2, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->heldObject:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v2}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v2}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v2
 
@@ -1023,7 +1016,7 @@
 
     goto :goto_0
 
-    .line 163
+    .line 164
     :cond_2
     iget-object v2, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->heldObject:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
@@ -1031,35 +1024,35 @@
 
     move-result-object v2
 
-    .line 164
+    .line 165
     iget-object v3, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->cameraTransform:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
-    .line 165
+    .line 166
     if-eqz v2, :cond_1
 
     if-nez v3, :cond_3
 
     goto :goto_0
 
-    .line 167
+    .line 168
     :cond_3
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->J0()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     move-result-object v4
 
-    .line 168
+    .line 169
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->forward()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     move-result-object v3
 
-    .line 169
+    .line 170
     if-eqz v4, :cond_1
 
     if-nez v3, :cond_4
 
     goto :goto_0
 
-    .line 171
+    .line 172
     :cond_4
     invoke-virtual {v4}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getX()F
 
@@ -1075,7 +1068,7 @@
 
     add-float/2addr v5, v6
 
-    .line 172
+    .line 173
     invoke-virtual {v4}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getY()F
 
     move-result v6
@@ -1090,7 +1083,7 @@
 
     add-float/2addr v6, v7
 
-    .line 173
+    .line 174
     invoke-virtual {v4}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getZ()F
 
     move-result v4
@@ -1105,17 +1098,17 @@
 
     add-float/2addr v4, v3
 
-    .line 174
+    .line 175
     invoke-virtual {v2}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->J0()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     move-result-object v3
 
-    .line 175
+    .line 176
     if-nez v3, :cond_5
 
     goto :goto_0
 
-    .line 177
+    .line 178
     :cond_5
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getX()F
 
@@ -1123,21 +1116,21 @@
 
     sub-float/2addr v5, v7
 
-    .line 178
+    .line 179
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getY()F
 
     move-result v7
 
     sub-float/2addr v6, v7
 
-    .line 179
+    .line 180
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getZ()F
 
     move-result v7
 
     sub-float/2addr v4, v7
 
-    .line 180
+    .line 181
     mul-float v7, v5, v5
 
     mul-float v8, v6, v6
@@ -1156,22 +1149,22 @@
 
     double-to-float v7, v7
 
-    .line 181
+    .line 182
     iget v8, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->maxGrabDistance:F
 
     cmpl-float v7, v7, v8
 
     if-lez v7, :cond_6
 
-    .line 182
+    .line 183
     iget-object v1, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->interactor:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     invoke-static {v1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService;->drop(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)V
 
-    .line 183
+    .line 184
     goto/16 :goto_0
 
-    .line 186
+    .line 187
     :cond_6
     iget-boolean v7, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->usePhysics:Z
 
@@ -1181,14 +1174,14 @@
 
     if-eqz v7, :cond_b
 
-    .line 187
+    .line 188
     iget-object v2, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->rigidbody:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
 
     invoke-virtual {v2}, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;->getVelocity()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     move-result-object v2
 
-    .line 188
+    .line 189
     const/4 v3, 0x0
 
     if-eqz v2, :cond_7
@@ -1202,7 +1195,7 @@
     :cond_7
     const/4 v7, 0x0
 
-    .line 189
+    .line 190
     :goto_1
     if-eqz v2, :cond_8
 
@@ -1215,7 +1208,7 @@
     :cond_8
     const/4 v8, 0x0
 
-    .line 190
+    .line 191
     :goto_2
     if-eqz v2, :cond_9
 
@@ -1223,7 +1216,7 @@
 
     move-result v3
 
-    .line 191
+    .line 192
     :cond_9
     iget v2, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->springStrength:F
 
@@ -1235,7 +1228,7 @@
 
     sub-float/2addr v5, v2
 
-    .line 192
+    .line 193
     iget v2, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->springStrength:F
 
     mul-float v6, v6, v2
@@ -1246,7 +1239,7 @@
 
     sub-float/2addr v6, v2
 
-    .line 193
+    .line 194
     iget v2, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->springStrength:F
 
     mul-float v4, v4, v2
@@ -1257,22 +1250,22 @@
 
     sub-float/2addr v4, v2
 
-    .line 194
+    .line 195
     mul-float v5, v5, p0
 
     add-float/2addr v7, v5
 
-    .line 195
+    .line 196
     mul-float v6, v6, p0
 
     add-float/2addr v8, v6
 
-    .line 196
+    .line 197
     mul-float v4, v4, p0
 
     add-float/2addr v3, v4
 
-    .line 197
+    .line 198
     mul-float v2, v7, v7
 
     mul-float v4, v8, v8
@@ -1291,42 +1284,42 @@
 
     double-to-float v2, v4
 
-    .line 198
+    .line 199
     iget v4, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->maxVelocity:F
 
     cmpl-float v4, v2, v4
 
     if-lez v4, :cond_a
 
-    .line 199
+    .line 200
     iget v4, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->maxVelocity:F
 
     div-float/2addr v4, v2
 
-    .line 200
+    .line 201
     mul-float v7, v7, v4
 
     mul-float v8, v8, v4
 
     mul-float v3, v3, v4
 
-    .line 202
+    .line 203
     :cond_a
     iget-object v2, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->commandVelocity:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    invoke-virtual {v2, v7, v8, v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)V
+    invoke-virtual {v2, v7, v8, v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    .line 203
+    .line 204
     iget-object v2, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->rigidbody:Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;
 
     iget-object v1, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->commandVelocity:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     invoke-virtual {v2, v1}, Lcom/itsmagic/engine/Engines/Engine/ComponentsV2/Physics/Rigidbody;->setVelocity(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
 
-    .line 204
+    .line 205
     goto :goto_3
 
-    .line 205
+    .line 206
     :cond_b
     iget v1, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/GrabService$GrabSession;->followSpeed:F
 
@@ -1338,12 +1331,10 @@
 
     move-result v1
 
-    .line 206
-    iget-object v2, v2, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79337l:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
+    .line 207
     new-instance v7, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    .line 207
+    .line 208
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getX()F
 
     move-result v8
@@ -1352,7 +1343,7 @@
 
     add-float/2addr v8, v5
 
-    .line 208
+    .line 209
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getY()F
 
     move-result v5
@@ -1361,7 +1352,7 @@
 
     add-float/2addr v5, v6
 
-    .line 209
+    .line 210
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getZ()F
 
     move-result v3
@@ -1372,14 +1363,14 @@
 
     invoke-direct {v7, v8, v5, v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(FFF)V
 
-    .line 206
-    invoke-virtual {v2, v7}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->f(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    .line 207
+    invoke-virtual {v2, v7}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->p3(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
 
-    .line 212
+    .line 213
     :goto_3
     goto/16 :goto_0
 
-    .line 213
+    .line 214
     :cond_c
     return-void
 .end method

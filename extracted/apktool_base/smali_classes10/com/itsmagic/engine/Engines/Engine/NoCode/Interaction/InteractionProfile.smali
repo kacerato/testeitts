@@ -25,7 +25,7 @@
     .locals 5
 
     .line 30
-    invoke-static {p0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {p0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -50,9 +50,13 @@
     invoke-static {p0, v0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->addCapability(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionCapability;)V
 
     .line 36
+    sget-object v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionProfile$1;->$SwitchMap$com$itsmagic$engine$Engines$Engine$NoCode$Interaction$InteractionProfile$ProfileType:[I
+
     invoke-virtual {p1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionProfile$ProfileType;->ordinal()I
 
     move-result p1
+
+    aget p1, v0, p1
 
     const/4 v0, 0x0
 
@@ -454,7 +458,7 @@
     return-void
 
     :pswitch_data_0
-    .packed-switch 0x0
+    .packed-switch 0x1
         :pswitch_10
         :pswitch_f
         :pswitch_e

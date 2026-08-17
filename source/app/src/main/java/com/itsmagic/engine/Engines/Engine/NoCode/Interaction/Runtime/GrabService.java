@@ -40,11 +40,12 @@ public class GrabService {
         Transform targetTransform = target.J0();
         if (targetTransform != null) {
             Vector3 originPos = targetTransform.J0();
-            if (originPos != null && InteractionRegistry.getAttribute(target, "origin_pos") == null) {
+            if (originPos != null && InteractionRegistry.getAttribute(target, "origin_rot") == null) {
                 InteractionRegistry.setAttribute(target, "origin_pos", new Vector3(originPos));
             }
-            if (targetTransform.f79321B != null && InteractionRegistry.getAttribute(target, "origin_rot") == null) {
-                InteractionRegistry.setAttribute(target, "origin_rot", new Vector3(targetTransform.f79321B));
+            Vector3 targetRot = targetTransform.K0(null);
+            if (targetRot != null && InteractionRegistry.getAttribute(target, "origin_rot") == null) {
+                InteractionRegistry.setAttribute(target, "origin_rot", new Vector3(targetRot));
             }
         }
 
@@ -130,7 +131,7 @@ public class GrabService {
         } else {
             Vector3 pos = objT.J0();
             if (pos != null) {
-                objT.f79337l.f(new Vector3(
+                objT.p3(new Vector3(
                     pos.getX() + throwDir.getX() * (throwForce * 0.1f),
                     pos.getY() + throwDir.getY() * (throwForce * 0.1f) + 0.2f,
                     pos.getZ() + throwDir.getZ() * (throwForce * 0.1f)
@@ -146,8 +147,8 @@ public class GrabService {
         Object originRot = InteractionRegistry.getAttribute(target, "origin_rot");
         Transform t = target.J0();
         if (t != null) {
-            if (originObj instanceof Vector3) t.f79337l.f(new Vector3((Vector3) originObj));
-            if (originRot instanceof Vector3 && t.f79321B != null) t.f79321B.set((Vector3) originRot);
+            if (originObj instanceof Vector3) t.p3(new Vector3((Vector3) originObj));
+            if (originRot instanceof Vector3) t.setRotation((Vector3) originRot);
         }
         InteractionRegistry.setHeld(target, false, null);
         InteractionRegistry.setBusy(target, false);
@@ -203,7 +204,7 @@ public class GrabService {
                 session.rigidbody.setVelocity(session.commandVelocity);
             } else {
                 float lerp = Math.min(1.0f, dt * session.followSpeed);
-                objTransform.f79337l.f(new Vector3(
+                objTransform.p3(new Vector3(
                     curPos.getX() + errX * lerp,
                     curPos.getY() + errY * lerp,
                     curPos.getZ() + errZ * lerp

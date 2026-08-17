@@ -191,14 +191,14 @@
 
     iget-object v1, p1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionCandidate;->hitPosition:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    invoke-virtual {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {v0, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     .line 150
     iget-object p2, p2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionCandidate;->hitNormal:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     iget-object p1, p1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionCandidate;->hitNormal:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
-    invoke-virtual {p2, p1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {p2, p1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     .line 151
     return-void
@@ -208,7 +208,7 @@
     .locals 4
 
     .line 126
-    invoke-static {p1}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {p1}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -287,7 +287,7 @@
 .end method
 
 .method private recycleCandidates()V
-    .locals 2
+    .locals 3
 
     .line 154
     const/4 v0, 0x0
@@ -299,12 +299,14 @@
 
     move-result v1
 
+    .line 157
+    iget-object v2, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionTargetResolver;->candidatesBuffer:Ljava/util/List;
+
+    .line 154
     if-ge v0, v1, :cond_0
 
     .line 155
-    iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionTargetResolver;->candidatesBuffer:Ljava/util/List;
-
-    invoke-interface {v1, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
+    invoke-interface {v2, v0}, Ljava/util/List;->get(I)Ljava/lang/Object;
 
     move-result-object v1
 
@@ -319,9 +321,7 @@
 
     .line 157
     :cond_0
-    iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionTargetResolver;->candidatesBuffer:Ljava/util/List;
-
-    invoke-interface {v0}, Ljava/util/List;->clear()V
+    invoke-interface {v2}, Ljava/util/List;->clear()V
 
     .line 158
     return-void
@@ -415,7 +415,7 @@
     .locals 10
 
     .line 41
-    invoke-static {p1}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {p1}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -447,12 +447,14 @@
 
     move-result p1
 
+    .line 54
+    iget-object p2, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionTargetResolver;->hysteresis:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionHysteresis;
+
+    .line 48
     if-eqz p1, :cond_1
 
     .line 49
-    iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionTargetResolver;->hysteresis:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionHysteresis;
-
-    invoke-virtual {p1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionHysteresis;->reset()V
+    invoke-virtual {p2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionHysteresis;->reset()V
 
     .line 50
     iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionTargetResolver;->currentResolvedCandidate:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionCandidate;
@@ -464,9 +466,7 @@
 
     .line 54
     :cond_1
-    iget-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionTargetResolver;->hysteresis:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionHysteresis;
-
-    invoke-virtual {p1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionHysteresis;->getCurrentTarget()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
+    invoke-virtual {p2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Resolver/InteractionHysteresis;->getCurrentTarget()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     move-result-object p1
 
@@ -615,7 +615,7 @@
 
     .line 94
     :cond_8
-    invoke-static {p1}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {p1}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result p1
 

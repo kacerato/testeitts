@@ -352,17 +352,6 @@
 
 .method private constructor <init>(Ljava/lang/String;I)V
     .locals 0
-    .annotation system Ldalvik/annotation/MethodParameters;
-        accessFlags = {
-            0x1000,
-            0x1000
-        }
-        names = {
-            null,
-            null
-        }
-    .end annotation
-
     .annotation system Ldalvik/annotation/Signature;
         value = {
             "()V"
@@ -447,14 +436,6 @@
 
 .method public static valueOf(Ljava/lang/String;)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionState;
     .locals 1
-    .annotation system Ldalvik/annotation/MethodParameters;
-        accessFlags = {
-            0x8000
-        }
-        names = {
-            null
-        }
-    .end annotation
 
     .line 8
     const-class v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionState;

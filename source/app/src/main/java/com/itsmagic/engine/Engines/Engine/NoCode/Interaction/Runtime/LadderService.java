@@ -41,7 +41,7 @@ public final class LadderService {
         if (old != null) session.exitOrigin.set(old);
 
         Vector3 ladderPos = ladder.J0().J0();
-        if (ladderPos != null) interactor.J0().f79337l.f(new Vector3(ladderPos));
+        if (ladderPos != null) interactor.J0().p3(new Vector3(ladderPos));
         SESSIONS.put(interactor, session);
         InteractionRegistry.setBusy(ladder, true);
         InteractionRegistry.setAttribute(ladder, "ladder_user", interactor);
@@ -64,7 +64,7 @@ public final class LadderService {
         dx /= mag; dy /= mag; dz /= mag;
 
         Vector3 pos = interactor.J0().J0();
-        interactor.J0().f79337l.f(new Vector3(
+        interactor.J0().p3(new Vector3(
             pos.getX() + dx * amount,
             pos.getY() + dy * amount,
             pos.getZ() + dz * amount
@@ -80,8 +80,8 @@ public final class LadderService {
 
         if (interactor.J0() != null) {
             Vector3 destination = C13317e.J(exitPoint) && exitPoint.J0() != null ? exitPoint.J0().J0() : null;
-            if (destination != null) interactor.J0().f79337l.f(new Vector3(destination));
-            else interactor.J0().f79337l.f(new Vector3(session.exitOrigin));
+            if (destination != null) interactor.J0().p3(new Vector3(destination));
+            else interactor.J0().p3(new Vector3(session.exitOrigin));
         }
 
         InteractionRegistry.setBusy(session.ladder, false);

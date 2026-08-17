@@ -10,10 +10,12 @@ tools/jadx/
 
 # Temporary build artifacts
 work/build_terrain/
+work/build_interaction/
 work/compiled_classes/
 work/dummy*
 *.args
 *.log
+*-report.txt
 
 # Gradle caches
 .gradle/

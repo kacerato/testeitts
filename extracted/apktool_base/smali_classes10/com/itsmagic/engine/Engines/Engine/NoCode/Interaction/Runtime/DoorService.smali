@@ -29,7 +29,7 @@
 .method static constructor <clinit>()V
     .locals 1
 
-    .line 45
+    .line 43
     new-instance v0, Ljava/util/concurrent/ConcurrentHashMap;
 
     invoke-direct {v0}, Ljava/util/concurrent/ConcurrentHashMap;-><init>()V
@@ -42,7 +42,7 @@
 .method private constructor <init>()V
     .locals 0
 
-    .line 47
+    .line 45
     invoke-direct {p0}, Ljava/lang/Object;-><init>()V
 
     return-void
@@ -51,177 +51,99 @@
 .method private static applyTransform(Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;)V
     .locals 7
 
-    .line 171
     iget-object v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->door:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
-
     invoke-virtual {v0}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->J0()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
-
     move-result-object v0
 
-    .line 172
-    if-nez v0, :cond_0
-
+    if-nez v0, :door_have_transform
     return-void
 
-    .line 173
-    :cond_0
+    :door_have_transform
     iget v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->currentOpenAmount:F
-
-    .line 175
     iget-object v2, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->mode:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;
-
     invoke-virtual {v2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;->ordinal()I
-
     move-result v2
 
-    packed-switch v2, :pswitch_data_0
+    packed-switch v2, :door_switch_data
 
-    .line 200
-    iget-object v2, v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79321B:Lcom/itsmagic/engine/Engines/Engine/Vector/i;
-
-    if-eqz v2, :cond_1
-
-    .line 201
+    # Hinged/default: use public Euler rotation setter.
     iget v2, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialEulerY:F
-
     iget v3, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->directionSign:I
-
     int-to-float v3, v3
-
     mul-float v3, v3, v1
-
-    iget p0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->maxAngleDeg:F
-
-    mul-float v3, v3, p0
-
+    iget v4, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->maxAngleDeg:F
+    mul-float v3, v3, v4
     add-float/2addr v2, v3
+    const/4 v3, 0x0
+    invoke-virtual {v0, v3, v2, v3}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->setRotation(FFF)V
+    goto :door_done
 
-    .line 202
-    iget-object p0, v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79321B:Lcom/itsmagic/engine/Engines/Engine/Vector/i;
+    # Sliding (ordinal 1): X movement.
+    :door_sliding
+    iget v2, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialX:F
+    iget v3, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->directionSign:I
+    int-to-float v3, v3
+    iget v4, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->travelDistance:F
+    mul-float v3, v3, v4
+    mul-float v3, v3, v1
+    add-float/2addr v2, v3
+    iget v3, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialY:F
+    iget v4, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialZ:F
+    invoke-virtual {v0, v2, v3, v4}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->setPosition(FFF)V
+    goto :door_done
 
-    invoke-virtual {p0, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/i;->setY(F)V
-
-    goto :goto_0
-
-    .line 192
-    :pswitch_0
-    iget-object v0, v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79337l:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    new-instance v2, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    iget v3, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialX:F
-
-    iget v4, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialY:F
-
-    iget v5, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialZ:F
-
-    iget v6, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->directionSign:I
-
-    int-to-float v6, v6
-
-    iget p0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->travelDistance:F
-
-    mul-float v6, v6, p0
-
-    mul-float v6, v6, v1
-
-    add-float/2addr v5, v6
-
-    invoke-direct {v2, v3, v4, v5}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(FFF)V
-
-    invoke-virtual {v0, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->f(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
-
-    .line 197
-    goto :goto_0
-
-    .line 185
-    :pswitch_1
-    iget-object v0, v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79337l:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    new-instance v2, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    iget v3, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialX:F
-
-    iget v4, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialY:F
-
-    iget v5, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->travelDistance:F
-
-    mul-float v5, v5, v1
-
-    add-float/2addr v4, v5
-
-    iget p0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialZ:F
-
-    invoke-direct {v2, v3, v4, p0}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(FFF)V
-
-    invoke-virtual {v0, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->f(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
-
-    .line 190
-    goto :goto_0
-
-    .line 177
-    :pswitch_2
-    iget-object v0, v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79337l:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    new-instance v2, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    iget v3, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialX:F
-
-    iget v4, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->directionSign:I
-
-    int-to-float v4, v4
-
-    iget v5, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->travelDistance:F
-
-    mul-float v4, v4, v5
-
+    # Vertical/Garage (ordinals 2 and 4): Y movement.
+    :door_vertical
+    iget v2, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialX:F
+    iget v3, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialY:F
+    iget v4, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->travelDistance:F
     mul-float v4, v4, v1
-
     add-float/2addr v3, v4
+    iget v4, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialZ:F
+    invoke-virtual {v0, v2, v3, v4}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->setPosition(FFF)V
+    goto :door_done
 
-    iget v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialY:F
+    # Drawer (ordinal 3): Z movement.
+    :door_drawer
+    iget v2, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialX:F
+    iget v3, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialY:F
+    iget v4, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialZ:F
+    iget v5, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->directionSign:I
+    int-to-float v5, v5
+    iget v6, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->travelDistance:F
+    mul-float v5, v5, v6
+    mul-float v5, v5, v1
+    add-float/2addr v4, v5
+    invoke-virtual {v0, v2, v3, v4}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->setPosition(FFF)V
 
-    iget p0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialZ:F
-
-    invoke-direct {v2, v3, v1, p0}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(FFF)V
-
-    invoke-virtual {v0, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->f(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
-
-    .line 182
-    nop
-
-    .line 206
-    :cond_1
-    :goto_0
+    :door_done
     return-void
 
-    nop
-
-    :pswitch_data_0
+    :door_switch_data
     .packed-switch 0x1
-        :pswitch_2
-        :pswitch_1
-        :pswitch_0
-        :pswitch_1
+        :door_sliding
+        :door_vertical
+        :door_drawer
+        :door_vertical
     .end packed-switch
 .end method
 
 .method public static configure(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/String;FFF)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;
     .locals 1
 
-    .line 60
+    .line 58
     invoke-static {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService;->getOrCreate(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;
 
     move-result-object p0
 
-    .line 61
+    .line 59
     if-nez p0, :cond_0
 
     const/4 p0, 0x0
 
     return-object p0
 
-    .line 62
+    .line 60
     :cond_0
     invoke-static {p1}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService;->parseMode(Ljava/lang/String;)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;
 
@@ -229,7 +151,7 @@
 
     iput-object p1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->mode:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;
 
-    .line 63
+    .line 61
     const/4 p1, 0x0
 
     cmpl-float v0, p2, p1
@@ -238,7 +160,7 @@
 
     iput p2, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->speed:F
 
-    .line 64
+    .line 62
     :cond_1
     cmpl-float p2, p3, p1
 
@@ -246,7 +168,7 @@
 
     iput p3, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->maxAngleDeg:F
 
-    .line 65
+    .line 63
     :cond_2
     cmpl-float p1, p4, p1
 
@@ -254,7 +176,7 @@
 
     iput p4, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->travelDistance:F
 
-    .line 66
+    .line 64
     :cond_3
     return-object p0
 .end method
@@ -262,8 +184,8 @@
 .method private static getOrCreate(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;
     .locals 4
 
-    .line 70
-    invoke-static {p0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    .line 68
+    invoke-static {p0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -273,7 +195,7 @@
 
     return-object v1
 
-    .line 71
+    .line 69
     :cond_0
     sget-object v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService;->ACTIVE_DOORS:Ljava/util/Map;
 
@@ -283,114 +205,88 @@
 
     check-cast v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;
 
-    .line 72
+    .line 70
     if-eqz v0, :cond_1
 
     return-object v0
 
-    .line 74
+    .line 72
     :cond_1
     invoke-virtual {p0}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->J0()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
     move-result-object v0
 
-    .line 75
+    .line 73
     if-nez v0, :cond_2
 
     return-object v1
 
-    .line 76
+    .line 74
     :cond_2
     invoke-virtual {v0}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->J0()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     move-result-object v1
 
-    .line 78
+    .line 76
     new-instance v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;
 
     invoke-direct {v2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;-><init>()V
 
-    .line 79
+    .line 77
     iput-object p0, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->door:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    .line 80
+    .line 78
     if-eqz v1, :cond_3
 
-    .line 81
+    .line 79
     invoke-virtual {v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getX()F
 
     move-result v3
 
     iput v3, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialX:F
 
-    .line 82
+    .line 80
     invoke-virtual {v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getY()F
 
     move-result v3
 
     iput v3, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialY:F
 
-    .line 83
+    .line 81
     invoke-virtual {v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getZ()F
 
     move-result v1
 
     iput v1, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialZ:F
 
-    .line 85
+    .line 83
     :cond_3
-    iget-object v1, v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79321B:Lcom/itsmagic/engine/Engines/Engine/Vector/i;
-
-    if-eqz v1, :cond_4
-
-    .line 86
-    iget-object v1, v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79321B:Lcom/itsmagic/engine/Engines/Engine/Vector/i;
-
-    invoke-virtual {v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/i;->getX()F
-
-    move-result v1
-
-    iput v1, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialEulerX:F
-
-    .line 87
-    iget-object v1, v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79321B:Lcom/itsmagic/engine/Engines/Engine/Vector/i;
-
-    invoke-virtual {v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/i;->getY()F
-
-    move-result v1
-
-    iput v1, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialEulerY:F
-
-    .line 88
-    iget-object v0, v0, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79321B:Lcom/itsmagic/engine/Engines/Engine/Vector/i;
-
-    invoke-virtual {v0}, Lcom/itsmagic/engine/Engines/Engine/Vector/i;->getZ()F
+    invoke-virtual {v0}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->getRotationY()F
 
     move-result v0
 
-    iput v0, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialEulerZ:F
+    iput v0, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->initialEulerY:F
 
-    .line 90
-    :cond_4
+    .line 84
     sget-object v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService;->ACTIVE_DOORS:Ljava/util/Map;
 
     invoke-interface {v0, p0, v2}, Ljava/util/Map;->put(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
 
-    .line 91
+    .line 85
     return-object v2
 .end method
 
 .method public static parseMode(Ljava/lang/String;)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;
     .locals 6
 
-    .line 50
+    .line 48
     if-nez p0, :cond_0
 
     sget-object p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;->Hinged:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;
 
     return-object p0
 
-    .line 51
+    .line 49
     :cond_0
     invoke-static {}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;->values()[Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;
 
@@ -405,7 +301,7 @@
 
     aget-object v3, v0, v2
 
-    .line 52
+    .line 50
     invoke-virtual {v3}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;->name()Ljava/lang/String;
 
     move-result-object v4
@@ -422,13 +318,13 @@
 
     return-object v3
 
-    .line 51
+    .line 49
     :cond_1
     add-int/lit8 v2, v2, 0x1
 
     goto :goto_0
 
-    .line 54
+    .line 52
     :cond_2
     const-string v0, "SlidingDoor"
 
@@ -442,7 +338,7 @@
 
     return-object p0
 
-    .line 55
+    .line 53
     :cond_3
     const-string v0, "GarageDoor"
 
@@ -456,7 +352,7 @@
 
     return-object p0
 
-    .line 56
+    .line 54
     :cond_4
     sget-object p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;->Hinged:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorMode;
 
@@ -466,7 +362,7 @@
 .method public static setDoorOpen(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;ZZ)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult;
     .locals 0
 
-    .line 101
+    .line 95
     if-eqz p2, :cond_0
 
     const/high16 p2, 0x3f800000    # 1.0f
@@ -487,8 +383,8 @@
 .method public static setDoorOpenAmount(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;FZ)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult;
     .locals 7
 
-    .line 105
-    invoke-static {p0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    .line 99
+    invoke-static {p0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -504,7 +400,7 @@
 
     return-object p0
 
-    .line 106
+    .line 100
     :cond_0
     invoke-static {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->isLocked(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
@@ -522,7 +418,7 @@
 
     return-object p0
 
-    .line 107
+    .line 101
     :cond_1
     invoke-static {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->isPowered(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
@@ -544,7 +440,7 @@
 
     if-eqz v0, :cond_2
 
-    .line 108
+    .line 102
     sget-object p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult$FailureReason;->Disabled:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult$FailureReason;
 
     const-string p1, "Porta sem energia"
@@ -555,13 +451,13 @@
 
     return-object p0
 
-    .line 111
+    .line 105
     :cond_2
     invoke-static {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService;->getOrCreate(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;
 
     move-result-object v0
 
-    .line 112
+    .line 106
     if-nez v0, :cond_3
 
     sget-object p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult$FailureReason;->InvalidTarget:Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult$FailureReason;
@@ -574,7 +470,7 @@
 
     return-object p0
 
-    .line 114
+    .line 108
     :cond_3
     const/high16 v1, 0x3f800000    # 1.0f
 
@@ -588,7 +484,7 @@
 
     move-result p2
 
-    .line 115
+    .line 109
     const v2, 0x3a83126f    # 0.001f
 
     const/4 v3, 0x1
@@ -607,10 +503,10 @@
     :goto_0
     iput-boolean v2, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->targetOpen:Z
 
-    .line 116
+    .line 110
     iput p2, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->targetOpenAmount:F
 
-    .line 118
+    .line 112
     if-eqz p3, :cond_6
 
     iget p3, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->currentOpenAmount:F
@@ -625,50 +521,50 @@
 
     if-ne p3, v2, :cond_6
 
-    invoke-static {p1}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {p1}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result p3
 
     if-eqz p3, :cond_6
 
-    .line 119
+    .line 113
     invoke-virtual {p0}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->J0()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
     move-result-object p3
 
-    .line 120
+    .line 114
     invoke-virtual {p1}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;->J0()Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;
 
     move-result-object p1
 
-    .line 121
+    .line 115
     if-eqz p3, :cond_6
 
     if-eqz p1, :cond_6
 
-    .line 122
+    .line 116
     invoke-virtual {p3}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->J0()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     move-result-object v2
 
-    .line 123
+    .line 117
     invoke-virtual {p1}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->J0()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     move-result-object p1
 
-    .line 124
+    .line 118
     invoke-virtual {p3}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->forward()Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     move-result-object p3
 
-    .line 125
+    .line 119
     if-eqz v2, :cond_6
 
     if-eqz p1, :cond_6
 
     if-eqz p3, :cond_6
 
-    .line 126
+    .line 120
     invoke-virtual {p1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getX()F
 
     move-result v4
@@ -679,7 +575,7 @@
 
     sub-float/2addr v4, v5
 
-    .line 127
+    .line 121
     invoke-virtual {p1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getY()F
 
     move-result v5
@@ -690,7 +586,7 @@
 
     sub-float/2addr v5, v6
 
-    .line 128
+    .line 122
     invoke-virtual {p1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getZ()F
 
     move-result p1
@@ -701,7 +597,7 @@
 
     sub-float/2addr p1, v2
 
-    .line 129
+    .line 123
     invoke-virtual {p3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->getX()F
 
     move-result v2
@@ -724,7 +620,7 @@
 
     add-float/2addr v4, p1
 
-    .line 130
+    .line 124
     cmpl-float p1, v4, v1
 
     if-lez p1, :cond_5
@@ -734,11 +630,11 @@
     :cond_5
     iput v3, v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->directionSign:I
 
-    .line 135
+    .line 129
     :cond_6
     invoke-static {p0, p2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setOpenAmount(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;F)V
 
-    .line 136
+    .line 130
     const-string p1, "door_target_changed"
 
     invoke-static {p2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
@@ -747,7 +643,7 @@
 
     invoke-static {p1, p0, p2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionDispatcher;->dispatchCustomEvent(Ljava/lang/String;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/Object;)V
 
-    .line 137
+    .line 131
     invoke-static {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult;->success(Ljava/lang/Object;)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult;
 
     move-result-object p0
@@ -758,8 +654,8 @@
 .method public static toggleDoor(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Z)Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionResult;
     .locals 1
 
-    .line 95
-    invoke-static {p0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    .line 89
+    invoke-static {p0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -775,7 +671,7 @@
 
     return-object p0
 
-    .line 96
+    .line 90
     :cond_0
     invoke-static {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->isLocked(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
@@ -793,7 +689,7 @@
 
     return-object p0
 
-    .line 97
+    .line 91
     :cond_1
     invoke-static {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->isOpen(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
@@ -811,7 +707,7 @@
 .method public static update(F)V
     .locals 6
 
-    .line 141
+    .line 135
     sget-object v0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService;->ACTIVE_DOORS:Ljava/util/Map;
 
     invoke-interface {v0}, Ljava/util/Map;->isEmpty()Z
@@ -822,7 +718,7 @@
 
     return-void
 
-    .line 142
+    .line 136
     :cond_0
     const v0, 0x3d4ccccd    # 0.05f
 
@@ -836,7 +732,7 @@
 
     move-result p0
 
-    .line 144
+    .line 138
     sget-object v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService;->ACTIVE_DOORS:Ljava/util/Map;
 
     invoke-interface {v1}, Ljava/util/Map;->values()Ljava/util/Collection;
@@ -860,10 +756,10 @@
 
     check-cast v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;
 
-    .line 145
+    .line 139
     iget-object v3, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->door:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v3}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v3}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v3
 
@@ -871,11 +767,11 @@
 
     goto :goto_0
 
-    .line 147
+    .line 141
     :cond_1
     iget v3, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->currentOpenAmount:F
 
-    .line 148
+    .line 142
     iget v4, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->targetOpenAmount:F
 
     sub-float v4, v3, v4
@@ -888,20 +784,20 @@
 
     if-gez v4, :cond_2
 
-    .line 149
+    .line 143
     iget v4, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->targetOpenAmount:F
 
     iput v4, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->currentOpenAmount:F
 
     goto :goto_1
 
-    .line 151
+    .line 145
     :cond_2
     iget v4, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->speed:F
 
     mul-float v4, v4, p0
 
-    .line 152
+    .line 146
     iget v5, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->targetOpenAmount:F
 
     cmpg-float v5, v3, v5
@@ -920,7 +816,7 @@
 
     goto :goto_1
 
-    .line 153
+    .line 147
     :cond_3
     iget v5, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->targetOpenAmount:F
 
@@ -932,18 +828,18 @@
 
     iput v4, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->currentOpenAmount:F
 
-    .line 156
+    .line 150
     :goto_1
     invoke-static {v2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService;->applyTransform(Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;)V
 
-    .line 157
+    .line 151
     iget-object v4, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->door:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
     iget v5, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->currentOpenAmount:F
 
     invoke-static {v4, v5}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionRegistry;->setOpenAmount(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;F)V
 
-    .line 159
+    .line 153
     iget v4, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->currentOpenAmount:F
 
     iget v5, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->targetOpenAmount:F
@@ -965,7 +861,7 @@
     :cond_4
     const/4 v4, 0x0
 
-    .line 160
+    .line 154
     :goto_2
     if-eqz v4, :cond_7
 
@@ -981,7 +877,7 @@
 
     if-ltz v3, :cond_7
 
-    .line 162
+    .line 156
     iget v3, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->currentOpenAmount:F
 
     cmpg-float v3, v3, v0
@@ -1013,19 +909,19 @@
 
     iget v2, v2, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/DoorService$DoorSession;->currentOpenAmount:F
 
-    .line 164
+    .line 158
     invoke-static {v2}, Ljava/lang/Float;->valueOf(F)Ljava/lang/Float;
 
     move-result-object v2
 
-    .line 161
+    .line 155
     invoke-static {v3, v4, v2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/InteractionDispatcher;->dispatchCustomEvent(Ljava/lang/String;Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;Ljava/lang/Object;)V
 
-    .line 167
+    .line 161
     :cond_7
     goto/16 :goto_0
 
-    .line 168
+    .line 162
     :cond_8
     return-void
 .end method

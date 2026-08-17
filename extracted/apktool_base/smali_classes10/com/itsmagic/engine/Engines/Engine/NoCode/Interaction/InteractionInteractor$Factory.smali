@@ -1,5 +1,5 @@
 .class public Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionInteractor$Factory;
-.super Lfb/AbstractC13203c;
+.super Lfb/c;
 .source "InteractionInteractor.java"
 
 
@@ -19,7 +19,7 @@
     .locals 0
 
     .line 36
-    invoke-direct {p0}, Lfb/AbstractC13203c;-><init>()V
+    invoke-direct {p0}, Lfb/c;-><init>()V
 
     return-void
 .end method

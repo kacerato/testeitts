@@ -107,7 +107,7 @@
     .locals 6
 
     .line 32
-    invoke-static {p0}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {p0}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v0
 
@@ -459,7 +459,7 @@
 
     iget-object v2, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/ElevatorService$ElevatorSession;->elevator:Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;
 
-    invoke-static {v2}, Lgb/C13317e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
+    invoke-static {v2}, Lgb/e;->J(Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/GameObject/GameObject;)Z
 
     move-result v2
 
@@ -533,17 +533,11 @@
     if-gtz v7, :cond_5
 
     .line 109
-    iget-object v2, v2, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79337l:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
+    iget v3, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/ElevatorService$ElevatorSession;->baseX:F
 
-    new-instance v3, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
+    iget v5, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/ElevatorService$ElevatorSession;->baseZ:F
 
-    iget v5, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/ElevatorService$ElevatorSession;->baseX:F
-
-    iget v6, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/ElevatorService$ElevatorSession;->baseZ:F
-
-    invoke-direct {v3, v5, v4, v6}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(FFF)V
-
-    invoke-virtual {v2, v3}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->f(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {v2, v3, v4, v5}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->setPosition(FFF)V
 
     .line 110
     iget v2, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/ElevatorService$ElevatorSession;->targetFloor:I
@@ -613,17 +607,11 @@
     add-float/2addr v3, v4
 
     .line 120
-    iget-object v2, v2, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->f79337l:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    new-instance v4, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
-
-    iget v5, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/ElevatorService$ElevatorSession;->baseX:F
+    iget v4, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/ElevatorService$ElevatorSession;->baseX:F
 
     iget v1, v1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/Runtime/ElevatorService$ElevatorSession;->baseZ:F
 
-    invoke-direct {v4, v5, v3, v1}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;-><init>(FFF)V
-
-    invoke-virtual {v2, v4}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->f(Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;)V
+    invoke-virtual {v2, v4, v3, v1}, Lcom/itsmagic/engine/Engines/Engine/ObjectOriented/Transform/Transform;->setPosition(FFF)V
 
     .line 121
     goto/16 :goto_0

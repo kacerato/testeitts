@@ -226,14 +226,6 @@
 
 .method public bridge synthetic compareTo(Ljava/lang/Object;)I
     .locals 0
-    .annotation system Ldalvik/annotation/MethodParameters;
-        accessFlags = {
-            0x1000
-        }
-        names = {
-            null
-        }
-    .end annotation
 
     .line 13
     check-cast p1, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionCandidate;
@@ -279,14 +271,14 @@
 
     const/4 v2, 0x0
 
-    invoke-virtual {v1, v2, v2, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)V
+    invoke-virtual {v1, v2, v2, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     .line 40
     iget-object v1, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionCandidate;->hitNormal:Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     const/high16 v3, 0x3f800000    # 1.0f
 
-    invoke-virtual {v1, v2, v3, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)V
+    invoke-virtual {v1, v2, v3, v2}, Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;->set(FFF)Lcom/itsmagic/engine/Engines/Engine/Vector/Vector3;
 
     .line 41
     iput-boolean v0, p0, Lcom/itsmagic/engine/Engines/Engine/NoCode/Interaction/InteractionCandidate;->isSticky:Z

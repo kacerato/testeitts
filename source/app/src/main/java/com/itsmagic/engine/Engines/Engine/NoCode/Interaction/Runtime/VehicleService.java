@@ -47,7 +47,7 @@ public final class VehicleService {
         if (origin != null) session.entryOrigin.set(origin);
 
         Vector3 seatPos = seat.J0().J0();
-        interactor.J0().f79337l.f(new Vector3(seatPos));
+        interactor.J0().p3(new Vector3(seatPos));
         SESSIONS.put(interactor, session);
 
         InteractionRegistry.setAttribute(seat, "occupied_by", interactor);
@@ -77,7 +77,7 @@ public final class VehicleService {
         session.seat = newSeat;
         InteractionRegistry.setAttribute(newSeat, "occupied_by", interactor);
         InteractionRegistry.setAttribute(interactor, "current_vehicle_seat", newSeat);
-        interactor.J0().f79337l.f(new Vector3(newSeat.J0().J0()));
+        interactor.J0().p3(new Vector3(newSeat.J0().J0()));
         InteractionDispatcher.dispatchCustomEvent("vehicle_seat_exited", oldSeat, interactor);
         InteractionDispatcher.dispatchCustomEvent("vehicle_seat_switched", session.vehicle, newSeat);
         InteractionDispatcher.dispatchCustomEvent("vehicle_seat_entered", newSeat, interactor);
@@ -95,8 +95,8 @@ public final class VehicleService {
         if (interactor.J0() != null) {
             Vector3 destination = null;
             if (C13317e.J(exitPoint) && exitPoint.J0() != null) destination = exitPoint.J0().J0();
-            if (destination != null) interactor.J0().f79337l.f(new Vector3(destination));
-            else interactor.J0().f79337l.f(new Vector3(session.entryOrigin));
+            if (destination != null) interactor.J0().p3(new Vector3(destination));
+            else interactor.J0().p3(new Vector3(session.entryOrigin));
         }
 
         InteractionRegistry.setAttribute(interactor, "current_vehicle", null);

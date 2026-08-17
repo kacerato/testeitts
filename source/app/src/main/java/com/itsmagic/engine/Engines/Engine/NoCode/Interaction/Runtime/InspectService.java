@@ -45,7 +45,8 @@ public final class InspectService {
 
         Vector3 pos = object.J0().J0();
         if (pos != null) session.originPosition.set(pos);
-        if (object.J0().f79321B != null) session.originRotation.set(object.J0().f79321B);
+        Vector3 rot = object.J0().K0(null);
+        if (rot != null) session.originRotation.set(rot);
 
         SESSIONS.put(interactor, session);
         InteractionRegistry.setBusy(object, true);
@@ -60,8 +61,8 @@ public final class InspectService {
         if (session == null || !C13317e.J(session.object)) return;
 
         if (session.returnOnStop && session.object.J0() != null) {
-            session.object.J0().f79337l.f(new Vector3(session.originPosition));
-            if (session.object.J0().f79321B != null) session.object.J0().f79321B.set(session.originRotation);
+            session.object.J0().p3(new Vector3(session.originPosition));
+            session.object.J0().setRotation(session.originRotation);
         }
         InteractionRegistry.setBusy(session.object, false);
         InteractionRegistry.setAttribute(session.object, "inspecting_by", null);
@@ -70,10 +71,11 @@ public final class InspectService {
 
     public static void rotate(GameObject interactor, float pitchDelta, float yawDelta) {
         InspectSession session = SESSIONS.get(interactor);
-        if (session == null || !C13317e.J(session.object) || session.object.J0() == null || session.object.J0().f79321B == null) return;
-        Vector3 rot = session.object.J0().f79321B;
-        rot.setX(rot.getX() + pitchDelta);
-        rot.setY(rot.getY() + yawDelta);
+        if (session == null || !C13317e.J(session.object) || session.object.J0() == null) return;
+        Vector3 rot = session.object.J0().K0(null);
+        if (rot != null) {
+            session.object.J0().setRotation(rot.getX() + pitchDelta, rot.getY() + yawDelta, rot.getZ());
+        }
     }
 
     public static void zoom(GameObject interactor, float delta, float minDistance, float maxDistance) {
@@ -108,7 +110,7 @@ public final class InspectService {
             float ty = camPos.getY() + forward.getY() * session.distance;
             float tz = camPos.getZ() + forward.getZ() * session.distance;
             float t = Math.min(1f, dt * session.followSpeed);
-            session.object.J0().f79337l.f(new Vector3(
+            session.object.J0().p3(new Vector3(
                 cur.getX() + (tx - cur.getX()) * t,
                 cur.getY() + (ty - cur.getY()) * t,
                 cur.getZ() + (tz - cur.getZ()) * t

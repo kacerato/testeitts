@@ -167,11 +167,11 @@
     return-object v0
 .end method
 
-.method public bridge synthetic M()Lga/EnumC13304B;
+.method public bridge synthetic M()Lga/B;
     .locals 1
 
     .line 42
-    invoke-super {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Queries/Interaction/InteractionSearchQueryNodes$BaseSearchNode;->M()Lga/EnumC13304B;
+    invoke-super {p0}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Queries/Interaction/InteractionSearchQueryNodes$BaseSearchNode;->M()Lga/B;
 
     move-result-object v0
 
@@ -295,16 +295,6 @@
 
 .method public bridge synthetic t0(ILga/D;)Lga/H;
     .locals 0
-    .annotation system Ldalvik/annotation/MethodParameters;
-        accessFlags = {
-            0x1000,
-            0x1000
-        }
-        names = {
-            null,
-            null
-        }
-    .end annotation
 
     .line 42
     invoke-super {p0, p1, p2}, Lcom/itsmagic/engine/Engines/Engine/NoCode/Nodes/Queries/Interaction/InteractionSearchQueryNodes$BaseSearchNode;->t0(ILga/D;)Lga/H;
