@@ -37,9 +37,7 @@ public final class DoorService {
         public float initialX;
         public float initialY;
         public float initialZ;
-        public float initialEulerX;
         public float initialEulerY;
-        public float initialEulerZ;
     }
 
     private static final Map<GameObject, DoorSession> ACTIVE_DOORS = new ConcurrentHashMap<>();
@@ -82,11 +80,7 @@ public final class DoorService {
             created.initialY = pos.getY();
             created.initialZ = pos.getZ();
         }
-        if (t.f79321B != null) {
-            created.initialEulerX = t.f79321B.getX();
-            created.initialEulerY = t.f79321B.getY();
-            created.initialEulerZ = t.f79321B.getZ();
-        }
+        created.initialEulerY = t.getRotationY();
         ACTIVE_DOORS.put(door, created);
         return created;
     }
@@ -174,33 +168,31 @@ public final class DoorService {
 
         switch (session.mode) {
             case Sliding:
-                t.f79337l.f(new Vector3(
+                t.setPosition(
                     session.initialX + session.directionSign * session.travelDistance * amount,
                     session.initialY,
                     session.initialZ
-                ));
+                );
                 break;
             case Vertical:
             case Garage:
-                t.f79337l.f(new Vector3(
+                t.setPosition(
                     session.initialX,
                     session.initialY + session.travelDistance * amount,
                     session.initialZ
-                ));
+                );
                 break;
             case Drawer:
-                t.f79337l.f(new Vector3(
+                t.setPosition(
                     session.initialX,
                     session.initialY,
                     session.initialZ + session.directionSign * session.travelDistance * amount
-                ));
+                );
                 break;
             case Hinged:
             default:
-                if (t.f79321B != null) {
-                    float targetAngle = session.initialEulerY + session.directionSign * amount * session.maxAngleDeg;
-                    t.f79321B.setY(targetAngle);
-                }
+                float targetAngle = session.initialEulerY + session.directionSign * amount * session.maxAngleDeg;
+                t.setRotation(0.0f, targetAngle, 0.0f);
                 break;
         }
     }
